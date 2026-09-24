@@ -3264,6 +3264,9 @@ def m11():
         d["m11_perf_index_verdict"] = (
             "aucun effet mesurable et le plan reste un SEQ_SCAN : en DuckDB, l'index n'est pas "
             "un reflexe, c'est une reponse a un plan")
+        d["m11_perf_fenetre_ms"] = "%s ms (fonction de fenetre)" % p["fenetre_ms"]
+        d["m11_perf_scalaire_ms"] = "%s ms (sous-requete scalaire)" % p["scalaire_ms"]
+        d["m11_perf_rapport_fenetre_scalaire"] = round(p["scalaire_ms"] / p["fenetre_ms"], 1)
         d["m11_perf_colonnes_plan_etoile"] = int(p["colonnes_plan_etoile"])
         d["m11_perf_colonnes_plan_trois"] = int(p["colonnes_plan_trois"])
         d["m11_perf_etages_plan"] = int(p["etages_plan"])
@@ -3274,6 +3277,68 @@ def m11():
             % (p["colonnes_plan_etoile"] / p["colonnes_plan_trois"], d["m11_perf_rapport_select"]))
     else:
         d["m11_perf_etat"] = "non mesure : lancer tools/perf_M11.py --figer"
+
+    # --- C01 : la fenetre face a GROUP BY, et le piege de la cle de jointure incomplete
+    d["m11_c01_moyenne_ligne"] = FMT(un("SELECT AVG(montant_ttc) FROM ventes WHERE NOT est_retour")[0]) + " FCFA"
+    d["m11_c01_valeurs_ca_magasin"] = int(un(
+        "SELECT COUNT(DISTINCT ca) FROM (SELECT SUM(montant_ttc) ca FROM ventes "
+        "WHERE NOT est_retour GROUP BY id_magasin)")[0])
+    d["m11_c01_jointure_mois_seul_fcfa"] = FMT(un("""
+        SELECT SUM(v.montant_ttc) FROM ventes v JOIN
+        (SELECT id_magasin, strftime(date_trunc('month', date_vente), '%Y-%m') am, SUM(montant_ttc) ca
+         FROM ventes WHERE NOT est_retour GROUP BY 1, 2) t
+        ON t.am = strftime(date_trunc('month', v.date_vente), '%Y-%m')
+        WHERE NOT v.est_retour""")[0]) + " FCFA"
+    d["m11_c01_jointure_mois_seul_lignes"] = int(un("""
+        SELECT COUNT(*) FROM ventes v JOIN
+        (SELECT id_magasin, strftime(date_trunc('month', date_vente), '%Y-%m') am, SUM(montant_ttc) ca
+         FROM ventes WHERE NOT est_retour GROUP BY 1, 2) t
+        ON t.am = strftime(date_trunc('month', v.date_vente), '%Y-%m')
+        WHERE NOT v.est_retour""")[0])
+    d["m11_c01_jointure_mois_seul_texte"] = (
+        "une jointure sur le mois seul (la cle du magasin oubliee) annonce %s FCFA sur %s lignes : "
+        "cinq fois le total, sans une seule erreur de syntaxe"
+        % (d["m11_c01_jointure_mois_seul_fcfa"], FMT(d["m11_c01_jointure_mois_seul_lignes"])))
+    d["m11_c01_part_janvier_2023_pct"] = float(un("""
+        WITH m AS (SELECT strftime(date_trunc('month', date_vente), '%Y-%m') am, YEAR(date_vente) an,
+                          SUM(montant_ttc) ca FROM ventes WHERE NOT est_retour GROUP BY 1, 2)
+        SELECT part FROM (SELECT am, ROUND(100.0 * ca / SUM(ca) OVER (PARTITION BY an), 1) part
+                          FROM m) WHERE am = '2023-01'""")[0])
+    # Le filtre applique AVANT la fenetre : la fenetre ne voit plus qu'une ligne et la part vaut 100 %.
+    d["m11_c01_part_janvier_2023_filtre_avant_pct"] = float(un("""
+        WITH m AS (SELECT strftime(date_trunc('month', date_vente), '%Y-%m') am, YEAR(date_vente) an,
+                          SUM(montant_ttc) ca FROM ventes WHERE NOT est_retour GROUP BY 1, 2)
+        SELECT ROUND(100.0 * ca / SUM(ca) OVER (PARTITION BY an), 1) FROM m WHERE am = '2023-01'""")[0])
+    d["m11_c01_fenetre_apres_where_texte"] = (
+        "la meme requete publiee avec le filtre dans le meme SELECT que la fenetre affiche %s %% "
+        "au lieu de %s %% : une fenetre s'evalue APRES le WHERE, et filtre avant, elle ne compare plus rien"
+        % (d["m11_c01_part_janvier_2023_filtre_avant_pct"], d["m11_c01_part_janvier_2023_pct"]))
+    d["m11_c01_part_janvier_2023_sans_partition_pct"] = float(un("""
+        WITH m AS (SELECT strftime(date_trunc('month', date_vente), '%Y-%m') am, SUM(montant_ttc) ca
+                   FROM ventes WHERE NOT est_retour GROUP BY 1)
+        SELECT ROUND(100.0 * ca / SUM(ca) OVER (), 1) FROM m WHERE am = '2023-01'""")[0])
+    d["m11_c01_partition_oubliee_texte"] = (
+        "janvier 2023 pese %s %% du CA de son annee ; sans PARTITION BY, la meme requete affiche "
+        "%s %% — un chiffre plus petit, plus credible, et faux"
+        % (d["m11_c01_part_janvier_2023_pct"], d["m11_c01_part_janvier_2023_sans_partition_pct"]))
+    d["m11_c01_clients_10_tickets_plus"] = int(un("""
+        SELECT COUNT(*) FROM (SELECT id_client, COUNT(DISTINCT id_ticket) t FROM ventes
+        WHERE NOT est_retour GROUP BY 1) WHERE t >= 10""")[0])
+    d["m11_c01_part_ca_10_tickets_plus_pct"] = float(un("""
+        WITH c AS (SELECT id_client, COUNT(DISTINCT id_ticket) t, SUM(montant_ttc) ca
+                   FROM ventes WHERE NOT est_retour GROUP BY 1)
+        SELECT ROUND(100.0 * SUM(ca) FILTER (WHERE t >= 10) / SUM(ca), 1) FROM c""")[0])
+    cumul = con.execute("""
+        SELECT ROUND(montant_ttc), ROUND(SUM(montant_ttc) OVER (ORDER BY date_vente, id_vente)),
+               ROUND(AVG(montant_ttc) OVER (ORDER BY date_vente, id_vente
+                     ROWS BETWEEN 2 PRECEDING AND CURRENT ROW))
+        FROM ventes WHERE NOT est_retour AND id_magasin = 1 ORDER BY date_vente, id_vente LIMIT 5""").fetchall()
+    d["m11_c01_cumul_cinq_lignes"] = " ; ".join(FMT(r[1]) for r in cumul) + " FCFA"
+    d["m11_c01_moyenne_glissante_cinq_lignes"] = " ; ".join(FMT(r[2]) for r in cumul) + " FCFA"
+    d["m11_c01_cadre_texte"] = (
+        "sur les cinq premieres lignes du magasin 1, le cumul monte a %s et la moyenne glissante "
+        "de trois lignes passe par %s : le cadre de fenetre decide de ce que la fonction regarde"
+        % (d["m11_c01_cumul_cinq_lignes"], d["m11_c01_moyenne_glissante_cinq_lignes"]))
 
     # --- Deux socles, deux perimetres (C07 / rapport R12)
     d["m11_socle_m09_lignes"] = 50008

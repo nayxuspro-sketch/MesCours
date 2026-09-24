@@ -105,6 +105,19 @@ def main(argv=None) -> int:
     print("     vue   : SELECT *     %8.1f ms | 3 colonnes %8.1f ms -> x%.1f"
           % (vue_etoile_ms, vue_trois_ms, vue_etoile_ms / vue_trois_ms))
 
+    # 2 bis. la fenetre contre la sous-requete scalaire (C01)
+    fenetre = median_ms(con, """
+        SELECT m.nom, SUM(v.montant_ttc),
+               ROUND(100.0 * SUM(v.montant_ttc) / SUM(SUM(v.montant_ttc)) OVER (), 2)
+        FROM ventes v JOIN magasin m USING (id_magasin) WHERE NOT v.est_retour GROUP BY 1""")
+    scalaire = median_ms(con, """
+        SELECT m.nom, SUM(v.montant_ttc),
+               ROUND(100.0 * SUM(v.montant_ttc)
+                     / (SELECT SUM(montant_ttc) FROM ventes WHERE NOT est_retour), 2)
+        FROM ventes v JOIN magasin m USING (id_magasin) WHERE NOT v.est_retour GROUP BY 1""")
+    print("  2b. la meme part : fenetre %.1f ms | sous-requete scalaire %.1f ms -> x%.1f"
+          % (fenetre, scalaire, scalaire / fenetre))
+
     # 3. index
     client = 15676
     point = "SELECT COUNT(*), SUM(montant_ttc) FROM ventes_m WHERE id_client = %d" % client
@@ -147,6 +160,8 @@ def main(argv=None) -> int:
         "index_agregat_sans_ms": round(g_avant, 1),
         "index_agregat_avec_ms": round(g_apres, 1),
         "index_utilise_par_le_plan": indice_utilise,
+        "fenetre_ms": int(round(fenetre)),
+        "scalaire_ms": int(round(scalaire)),
         "colonnes_plan_etoile": col_etoile,
         "colonnes_plan_trois": col_trois,
         "etages_plan": len(liste_etages),
@@ -158,6 +173,8 @@ def main(argv=None) -> int:
           % (vue_ms, figees["table_ms"], round(vue_ms / figees["table_ms"])))
     print("  | SELECT * contre 3 colonnes | %d ms | %d ms | x%.1f |"
           % (etoile_ms, trois_ms, etoile_ms / trois_ms))
+    print("  | meme part : fenetre contre sous-requete | %d ms | %d ms | x%.1f |"
+          % (fenetre, scalaire, scalaire / fenetre))
     print("  | index, recherche client | %.1f ms | %.1f ms | %s |"
           % (avant, apres, "aucun effet"))
     print("  | index, agrégat magasin | %.1f ms | %.1f ms | %s |"
