@@ -1,0 +1,133 @@
+﻿id_client,nom,type_client,ville,region,telephone,email,date_creation,segment,conditions_paiement,plafond_credit
+25,Societe o,Entreprise,Ouagadougou,Centre,+226 70 72 40 40 58,,2019-10-31,Argent,Comptant,0
+94,Menage 00094,Particulier,Bobo-Dioulasso,Hauts-Bassins,+226 78 13 95 69 34,,2024-03-30,Standard,Comptant,0
+189,Menage 00189,Particulier,Ouagadougou,Centre,+226 75 57 88 13 18,,2024-07-30,Argent,Comptant,5000000
+425,Societe o,Professionnel,Bobo-Dioulasso,Hauts-Bassins,+226 72 43 51 76 35,contact425@outlook.fr,2020-07-15,Argent,Comptant,500000
+447,Societe g,Entreprise,Ouagadougou,Centre,+226 70 56 11 65 77,contact447@outlook.fr,2022-05-29,Standard,Comptant,0
+454,SARL t,Professionnel,Koudougou,Centre-Ouest,+226 78 76 20 40 28,,2022-12-24,Standard,Comptant,250000
+873,Menage 00873,Particulier,Kaya,Centre-Nord,+226 77 47 22 96 44,,2018-07-05,Standard,60 j,0
+926,Menage 00926,Particulier,Ouagadougou,Centre,+226 77 11 70 52 82,,2023-05-30,Standard,60 j,1500000
+1105,Ets N,Administration,Ouagadougou,Centre,+226 78 23 56 18 57,,2022-02-27,Standard,60 j,250000
+1475,Menage 01475,Particulier,Koudougou,Centre-Ouest,+226 70 50 16 41 87,,2016-04-26,Standard,Comptant,0
+1606,SARL T,Administration,Ouagadougou,Centre,+226 70 93 71 52 11,,2023-03-17,Standard,30 j,250000
+1833,Menage 01833,Particulier,Bobo-Dioulasso,Hauts-Bassins,+226 72 73 73 70 14,,2017-01-11,Standard,Comptant,250000
+1945,Menage 01945,Particulier,Ouagadougou,Centre,+226 75 56 52 33 49,,2025-12-31,Standard,Comptant,0
+2188,Chantiers n,Professionnel,Kaya,Centre-Nord,+226 71 37 26 39 20,,2017-11-20,Argent,60 j,250000
+2382,Menage 02382,Particulier,Koudougou,Centre-Ouest,+226 77 65 57 38 46,,2021-02-24,Or,Comptant,0
+2407,SARL o,Professionnel,Bobo-Dioulasso,Hauts-Bassins,+226 77 38 50 91 19,contact2407@yahoo.fr,2025-08-26,Argent,30 j,500000
+2533,SARL é,Professionnel,Ziniaré,Plateau-Central,+226 74 49 81 62 86,contact2533@outlook.fr,2026-01-04,Argent,30 j,1500000
+2764,Menage 02764,Particulier,Bobo-Dioulasso,Hauts-Bassins,+226 79 26 57 66 41,,2018-10-28,Argent,Comptant,500000
+3041,Menage 03041,Particulier,Kaya,Centre-Nord,+226 72 78 38 30 62,,2022-12-30,Argent,30 j,1500000
+3230,Menage 03230,Particulier,Bobo-Dioulasso,Hauts-Bassins,+226 71 36 49 75 39,,2022-04-27,Argent,60 j,0
+3518,Menage 03518,Particulier,Ouagadougou,Centre,+226 75 40 94 81 32,,2022-09-20,Or,30 j,250000
+3591,Menage 03591,Particulier,Ziniaré,Plateau-Central,+226 72 87 22 62 82,,2023-12-26,Standard,30 j,0
+3624,Menage 03624,Particulier,Ouagadougou,Centre,+226 78 15 59 86 88,,2025-10-07,Or,Comptant,0
+3665,Societe o,Professionnel,Ziniaré,Plateau-Central,+226 74 63 80 37 19,contact3665@yahoo.fr,2020-06-12,Standard,Comptant,250000
+3700,Ets o,Professionnel,Ziniaré,Plateau-Central,+226 73 78 13 23 58,,2023-11-15,Argent,30 j,1500000
+3856,Menage 03856,Particulier,Ouagadougou,Centre,+226 77 68 33 56 24,,2016-05-05,Argent,60 j,500000
+4357,Menage 04357,Particulier,Koudougou,Centre-Ouest,+226 72 92 57 57 66,,2018-10-04,Standard,30 j,250000
+5048,Menage 05048,Particulier,Ouagadougou,Centre,+226 76 98 91 18 65,,2023-07-29,Or,Comptant,0
+5073,Menage 05073,Particulier,Ouagadougou,Centre,+226 71 69 41 46 73,,2021-02-13,Argent,Comptant,1500000
+5322,SARL i,Entreprise,Kaya,Centre-Nord,+226 72 37 77 50 19,contact5322@outlook.fr,2019-06-06,Argent,30 j,1500000
+5544,Menage 05544,Particulier,Ouagadougou,Centre,+226 73 30 57 91 63,,2021-01-05,Standard,30 j,500000
+5710,Ets é,Professionnel,Koudougou,Centre-Ouest,+226 73 55 15 58 49,,2020-04-06,Standard,Comptant,500000
+5780,Chantiers t,Professionnel,Kaya,Centre-Nord,+226 74 30 71 59 28,contact5780@yahoo.fr,2020-01-10,Standard,Comptant,0
+5977,Societe u,Professionnel,Ziniaré,Plateau-Central,+226 71 46 42 97 66,contact5977@outlook.fr,2022-06-25,Argent,Comptant,500000
+6161,Ets a,Professionnel,Ouagadougou,Centre,+226 72 49 59 98 78,,2018-04-08,Argent,30 j,0
+6389,Societe a,Professionnel,Ouagadougou,Centre,+226 74 86 45 12 52,contact6389@entreprise.bf,2022-04-03,Standard,60 j,500000
+6769,SARL O,Administration,Koudougou,Centre-Ouest,+226 75 81 62 95 42,,2023-12-01,Or,30 j,500000
+6829,SARL K,Professionnel,Ouagadougou,Centre,+226 77 39 21 60 92,contact6829@entreprise.bf,2017-10-21,Standard,Comptant,0
+6836,Menage 06836,Particulier,Ouagadougou,Centre,+226 75 24 12 67 62,,2021-08-31,Argent,Comptant,500000
+6941,Menage 06941,Particulier,Ziniaré,Plateau-Central,+226 74 88 13 51 43,,2021-04-19,Standard,Comptant,5000000
+7093,Societe i,Professionnel,Ouagadougou,Centre,+226 78 81 21 20 73,contact7093@outlook.fr,2024-02-12,Standard,Comptant,0
+7176,Menage 07176,Particulier,Bobo-Dioulasso,Hauts-Bassins,+226 74 50 29 52 60,,2019-11-01,Standard,Comptant,0
+7545,Ets a,Professionnel,Ouagadougou,Centre,+226 71 52 32 72 90,contact7545@outlook.fr,2024-07-22,Standard,Comptant,5000000
+7654,Ets a,Professionnel,Ouagadougou,Centre,+226 79 82 64 92 92,contact7654@entreprise.bf,2022-07-18,Standard,Comptant,500000
+8041,Chantiers d,Entreprise,Ouagadougou,Centre,+226 77 47 30 39 33,contact8041@outlook.fr,2018-01-29,Or,30 j,0
+8120,Menage 08120,Particulier,Ziniaré,Plateau-Central,+226 75 21 15 77 41,,2018-06-26,Argent,Comptant,1500000
+8514,Menage 08514,Particulier,Ouagadougou,Centre,+226 71 79 66 78 57,,2016-04-16,Or,30 j,250000
+8619,Menage 08619,Particulier,Ouagadougou,Centre,+226 75 28 37 74 58,,2016-01-20,Standard,Comptant,0
+8811,SARL g,Professionnel,Bobo-Dioulasso,Hauts-Bassins,+226 70 56 57 40 73,,2018-04-04,Standard,Comptant,1500000
+9145,Chantiers u,Administration,Ouagadougou,Centre,+226 70 59 56 77 50,contact9145@yahoo.fr,2024-11-16,Standard,Comptant,0
+9311,Societe a,Entreprise,Ouagadougou,Centre,+226 72 97 46 98 69,,2020-07-31,Or,30 j,250000
+10165,SARL a,Professionnel,Ouagadougou,Centre,+226 73 13 43 67 21,contact10165@outlook.fr,2017-07-16,Standard,30 j,250000
+10482,Menage 10482,Particulier,Kaya,Centre-Nord,+226 71 62 58 75 40,,2024-11-22,Standard,Comptant,0
+10630,Chantiers o,Professionnel,Bobo-Dioulasso,Hauts-Bassins,+226 71 93 63 97 36,contact10630@outlook.fr,2025-04-14,Or,60 j,250000
+10764,Menage 10764,Particulier,Koudougou,Centre-Ouest,+226 70 40 92 77 56,,2021-06-20,Standard,60 j,0
+10812,Menage 10812,Particulier,Kaya,Centre-Nord,+226 79 63 61 50 13,,2018-02-16,Standard,Comptant,0
+11164,Menage 11164,Particulier,Bobo-Dioulasso,Hauts-Bassins,+226 74 66 19 23 71,,2024-02-14,Or,Comptant,0
+11305,Societe O,Professionnel,Koudougou,Centre-Ouest,+226 73 99 92 34 60,contact11305@outlook.fr,2020-06-03,Standard,Comptant,0
+11564,Menage 11564,Particulier,Bobo-Dioulasso,Hauts-Bassins,+226 70 97 77 64 54,,2023-06-05,Standard,Comptant,250000
+11707,Menage 11707,Particulier,Koudougou,Centre-Ouest,+226 74 55 53 73 67,,2017-04-20,Standard,30 j,250000
+11886,SARL b,Administration,Ouagadougou,Centre,+226 70 62 53 97 28,contact11886@outlook.fr,2021-05-12,Or,Comptant,0
+12009,SARL o,Professionnel,Ouagadougou,Centre,+226 76 93 66 55 90,,2018-02-09,Argent,30 j,500000
+12144,Menage 12144,Particulier,Kaya,Centre-Nord,+226 78 21 33 56 57,,2019-08-15,Argent,Comptant,250000
+12324,Menage 12324,Particulier,Ouagadougou,Centre,+226 74 79 99 92 69,,2022-05-24,Or,Comptant,500000
+12576,Chantiers r,Entreprise,Koudougou,Centre-Ouest,+226 76 10 71 63 64,contact12576@entreprise.bf,2017-07-04,Argent,30 j,0
+12783,Chantiers k,Professionnel,Ouagadougou,Centre,+226 74 43 24 71 82,,2025-07-14,Standard,30 j,0
+12837,Chantiers o,Professionnel,Ziniaré,Plateau-Central,+226 79 87 66 68 46,contact12837@outlook.fr,2025-11-03,Standard,Comptant,0
+13031,Menage 13031,Particulier,Bobo-Dioulasso,Hauts-Bassins,+226 78 51 98 27 41,,2023-02-19,Standard,30 j,1500000
+13044,SARL a,Entreprise,Ouagadougou,Centre,+226 72 86 31 58 41,,2026-04-14,Argent,Comptant,500000
+13140,Menage 13140,Particulier,Ouagadougou,Centre,+226 77 64 10 43 62,,2021-12-17,Or,Comptant,500000
+13341,Chantiers u,Professionnel,Ouagadougou,Centre,+226 75 11 61 44 18,,2017-07-04,Argent,60 j,0
+13459,Menage 13459,Particulier,Bobo-Dioulasso,Hauts-Bassins,+226 73 18 98 42 73,,2025-10-10,Standard,Comptant,0
+13529,Menage 13529,Particulier,Ouagadougou,Centre,+226 73 71 38 78 87,,2021-02-24,Argent,60 j,500000
+13592,SARL i,Professionnel,Bobo-Dioulasso,Hauts-Bassins,+226 77 21 21 13 77,contact13592@yahoo.fr,2021-04-08,Standard,Comptant,0
+13701,SARL T,Administration,Ouagadougou,Centre,+226 75 91 86 14 83,contact13701@gmail.com,2018-08-12,Standard,Comptant,0
+13815,Menage 13815,Particulier,Kaya,Centre-Nord,+226 78 51 66 87 79,,2022-03-10,Standard,60 j,0
+14159,Menage 14159,Particulier,Bobo-Dioulasso,Hauts-Bassins,+226 71 41 49 51 94,,2024-12-26,Standard,30 j,250000
+14166,Societe a,Professionnel,Ouagadougou,Centre,+226 79 91 75 43 90,contact14166@gmail.com,2018-03-02,Standard,Comptant,1500000
+14179,Menage 14179,Particulier,Ouagadougou,Centre,+226 75 22 77 33 85,,2025-08-08,Standard,Comptant,0
+14288,Societe é,Professionnel,Bobo-Dioulasso,Hauts-Bassins,+226 72 44 69 68 48,contact14288@entreprise.bf,2020-06-10,Standard,Comptant,0
+14336,Menage 14336,Particulier,Bobo-Dioulasso,Hauts-Bassins,+226 78 65 49 36 94,,2025-12-12,Standard,Comptant,250000
+15018,Societe s,Administration,Bobo-Dioulasso,Hauts-Bassins,+226 72 97 33 75 94,,2025-12-30,Or,Comptant,0
+15206,Menage 15206,Particulier,Ziniaré,Plateau-Central,+226 76 79 66 88 60,,2020-05-18,Standard,30 j,250000
+15266,Menage 15266,Particulier,Ouagadougou,Centre,+226 78 60 25 81 21,,2016-09-19,Or,Comptant,0
+15395,Menage 15395,Particulier,Ouagadougou,Centre,+226 78 43 48 39 41,,2025-06-19,Standard,Comptant,0
+15475,Menage 15475,Particulier,Ziniaré,Plateau-Central,+226 78 63 61 57 75,,2017-03-18,Argent,Comptant,1500000
+15622,Societe l,Professionnel,Ouagadougou,Centre,+226 73 32 25 87 16,contact15622@entreprise.bf,2017-09-25,Standard,30 j,1500000
+15982,Chantiers o,Professionnel,Ouagadougou,Centre,+226 79 30 83 25 79,contact15982@yahoo.fr,2026-04-25,Argent,Comptant,0
+16018,Menage 16018,Particulier,Kaya,Centre-Nord,+226 73 20 40 49 56,,2020-05-31,Standard,30 j,250000
+16116,SARL Z,Professionnel,Ouagadougou,Centre,+226 76 86 58 65 33,contact16116@yahoo.fr,2019-08-20,Standard,30 j,1500000
+16178,Menage 16178,Particulier,Kaya,Centre-Nord,+226 76 66 48 28 87,,2025-08-01,Standard,Comptant,5000000
+16281,Menage 16281,Particulier,Ouagadougou,Centre,+226 76 28 93 93 42,,2025-12-18,Or,30 j,1500000
+16372,Ets C,Professionnel,Koudougou,Centre-Ouest,+226 75 75 16 73 17,contact16372@outlook.fr,2016-06-04,Standard,Comptant,0
+16408,Menage 16408,Particulier,Ouagadougou,Centre,+226 78 21 67 47 15,,2017-07-17,Argent,Comptant,250000
+17667,Menage 17667,Particulier,Ouagadougou,Centre,+226 72 81 58 95 17,,2024-02-13,Argent,60 j,0
+17798,Menage 17798,Particulier,Bobo-Dioulasso,Hauts-Bassins,+226 71 80 78 16 73,,2020-07-01,Argent,Comptant,0
+17925,Chantiers g,Professionnel,Bobo-Dioulasso,Hauts-Bassins,+226 74 18 51 35 12,contact17925@outlook.fr,2026-01-09,Standard,60 j,500000
+17963,Menage 17963,Particulier,Bobo-Dioulasso,Hauts-Bassins,+226 72 95 66 64 43,,2025-03-23,Standard,Comptant,0
+17974,Societe r,Professionnel,Ouagadougou,Centre,+226 76 24 70 51 46,contact17974@gmail.com,2025-12-04,Argent,30 j,1500000
+18061,Menage 18061,Particulier,Ouagadougou,Centre,+226 74 47 16 18 82,,2022-08-09,Standard,Comptant,0
+18203,Menage 18203,Particulier,Kaya,Centre-Nord,+226 73 53 19 33 44,,2023-04-16,Argent,30 j,250000
+18630,Menage 18630,Particulier,Ziniaré,Plateau-Central,+226 79 69 54 24 70,,2021-03-28,Standard,60 j,0
+18637,Menage 18637,Particulier,Ouagadougou,Centre,+226 78 87 93 24 28,,2016-08-09,Or,Comptant,0
+18682,Chantiers u,Entreprise,Ouagadougou,Centre,+226 79 48 94 87 17,contact18682@gmail.com,2016-08-08,Standard,Comptant,500000
+19098,Societe a,Administration,Bobo-Dioulasso,Hauts-Bassins,+226 72 40 60 45 89,,2021-05-24,Standard,Comptant,500000
+19236,Menage 19236,Particulier,Ouagadougou,Centre,+226 77 82 86 62 61,,2016-02-26,Or,30 j,250000
+19633,Ets g,Entreprise,Kaya,Centre-Nord,+226 74 29 28 25 87,,2024-10-30,Standard,Comptant,0
+19649,Menage 19649,Particulier,Bobo-Dioulasso,Hauts-Bassins,+226 71 66 15 50 82,,2017-07-20,Standard,Comptant,0
+19982,Societe n,Professionnel,Ouagadougou,Centre,+226 70 11 27 71 29,contact19982@entreprise.bf,2021-08-22,Argent,60 j,500000
+20037,Chantiers a,Professionnel,Ouagadougou,Centre,+226 79 45 77 84 74,,2018-02-09,Standard,Comptant,500000
+20092,Menage 20092,Particulier,Ouagadougou,Centre,+226 72 24 21 69 40,,2021-10-25,Standard,Comptant,250000
+20096,Ets i,Professionnel,Kaya,Centre-Nord,+226 78 24 90 15 35,contact20096@outlook.fr,2025-07-04,Standard,30 j,500000
+20159,Menage 20159,Particulier,Ouagadougou,Centre,+226 72 51 23 33 48,,2025-02-01,Standard,Comptant,250000
+20191,Menage 20191,Particulier,Ouagadougou,Centre,+226 73 32 87 97 10,,2025-10-30,Standard,Comptant,5000000
+20420,Chantiers a,Administration,Ouagadougou,Centre,+226 78 63 13 33 78,contact20420@entreprise.bf,2026-02-24,Or,Comptant,0
+20776,Menage 20776,Particulier,Ouagadougou,Centre,+226 72 24 14 99 27,,2020-10-28,Standard,60 j,250000
+20936,Ets T,Professionnel,Bobo-Dioulasso,Hauts-Bassins,+226 79 61 11 25 39,contact20936@gmail.com,2022-05-08,Standard,Comptant,250000
+21263,Menage 21263,Particulier,Ouagadougou,Centre,+226 74 88 53 78 87,,2016-01-09,Standard,Comptant,250000
+21335,Chantiers l,Professionnel,Ouagadougou,Centre,+226 71 59 96 68 57,contact21335@gmail.com,2020-11-14,Argent,Comptant,0
+21638,Societe r,Entreprise,Koudougou,Centre-Ouest,+226 76 50 57 35 41,,2025-12-15,Standard,Comptant,500000
+21670,Ets u,Professionnel,Koudougou,Centre-Ouest,+226 74 79 72 17 13,contact21670@outlook.fr,2022-08-26,Standard,Comptant,500000
+21871,Menage 21871,Particulier,Koudougou,Centre-Ouest,+226 78 22 27 16 99,,2016-08-20,Standard,Comptant,0
+22203,Chantiers a,Entreprise,Kaya,Centre-Nord,+226 72 94 19 90 95,contact22203@yahoo.fr,2023-03-01,Standard,30 j,250000
+22595,Societe i,Entreprise,Koudougou,Centre-Ouest,+226 72 80 89 24 45,contact22595@entreprise.bf,2019-05-20,Argent,Comptant,250000
+22616,Menage 22616,Particulier,Ouagadougou,Centre,+226 71 18 80 31 82,,2020-04-07,Standard,30 j,250000
+22680,Menage 22680,Particulier,Bobo-Dioulasso,Hauts-Bassins,+226 76 88 21 58 14,,2017-08-23,Standard,Comptant,0
+22795,Menage 22795,Particulier,Ouagadougou,Centre,+226 72 26 44 33 15,,2020-08-21,Argent,Comptant,500000
+23308,Menage 23308,Particulier,Bobo-Dioulasso,Hauts-Bassins,+226 76 83 60 88 31,,2020-01-06,Or,Comptant,500000
+23334,Menage 23334,Particulier,Bobo-Dioulasso,Hauts-Bassins,+226 77 49 31 68 56,,2025-03-27,Argent,Comptant,0
+23442,Chantiers é,Entreprise,Ouagadougou,Centre,+226 78 52 17 99 80,contact23442@yahoo.fr,2025-01-28,Standard,60 j,250000
+900010,  SOCIETE O ,Entreprise,Ouagadougou,Centre,+2267072404058,,2019-10-31,Argent,Comptant,0
+900011,  MENAGE 00094 ,Particulier,Bobo-Dioulasso,Hauts-Bassins,+2267813956934,,2024-03-30,Standard,Comptant,0

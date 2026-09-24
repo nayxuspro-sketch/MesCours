@@ -1,0 +1,19 @@
+{
+  "ventes_lignes_export": 24000,
+  "clients_uniques_references": 1891,
+  "produits_references": 312,
+  "modes_paiement_references": 4,
+  "regles_tva_references": 2,
+  "magasins_references": 3,
+  "montants_texte_export": 142,
+  "doublons_a_retirer": 8,
+  "dates_inversees_a_reparer": 12,
+  "clients_orphelins_a_ecarter": 3,
+  "tables_3fn_cible": 7,
+  "cle_primaire_vente": "id_vente",
+  "cle_etrangere_vente_client": "id_client REFERENCES client(id_client)",
+  "vue_calculee": "ligne_vente_ttc",
+  "total_ttc_2025": 1175597354,
+  "total_ttc_2026": 1205979055,
+  "empreinte_sha256_export": "f296a11cee7b239df27e0f2b16d21bb8714242127d907abdd58309dfe64c8137"
+}

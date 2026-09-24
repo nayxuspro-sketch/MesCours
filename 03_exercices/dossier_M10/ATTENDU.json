@@ -1,0 +1,56 @@
+{
+  "graine": "aucune (socle M09 reutilise, empreinte b9a8d973119342ec)",
+  "forme": {
+    "avant": 5,
+    "apres": 5,
+    "defauts_dominants_distincts": 5,
+    "pages_de_rapport": 2
+  },
+  "defauts": {
+    "g1": "courbe, axe des ordonnees tronque au minimum observe, titre d'etiquetage",
+    "g2": "deux axes verticaux, deux series sans correlation reelle, titre causal",
+    "g3": "camembert a 8 parts, etiquettes superposees, aucune valeur absolue",
+    "g4": "barres empilees a 100 %, totaux trimestriels masques, parts lues comme des volumes",
+    "g5": "echelle logarithmique non annoncee, trois series superposees, queue et plateau gommes"
+  },
+  "corrections": {
+    "c1": "axe a zero, titre qui affirme, annotation du chiffre cle, source et unite",
+    "c2": "petits multiples verticaux, une echelle par graphique, correlation annoncee",
+    "c3": "barres triees, longueur au lieu d'angle, valeurs absolues ecrites",
+    "c4": "volumes absolus par trimestre, ligne de moyenne, ecart mesure en titre",
+    "c5": "un seul jeu de donnees par graphique, echelle annoncee, zoom separe sur la queue"
+  },
+  "mesures": {
+    "d1_axe_min_m": 300.0,
+    "d1_axe_max_m": 350.0,
+    "d1_variation_mg3_pct": 5.4,
+    "d1_variation_brute_pct": 13.4,
+    "d1_facteur_exageration": 19,
+    "d2_corr_ca_retours": 0.35,
+    "d2_retours_min": 4,
+    "d2_retours_max": 16,
+    "d2_serie_longueur": 24,
+    "d3_nb_parts": 8,
+    "d3_part_min": 8.9,
+    "d3_part_max": 15.6,
+    "d3_ecart_min_entre_parts": 0.05,
+    "d3_nb_parts_sous_5pct": 0,
+    "d4_nb_trimestres": 8,
+    "d4_total_min": 960721755,
+    "d4_total_max": 1012518068,
+    "d4_variation_totaux_pct": 5.4,
+    "d5_ratio_max_median": 5,
+    "d5_plateau": 6,
+    "d5_part_sous_10k_pct": 4.5,
+    "d5_part_sous_1k_pct": 0.1,
+    "d5_mediane_montant": 119482,
+    "d5_part_sous_250k_pct": 77.0,
+    "d5_queue_sup_500k": 1044,
+    "grille_points": 18,
+    "grille_familles": 4,
+    "table_graphiques": 16,
+    "table_graphiques_fondateurs": 11,
+    "graphiques_avant": 5,
+    "graphiques_apres": 5
+  }
+}

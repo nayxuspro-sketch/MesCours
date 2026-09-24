@@ -1,0 +1,7 @@
+﻿id_magasin,nom,ville,quartier,region,type_magasin,surface_m2,responsable,ouverture
+1,Sahel Distribution — Ouaga 2000,Ouagadougou,Ouaga 2000,Centre,Magasin,1450,A. Zongo,2016-03-01
+2,Sahel Distribution — Gounghin,Ouagadougou,Gounghin,Centre,Magasin,900,F. Kaboré,2018-09-15
+3,Sahel Distribution — Bobo Kibidwé,Bobo-Dioulasso,Kibidwé,Hauts-Bassins,Magasin,1100,S. Sanou,2017-06-01
+4,Sahel Distribution — Koudougou Centre,Koudougou,Pole,Centre-Ouest,Magasin,650,R. Ouédraogo,2020-02-10
+5,Sahel Distribution — Kaya Marché,Kaya,Marché,Centre-Nord,Magasin,520,I. Traoré,2021-11-05
+6,Dépôt central — Zogona,Ouagadougou,Zogona,Centre,Dépôt,3200,M. Compaoré,2015-01-12

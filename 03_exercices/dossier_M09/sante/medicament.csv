@@ -1,0 +1,13 @@
+id_medicament,nom,categorie,seuil_alerte
+M01,Paracétamol,analgésique,500
+M02,Amoxicilline,antibiotique,300
+M03,Artemésine-luméfantrine,antipaludique,400
+M04,SRO (réhydratation orale),anti-diarrhéique,250
+M05,Métronidazole,antibiotique,200
+M06,Vitamine A,complément,300
+M07,Insuline,chronique,80
+M08,Amlodipine,chronique,150
+M09,Sulfadoxine-pyriméthamine,antipaludique,350
+M10,Ceftriaxone (injectable),antibiotique,120
+M11,Ocytocine,obstétrique,100
+M12,Cotrimoxazole,antibiotique,280

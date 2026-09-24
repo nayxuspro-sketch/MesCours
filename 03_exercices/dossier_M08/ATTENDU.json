@@ -1,0 +1,65 @@
+{
+  "formes": {
+    "vente": [
+      50008,
+      13
+    ],
+    "client": [
+      1200,
+      5
+    ],
+    "produit": [
+      380,
+      6
+    ],
+    "categorie": [
+      8,
+      3
+    ],
+    "magasin": [
+      5,
+      6
+    ],
+    "mode_paiement": [
+      5,
+      4
+    ],
+    "regle_tva": [
+      2,
+      2
+    ],
+    "objectif_magasin": [
+      0,
+      4
+    ]
+  },
+  "lignes_brutes": 50008,
+  "doublons": 8,
+  "ventes_uniques": 50000,
+  "retours_brut": 208,
+  "retours_dedoublonnes": 200,
+  "dates_vente_apres_limite": 21406,
+  "deadlines_jour_20_brut": 18,
+  "deadlines_jour_20": 15,
+  "manquants_total": 0,
+  "table_vide": "objectif_magasin",
+  "ca_brut": 7908259731,
+  "ca_sans_retours": 7876320163,
+  "ecart_ca_retours": 31939568,
+  "panier_moyen": 158140,
+  "panier_moyen_sans_retours": 158159,
+  "nb_ventes_2025": 24920,
+  "ca_2025": 3925215671.0,
+  "nb_ventes_2026": 25088,
+  "ca_2026": 3983044060.0,
+  "top_magasin_id": 4,
+  "ca_categorie_top": 1236006465,
+  "plus_gros_mois_ca": 78965529,
+  "plus_gros_mois_magasin": 3,
+  "plus_gros_mois_annee": 2025,
+  "plus_gros_mois_mois": 8,
+  "vue_lignes": 120,
+  "ca_top_magasin": 1596813264,
+  "empreinte_dossier": "b9a8d973119342ec8f838d2c73446ef0e01c541d3cfb92e81a40b85c22a00483",
+  "empreinte_amont_m07": "df9333ff3ec49166…"
+}

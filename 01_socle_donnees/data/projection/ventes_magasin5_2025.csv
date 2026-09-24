@@ -1,0 +1,490 @@
+﻿n_ticket;date;heure;magasin;vendeur;client;produit;categorie;quantite;prix_unitaire_ht;remise;montant_ht;montant_ttc
+T05-250101-075845;2025-01-01;11:01;Magasin 5 — Kaya Marché;Moussa Ilboudo;10857;Plâtre de construction 25 kg — réf 1;Matériaux;11;4500;0.03;48015;56 658
+T05-250101-075846;2025-01-01;09:32;Magasin 5 — Kaya Marché;Salamatu Sankara;0;Gravier 15/25 (m3) — réf 2;Matériaux;2000;21950;0.0;43900;51 802
+T05-250101-075847;2025-01-01;07:51;Magasin 5 — Kaya Marché;Salamatu Sankara;17552;Sable de rivière (m3) — réf 1;Matériaux;2;25775;0.04;49488;58 396
+T05-250101-075848;2025-01-01;15:17;Magasin 5 — Kaya Marché;Adama Bationo;2150;Échelle aluminium 4 marches — réf 1;Consommables;6;8275;0.0;49650;58 587
+T05-250101-075849;2025-01-01;10:33;Magasin 5 — Kaya Marché;Adama Bationo;0;Sable de rivière (m3) — réf 1;Matériaux;3;26325;0.0;78975;93 191
+T05-250101-075850;2025-01-01;18:08;Magasin 5 — Kaya Marché;Moussa Ilboudo;0;Ciment CPJ45 50 kg — réf 2;Matériaux;12;6550;0.0;78600;92 748
+T05-250101-075851;2025-01-01;13:22;Magasin 5 — Kaya Marché;Adama Bationo;10176;Hourdis creux 12 — réf 1;Matériaux;6;1025;0.0;6150;7 257
+T05-250101-075852;2025-01-01;08:17;Magasin 5 — Kaya Marché;Boureima Ouédraogo;11417;Meuleuse 125 mm — réf 2;Quincaillerie;9;5850;0.0;52650;62 127
+T05-250101-075853;01/01/2025;16:15;Magasin 5 — Kaya Marché;Salamatu Sankara;1519;Fil de fer recuit (kg) — réf 2;Quincaillerie;3;2000;0.04;5760;6 797
+T05-250101-075854;2025-01-01;08:21;Magasin 5 — Kaya Marché;Salamatu Sankara;6969;Casque de chantier — réf 1;Consommables;2;8300;0.0;16600;19 588
+T05-250101-075855;2025-01-01;15:35;Magasin 5 — Kaya Marché;Boureima Ouédraogo;17857;Sac de transport 100 kg — réf 1;Consommables;2;8525;0.07;15856;18 710
+T05-250101-075856;2025-01-01;07:27;Magasin 5 — Kaya Marché;Boureima Ouédraogo;17861;Hourdis creux 12 — réf 1;Matériaux;8;1075;0.0;8600;10 148
+T05-250101-075857;2025-01-01;18:25;Magasin 5 — Kaya Marché;Boureima Ouédraogo;19433;Coude PVC 90° 100 — réf 1;Plomberie;4;4075;0.03;15811;18 657
+T05-250101-075858;2025-01-01;12:00;Magasin 5 — Kaya Marché;Adama Bationo;0;Raccord laiton 20/27 — réf 2;Plomberie;3;4550;0.0;13650;16 107
+T05-250101-075859;2025-01-01;13:13;Magasin 5 — Kaya Marché;Adama Bationo;4654;Gravier 15/25 (m3) — réf 2;Matériaux;5;21450;0.0;107250;126 555
+T05-250101-075860;2025-01-01;12:47;Magasin 5 — Kaya Marché;Adama Bationo;125;Pince coupante 200 mm — réf 1;Quincaillerie;2;5325;0.0;10650;12 567
+T05-250101-075861;2025-01-01;17:29;Magasin 5 — Kaya Marché;Salamatu Sankara;0;Perforateur 800 W — réf 2;Quincaillerie;4;5750;0.0;23000;27 140
+T05-250101-075862;01/01/2025;12:29;Magasin 5 — Kaya Marché;Adama Bationo;21135;Chasse d'eau 6 L — réf 2;Plomberie;1;19925;0.0;19925;23 511
+T05-250101-075863;01/01/2025;08:54;Magasin 5 — Kaya Marché;Adama Bationo;20824;Régulateur de charge 10 A — réf 2;Electricité;4;11625;0.0;46500;54 870
+T05-250101-075864;2025-01-01;16:58;Magasin 5 — Kaya Marché;Salamatu Sankara;;Colle à carrelage 25 kg — réf 2;Matériaux;14;4450;0.0;62300;73 514
+T05-250101-075865;01/01/2025;08:16;Magasin 5 — Kaya Marché;Adama Bationo;;Ballon d'eau chaude 50 L — réf 1;Plomberie;2;34025;0.0;68050;80 299
+T05-250102-075995;2025-01-02;16:16;Magasin 5 — Kaya Marché;Boureima Ouédraogo;20631;Sable de rivière (m3) — réf 2;Matériaux;4;27050;0.0;108200;127 676
+T05-250102-075996;2025-01-02;11:23;Magasin 5 — Kaya Marché;Boureima Ouédraogo;0;Brique de terre cuite — réf 2;Matériaux;7;700;0.0;4900;5 782
+T05-250102-075997;2025-01-02;09:31;Magasin 5 — Kaya Marché;Boureima Ouédraogo;16066;Ciment CPJ45 50 kg — réf 1;Matériaux;12;6100;0.0;73200;86 376
+T05-250102-075998;2025-01-02;08:17;Magasin 5 — Kaya Marché;Adama Bationo;17124;Hourdis creux 12 — réf 1;Matériaux;6;1075;0.08;5934;7 002
+T05-250102-075999;2025-01-02;17:27;Magasin 5 — Kaya Marché;Adama Bationo;8234;Casque de chantier — réf 2;Consommables;27;5400;0.0;145800;172 044
+T05-250102-076000;2025-01-02;08:18;Magasin 5 — Kaya Marché;Boureima Ouédraogo;5812;Tableau 18 modules — réf 1;Electricité;25;8700;0.08;200100;236 118
+T05-250102-076001;2025-01-02;07:43;Magasin 5 — Kaya Marché;Moussa Ilboudo;9745;Pavé autobloquant — réf 2;Matériaux;3;675;0.0;2025;2 389
+T05-250102-076002;02/01/2025;10:32;Magasin 5 — Kaya Marché;Salamatu Sankara;21264;Mètre ruban 5 m — réf 1;Quincaillerie;12;7475;0.04;86112;101 612
+T05-250102-076003;2025-01-02;10:37;Magasin 5 — Kaya Marché;Boureima Ouédraogo;20263;Ciment CPJ45 50 kg — réf 1;Matériaux;1;6100;0.0;6100;7 198
+T05-250102-076004;2025-01-02;07:12;Magasin 5 — Kaya Marché;Salamatu Sankara;;Tube PVC évacuation 100 mm (ml) — réf 1;Plomberie;5000;3500;0.0;17500;20 650
+T05-250102-076005;2025-01-02;08:40;Magasin 5 — Kaya Marché;Boureima Ouédraogo;16610;Peinture glycéro 1 L — réf 2;Peinture;17;3925;0.0;66725;78 735
+T05-250102-076006;02/01/2025;12:58;Magasin 5 — Kaya Marché;Boureima Ouédraogo;;Colle à carrelage 25 kg — réf 2;Matériaux;5;4300;0.04;20640;24 355
+T05-250102-076007;2025-01-02;18:53;Magasin 5 — Kaya Marché;Adama Bationo;2691;Raccord laiton 20/27 — réf 2;Plomberie;4;4825;0.04;18528;21 863
+T05-250102-076008;2025-01-02;14:52;Magasin 5 — Kaya Marché;Salamatu Sankara;16233;Pelle carrée — réf 2;Consommables;2;5100;0.0;10200;12 036
+T05-250102-076009;2025-01-02;16:14;Magasin 5 — Kaya Marché;Boureima Ouédraogo;2178;Sac de transport 100 kg — réf 1;Consommables;2;8775;0.04;16848;19 881
+T05-250102-076010;2025-01-02;12:34;Magasin 5 — Kaya Marché;Salamatu Sankara;12170;Brique de terre cuite — réf 2;Matériaux;2;675;0.0;1350;1 593
+T05-250102-076011;02/01/2025;18:01;Magasin 5 — Kaya Marché;Moussa Ilboudo;2474;Tout-venant (m3) — réf 1;Matériaux;4;16375;0.04;62880;74 198
+T05-250102-076012;2025-01-02;13:31;Magasin 5 — Kaya Marché;Adama Bationo;4653;Parpaing 15 aggloméré — réf 2;Matériaux;5;1400;0.0;7000;8 260
+T05-250102-076013;2025-01-02;12:57;Magasin 5 — Kaya Marché;Salamatu Sankara;7529;Régulateur de charge 10 A — réf 1;Electricité;3;21675;0.03;63074;74 427
+T05-250201-079456;2025-02-01;13:52;Magasin 5 — Kaya Marché;Boureima Ouédraogo;3742;Té fonte 100 — réf 1;Plomberie;1;3150;0.04;3024;3 568
+T05-250201-079457;2025-02-01;09:27;Magasin 5 — Kaya Marché;Moussa Ilboudo;0;Peinture glycéro 1 L — réf 1;Peinture;21;3300;0.0;69300;81 774
+T05-250201-079458;2025-02-01;18:28;Magasin 5 — Kaya Marché;Salamatu Sankara;21909;Carreau de pavement 40x40 — réf 1;Matériaux;4;1025;0.0;4100;4 838
+T05-250201-079459;2025-02-01;16:55;Magasin 5 — Kaya Marché;Moussa Ilboudo;21680;Lampe solaire murale — réf 1;Electricité;5;10525;0.03;51046;60 234
+T05-250201-079460;2025-02-01;18:22;Magasin 5 — Kaya Marché;Salamatu Sankara;1519;Colle à carrelage 25 kg — réf 1;Matériaux;8;6100;0.04;46848;55 281
+T05-250201-079461;2025-02-01;14:19;Magasin 5 — Kaya Marché;Salamatu Sankara;0;Mastic d'étanchéité — réf 1;Plomberie;4;3450;0.0;13800;16 284
+T05-250201-079462;2025-02-01;10:15;Magasin 5 — Kaya Marché;Moussa Ilboudo;19183;Pointe 100 mm (kg) — réf 1;Quincaillerie;3;2450;0.03;7130;8 413
+T05-250201-079463;2025-02-01;15:49;Magasin 5 — Kaya Marché;Boureima Ouédraogo;20154;Ciment CPJ45 50 kg — réf 2;Matériaux;6;6600;0.0;39600;46 728
+T05-250201-079464;2025-02-01;09:01;Magasin 5 — Kaya Marché;Adama Bationo;4280;Fil de fer recuit (kg) — réf 1;Quincaillerie;5;1650;0.0;8250;9 735
+T05-250201-079465;2025-02-01;11:19;Magasin 5 — Kaya Marché;Moussa Ilboudo;9701;Passe-câble étanche — réf 2;Electricité;2;16425;0.08;30222;35 662
+T05-250201-079466;2025-02-01;17:52;Magasin 5 — Kaya Marché;Boureima Ouédraogo;20964;Peinture toiture 25 kg — réf 2;Peinture;29;6150;0.04;171216;202 035
+T05-250201-079467;2025-02-01;09:28;Magasin 5 — Kaya Marché;Salamatu Sankara;22552;Chaux aérienne 25 kg — réf 1;Matériaux;1;5150;0.04;4944;5 834
+T05-250202-079524;2025-02-02;08:49;Magasin 5 — Kaya Marché;Moussa Ilboudo;10729;Plâtre de construction 25 kg — réf 1;Matériaux;17;4325;0.0;73525;86 759
+T05-250202-079524;2025-02-02;16:22;Magasin 5 — Kaya Marché;Salamatu Sankara;15215;Régulateur de charge 10 A — réf 1;Electricité;48;22425;0.04;1033344;1 219 346
+T05-250202-079525;2025-02-02;09:30;Magasin 5 — Kaya Marché;Boureima Ouédraogo;22946;Pelle carrée — réf 2;Consommables;1;5125;0.04;4920;5 806
+T05-250202-079525;2025-02-02;18:51;Magasin 5 — Kaya Marché;Adama Bationo;16478;Sable de rivière (m3) — réf 1;Matériaux;2;25625;0.0;51250;60 475
+T05-250202-079526;2025-02-02;10:35;Magasin 5 — Kaya Marché;Boureima Ouédraogo;22297;WC complet avec abattant — réf 1;Plomberie;2;26300;0.0;52600;62 068
+T05-250202-079526;2025-02-02;12:36;Magasin 5 — Kaya Marché;Boureima Ouédraogo;7108;Marteau de menuisier — réf 1;Quincaillerie;8;9550;0.0;76400;90 152
+T05-250202-079527;2025-02-02;16:27;Magasin 5 — Kaya Marché;Moussa Ilboudo;10601;Niveau à bulle 600 mm — réf 1;Quincaillerie;13;8900;0.0;115700;136 526
+T05-250202-079527;2025-02-02;16:17;Magasin 5 — Kaya Marché;Boureima Ouédraogo;0;Chaux aérienne 25 kg — réf 1;Matériaux;8;5075;0.0;40600;47 908
+T05-250202-079528;2025-02-02;11:04;Magasin 5 — Kaya Marché;Boureima Ouédraogo;16696;Douille E27 avec cordon — réf 1;Electricité;14000;11975;0.08;154238;182 001
+T05-250202-079528;2025-02-02;10:49;Magasin 5 — Kaya Marché;Adama Bationo;0;Régulateur de charge 10 A — réf 1;Electricité;2;21875;0.0;43750;51 625
+T05-250203-079672;2025-02-03;07:21;Magasin 5 — Kaya Marché;Adama Bationo;7419;Lampe solaire murale — réf 1;Electricité;1;10300;0.0;10300;12 154
+T05-250203-079673;2025-02-03;17:46;Magasin 5 — Kaya Marché;Boureima Ouédraogo;13264;Pavé autobloquant — réf 1;Matériaux;2;1125;0.0;2250;2 655
+T05-250203-079673;2025-02-03;17:46;Magasin 5 — Kaya Marché;Boureima Ouédraogo;13264;Pavé autobloquant — réf 1;Matériaux;2;1125;0.0;2250;2 655
+T05-250203-079674;2025-02-03;13:12;Magasin 5 — Kaya Marché;Boureima Ouédraogo;0;Robinet mitigeur évier — réf 2;Plomberie;25;34800;0.0;870000;1 026 600
+T05-250203-079675;2025-02-03;10:37;Magasin 5 — Kaya Marché;Adama Bationo;17377;Lunettes de protection — réf 2;Consommables;2;4900;0.0;9800;11 564
+T05-250203-079676;2025-02-03;17:59;Magasin 5 — Kaya Marché;Boureima Ouédraogo;11559;Vernis marin 1 L — réf 1;Peinture;9;5600;0.0;50400;59 472
+T05-250203-079677;2025-02-03;08:52;Magasin 5 — Kaya Marché;Boureima Ouédraogo;4982;Lame de lambris 4 m — réf 1;Bois & panneaux;9;10700;0.0;96300;113 634
+T05-250203-079678;2025-02-03;09:38;Magasin 5 — Kaya Marché;Salamatu Sankara;12648;Écrou hexagonal 10 (sachet) — réf 1;Quincaillerie;16;1450;0.0;23200;27 376
+T05-250203-079679;2025-02-03;14:03;Magasin 5 — Kaya Marché;Moussa Ilboudo;0;Brouette en kit — réf 2;Consommables;5;9250;0.0;46250;54 575
+T05-250203-079680;2025-02-03;13:49;Magasin 5 — Kaya Marché;Boureima Ouédraogo;0;Tout-venant (m3) — réf 1;Matériaux;2;16300;0.0;32600;38 468
+T05-250203-079681;2025-02-03;07:33;Magasin 5 — Kaya Marché;Salamatu Sankara;23278;Antirouille rouge brique 1 L — réf 2;Peinture;3;6800;0.03;19788;23 350
+T05-250203-079682;2025-02-03;16:45;Magasin 5 — Kaya Marché;Moussa Ilboudo;;Gants anti-coupure (paire) — réf 1;Consommables;6;8925;0.0;53550;63 189
+T05-250203-079683;2025-02-03;10:30;Magasin 5 — Kaya Marché;Salamatu Sankara;9467;Clé plate 13 — réf 1;Quincaillerie;3;9725;0.0;29175;34 427
+T05-250203-079684;2025-02-03;11:32;Magasin 5 — Kaya Marché;Salamatu Sankara;11926;Brique de terre cuite — réf 1;Matériaux;4;1050;0.04;4032;4 758
+T05-250203-079684;2025-02-03;11:32;Magasin 5 — Kaya Marché;Salamatu Sankara;11926;Brique de terre cuite — réf 1;Matériaux;4;1050;0.04;4032;4 758
+T05-250203-079685;2025-02-03;15:11;Magasin 5 — Kaya Marché;Salamatu Sankara;756;Carreau de pavement 40x40 — réf 1;Matériaux;5;1075;0.0;5375;6 343
+T05-250203-079686;2025-02-03;14:03;Magasin 5 — Kaya Marché;Moussa Ilboudo;5532;Vernis marin 1 L — réf 1;Peinture;6000;5800;0.0;34800;41 064
+T05-250203-079687;2025-02-03;18:08;Magasin 5 — Kaya Marché;Adama Bationo;22119;Bêche à manche bois — réf 1;Consommables;4;5175;0.0;20700;24 426
+T05-250203-079688;2025-02-03;17:18;Magasin 5 — Kaya Marché;Adama Bationo;10043;Gravier 15/25 (m3) — réf 1;Matériaux;2;31200;0.08;57408;67 741
+T05-250203-079689;03/02/2025;09:39;Magasin 5 — Kaya Marché;Boureima Ouédraogo;14715;Robinet mitigeur évier — réf 2;Plomberie;5;36200;0.04;173760;205 037
+T05-250301-082692;2025-03-01;13:52;Magasin 5 — Kaya Marché;Moussa Ilboudo;19875;Tournevis cruciforme PH2 — réf 1;Quincaillerie;3;8200;0.04;23616;27 867
+T05-250301-082693;2025-03-01;18:17;Magasin 5 — Kaya Marché;Salamatu Sankara;12170;Diluant nitro 5 L — réf 2;Peinture;27;4375;0.0;118125;139 387
+T05-250301-082694;2025-03-01;15:12;Magasin 5 — Kaya Marché;Salamatu Sankara;19501;Parpaing 15 aggloméré — réf 1;Matériaux;2;1500;0.04;2880;3 398
+T05-250301-082695;2025-03-01;12:20;Magasin 5 — Kaya Marché;Moussa Ilboudo;5578;Pavé autobloquant — réf 2;Matériaux;2;675;0.03;1310;1 546
+T05-250301-082696;2025-03-01;15:07;Magasin 5 — Kaya Marché;Adama Bationo;6420;Brique de terre cuite — réf 2;Matériaux;1;675;0.0;675;797
+T05-250301-082697;2025-03-01;09:49;Magasin 5 — Kaya Marché;Salamatu Sankara;0;Casque de chantier — réf 1;Consommables;7;8250;0.0;57750;68 145
+T05-250301-082698;2025-03-01;10:13;Magasin 5 — Kaya Marché;Salamatu Sankara;0;Ciment CPJ35 50 kg — réf 1;Matériaux;7;6075;0.0;42525;50 179
+T05-250301-082699;2025-03-01;14:52;Magasin 5 — Kaya Marché;Adama Bationo;0;WC complet avec abattant — réf 1;Plomberie;10;26000;0.0;260000;306 800
+T05-250301-082700;01/03/2025;12:56;Magasin 5 — Kaya Marché;Boureima Ouédraogo;883;Carreau de pavement 40x40 — réf 2;Matériaux;12;1050;0.0;12600;14 868
+T05-250301-082701;2025-03-01;15:06;Magasin 5 — Kaya Marché;Salamatu Sankara;7687;Disjoncteur 16 A — réf 2;Electricité;3;11425;0.0;34275;40 445
+T05-250301-082702;2025-03-01;13:06;Magasin 5 — Kaya Marché;Salamatu Sankara;0;Pavé autobloquant — réf 2;Matériaux;14;700;0.0;9800;11 564
+T05-250301-082703;2025-03-01;14:57;Magasin 5 — Kaya Marché;Boureima Ouédraogo;13808;Hourdis creux 12 — réf 1;Matériaux;1;1025;0.0;1025;1 209
+T05-250301-082704;2025-03-01;08:11;Magasin 5 — Kaya Marché;Moussa Ilboudo;20941;Coude PVC 90° 100 — réf 1;Plomberie;6;4100;0.08;22632;26 706
+T05-250301-082705;2025-03-01;18:54;Magasin 5 — Kaya Marché;Salamatu Sankara;10237;Chasse d'eau 6 L — réf 1;Plomberie;3;26425;0.04;76104;89 803
+T05-250301-082706;2025-03-01;17:38;Magasin 5 — Kaya Marché;Adama Bationo;22579;Pointe 100 mm (kg) — réf 2;Quincaillerie;16;1425;0.0;22800;26 904
+T05-250301-082707;2025-03-01;08:26;Magasin 5 — Kaya Marché;Adama Bationo;4847;Pince coupante 200 mm — réf 1;Quincaillerie;6;5400;0.0;32400;38 232
+T05-250301-082708;2025-03-01;16:04;Magasin 5 — Kaya Marché;Moussa Ilboudo;9774;Casque de chantier — réf 2;Consommables;1;5375;0.08;4945;5 835
+T05-250301-082709;2025-03-01;15:43;Magasin 5 — Kaya Marché;Boureima Ouédraogo;18220;Baguette de finition 2,4 m — réf 2;Bois & panneaux;46;14425;0.0;663550;782 989
+T05-250301-082710;2025-03-01;11:12;Magasin 5 — Kaya Marché;Salamatu Sankara;0;Lame de lambris 4 m — réf 2;Bois & panneaux;2;15525;0.0;31050;36 639
+T05-250301-082711;01/03/2025;16:03;Magasin 5 — Kaya Marché;Salamatu Sankara;11669;Gants anti-coupure (paire) — réf 1;Consommables;2;8725;0.0;17450;20 591
+T05-250301-082712;2025-03-01;08:39;Magasin 5 — Kaya Marché;Moussa Ilboudo;9105;Fer à béton 8 mm (barre) — réf 2;Quincaillerie;19;2225;0.04;40584;47 889
+T05-250301-082713;2025-03-01;18:03;Magasin 5 — Kaya Marché;Moussa Ilboudo;5096;Fer à béton 8 mm (barre) — réf 2;Quincaillerie;10;2300;0.0;23000;27 140
+T05-250301-082714;2025-03-01;15:15;Magasin 5 — Kaya Marché;Boureima Ouédraogo;20513;Enduit de lissage 20 kg — réf 1;Matériaux;5;7500;0.0;37500;44 250
+T05-250301-082715;2025-03-01;13:49;Magasin 5 — Kaya Marché;Boureima Ouédraogo;3696;Perforateur 800 W — réf 2;Quincaillerie;6;5650;0.0;33900;40 002
+T05-250302-082743;2025-03-02;13:34;Magasin 5 — Kaya Marché;Boureima Ouédraogo;18255;WC complet avec abattant — réf 1;Plomberie;6;27000;0.0;162000;191 160
+T05-250302-082743;2025-03-02;10:09;Magasin 5 — Kaya Marché;Boureima Ouédraogo;14924;Sac de transport 100 kg — réf 1;Consommables;6;8575;0.0;51450;60 711
+T05-250302-082743;2025-03-02;13:32;Magasin 5 — Kaya Marché;Boureima Ouédraogo;0;Peinture acrylique blanc 10 L — réf 1;Peinture;6;4225;0.0;25350;29 913
+T05-250302-082744;2025-03-02;10:07;Magasin 5 — Kaya Marché;Moussa Ilboudo;8700;Plâtre de construction 25 kg — réf 2;Matériaux;5;5875;0.0;29375;34 663
+T05-250302-082744;2025-03-02;18:31;Magasin 5 — Kaya Marché;Adama Bationo;2149;Parpaing 15 aggloméré — réf 1;Matériaux;11;1425;0.0;15675;18 497
+T05-250302-082744;2025-03-02;08:47;Magasin 5 — Kaya Marché;Boureima Ouédraogo;3668;Marteau de menuisier — réf 2;Quincaillerie;4;8725;0.0;34900;41 182
+T05-250302-082745;2025-03-02;11:13;Magasin 5 — Kaya Marché;Adama Bationo;;Tout-venant (m3) — réf 1;Matériaux;9;16475;0.0;148275;174 965
+T05-250302-082745;2025-03-02;11:52;Magasin 5 — Kaya Marché;Adama Bationo;19185;Lampe solaire murale — réf 1;Electricité;3;10175;0.0;30525;36 019
+T05-250303-082910;2025-03-03;08:03;Magasin 5 — Kaya Marché;Moussa Ilboudo;0;Marteau de menuisier — réf 2;Quincaillerie;1;8775;0.0;8775;10 355
+T05-250303-082910;2025-03-03;16:39;Magasin 5 — Kaya Marché;Salamatu Sankara;4415;Tableau 18 modules — réf 2;Electricité;1;9075;0.0;9075;10 709
+T05-250303-082911;2025-03-03;07:06;Magasin 5 — Kaya Marché;Salamatu Sankara;13669;Brouette 90 L — réf 2;Consommables;1;9875;0.0;9875;11 653
+T05-250303-082911;2025-03-03;09:44;Magasin 5 — Kaya Marché;Salamatu Sankara;5228;Marteau de menuisier — réf 1;Quincaillerie;8;9400;0.08;69184;81 637
+T05-250303-082912;2025-03-03;08:38;Magasin 5 — Kaya Marché;Salamatu Sankara;16351;Panneau solaire 100 W — réf 2;Electricité;1;15575;0.03;15108;17 827
+T05-250303-082912;2025-03-03;08:47;Magasin 5 — Kaya Marché;Salamatu Sankara;9672;Tournevis cruciforme PH2 — réf 1;Quincaillerie;13;7900;0.04;98592;116 339
+T05-250303-082913;2025-03-03;16:01;Magasin 5 — Kaya Marché;Adama Bationo;22643;Robinet mitigeur évier — réf 1;Plomberie;26;33375;0.04;833040;982 987
+T05-250303-082913;2025-03-03;16:03;Magasin 5 — Kaya Marché;Salamatu Sankara;640;Pavé autobloquant — réf 2;Matériaux;2;700;0.0;1400;1 652
+T05-250401-086352;01/04/2025;11:01;Magasin 5 — Kaya Marché;Boureima Ouédraogo;0;Échelle aluminium 4 marches — réf 1;Consommables;3;8650;0.0;25950;30 621
+T05-250401-086353;2025-04-01;12:45;Magasin 5 — Kaya Marché;Moussa Ilboudo;13771;Plaque de plâtre 13 mm — réf 2;Bois & panneaux;4;13900;0.04;53376;62 984
+T05-250401-086353;2025-04-01;12:45;Magasin 5 — Kaya Marché;Moussa Ilboudo;13771;Plaque de plâtre 13 mm — réf 2;Bois & panneaux;4;13900;0.04;53376;62 984
+T05-250401-086354;2025-04-01;12:37;Magasin 5 — Kaya Marché;Moussa Ilboudo;19670;Écrou hexagonal 10 (sachet) — réf 2;Quincaillerie;3;2200;0.04;6336;7 476
+T05-250401-086355;2025-04-01;08:45;Magasin 5 — Kaya Marché;Boureima Ouédraogo;12205;WC complet avec abattant — réf 2;Plomberie;4;31850;0.0;127400;150 332
+T05-250401-086356;2025-04-01;17:02;Magasin 5 — Kaya Marché;Moussa Ilboudo;6969;Ciment CPJ35 50 kg — réf 2;Matériaux;39;4100;0.0;159900;188 682
+T05-250401-086357;2025-04-01;13:18;Magasin 5 — Kaya Marché;Adama Bationo;22824;Chasse d'eau 6 L — réf 1;Plomberie;-5;26625;0.04;-127800;-150 804
+T05-250401-086358;2025-04-01;17:48;Magasin 5 — Kaya Marché;Boureima Ouédraogo;;Tube PER 16x2 (rouleau) — réf 2;Plomberie;3;3300;0.0;9900;11 682
+T05-250401-086359;01/04/2025;18:04;Magasin 5 — Kaya Marché;Adama Bationo;0;Tube PVC évacuation 100 mm (ml) — réf 1;Plomberie;2;3475;0.0;6950;8 201
+T05-250401-086360;2025-04-01;08:47;Magasin 5 — Kaya Marché;Salamatu Sankara;20670;Enduit de rebouchage 5 kg — réf 1;Peinture;11;4225;0.0;46475;54 841
+T05-250401-086361;2025-04-01;10:42;Magasin 5 — Kaya Marché;Adama Bationo;;Coude PVC 90° 100 — réf 1;Plomberie;3;4075;0.0;12225;14 425
+T05-250401-086362;2025-04-01;16:34;Magasin 5 — Kaya Marché;Boureima Ouédraogo;2446;Peinture glycéro 1 L — réf 1;Peinture;12;3250;0.0;39000;46 020
+T05-250401-086363;2025-04-01;15:34;Magasin 5 — Kaya Marché;Moussa Ilboudo;12082;Sac de transport 100 kg — réf 1;Consommables;2;8650;0.04;16608;19 597
+T05-250401-086364;2025-04-01;11:16;Magasin 5 — Kaya Marché;Salamatu Sankara;367;Hourdis creux 12 — réf 2;Matériaux;4;1500;0.04;5760;6 797
+T05-250401-086365;2025-04-01;15:20;Magasin 5 — Kaya Marché;Adama Bationo;0;Gravier 15/25 (m3) — réf 1;Matériaux;5000;30550;0.0;152750;180 245
+T05-250401-086366;2025-04-01;10:34;Magasin 5 — Kaya Marché;Adama Bationo;2661;Douche de toilettes — réf 2;Plomberie;13;30850;0.0;401050;473 239
+T05-250401-086367;2025-04-01;12:11;Magasin 5 — Kaya Marché;Boureima Ouédraogo;12489;Pavé autobloquant — réf 1;Matériaux;1000;1125;0.0;1125;1 327
+T05-250401-086368;2025-04-01;10:06;Magasin 5 — Kaya Marché;Boureima Ouédraogo;9106;Tout-venant (m3) — réf 2;Matériaux;5;23400;0.0;117000;138 060
+T05-250401-086369;2025-04-01;12:57;Magasin 5 — Kaya Marché;Boureima Ouédraogo;21755;Perforateur 800 W — réf 1;Quincaillerie;2;8000;0.08;14720;17 370
+T05-250401-086370;2025-04-01;13:30;Magasin 5 — Kaya Marché;Moussa Ilboudo;0;Perforateur 800 W — réf 2;Quincaillerie;2;5800;0.0;11600;13 688
+T05-250401-086371;2025-04-01;17:32;Magasin 5 — Kaya Marché;Adama Bationo;3959;Passe-câble étanche — réf 1;Electricité;2;16775;0.0;33550;39 589
+T05-250401-086372;2025-04-01;16:07;Magasin 5 — Kaya Marché;Adama Bationo;18885;Sable de rivière (m3) — réf 1;Matériaux;4;25975;0.0;103900;122 602
+T05-250401-086373;2025-04-01;17:07;Magasin 5 — Kaya Marché;Adama Bationo;22027;Cheville nylon 8 mm (sachet) — réf 2;Quincaillerie;11;2175;0.04;22968;27 102
+T05-250401-086374;2025-04-01;11:48;Magasin 5 — Kaya Marché;Salamatu Sankara;;Cheville nylon 8 mm (sachet) — réf 2;Quincaillerie;5;2150;0.0;10750;12 685
+T05-250401-086375;2025-04-01;15:23;Magasin 5 — Kaya Marché;Moussa Ilboudo;5345;Pince coupante 200 mm — réf 1;Quincaillerie;-3;5200;0.0;-15600;-18 408
+T05-250401-086376;01/04/2025;16:39;Magasin 5 — Kaya Marché;Moussa Ilboudo;19650;Bêche à manche bois — réf 2;Consommables;-3;5800;0.04;-16704;-19 711
+T05-250401-086377;2025-04-01;11:37;Magasin 5 — Kaya Marché;Adama Bationo;23136;Tableau 18 modules — réf 1;Electricité;3;8775;0.04;25272;29 821
+T05-250401-086378;2025-04-01;16:36;Magasin 5 — Kaya Marché;Adama Bationo;15288;Scie égoïne 500 mm — réf 1;Quincaillerie;4;10975;0.0;43900;51 802
+T05-250401-086379;2025-04-01;16:47;Magasin 5 — Kaya Marché;Salamatu Sankara;9940;Hourdis creux 12 — réf 2;Matériaux;4;1550;0.0;6200;7 316
+T05-250401-086380;2025-04-01;17:13;Magasin 5 — Kaya Marché;Salamatu Sankara;11981;Tournevis cruciforme PH2 — réf 1;Quincaillerie;10;8200;0.0;82000;96 760
+T05-250402-086501;2025-04-02;08:43;Magasin 5 — Kaya Marché;Adama Bationo;19457;Brouette 90 L — réf 2;Consommables;7;10125;0.03;68749;81 124
+T05-250402-086501;02/04/2025;10:29;Magasin 5 — Kaya Marché;Salamatu Sankara;7706;Peinture glycéro 1 L — réf 2;Peinture;16;3900;0.04;59904;70 687
+T05-250402-086502;2025-04-02;17:58;Magasin 5 — Kaya Marché;Salamatu Sankara;8920;Chasse d'eau 6 L — réf 1;Plomberie;3;25900;0.04;74592;88 019
+T05-250402-086502;2025-04-02;08:11;Magasin 5 — Kaya Marché;Adama Bationo;6563;Écrou hexagonal 10 (sachet) — réf 1;Quincaillerie;-4;1450;0.04;-5568;-6 570
+T05-250402-086503;2025-04-02;18:21;Magasin 5 — Kaya Marché;Salamatu Sankara;2883;Gravier 15/25 (m3) — réf 1;Matériaux;4;30950;0.08;113896;134 397
+T05-250402-086503;02/04/2025;18:23;Magasin 5 — Kaya Marché;Salamatu Sankara;14971;Ciment CPJ45 50 kg — réf 2;Matériaux;17;6475;0.04;105672;124 693
+T05-250402-086504;2025-04-02;12:02;Magasin 5 — Kaya Marché;Boureima Ouédraogo;5989;Panneau MDF 12 mm — réf 1;Bois & panneaux;3;17675;0.0;53025;62 569
+T05-250402-086504;2025-04-02;18:11;Magasin 5 — Kaya Marché;Boureima Ouédraogo;0;Sac de transport 100 kg — réf 2;Consommables;-1;7675;0.0;-7675;-9 057
+T05-250402-086505;2025-04-02;14:55;Magasin 5 — Kaya Marché;Boureima Ouédraogo;7693;Parpaing 15 aggloméré — réf 1;Matériaux;27;1450;0.08;36018;42 501
+T05-250402-086505;2025-04-02;16:51;Magasin 5 — Kaya Marché;Moussa Ilboudo;0;Pointe 100 mm (kg) — réf 1;Quincaillerie;-2;2500;0.0;-5000;-5 900
+T05-250402-086506;2025-04-02;07:25;Magasin 5 — Kaya Marché;Boureima Ouédraogo;4253;Lavabo céramique — réf 1;Plomberie;12;36950;0.08;407928;481 355
+T05-250501-090469;2025-05-01;10:30;Magasin 5 — Kaya Marché;Salamatu Sankara;6584;Peinture glycéro 1 L — réf 2;Peinture;10;3800;0.0;38000;44 840
+T05-250501-090469;2025-05-01;07:03;Magasin 5 — Kaya Marché;Boureima Ouédraogo;12559;Carreau de pavement 40x40 — réf 1;Matériaux;4;1075;0.0;4300;5 074
+T05-250501-090469;2025-05-01;16:10;Magasin 5 — Kaya Marché;Boureima Ouédraogo;475;Tout-venant (m3) — réf 2;Matériaux;1;23600;0.04;22656;26 734
+T05-250501-090469;2025-05-01;12:26;Magasin 5 — Kaya Marché;Salamatu Sankara;1690;Pelle carrée — réf 2;Consommables;2;5300;0.08;9752;11 507
+T05-250501-090470;2025-05-01;18:44;Magasin 5 — Kaya Marché;Adama Bationo;9291;Tube PVC évacuation 100 mm (ml) — réf 1;Plomberie;4;3350;0.0;13400;15 812
+T05-250501-090470;2025-05-01;16:25;Magasin 5 — Kaya Marché;Adama Bationo;15557;Écrou hexagonal 10 (sachet) — réf 2;Quincaillerie;1;2100;0.04;2016;2 379
+T05-250501-090470;2025-05-01;11:03;Magasin 5 — Kaya Marché;Moussa Ilboudo;14630;Coude PVC 90° 100 — réf 1;Plomberie;3;4075;0.04;11736;13 848
+T05-250501-090471;2025-05-01;07:15;Magasin 5 — Kaya Marché;Adama Bationo;0;Lavabo céramique — réf 2;Plomberie;1;40550;0.0;40550;47 849
+T05-250501-090471;2025-05-01;13:52;Magasin 5 — Kaya Marché;Boureima Ouédraogo;17473;Douille E27 avec cordon — réf 1;Electricité;2;12400;0.0;24800;29 264
+T05-250501-090471;2025-05-01;17:56;Magasin 5 — Kaya Marché;Adama Bationo;20136;Parpaing 15 aggloméré — réf 1;Matériaux;4;1475;0.07;5487;6 475
+T05-250501-090472;2025-05-01;15:40;Magasin 5 — Kaya Marché;Boureima Ouédraogo;14106;Pince coupante 200 mm — réf 2;Quincaillerie;2;10500;0.04;20160;23 789
+T05-250501-090472;01/05/2025;09:38;Magasin 5 — Kaya Marché;Adama Bationo;;Chasse d'eau 6 L — réf 1;Plomberie;3;26075;0.0;78225;92 305
+T05-250501-090472;2025-05-01;15:17;Magasin 5 — Kaya Marché;Adama Bationo;10827;Enduit de rebouchage 5 kg — réf 1;Peinture;9;4250;0.0;38250;45 135
+T05-250501-090473;2025-05-01;10:08;Magasin 5 — Kaya Marché;Boureima Ouédraogo;14652;Mètre ruban 5 m — réf 2;Quincaillerie;2;6550;0.0;13100;15 458
+T05-250501-090473;2025-05-01;18:36;Magasin 5 — Kaya Marché;Moussa Ilboudo;6600;Brique de terre cuite — réf 2;Matériaux;1;725;0.04;696;821
+T05-250501-090473;2025-05-01;15:12;Magasin 5 — Kaya Marché;Moussa Ilboudo;7932;Câble 3x2,5 (rouleau 100 m) — réf 2;Electricité;6;17100;0.08;94392;111 383
+T05-250501-090474;2025-05-01;18:57;Magasin 5 — Kaya Marché;Moussa Ilboudo;0;Carreau de pavement 40x40 — réf 2;Matériaux;13;1075;0.0;13975;16 491
+T05-250501-090474;2025-05-01;08:16;Magasin 5 — Kaya Marché;Adama Bationo;9093;Plâtre de construction 25 kg — réf 1;Matériaux;6;4375;0.0;26250;30 975
+T05-250501-090474;2025-05-01;16:53;Magasin 5 — Kaya Marché;Salamatu Sankara;16868;Brouette 90 L — réf 1;Consommables;2;5275;0.08;9706;11 453
+T05-250502-090566;2025-05-02;13:47;Magasin 5 — Kaya Marché;Boureima Ouédraogo;23455;Hourdis creux 12 — réf 1;Matériaux;9;1025;0.0;9225;10 885
+T05-250502-090566;2025-05-02;09:27;Magasin 5 — Kaya Marché;Salamatu Sankara;11891;Écrou hexagonal 10 (sachet) — réf 2;Quincaillerie;16;2150;0.0;34400;40 592
+T05-250502-090566;2025-05-02;08:44;Magasin 5 — Kaya Marché;Moussa Ilboudo;12948;Vis à bois 4x40 (boîte) — réf 1;Quincaillerie;1;1750;0.0;1750;2 065
+T05-250502-090566;2025-05-02;17:12;Magasin 5 — Kaya Marché;Adama Bationo;10895;Enduit de lissage 20 kg — réf 2;Matériaux;5;6500;0.0;32500;38 350
+T05-250502-090567;2025-05-02;09:03;Magasin 5 — Kaya Marché;Salamatu Sankara;7489;Ciment CPJ35 50 kg — réf 1;Matériaux;2;6300;0.0;12600;14 868
+T05-250502-090567;2025-05-02;13:41;Magasin 5 — Kaya Marché;Salamatu Sankara;0;Hourdis creux 12 — réf 2;Matériaux;4;1600;0.0;6400;7 552
+T05-250502-090567;02/05/2025;15:09;Magasin 5 — Kaya Marché;Salamatu Sankara;10278;Vis à bois 4x40 (boîte) — réf 1;Quincaillerie;3;1775;0.03;5165;6 095
+T05-250502-090568;2025-05-02;10:16;Magasin 5 — Kaya Marché;Adama Bationo;9985;Lampe solaire murale — réf 1;Electricité;4;10450;0.0;41800;49 324
+T05-250502-090568;2025-05-02;15:50;Magasin 5 — Kaya Marché;Boureima Ouédraogo;22573;Peinture acrylique blanc 10 L — réf 2;Peinture;7;6875;0.0;48125;56 787
+T05-250502-090568;2025-05-02;10:14;Magasin 5 — Kaya Marché;Salamatu Sankara;15664;Plaque de plâtre 13 mm — réf 2;Bois & panneaux;4;13675;0.04;52512;61 964
+T05-250502-090569;2025-05-02;07:01;Magasin 5 — Kaya Marché;Adama Bationo;14949;Plâtre de construction 25 kg — réf 2;Matériaux;2;6100;0.11;10858;12 812
+T05-250502-090569;2025-05-02;13:41;Magasin 5 — Kaya Marché;Boureima Ouédraogo;11018;Carreau de pavement 40x40 — réf 1;Matériaux;3;1025;0.0;3075;3 629
+T05-250502-090569;2025-05-02;18:49;Magasin 5 — Kaya Marché;Salamatu Sankara;7139;Coude PVC 90° 100 — réf 1;Plomberie;9;3925;0.0;35325;41 683
+T05-250503-090686;2025-05-03;17:22;Magasin 5 — Kaya Marché;Boureima Ouédraogo;2275;Clé plate 13 — réf 1;Quincaillerie;7;9775;0.0;68425;80 741
+T05-250503-090686;2025-05-03;08:18;Magasin 5 — Kaya Marché;Boureima Ouédraogo;9557;Bêche à manche bois — réf 2;Consommables;1;5775;0.0;5775;6 815
+T05-250503-090687;03/05/2025;08:19;Magasin 5 — Kaya Marché;Moussa Ilboudo;21383;Chaux aérienne 25 kg — réf 2;Matériaux;3;8125;0.0;24375;28 763
+T05-250503-090687;2025-05-03;16:24;Magasin 5 — Kaya Marché;Adama Bationo;0;Meuleuse 125 mm — réf 1;Quincaillerie;7;7325;0.0;51275;60 505
+T05-250503-090688;2025-05-03;12:32;Magasin 5 — Kaya Marché;Adama Bationo;10137;Enduit de rebouchage 5 kg — réf 2;Peinture;17;4925;0.0;83725;98 795
+T05-250503-090688;2025-05-03;16:51;Magasin 5 — Kaya Marché;Moussa Ilboudo;15857;Enduit de lissage 20 kg — réf 1;Matériaux;8;7325;0.04;56256;66 382
+T05-250503-090689;2025-05-03;13:54;Magasin 5 — Kaya Marché;Moussa Ilboudo;14974;Brique de terre cuite — réf 2;Matériaux;4;700;0.11;2492;2 941
+T05-250503-090689;2025-05-03;18:02;Magasin 5 — Kaya Marché;Moussa Ilboudo;11760;Plaque de plâtre 13 mm — réf 2;Bois & panneaux;1;13825;0.04;13272;15 661
+T05-250601-093699;2025-06-01;09:27;Magasin 5 — Kaya Marché;Adama Bationo;19747;Tout-venant (m3) — réf 1;Matériaux;4;16375;0.08;60260;71 107
+T05-250601-093700;2025-06-01;09:09;Magasin 5 — Kaya Marché;Boureima Ouédraogo;5122;Bêche à manche bois — réf 2;Consommables;6;5825;0.04;33552;39 591
+T05-250601-093701;2025-06-01;07:51;Magasin 5 — Kaya Marché;Salamatu Sankara;12483;Tube PVC évacuation 100 mm (ml) — réf 1;Plomberie;15;3375;0.0;50625;59 737
+T05-250601-093702;01/06/2025;09:09;Magasin 5 — Kaya Marché;Salamatu Sankara;22782;Panneau solaire 100 W — réf 1;Electricité;2;9425;0.08;17342;20 464
+T05-250601-093703;2025-06-01;18:57;Magasin 5 — Kaya Marché;Moussa Ilboudo;13205;Échelle aluminium 4 marches — réf 2;Consommables;6;8550;0.0;51300;60 534
+T05-250602-093766;2025-06-02;15:09;Magasin 5 — Kaya Marché;Boureima Ouédraogo;0;Tube PVC évacuation 100 mm (ml) — réf 1;Plomberie;2;3300;0.0;6600;7 788
+T05-250602-093766;2025-06-02;09:23;Magasin 5 — Kaya Marché;Salamatu Sankara;0;Scie égoïne 500 mm — réf 2;Quincaillerie;8;9975;0.0;79800;94 164
+T05-250602-093766;2025-06-02;07:59;Magasin 5 — Kaya Marché;Moussa Ilboudo;11411;Ciment CPJ45 50 kg — réf 2;Matériaux;16;6400;0.0;102400;120 832
+T05-250602-093767;2025-06-02;17:01;Magasin 5 — Kaya Marché;Salamatu Sankara;6472;Té fonte 100 — réf 1;Plomberie;4;3175;0.04;12192;14 387
+T05-250602-093767;2025-06-02;14:36;Magasin 5 — Kaya Marché;Boureima Ouédraogo;2778;Douille E27 avec cordon — réf 2;Electricité;7;18050;0.0;126350;149 093
+T05-250602-093767;2025-06-02;14:47;Magasin 5 — Kaya Marché;Boureima Ouédraogo;1374;Chasse d'eau 6 L — réf 2;Plomberie;2;20425;0.0;40850;48 203
+T05-250602-093768;2025-06-02;07:37;Magasin 5 — Kaya Marché;Moussa Ilboudo;17115;Fer à béton 8 mm (barre) — réf 2;Quincaillerie;3;2250;0.04;6480;7 646
+T05-250602-093768;02/06/2025;15:07;Magasin 5 — Kaya Marché;Adama Bationo;21939;Hourdis creux 12 — réf 2;Matériaux;7;1500;0.0;10500;12 390
+T05-250602-093768;2025-06-02;18:14;Magasin 5 — Kaya Marché;Adama Bationo;0;Ampoule LED 9 W — réf 2;Electricité;2;19050;0.0;38100;44 958
+T05-250602-093769;02/06/2025;16:25;Magasin 5 — Kaya Marché;Adama Bationo;21805;Ciment CPJ45 50 kg — réf 2;Matériaux;4;6475;0.08;23828;28 117
+T05-250602-093769;2025-06-02;12:40;Magasin 5 — Kaya Marché;Boureima Ouédraogo;0;Ciment CPJ35 50 kg — réf 2;Matériaux;7;4175;0.0;29225;34 485
+T05-250602-093769;02/06/2025;16:38;Magasin 5 — Kaya Marché;Salamatu Sankara;15376;Mètre ruban 5 m — réf 1;Quincaillerie;7;7575;0.0;53025;62 569
+T05-250602-093770;2025-06-02;18:49;Magasin 5 — Kaya Marché;Boureima Ouédraogo;5244;Brique de terre cuite — réf 1;Matériaux;1;1025;0.0;1025;1 209
+T05-250602-093770;2025-06-02;18:07;Magasin 5 — Kaya Marché;Moussa Ilboudo;0;Mètre ruban 5 m — réf 1;Quincaillerie;1;7425;0.0;7425;8 761
+T05-250602-093770;2025-06-02;14:14;Magasin 5 — Kaya Marché;Adama Bationo;21662;Hourdis creux 12 — réf 1;Matériaux;3;1050;0.08;2898;3 420
+T05-250602-093771;2025-06-02;10:31;Magasin 5 — Kaya Marché;Salamatu Sankara;0;Batterie à décharge lente 120 Ah — réf 1;Electricité;1;17775;0.0;17775;20 975
+T05-250602-093771;2025-06-02;14:50;Magasin 5 — Kaya Marché;Salamatu Sankara;14519;Disjoncteur différentiel 30 mA — réf 2;Electricité;4;12550;0.0;50200;59 236
+T05-250603-093876;2025-06-03;10:50;Magasin 5 — Kaya Marché;Moussa Ilboudo;17014;Meuleuse 125 mm — réf 2;Quincaillerie;4;5875;0.08;21620;25 512
+T05-250603-093876;2025-06-03;11:04;Magasin 5 — Kaya Marché;Boureima Ouédraogo;14525;Ampoule LED 9 W — réf 1;Electricité;2;9475;0.0;18950;22 361
+T05-250603-093876;2025-06-03;11:37;Magasin 5 — Kaya Marché;Boureima Ouédraogo;2988;Lame de lambris 4 m — réf 2;Bois & panneaux;14;15950;0.0;223300;263 494
+T05-250603-093877;2025-06-03;07:08;Magasin 5 — Kaya Marché;Salamatu Sankara;6405;Clé plate 13 — réf 2;Quincaillerie;1;10625;0.04;10200;12 036
+T05-250603-093877;2025-06-03;12:01;Magasin 5 — Kaya Marché;Moussa Ilboudo;5892;Mètre ruban 5 m — réf 1;Quincaillerie;18;7650;0.08;126684;149 487
+T05-250603-093877;2025-06-03;15:41;Magasin 5 — Kaya Marché;Adama Bationo;7824;Ballon d'eau chaude 50 L — réf 1;Plomberie;6;33325;0.0;199950;235 941
+T05-250603-093878;03/06/2025;13:44;Magasin 5 — Kaya Marché;Moussa Ilboudo;19541;Bêche à manche bois — réf 1;Consommables;4;5400;0.04;20736;24 468
+T05-250603-093878;2025-06-03;13:29;Magasin 5 — Kaya Marché;Moussa Ilboudo;4341;Vis à bois 4x40 (boîte) — réf 1;Quincaillerie;3;1800;0.04;5184;6 117
+T05-250603-093878;2025-06-03;17:06;Magasin 5 — Kaya Marché;Salamatu Sankara;4037;Peinture acrylique blanc 10 L — réf 2;Peinture;17;6750;0.0;114750;135 405
+T05-250603-093879;2025-06-03;14:15;Magasin 5 — Kaya Marché;Boureima Ouédraogo;5173;Brique de terre cuite — réf 2;Matériaux;1;700;0.0;700;826
+T05-250603-093879;2025-06-03;13:05;Magasin 5 — Kaya Marché;Moussa Ilboudo;17169;Hourdis creux 12 — réf 2;Matériaux;2;1575;0.08;2898;3 420
+T05-250603-093879;2025-06-03;07:11;Magasin 5 — Kaya Marché;Moussa Ilboudo;0;Mastic d'étanchéité — réf 1;Plomberie;5;3375;0.0;16875;19 913
+T05-250604-093928;2025-06-04;13:30;Magasin 5 — Kaya Marché;Adama Bationo;0;Peinture toiture 25 kg — réf 2;Peinture;2;6025;0.0;12050;14 219
+T05-250604-093929;2025-06-04;11:21;Magasin 5 — Kaya Marché;Adama Bationo;984;Régulateur de charge 10 A — réf 2;Electricité;1;10950;0.04;10512;12 404
+T05-250604-093930;2025-06-04;15:54;Magasin 5 — Kaya Marché;Moussa Ilboudo;20360;Bêche à manche bois — réf 2;Consommables;9;5750;0.0;51750;61 065
+T05-250604-093931;2025-06-04;13:50;Magasin 5 — Kaya Marché;Adama Bationo;6608;Meuleuse 125 mm — réf 2;Quincaillerie;16;5950;0.0;95200;112 336
+T05-250604-093932;2025-06-04;16:33;Magasin 5 — Kaya Marché;Salamatu Sankara;6961;Gants anti-coupure (paire) — réf 1;Consommables;2;8875;0.08;16330;19 269
+T05-250604-093933;2025-06-04;18:03;Magasin 5 — Kaya Marché;Salamatu Sankara;;Mètre ruban 5 m — réf 1;Quincaillerie;1;7500;0.04;7200;8 496
+T05-250701-096416;2025-07-01;16:24;Magasin 5 — Kaya Marché;Salamatu Sankara;1934;Clé plate 13 — réf 1;Quincaillerie;1;9550;0.04;9168;10 818
+T05-250701-096416;2025-07-01;15:38;Magasin 5 — Kaya Marché;Adama Bationo;2296;Gravier 15/25 (m3) — réf 2;Matériaux;3;22075;0.0;66225;78 145
+T05-250701-096416;01/07/2025;18:25;Magasin 5 — Kaya Marché;Adama Bationo;0;Cheville nylon 8 mm (sachet) — réf 1;Quincaillerie;3;2425;0.0;7275;8 585
+T05-250701-096417;01/07/2025;12:13;Magasin 5 — Kaya Marché;Moussa Ilboudo;9379;Baguette de finition 2,4 m — réf 2;Bois & panneaux;-3;14650;0.08;-40434;-47 712
+T05-250701-096417;2025-07-01;07:18;Magasin 5 — Kaya Marché;Moussa Ilboudo;;Ciment CPJ35 50 kg — réf 2;Matériaux;17;4275;0.04;69768;82 326
+T05-250701-096418;2025-07-01;09:00;Magasin 5 — Kaya Marché;Moussa Ilboudo;21947;Pointe 100 mm (kg) — réf 2;Quincaillerie;8;1400;0.04;10752;12 687
+T05-250701-096418;2025-07-01;16:23;Magasin 5 — Kaya Marché;Adama Bationo;1242;Vis à bois 4x40 (boîte) — réf 2;Quincaillerie;21;1625;0.04;32760;38 657
+T05-250701-096419;2025-07-01;18:03;Magasin 5 — Kaya Marché;Boureima Ouédraogo;20420;Gravier 15/25 (m3) — réf 2;Matériaux;2;21075;0.08;38778;45 758
+T05-250701-096419;2025-07-01;09:03;Magasin 5 — Kaya Marché;Boureima Ouédraogo;1469;Lavabo céramique — réf 2;Plomberie;3;40150;0.0;120450;142 131
+T05-250701-096420;2025-07-01;11:26;Magasin 5 — Kaya Marché;Salamatu Sankara;0;Lunettes de protection — réf 2;Consommables;9;4700;0.0;42300;49 914
+T05-250701-096420;2025-07-01;16:13;Magasin 5 — Kaya Marché;Moussa Ilboudo;;Passe-câble étanche — réf 2;Electricité;27;16425;0.0;443475;523 301
+T05-250701-096421;01/07/2025;13:01;Magasin 5 — Kaya Marché;Boureima Ouédraogo;5037;Tube PER 16x2 (rouleau) — réf 2;Plomberie;7;3350;0.0;23450;27 671
+T05-250701-096421;2025-07-01;10:10;Magasin 5 — Kaya Marché;Salamatu Sankara;14644;Ballon d'eau chaude 50 L — réf 1;Plomberie;3;32750;0.04;94320;111 298
+T05-250702-096498;2025-07-02;11:22;Magasin 5 — Kaya Marché;Moussa Ilboudo;0;Fil de fer recuit (kg) — réf 2;Quincaillerie;4;1975;0.0;7900;9 322
+T05-250702-096498;2025-07-02;08:40;Magasin 5 — Kaya Marché;Boureima Ouédraogo;20454;Enduit de rebouchage 5 kg — réf 2;Peinture;18;4725;0.04;81648;96 345
+T05-250702-096498;2025-07-02;07:15;Magasin 5 — Kaya Marché;Salamatu Sankara;6878;Tout-venant (m3) — réf 2;Matériaux;3;23475;0.04;67608;79 777
+T05-250702-096499;2025-07-02;08:21;Magasin 5 — Kaya Marché;Adama Bationo;6419;Gravier 15/25 (m3) — réf 2;Matériaux;5;21425;0.08;98555;116 295
+T05-250702-096499;2025-07-02;13:35;Magasin 5 — Kaya Marché;Moussa Ilboudo;5767;Fer à béton 8 mm (barre) — réf 1;Quincaillerie;1;1525;0.0;1525;1 799
+T05-250702-096499;2025-07-02;08:48;Magasin 5 — Kaya Marché;Salamatu Sankara;0;Marteau de menuisier — réf 1;Quincaillerie;3;9375;0.0;28125;33 187
+T05-250702-096499;2025-07-02;08:48;Magasin 5 — Kaya Marché;Salamatu Sankara;0;Marteau de menuisier — réf 1;Quincaillerie;3;9375;0.0;28125;33 187
+T05-250702-096500;2025-07-02;13:32;Magasin 5 — Kaya Marché;Adama Bationo;10406;Antirouille rouge brique 1 L — réf 2;Peinture;13;6900;0.11;79833;94 203
+T05-250702-096500;2025-07-02;17:25;Magasin 5 — Kaya Marché;Salamatu Sankara;16310;Niveau à bulle 600 mm — réf 1;Quincaillerie;3;9275;0.0;27825;32 833
+T05-250702-096500;2025-07-02;12:02;Magasin 5 — Kaya Marché;Adama Bationo;17715;Câble 2x1,5 (rouleau 100 m) — réf 2;Electricité;2;9725;0.11;17310;20 426
+T05-250702-096501;2025-07-02;14:12;Magasin 5 — Kaya Marché;Salamatu Sankara;16142;Tube PVC évacuation 100 mm (ml) — réf 2;Plomberie;3;3825;0.0;11475;13 541
+T05-250702-096501;2025-07-02;07:18;Magasin 5 — Kaya Marché;Moussa Ilboudo;14952;Brique de terre cuite — réf 1;Matériaux;14;1075;0.04;14448;17 049
+T05-250702-096501;2025-07-02;07:15;Magasin 5 — Kaya Marché;Adama Bationo;10589;Pince coupante 200 mm — réf 2;Quincaillerie;6;10200;0.0;61200;72 216
+T05-250702-096502;2025-07-02;16:34;Magasin 5 — Kaya Marché;Boureima Ouédraogo;10989;Hourdis creux 12 — réf 1;Matériaux;5;1075;0.0;5375;6 343
+T05-250702-096502;02/07/2025;14:09;Magasin 5 — Kaya Marché;Moussa Ilboudo;3371;Écrou hexagonal 10 (sachet) — réf 2;Quincaillerie;19;2150;0.0;40850;48 203
+T05-250702-096502;2025-07-02;15:09;Magasin 5 — Kaya Marché;Boureima Ouédraogo;10564;Baguette de finition 2,4 m — réf 2;Bois & panneaux;8;14600;0.0;116800;137 824
+T05-250702-096503;2025-07-02;11:48;Magasin 5 — Kaya Marché;Boureima Ouédraogo;2526;Marteau de menuisier — réf 1;Quincaillerie;1;9475;0.0;9475;11 181
+T05-250702-096503;02/07/2025;08:54;Magasin 5 — Kaya Marché;Adama Bationo;18276;Scie égoïne 500 mm — réf 1;Quincaillerie;1;10900;0.0;10900;12 862
+T05-250702-096503;2025-07-02;07:05;Magasin 5 — Kaya Marché;Boureima Ouédraogo;0;Carreau de pavement 40x40 — réf 1;Matériaux;3;1025;0.0;3075;3 629
+T05-250702-096504;2025-07-02;14:36;Magasin 5 — Kaya Marché;Adama Bationo;3825;Fil de fer recuit (kg) — réf 2;Quincaillerie;4;2000;0.0;8000;9 440
+T05-250702-096504;2025-07-02;14:58;Magasin 5 — Kaya Marché;Adama Bationo;18844;Parpaing 15 aggloméré — réf 2;Matériaux;9;1400;0.08;11592;13 679
+T05-250703-096584;2025-07-03;14:56;Magasin 5 — Kaya Marché;Salamatu Sankara;16979;Robinet mitigeur évier — réf 2;Plomberie;9;36275;0.04;313416;369 831
+T05-250703-096584;2025-07-03;17:47;Magasin 5 — Kaya Marché;Boureima Ouédraogo;0;Antirouille rouge brique 1 L — réf 1;Peinture;20;5250;0.0;105000;123 900
+T05-250703-096584;2025-07-03;10:58;Magasin 5 — Kaya Marché;Boureima Ouédraogo;1117;Projecteur LED 30 W — réf 1;Electricité;3;9500;0.04;27360;32 285
+T05-250703-096585;03/07/2025;18:13;Magasin 5 — Kaya Marché;Salamatu Sankara;21035;Fil de fer recuit (kg) — réf 1;Quincaillerie;3;1600;0.04;4608;5 437
+T05-250703-096585;03/07/2025;13:34;Magasin 5 — Kaya Marché;Moussa Ilboudo;0;Échelle aluminium 4 marches — réf 2;Consommables;6;8650;0.0;51900;61 242
+T05-250703-096585;2025-07-03;18:50;Magasin 5 — Kaya Marché;Salamatu Sankara;17623;Clé plate 13 — réf 1;Quincaillerie;5;9875;0.0;49375;58 263
+T05-250703-096586;2025-07-03;17:31;Magasin 5 — Kaya Marché;Salamatu Sankara;17994;Sable de rivière (m3) — réf 2;Matériaux;2;26625;0.07;49522;58 436
+T05-250801-099076;2025-08-01;18:20;Magasin 5 — Kaya Marché;Boureima Ouédraogo;0;Parpaing 15 aggloméré — réf 1;Matériaux;14;1450;0.0;20300;23 954
+T05-250801-099077;2025-08-01;12:36;Magasin 5 — Kaya Marché;Boureima Ouédraogo;19801;Disjoncteur 16 A — réf 1;Electricité;3;10075;0.0;30225;35 665
+T05-250801-099078;2025-08-01;16:52;Magasin 5 — Kaya Marché;Salamatu Sankara;14999;Parpaing 15 aggloméré — réf 2;Matériaux;11;1400;0.04;14784;17 445
+T05-250801-099079;2025-08-01;09:43;Magasin 5 — Kaya Marché;Moussa Ilboudo;19250;Pointe 100 mm (kg) — réf 1;Quincaillerie;3;2525;0.04;7272;8 581
+T05-250801-099080;2025-08-01;09:41;Magasin 5 — Kaya Marché;Salamatu Sankara;16857;Fer à béton 8 mm (barre) — réf 1;Quincaillerie;3000;1575;0.0;4725;5 575
+T05-250801-099081;2025-08-01;12:00;Magasin 5 — Kaya Marché;Moussa Ilboudo;4004;Lunettes de protection — réf 2;Consommables;1;4800;0.0;4800;5 664
+T05-250801-099081;2025-08-01;12:00;Magasin 5 — Kaya Marché;Moussa Ilboudo;4004;Lunettes de protection — réf 2;Consommables;1;4800;0.0;4800;5 664
+T05-250801-099082;2025-08-01;11:11;Magasin 5 — Kaya Marché;Adama Bationo;6502;Pelle carrée — réf 2;Consommables;2;5250;0.08;9660;11 399
+T05-250801-099083;2025-08-01;17:56;Magasin 5 — Kaya Marché;Moussa Ilboudo;0;Peinture toiture 25 kg — réf 1;Peinture;5;4025;0.0;20125;23 747
+T05-250801-099084;2025-08-01;16:16;Magasin 5 — Kaya Marché;Boureima Ouédraogo;18638;Cheville nylon 8 mm (sachet) — réf 2;Quincaillerie;1;2050;0.04;1968;2 322
+T05-250801-099085;2025-08-01;12:44;Magasin 5 — Kaya Marché;Moussa Ilboudo;0;Ampoule LED 9 W — réf 1;Electricité;20;9275;0.0;185500;218 890
+T05-250801-099086;01/08/2025;14:23;Magasin 5 — Kaya Marché;Boureima Ouédraogo;728;Brique de terre cuite — réf 1;Matériaux;1;1050;0.08;966;1 140
+T05-250801-099087;2025-08-01;16:51;Magasin 5 — Kaya Marché;Adama Bationo;6946;Brouette en kit — réf 1;Consommables;7;9675;0.08;62307;73 522
+T05-250801-099088;01/08/2025;07:34;Magasin 5 — Kaya Marché;Boureima Ouédraogo;16254;Chaux aérienne 25 kg — réf 1;Matériaux;2;5250;0.0;10500;12 390
+T05-250801-099089;2025-08-01;11:08;Magasin 5 — Kaya Marché;Moussa Ilboudo;3702;Carreau de pavement 40x40 — réf 2;Matériaux;23;1075;0.0;24725;29 175
+T05-250801-099090;2025-08-01;12:30;Magasin 5 — Kaya Marché;Boureima Ouédraogo;3776;Panneau MDF 12 mm — réf 1;Bois & panneaux;14;18400;0.08;236992;279 651
+T05-250801-099091;2025-08-01;13:26;Magasin 5 — Kaya Marché;Salamatu Sankara;3764;Sable de rivière (m3) — réf 1;Matériaux;3;25300;0.08;69828;82 397
+T05-250801-099092;2025-08-01;11:28;Magasin 5 — Kaya Marché;Boureima Ouédraogo;1144;Plaque de plâtre 13 mm — réf 1;Bois & panneaux;8;9800;0.04;75264;88 812
+T05-250801-099093;01/08/2025;15:49;Magasin 5 — Kaya Marché;Moussa Ilboudo;;Disjoncteur 16 A — réf 1;Electricité;52;9625;0.0;500500;590 590
+T05-250801-099094;01/08/2025;14:21;Magasin 5 — Kaya Marché;Adama Bationo;16069;Tableau 18 modules — réf 2;Electricité;1;8625;0.0;8625;10 177
+T05-250801-099095;2025-08-01;08:06;Magasin 5 — Kaya Marché;Salamatu Sankara;21333;Tournevis cruciforme PH2 — réf 2;Quincaillerie;2;6225;0.07;11578;13 662
+T05-250801-099096;2025-08-01;14:39;Magasin 5 — Kaya Marché;Boureima Ouédraogo;13905;Carreau de pavement 40x40 — réf 1;Matériaux;3;1050;0.08;2898;3 420
+T05-250801-099097;2025-08-01;12:37;Magasin 5 — Kaya Marché;Adama Bationo;0;Vis à bois 4x40 (boîte) — réf 1;Quincaillerie;4;1750;0.0;7000;8 260
+T05-250801-099097;2025-08-01;12:37;Magasin 5 — Kaya Marché;Adama Bationo;0;Vis à bois 4x40 (boîte) — réf 1;Quincaillerie;4;1750;0.0;7000;8 260
+T05-250802-099181;2025-08-02;09:32;Magasin 5 — Kaya Marché;Moussa Ilboudo;4787;Gants anti-coupure (paire) — réf 2;Consommables;3;5300;0.0;15900;18 762
+T05-250802-099181;2025-08-02;12:22;Magasin 5 — Kaya Marché;Adama Bationo;;Brouette 90 L — réf 2;Consommables;12;10100;0.0;121200;143 016
+T05-250802-099182;2025-08-02;11:44;Magasin 5 — Kaya Marché;Boureima Ouédraogo;13720;Tout-venant (m3) — réf 1;Matériaux;2;16275;0.0;32550;38 409
+T05-250802-099182;2025-08-02;12:26;Magasin 5 — Kaya Marché;Moussa Ilboudo;7845;Brouette en kit — réf 1;Consommables;3;9425;0.0;28275;33 365
+T05-250802-099183;2025-08-02;18:35;Magasin 5 — Kaya Marché;Salamatu Sankara;22512;Tournevis cruciforme PH2 — réf 2;Quincaillerie;25;6325;0.0;158125;186 587
+T05-250802-099183;02/08/2025;15:01;Magasin 5 — Kaya Marché;Salamatu Sankara;0;Passe-câble étanche — réf 1;Electricité;13;16375;0.0;212875;251 193
+T05-250802-099184;2025-08-02;16:07;Magasin 5 — Kaya Marché;Boureima Ouédraogo;9171;Tout-venant (m3) — réf 2;Matériaux;3;23975;0.0;71925;84 871
+T05-250802-099184;02/08/2025;07:16;Magasin 5 — Kaya Marché;Salamatu Sankara;17024;Enduit de lissage 20 kg — réf 2;Matériaux;6;6450;0.0;38700;45 666
+T05-250802-099185;2025-08-02;09:42;Magasin 5 — Kaya Marché;Salamatu Sankara;7375;Fil de fer recuit (kg) — réf 1;Quincaillerie;12;1650;0.0;19800;23 364
+T05-250802-099185;2025-08-02;18:39;Magasin 5 — Kaya Marché;Salamatu Sankara;;Enduit de lissage 20 kg — réf 1;Matériaux;9;7225;0.04;62424;73 660
+T05-250802-099186;02/08/2025;10:11;Magasin 5 — Kaya Marché;Salamatu Sankara;5339;Panneau MDF 12 mm — réf 1;Bois & panneaux;6;18525;0.04;106704;125 911
+T05-250802-099186;2025-08-02;10:15;Magasin 5 — Kaya Marché;Adama Bationo;0;Diluant nitro 5 L — réf 1;Peinture;14;4500;0.0;63000;74 340
+T05-250802-099187;2025-08-02;14:41;Magasin 5 — Kaya Marché;Adama Bationo;4245;Panneau contreplaqué 15 mm — réf 2;Bois & panneaux;5;18875;0.04;90600;106 908
+T05-250802-099187;2025-08-02;17:43;Magasin 5 — Kaya Marché;Adama Bationo;13354;Panneau contreplaqué 15 mm — réf 2;Bois & panneaux;6;18775;0.04;108144;127 610
+T05-250802-099188;02/08/2025;16:42;Magasin 5 — Kaya Marché;Salamatu Sankara;23479;Vernis marin 1 L — réf 1;Peinture;6;5675;0.0;34050;40 179
+T05-250802-099188;2025-08-02;07:53;Magasin 5 — Kaya Marché;Adama Bationo;21535;Brouette 90 L — réf 1;Consommables;10;5000;0.0;50000;59 000
+T05-250802-099189;2025-08-02;11:02;Magasin 5 — Kaya Marché;Salamatu Sankara;12218;Chaux aérienne 25 kg — réf 1;Matériaux;5;5100;0.0;25500;30 090
+T05-250802-099189;2025-08-02;14:26;Magasin 5 — Kaya Marché;Adama Bationo;23312;Régulateur de charge 10 A — réf 1;Electricité;1;21300;0.04;20448;24 129
+T05-250802-099189;2025-08-02;14:26;Magasin 5 — Kaya Marché;Adama Bationo;23312;Régulateur de charge 10 A — réf 1;Electricité;1;21300;0.04;20448;24 129
+T05-250901-101911;2025-09-01;17:44;Magasin 5 — Kaya Marché;Moussa Ilboudo;7317;Pavé autobloquant — réf 1;Matériaux;12;1175;0.0;14100;16 638
+T05-250901-101911;2025-09-01;18:54;Magasin 5 — Kaya Marché;Boureima Ouédraogo;5898;Meuleuse 125 mm — réf 1;Quincaillerie;1;7625;0.0;7625;8 997
+T05-250901-101911;2025-09-01;09:58;Magasin 5 — Kaya Marché;Moussa Ilboudo;13989;Meuleuse 125 mm — réf 1;Quincaillerie;1;7475;0.04;7176;8 468
+T05-250901-101912;2025-09-01;16:42;Magasin 5 — Kaya Marché;Adama Bationo;0;Perforateur 800 W — réf 2;Quincaillerie;4;5675;0.0;22700;26 786
+T05-250901-101912;2025-09-01;10:21;Magasin 5 — Kaya Marché;Salamatu Sankara;557;Gants anti-coupure (paire) — réf 1;Consommables;1;8800;0.0;8800;10 384
+T05-250901-101912;2025-09-01;15:44;Magasin 5 — Kaya Marché;Boureima Ouédraogo;10696;Mètre ruban 5 m — réf 1;Quincaillerie;1;7525;0.08;6923;8 169
+T05-250901-101913;2025-09-01;15:25;Magasin 5 — Kaya Marché;Salamatu Sankara;0;Pelle carrée — réf 1;Consommables;3;9325;0.0;27975;33 011
+T05-250901-101913;2025-09-01;14:02;Magasin 5 — Kaya Marché;Adama Bationo;0;Pointe 100 mm (kg) — réf 1;Quincaillerie;2;2550;0.0;5100;6 018
+T05-250901-101913;2025-09-01;15:09;Magasin 5 — Kaya Marché;Moussa Ilboudo;1056;Douche de toilettes — réf 1;Plomberie;2;30925;0.0;61850;72 983
+T05-250901-101914;2025-09-01;10:06;Magasin 5 — Kaya Marché;Adama Bationo;0;Ciment CPJ45 50 kg — réf 2;Matériaux;2;6675;0.0;13350;15 753
+T05-250901-101914;2025-09-01;13:08;Magasin 5 — Kaya Marché;Salamatu Sankara;18698;Brouette en kit — réf 1;Consommables;5;9100;0.0;45500;53 690
+T05-250901-101914;2025-09-01;07:24;Magasin 5 — Kaya Marché;Adama Bationo;16822;Lampe torche rechargeable — réf 1;Electricité;20;20350;0.04;390720;461 050
+T05-250901-101915;2025-09-01;13:14;Magasin 5 — Kaya Marché;Adama Bationo;21039;Casque de chantier — réf 1;Consommables;6;8375;0.0;50250;59 295
+T05-250901-101915;2025-09-01;15:56;Magasin 5 — Kaya Marché;Salamatu Sankara;4285;Vis à bois 4x40 (boîte) — réf 1;Quincaillerie;31;1825;0.0;56575;66 759
+T05-250901-101915;2025-09-01;17:32;Magasin 5 — Kaya Marché;Moussa Ilboudo;18478;Ciment CPJ35 50 kg — réf 1;Matériaux;7;6000;0.04;40320;47 578
+T05-250901-101916;2025-09-01;14:22;Magasin 5 — Kaya Marché;Boureima Ouédraogo;8744;Brouette 90 L — réf 1;Consommables;4;5050;0.04;19392;22 883
+T05-250901-101916;2025-09-01;09:33;Magasin 5 — Kaya Marché;Moussa Ilboudo;0;Brouette 90 L — réf 1;Consommables;13;5200;0.0;67600;79 768
+T05-250901-101916;2025-09-01;14:49;Magasin 5 — Kaya Marché;Moussa Ilboudo;5480;Peinture glycéro 1 L — réf 1;Peinture;4;3175;0.0;12700;14 986
+T05-250901-101917;2025-09-01;14:45;Magasin 5 — Kaya Marché;Adama Bationo;5882;Marteau de menuisier — réf 2;Quincaillerie;6;8650;0.08;47748;56 343
+T05-250901-101917;2025-09-01;11:54;Magasin 5 — Kaya Marché;Boureima Ouédraogo;5046;Brique de terre cuite — réf 2;Matériaux;3;675;0.0;2025;2 389
+T05-250901-101917;2025-09-01;07:30;Magasin 5 — Kaya Marché;Salamatu Sankara;0;Ballon d'eau chaude 50 L — réf 2;Plomberie;7;36150;0.0;253050;298 599
+T05-250901-101918;2025-09-01;14:21;Magasin 5 — Kaya Marché;Moussa Ilboudo;0;Baguette de finition 2,4 m — réf 1;Bois & panneaux;5;10950;0.0;54750;64 605
+T05-250901-101918;2025-09-01;12:18;Magasin 5 — Kaya Marché;Boureima Ouédraogo;;Lavabo céramique — réf 2;Plomberie;1;39725;0.04;38136;45 000
+T05-250901-101918;01/09/2025;07:38;Magasin 5 — Kaya Marché;Salamatu Sankara;1635;Vis à bois 4x40 (boîte) — réf 1;Quincaillerie;-13;1750;0.04;-21840;-25 771
+T05-250901-101919;2025-09-01;10:04;Magasin 5 — Kaya Marché;Adama Bationo;1359;Meuleuse 125 mm — réf 2;Quincaillerie;8;5800;0.0;46400;54 752
+T05-250901-101919;2025-09-01;07:05;Magasin 5 — Kaya Marché;Moussa Ilboudo;0;Plâtre de construction 25 kg — réf 2;Matériaux;2;6000;0.0;12000;14 160
+T05-250901-101919;01/09/2025;17:51;Magasin 5 — Kaya Marché;Moussa Ilboudo;17387;Parpaing 15 aggloméré — réf 1;Matériaux;9;1500;0.0;13500;15 930
+T05-250901-101920;2025-09-01;18:24;Magasin 5 — Kaya Marché;Adama Bationo;21989;Té fonte 100 — réf 1;Plomberie;11;3125;0.08;31625;37 317
+T05-250901-101920;2025-09-01;13:53;Magasin 5 — Kaya Marché;Boureima Ouédraogo;0;Raccord laiton 20/27 — réf 1;Plomberie;3;4725;0.0;14175;16 727
+T05-250902-102024;2025-09-02;09:30;Magasin 5 — Kaya Marché;Boureima Ouédraogo;11109;Câble 2x1,5 (rouleau 100 m) — réf 1;Electricité;7;12400;0.04;83328;98 327
+T05-250902-102024;2025-09-02;09:30;Magasin 5 — Kaya Marché;Boureima Ouédraogo;1616;Enduit de lissage 20 kg — réf 1;Matériaux;3;7500;0.04;21600;25 488
+T05-250902-102024;2025-09-02;10:43;Magasin 5 — Kaya Marché;Moussa Ilboudo;14729;Écrou hexagonal 10 (sachet) — réf 1;Quincaillerie;4;1450;0.04;5568;6 570
+T05-250902-102025;2025-09-02;18:05;Magasin 5 — Kaya Marché;Salamatu Sankara;1462;Antirouille rouge brique 1 L — réf 1;Peinture;15;5000;0.0;75000;88 500
+T05-250902-102025;2025-09-02;11:35;Magasin 5 — Kaya Marché;Adama Bationo;9061;Batterie à décharge lente 120 Ah — réf 2;Electricité;2;19375;0.0;38750;45 725
+T05-250902-102026;2025-09-02;18:29;Magasin 5 — Kaya Marché;Adama Bationo;0;Lame de lambris 4 m — réf 2;Bois & panneaux;68;15325;0.0;1042100;1 229 678
+T05-250902-102026;2025-09-02;08:00;Magasin 5 — Kaya Marché;Adama Bationo;4171;Tout-venant (m3) — réf 1;Matériaux;6;16100;0.0;96600;113 988
+T05-250902-102027;2025-09-02;15:08;Magasin 5 — Kaya Marché;Boureima Ouédraogo;13902;Tout-venant (m3) — réf 2;Matériaux;2;23150;0.0;46300;54 634
+T05-250902-102027;2025-09-02;12:52;Magasin 5 — Kaya Marché;Salamatu Sankara;261;Plaque de plâtre 13 mm — réf 2;Bois & panneaux;10;14125;0.0;141250;166 675
+T05-250902-102028;2025-09-02;18:44;Magasin 5 — Kaya Marché;Moussa Ilboudo;5090;Perforateur 800 W — réf 2;Quincaillerie;5;5725;0.04;27480;32 426
+T05-250902-102028;2025-09-02;14:02;Magasin 5 — Kaya Marché;Salamatu Sankara;14457;Ciment CPJ35 50 kg — réf 1;Matériaux;3;6325;0.04;18216;21 495
+T05-251001-105441;2025-10-01;07:38;Magasin 5 — Kaya Marché;Salamatu Sankara;4030;Carreau de pavement 40x40 — réf 1;Matériaux;12;1050;0.0;12600;14 868
+T05-251001-105442;2025-10-01;10:16;Magasin 5 — Kaya Marché;Moussa Ilboudo;4524;Douille E27 avec cordon — réf 1;Electricité;3;12075;0.0;36225;42 745
+T05-251001-105443;01/10/2025;09:59;Magasin 5 — Kaya Marché;Moussa Ilboudo;0;Tout-venant (m3) — réf 1;Matériaux;2;16075;0.0;32150;37 937
+T05-251001-105444;2025-10-01;17:22;Magasin 5 — Kaya Marché;Salamatu Sankara;7110;Chaux aérienne 25 kg — réf 1;Matériaux;11;5050;0.04;53328;62 927
+T05-251001-105445;01/10/2025;17:46;Magasin 5 — Kaya Marché;Salamatu Sankara;0;Vis à bois 4x40 (boîte) — réf 1;Quincaillerie;12;1825;0.0;21900;25 842
+T05-251001-105446;01/10/2025;15:58;Magasin 5 — Kaya Marché;Moussa Ilboudo;3818;Pelle carrée — réf 1;Consommables;6;9250;0.0;55500;65 490
+T05-251001-105447;01/10/2025;07:07;Magasin 5 — Kaya Marché;Salamatu Sankara;1357;Câble 3x2,5 (rouleau 100 m) — réf 1;Electricité;34;10975;0.0;373150;440 317
+T05-251001-105448;2025-10-01;09:32;Magasin 5 — Kaya Marché;Adama Bationo;0;Tout-venant (m3) — réf 1;Matériaux;2;15800;0.0;31600;37 288
+T05-251001-105449;2025-10-01;15:59;Magasin 5 — Kaya Marché;Adama Bationo;9530;Douille E27 avec cordon — réf 2;Electricité;4;18625;0.04;71520;84 394
+T05-251001-105450;2025-10-01;08:05;Magasin 5 — Kaya Marché;Boureima Ouédraogo;0;Bêche à manche bois — réf 1;Consommables;3;5175;0.0;15525;18 319
+T05-251001-105451;01/10/2025;08:35;Magasin 5 — Kaya Marché;Adama Bationo;5926;Niveau à bulle 600 mm — réf 1;Quincaillerie;6;9400;0.04;54144;63 890
+T05-251001-105452;2025-10-01;08:20;Magasin 5 — Kaya Marché;Adama Bationo;3800;Ballon d'eau chaude 50 L — réf 1;Plomberie;7;33225;0.0;232575;274 439
+T05-251001-105453;01/10/2025;13:09;Magasin 5 — Kaya Marché;Moussa Ilboudo;20810;Boulon HM 10x40 (boîte) — réf 1;Quincaillerie;14;2000;0.04;26880;31 718
+T05-251001-105453;01/10/2025;13:09;Magasin 5 — Kaya Marché;Moussa Ilboudo;20810;Boulon HM 10x40 (boîte) — réf 1;Quincaillerie;14;2000;0.04;26880;31 718
+T05-251001-105454;01/10/2025;15:44;Magasin 5 — Kaya Marché;Boureima Ouédraogo;15037;Robinet mitigeur évier — réf 2;Plomberie;5;35475;0.08;163185;192 558
+T05-251001-105455;2025-10-01;11:41;Magasin 5 — Kaya Marché;Adama Bationo;19427;Sable de rivière (m3) — réf 2;Matériaux;2;26250;0.0;52500;61 950
+T05-251001-105456;01/10/2025;10:29;Magasin 5 — Kaya Marché;Adama Bationo;12000;Colle à carrelage 25 kg — réf 2;Matériaux;16;4325;0.0;69200;81 656
+T05-251001-105457;2025-10-01;14:42;Magasin 5 — Kaya Marché;Moussa Ilboudo;6445;Raccord laiton 20/27 — réf 1;Plomberie;1;4600;0.0;4600;5 428
+T05-251001-105458;01/10/2025;12:52;Magasin 5 — Kaya Marché;Boureima Ouédraogo;1508;Lame de lambris 4 m — réf 1;Bois & panneaux;4;10800;0.0;43200;50 976
+T05-251001-105459;2025-10-01;17:19;Magasin 5 — Kaya Marché;Salamatu Sankara;1472;Tournevis cruciforme PH2 — réf 2;Quincaillerie;1;6325;0.0;6325;7 463
+T05-251001-105460;2025-10-01;08:48;Magasin 5 — Kaya Marché;Moussa Ilboudo;8718;Perforateur 800 W — réf 1;Quincaillerie;4;8125;0.0;32500;38 350
+T05-251001-105461;2025-10-01;17:17;Magasin 5 — Kaya Marché;Boureima Ouédraogo;18776;Tube PER 16x2 (rouleau) — réf 2;Plomberie;15;3275;0.03;47651;56 228
+T05-251001-105462;2025-10-01;18:36;Magasin 5 — Kaya Marché;Moussa Ilboudo;21196;Lampe torche rechargeable — réf 2;Electricité;3;21400;0.04;61632;72 726
+T05-251001-105463;2025-10-01;08:34;Magasin 5 — Kaya Marché;Boureima Ouédraogo;23188;Té fonte 100 — réf 1;Plomberie;11;3225;0.04;34056;40 186
+T05-251001-105464;2025-10-01;13:51;Magasin 5 — Kaya Marché;Salamatu Sankara;21739;Pince coupante 200 mm — réf 2;Quincaillerie;4;10425;0.04;40032;47 238
+T05-251002-105561;2025-10-02;10:16;Magasin 5 — Kaya Marché;Salamatu Sankara;1796;Fil de fer recuit (kg) — réf 1;Quincaillerie;10;1625;0.04;15600;18 408
+T05-251002-105561;2025-10-02;18:31;Magasin 5 — Kaya Marché;Moussa Ilboudo;0;Colle à carrelage 25 kg — réf 2;Matériaux;7;4350;0.0;30450;35 931
+T05-251002-105561;2025-10-02;14:06;Magasin 5 — Kaya Marché;Boureima Ouédraogo;22897;Batterie à décharge lente 120 Ah — réf 2;Electricité;6;18950;0.0;113700;134 166
+T05-251002-105562;2025-10-02;09:18;Magasin 5 — Kaya Marché;Boureima Ouédraogo;3075;Câble 3x2,5 (rouleau 100 m) — réf 1;Electricité;1;11000;0.0;11000;12 980
+T05-251002-105562;2025-10-02;18:27;Magasin 5 — Kaya Marché;Moussa Ilboudo;12037;Antirouille rouge brique 1 L — réf 1;Peinture;18;5025;0.03;87736;103 528
+T05-251002-105562;2025-10-02;14:54;Magasin 5 — Kaya Marché;Moussa Ilboudo;0;Peinture acrylique blanc 10 L — réf 2;Peinture;8;6825;0.0;54600;64 428
+T05-251002-105563;2025-10-02;12:47;Magasin 5 — Kaya Marché;Boureima Ouédraogo;22509;Lampe torche rechargeable — réf 1;Electricité;2;20550;0.04;39456;46 558
+T05-251002-105563;02/10/2025;09:57;Magasin 5 — Kaya Marché;Moussa Ilboudo;1854;Pince coupante 200 mm — réf 1;Quincaillerie;2;5425;0.0;10850;12 803
+T05-251002-105563;2025-10-02;11:00;Magasin 5 — Kaya Marché;Adama Bationo;22901;Robinet mitigeur évier — réf 1;Plomberie;9;32600;0.04;281664;332 364
+T05-251002-105564;2025-10-02;13:43;Magasin 5 — Kaya Marché;Salamatu Sankara;16303;Pavé autobloquant — réf 2;Matériaux;7;700;0.0;4900;5 782
+T05-251002-105564;2025-10-02;17:04;Magasin 5 — Kaya Marché;Moussa Ilboudo;14290;Pelle carrée — réf 1;Consommables;1;9450;0.04;9072;10 705
+T05-251002-105564;2025-10-02;09:22;Magasin 5 — Kaya Marché;Boureima Ouédraogo;12577;Tout-venant (m3) — réf 1;Matériaux;2;15750;0.0;31500;37 170
+T05-251002-105565;2025-10-02;14:42;Magasin 5 — Kaya Marché;Adama Bationo;8926;Cheville nylon 8 mm (sachet) — réf 2;Quincaillerie;6;2125;0.04;12240;14 443
+T05-251002-105565;2025-10-02;08:31;Magasin 5 — Kaya Marché;Salamatu Sankara;0;Vis à bois 4x40 (boîte) — réf 2;Quincaillerie;2;1650;0.0;3300;3 894
+T05-251002-105565;2025-10-02;10:47;Magasin 5 — Kaya Marché;Moussa Ilboudo;19885;Tout-venant (m3) — réf 1;Matériaux;3;16400;0.04;47232;55 734
+T05-251002-105566;2025-10-02;08:55;Magasin 5 — Kaya Marché;Adama Bationo;0;Niveau à bulle 600 mm — réf 1;Quincaillerie;6;9075;0.0;54450;64 251
+T05-251101-109861;01/11/2025;13:03;Magasin 5 — Kaya Marché;Salamatu Sankara;12973;Pince coupante 200 mm — réf 2;Quincaillerie;23;10175;0.04;224664;265 104
+T05-251101-109861;2025-11-01;17:15;Magasin 5 — Kaya Marché;Moussa Ilboudo;0;Peinture acrylique blanc 10 L — réf 1;Peinture;7;4325;0.0;30275;35 725
+T05-251101-109861;2025-11-01;17:26;Magasin 5 — Kaya Marché;Salamatu Sankara;9495;Meuleuse 125 mm — réf 2;Quincaillerie;1;6000;0.0;6000;7 080
+T05-251101-109862;01/11/2025;18:37;Magasin 5 — Kaya Marché;Adama Bationo;16057;Tableau 18 modules — réf 2;Electricité;3;9075;0.0;27225;32 125
+T05-251101-109862;2025-11-01;12:19;Magasin 5 — Kaya Marché;Moussa Ilboudo;0;Échelle aluminium 4 marches — réf 2;Consommables;8;8600;0.0;68800;81 184
+T05-251101-109862;2025-11-01;08:30;Magasin 5 — Kaya Marché;Salamatu Sankara;8620;Ciment CPJ45 50 kg — réf 2;Matériaux;21;6350;0.0;133350;157 353
+T05-251101-109863;2025-11-01;13:59;Magasin 5 — Kaya Marché;Moussa Ilboudo;13950;Lampe torche rechargeable — réf 2;Electricité;2;20850;0.0;41700;49 206
+T05-251101-109863;2025-11-01;11:20;Magasin 5 — Kaya Marché;Salamatu Sankara;15812;Baguette de finition 2,4 m — réf 1;Bois & panneaux;1;11350;0.04;10896;12 857
+T05-251101-109863;01/11/2025;12:26;Magasin 5 — Kaya Marché;Boureima Ouédraogo;12915;Raccord laiton 20/27 — réf 1;Plomberie;6;4575;0.0;27450;32 391
+T05-251101-109864;2025-11-01;16:29;Magasin 5 — Kaya Marché;Adama Bationo;14299;Clé plate 13 — réf 2;Quincaillerie;13;10450;0.0;135850;160 303
+T05-251101-109864;2025-11-01;14:04;Magasin 5 — Kaya Marché;Salamatu Sankara;0;Tournevis cruciforme PH2 — réf 2;Quincaillerie;2;6225;0.0;12450;14 691
+T05-251101-109864;2025-11-01;18:51;Magasin 5 — Kaya Marché;Adama Bationo;13348;Antirouille rouge brique 1 L — réf 1;Peinture;3;5050;0.04;14544;17 162
+T05-251101-109865;2025-11-01;16:26;Magasin 5 — Kaya Marché;Adama Bationo;14936;Pavé autobloquant — réf 1;Matériaux;7;1125;0.04;7560;8 921
+T05-251101-109865;2025-11-01;10:51;Magasin 5 — Kaya Marché;Boureima Ouédraogo;18585;Tournevis cruciforme PH2 — réf 1;Quincaillerie;4;8050;0.0;32200;37 996
+T05-251101-109865;01/11/2025;10:18;Magasin 5 — Kaya Marché;Boureima Ouédraogo;21884;Ciment CPJ45 50 kg — réf 1;Matériaux;5;6175;0.04;29640;34 975
+T05-251101-109866;2025-11-01;09:13;Magasin 5 — Kaya Marché;Adama Bationo;0;Ciment CPJ45 50 kg — réf 1;Matériaux;6;5950;0.0;35700;42 126
+T05-251101-109866;2025-11-01;13:57;Magasin 5 — Kaya Marché;Boureima Ouédraogo;5725;Scie égoïne 500 mm — réf 2;Quincaillerie;8;10125;0.0;81000;95 580
+T05-251101-109866;2025-11-01;07:14;Magasin 5 — Kaya Marché;Adama Bationo;7120;Brouette en kit — réf 1;Consommables;7;9300;0.08;59892;70 673
+T05-251101-109867;2025-11-01;18:24;Magasin 5 — Kaya Marché;Adama Bationo;1455;Mètre ruban 5 m — réf 2;Quincaillerie;17;6375;0.0;108375;127 883
+T05-251101-109867;2025-11-01;15:31;Magasin 5 — Kaya Marché;Moussa Ilboudo;8677;Perforateur 800 W — réf 2;Quincaillerie;1;5750;0.0;5750;6 785
+T05-251101-109867;01/11/2025;15:52;Magasin 5 — Kaya Marché;Moussa Ilboudo;22191;Boulon HM 10x40 (boîte) — réf 2;Quincaillerie;3;2550;0.04;7344;8 666
+T05-251101-109868;2025-11-01;13:12;Magasin 5 — Kaya Marché;Moussa Ilboudo;10560;Brique de terre cuite — réf 2;Matériaux;5;700;0.04;3360;3 965
+T05-251101-109868;2025-11-01;10:33;Magasin 5 — Kaya Marché;Boureima Ouédraogo;22055;Plaque de plâtre 13 mm — réf 2;Bois & panneaux;3;13550;0.0;40650;47 967
+T05-251101-109868;2025-11-01;08:38;Magasin 5 — Kaya Marché;Adama Bationo;6090;Meuleuse 125 mm — réf 2;Quincaillerie;1;6000;0.04;5760;6 797
+T05-251101-109869;2025-11-01;11:37;Magasin 5 — Kaya Marché;Salamatu Sankara;8539;Antirouille rouge brique 1 L — réf 2;Peinture;8;7075;0.0;56600;66 788
+T05-251101-109869;2025-11-01;17:41;Magasin 5 — Kaya Marché;Boureima Ouédraogo;0;Tout-venant (m3) — réf 1;Matériaux;5;15725;0.0;78625;92 777
+T05-251101-109869;2025-11-01;17:41;Magasin 5 — Kaya Marché;Boureima Ouédraogo;0;Tout-venant (m3) — réf 1;Matériaux;5;15725;0.0;78625;92 777
+T05-251101-109869;2025-11-01;14:22;Magasin 5 — Kaya Marché;Adama Bationo;12264;Douille E27 avec cordon — réf 1;Electricité;3;12625;0.0;37875;44 693
+T05-251101-109870;2025-11-01;10:36;Magasin 5 — Kaya Marché;Adama Bationo;0;Tout-venant (m3) — réf 2;Matériaux;7;23425;0.0;163975;193 491
+T05-251101-109870;2025-11-01;17:14;Magasin 5 — Kaya Marché;Adama Bationo;16001;Ciment CPJ35 50 kg — réf 1;Matériaux;5;6250;0.0;31250;36 875
+T05-251102-109907;2025-11-02;11:14;Magasin 5 — Kaya Marché;Moussa Ilboudo;353;Marteau de menuisier — réf 2;Quincaillerie;13;8600;0.0;111800;131 924
+T05-251102-109907;2025-11-02;11:59;Magasin 5 — Kaya Marché;Salamatu Sankara;18568;Gravier 15/25 (m3) — réf 2;Matériaux;10;21025;0.0;210250;248 095
+T05-251102-109907;2025-11-02;10:51;Magasin 5 — Kaya Marché;Moussa Ilboudo;3481;Sable de rivière (m3) — réf 2;Matériaux;2;25500;0.08;46920;55 366
+T05-251102-109908;2025-11-02;08:54;Magasin 5 — Kaya Marché;Moussa Ilboudo;9329;Ciment CPJ45 50 kg — réf 1;Matériaux;7;5925;0.0;41475;48 941
+T05-251102-109908;2025-11-02;18:13;Magasin 5 — Kaya Marché;Adama Bationo;246;Douille E27 avec cordon — réf 2;Electricité;9;18700;0.0;168300;198 594
+T05-251102-109908;2025-11-02;18:41;Magasin 5 — Kaya Marché;Salamatu Sankara;12990;Bêche à manche bois — réf 2;Consommables;10;5825;0.0;58250;68 735
+T05-251102-109909;2025-11-02;18:56;Magasin 5 — Kaya Marché;Salamatu Sankara;0;Panneau contreplaqué 15 mm — réf 1;Bois & panneaux;3;18925;0.0;56775;66 995
+T05-251102-109909;2025-11-02;14:56;Magasin 5 — Kaya Marché;Moussa Ilboudo;18869;Ciment CPJ35 50 kg — réf 2;Matériaux;10;4175;0.0;41750;49 265
+T05-251102-109909;02/11/2025;18:02;Magasin 5 — Kaya Marché;Adama Bationo;13826;Tout-venant (m3) — réf 2;Matériaux;2;24425;0.0;48850;57 643
+T05-251103-110015;2025-11-03;12:13;Magasin 5 — Kaya Marché;Salamatu Sankara;0;Sable de rivière (m3) — réf 1;Matériaux;1;25775;0.0;25775;30 415
+T05-251103-110015;2025-11-03;12:28;Magasin 5 — Kaya Marché;Moussa Ilboudo;20631;Fil de fer recuit (kg) — réf 1;Quincaillerie;18;1550;0.0;27900;32 922
+T05-251201-113517;01/12/2025;08:55;Magasin 5 — Kaya Marché;Salamatu Sankara;;Ballon d'eau chaude 50 L — réf 2;Plomberie;3;36900;0.0;110700;130 626
+T05-251201-113518;01/12/2025;12:57;Magasin 5 — Kaya Marché;Salamatu Sankara;15643;Cheville nylon 8 mm (sachet) — réf 1;Quincaillerie;4;2425;0.0;9700;11 446
+T05-251201-113519;2025-12-01;11:34;Magasin 5 — Kaya Marché;Moussa Ilboudo;13087;Plaque de plâtre 13 mm — réf 2;Bois & panneaux;59;13550;0.0;799450;943 351
+T05-251201-113520;2025-12-01;10:51;Magasin 5 — Kaya Marché;Moussa Ilboudo;18687;Gravier 15/25 (m3) — réf 2;Matériaux;1;20975;0.0;20975;24 751
+T05-251201-113521;2025-12-01;09:35;Magasin 5 — Kaya Marché;Salamatu Sankara;182;Lavabo céramique — réf 1;Plomberie;24;35450;0.0;850800;1 003 944
+T05-251201-113522;2025-12-01;11:42;Magasin 5 — Kaya Marché;Adama Bationo;0;Passe-câble étanche — réf 2;Electricité;1;16150;0.0;16150;19 057
+T05-251201-113523;2025-12-01;08:13;Magasin 5 — Kaya Marché;Boureima Ouédraogo;18174;Niveau à bulle 600 mm — réf 1;Quincaillerie;11;9275;0.04;97944;115 574
+T05-251201-113524;2025-12-01;17:56;Magasin 5 — Kaya Marché;Adama Bationo;21539;Antirouille rouge brique 1 L — réf 1;Peinture;37;5175;0.04;183816;216 903
+T05-251201-113525;2025-12-01;10:15;Magasin 5 — Kaya Marché;Boureima Ouédraogo;16109;Meuleuse 125 mm — réf 2;Quincaillerie;3;6100;0.0;18300;21 594
+T05-251201-113526;2025-12-01;15:09;Magasin 5 — Kaya Marché;Boureima Ouédraogo;19011;Fil de fer recuit (kg) — réf 2;Quincaillerie;3;2000;0.04;5760;6 797
+T05-251201-113527;2025-12-01;13:42;Magasin 5 — Kaya Marché;Moussa Ilboudo;16921;Panneau solaire 100 W — réf 1;Electricité;2;9425;0.08;17342;20 464
+T05-251201-113528;2025-12-01;11:46;Magasin 5 — Kaya Marché;Adama Bationo;4067;Brouette 90 L — réf 2;Consommables;23;9600;0.0;220800;260 544
+T05-251201-113529;2025-12-01;08:14;Magasin 5 — Kaya Marché;Boureima Ouédraogo;17916;Panneau contreplaqué 15 mm — réf 2;Bois & panneaux;2;18100;0.0;36200;42 716
+T05-251201-113530;2025-12-01;18:02;Magasin 5 — Kaya Marché;Boureima Ouédraogo;22381;Pavé autobloquant — réf 1;Matériaux;1;1125;0.08;1035;1 221
+T05-251201-113531;2025-12-01;16:16;Magasin 5 — Kaya Marché;Moussa Ilboudo;0;Chaux aérienne 25 kg — réf 2;Matériaux;6;8025;0.0;48150;56 817
+T05-251201-113532;01/12/2025;08:07;Magasin 5 — Kaya Marché;Adama Bationo;1716;Vernis marin 1 L — réf 2;Peinture;22;3800;0.0;83600;98 648
+T05-251201-113533;2025-12-01;11:43;Magasin 5 — Kaya Marché;Salamatu Sankara;22495;Brique de terre cuite — réf 2;Matériaux;10;700;0.0;7000;8 260
+T05-251201-113534;2025-12-01;11:31;Magasin 5 — Kaya Marché;Adama Bationo;21022;Douche de toilettes — réf 2;Plomberie;2;31500;0.04;60480;71 366
+T05-251201-113535;2025-12-01;18:41;Magasin 5 — Kaya Marché;Salamatu Sankara;7357;Clé plate 13 — réf 1;Quincaillerie;1;9775;0.04;9384;11 073
+T05-251201-113536;2025-12-01;09:02;Magasin 5 — Kaya Marché;Moussa Ilboudo;9327;Sable de rivière (m3) — réf 1;Matériaux;7;26325;0.0;184275;217 445
+T05-251201-113537;2025-12-01;18:39;Magasin 5 — Kaya Marché;Salamatu Sankara;0;Brouette 90 L — réf 1;Consommables;9;4975;0.0;44775;52 835
+T05-251201-113538;2025-12-01;12:47;Magasin 5 — Kaya Marché;Boureima Ouédraogo;2275;Gants anti-coupure (paire) — réf 2;Consommables;7;5250;0.0;36750;43 365
+T05-251201-113539;2025-12-01;07:08;Magasin 5 — Kaya Marché;Moussa Ilboudo;0;Peinture toiture 25 kg — réf 2;Peinture;49;6025;0.0;295225;348 365
+T05-251201-113540;2025-12-01;12:20;Magasin 5 — Kaya Marché;Boureima Ouédraogo;16625;Lampe torche rechargeable — réf 2;Electricité;1;20875;0.0;20875;24 633
+T05-251201-113541;2025-12-01;14:28;Magasin 5 — Kaya Marché;Moussa Ilboudo;0;Câble 2x1,5 (rouleau 100 m) — réf 1;Electricité;7;12425;0.0;86975;102 631
+T05-251201-113542;2025-12-01;16:08;Magasin 5 — Kaya Marché;Adama Bationo;2656;Passe-câble étanche — réf 2;Electricité;3;15975;0.04;46008;54 289
+T05-251201-113543;2025-12-01;18:35;Magasin 5 — Kaya Marché;Adama Bationo;0;Chaux aérienne 25 kg — réf 2;Matériaux;6;8250;0.0;49500;58 410
+T05-251201-113544;01/12/2025;12:53;Magasin 5 — Kaya Marché;Salamatu Sankara;7683;Brouette en kit — réf 1;Consommables;8;9225;0.0;73800;87 084
+T05-251201-113545;2025-12-01;12:30;Magasin 5 — Kaya Marché;Adama Bationo;4660;Robinet mitigeur évier — réf 1;Plomberie;18;32400;0.04;559872;660 649
+T05-251202-113653;02/12/2025;14:21;Magasin 5 — Kaya Marché;Adama Bationo;0;Mastic d'étanchéité — réf 2;Plomberie;10;4550;0.0;45500;53 690
+T05-251202-113653;2025-12-02;17:36;Magasin 5 — Kaya Marché;Adama Bationo;15965;Enduit de lissage 20 kg — réf 2;Matériaux;5;6575;0.08;30245;35 689
+T05-251202-113653;2025-12-02;08:17;Magasin 5 — Kaya Marché;Boureima Ouédraogo;20401;Cheville nylon 8 mm (sachet) — réf 1;Quincaillerie;5;2500;0.0;12500;14 750
+T05-251202-113654;02/12/2025;18:53;Magasin 5 — Kaya Marché;Moussa Ilboudo;6619;Casque de chantier — réf 1;Consommables;2;8575;0.04;16464;19 428
+T05-251202-113654;2025-12-02;07:22;Magasin 5 — Kaya Marché;Salamatu Sankara;3800;Brique de terre cuite — réf 2;Matériaux;3;700;0.0;2100;2 478
+T05-251202-113655;02/12/2025;13:54;Magasin 5 — Kaya Marché;Boureima Ouédraogo;13724;Plâtre de construction 25 kg — réf 2;Matériaux;2;5950;0.0;11900;14 042
+T05-251202-113655;02/12/2025;14:31;Magasin 5 — Kaya Marché;Salamatu Sankara;3969;Gravier 15/25 (m3) — réf 1;Matériaux;4;31125;0.04;119520;141 034
+T05-251202-113656;2025-12-02;08:36;Magasin 5 — Kaya Marché;Salamatu Sankara;14287;Casque de chantier — réf 2;Consommables;4;5350;0.0;21400;25 252
+T05-251202-113656;2025-12-02;12:53;Magasin 5 — Kaya Marché;Salamatu Sankara;5921;Clé plate 13 — réf 1;Quincaillerie;4;9900;0.03;38412;45 326
+T05-251202-113657;2025-12-02;11:20;Magasin 5 — Kaya Marché;Adama Bationo;20693;Enduit de rebouchage 5 kg — réf 2;Peinture;36;4900;0.0;176400;208 152
+T05-251202-113657;2025-12-02;07:28;Magasin 5 — Kaya Marché;Salamatu Sankara;0;Sac de transport 100 kg — réf 2;Consommables;2;7550;0.0;15100;17 818

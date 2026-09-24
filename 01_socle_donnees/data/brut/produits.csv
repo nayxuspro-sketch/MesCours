@@ -1,0 +1,155 @@
+﻿id_produit,designation,categorie,sous_categorie,unite,prix_vente_ht,poids_unite_kg,fournisseur,reference_fournisseur,tva,actif
+1,Ciment CPJ45 50 kg — réf 1,materiaux,Ciment & liants,sac,5200.0,33.17,CIMAF Sahel,MAT-0001,0.18,1
+2,Ciment CPJ45 50 kg — réf 2,MATÉRIAUX,Ciment & liants,sac,5575.0,28.24,CIMAF Sahel,MAT-0002,0.18,1
+3,Ciment CPJ35 50 kg — réf 1,materiaux,Ciment & liants,sac,5275.0,55.6,CIMAF Sahel,MAT-0003,0.18,1
+4,Ciment CPJ35 50 kg — réf 2,Materiaux,Ciment & liants,sac,3550.0,32.68,CIMAF Sahel,MAT-0004,0.18,1
+5,Chaux aérienne 25 kg — réf 1,Matériaux ,Ciment & liants,sac,4400.0,26.29,CIMAF Sahel,MAT-0005,0.18,1
+6,Chaux aérienne 25 kg — réf 2,Materiaux,Ciment & liants,sac,6925.0,59.63,CIMAF Sahel,MAT-0006,0.18,1
+7,Plâtre de construction 25 kg — réf 1,materiaux,Ciment & liants,sac,3750.0,33.06,CIMAF Sahel,MAT-0007,0.18,1
+8,Plâtre de construction 25 kg — réf 2,Materiaux,Ciment & liants,sac,5150.0,67.68,CIMAF Sahel,MAT-0008,0.18,1
+9,Colle à carrelage 25 kg — réf 1,materiaux,Ciment & liants,sac,5075.0,38.98,CIMAF Sahel,MAT-0009,0.18,1
+10,Colle à carrelage 25 kg — réf 2,MATÉRIAUX,Ciment & liants,sac,3775.0,34.15,CIMAF Sahel,MAT-0010,0.18,1
+11,Enduit de lissage 20 kg — réf 1,Matériaux ,Ciment & liants,sac,6300.0,47.56,CIMAF Sahel,MAT-0011,0.18,1
+12,Enduit de lissage 20 kg — réf 2,Materiaux,Ciment & liants,sac,5500.0,56.29,CIMAF Sahel,MAT-0012,0.18,1
+13,Parpaing 15 aggloméré — réf 1,Matériaux ,Agglomérés & briques,unité,1250.0,1.85,Matériaux Kaboré,MAT-0013,0.18,1
+14,Parpaing 15 aggloméré — réf 2,Matériaux ,Agglomérés & briques,unité,1200.0,4.28,Matériaux Kaboré,MAT-0014,0.18,1
+15,Brique de terre cuite — réf 1,Materiaux,Agglomérés & briques,unité,900.0,2.94,Matériaux Kaboré,MAT-0015,0.18,1
+16,Brique de terre cuite — réf 2,Matériaux ,Agglomérés & briques,unité,600.0,2.9,Matériaux Kaboré,MAT-0016,0.18,1
+17,Carreau de pavement 40x40 — réf 1,MATÉRIAUX,Agglomérés & briques,unité,900.0,1.61,Matériaux Kaboré,MAT-0017,0.18,1
+18,Carreau de pavement 40x40 — réf 2,MATÉRIAUX,Agglomérés & briques,unité,925.0,4.38,Matériaux Kaboré,MAT-0018,0.18,1
+19,Hourdis creux 12 — réf 1,Materiaux,Agglomérés & briques,unité,900.0,4.6,Matériaux Kaboré,MAT-0019,0.18,1
+20,Hourdis creux 12 — réf 2,materiaux,Agglomérés & briques,unité,1325.0,4.7,Matériaux Kaboré,MAT-0020,0.18,1
+21,Pavé autobloquant — réf 1,Matériaux ,Agglomérés & briques,unité,975.0,2.59,Matériaux Kaboré,MAT-0021,0.18,1
+22,Pavé autobloquant — réf 2,Materiaux,Agglomérés & briques,unité,600.0,3.61,Matériaux Kaboré,MAT-0022,0.18,1
+23,Sable de rivière (m3) — réf 1,Matériaux ,Sable & gravier,m3,22275.0,1407.71,Carrière Nakosin,MAT-0023,0.18,1
+24,Sable de rivière (m3) — réf 2,Materiaux,Sable & gravier,m3,22475.0,1124.6,Carrière Nakosin,MAT-0024,0.18,1
+25,Gravier 15/25 (m3) — réf 1,materiaux,Sable & gravier,m3,26800.0,1539.61,Carrière Nakosin,MAT-0025,0.18,1
+26,Gravier 15/25 (m3) — réf 2,materiaux,Sable & gravier,m3,18450.0,2225.34,Carrière Nakosin,MAT-0026,0.18,1
+27,Tout-venant (m3) — réf 1,materiaux,Sable & gravier,m3,13775.0,1753.05,Carrière Nakosin,MAT-0027,0.18,1
+28,Tout-venant (m3) — réf 2,Matériaux ,Sable & gravier,m3,20300.0,1194.97,Carrière Nakosin,MAT-0028,0.18,1
+29,Vis à bois 4x40 (boîte) — réf 1,Quincaillerie,Fixations,unité,1525.0,0.3,Sahel Quincaillerie,QUI-0029,0.18,1
+30,Vis à bois 4x40 (boîte) — réf 2,Quincaillerie,Fixations,unité,1400.0,-1.0,Sahel Quincaillerie,QUI-0030,0.18,1
+31,Cheville nylon 8 mm (sachet) — réf 1,quincaillerie,Fixations,unité,2125.0,0.25,Sahel Quincaillerie,QUI-0031,0.18,1
+32,Cheville nylon 8 mm (sachet) — réf 2,quincaillerie,Fixations,unité,1800.0,-1.0,Sahel Quincaillerie,QUI-0032,0.18,1
+33,Pointe 100 mm (kg) — réf 1,quincaillerie,Fixations,unité,2125.0,0.48,Sahel Quincaillerie,QUI-0033,0.18,1
+34,Pointe 100 mm (kg) — réf 2,Quincaillerie ,Fixations,unité,1225.0,0.4,Sahel Quincaillerie,QUI-0034,0.18,1
+35,Boulon HM 10x40 (boîte) — réf 1,QUINCAILLERIE,Fixations,unité,1700.0,0.23,Sahel Quincaillerie,QUI-0035,0.18,1
+36,Boulon HM 10x40 (boîte) — réf 2,quincaillerie,Fixations,unité,2250.0,0.44,Sahel Quincaillerie,QUI-0036,0.18,1
+37,Écrou hexagonal 10 (sachet) — réf 1,quincaillerie,Fixations,unité,1250.0,0.55,Sahel Quincaillerie,QUI-0037,0.18,1
+38,Écrou hexagonal 10 (sachet) — réf 2,Quincaillerie,Fixations,unité,1825.0,0.58,Sahel Quincaillerie,QUI-0038,0.18,1
+39,Fer à béton 8 mm (barre) — réf 1,quincaillerie,Fixations,unité,1325.0,0.23,Sahel Quincaillerie,QUI-0039,0.18,1
+40,Fer à béton 8 mm (barre) — réf 2,quincaillerie,Fixations,unité,1950.0,0.22,Sahel Quincaillerie,QUI-0040,0.18,1
+41,Fil de fer recuit (kg) — réf 1,Quincaillerie,Fixations,unité,1375.0,0.33,Sahel Quincaillerie,QUI-0041,0.18,1
+42,Fil de fer recuit (kg) — réf 2,quincaillerie,Fixations,unité,1675.0,0.54,Sahel Quincaillerie,QUI-0042,0.18,1
+43,Marteau de menuisier — réf 1,Quincaillerie ,Outillage,unité,8050.0,1.15,Outil Pro SA,QUI-0043,0.18,1
+44,Marteau de menuisier — réf 2,QUINCAILLERIE,Outillage,unité,7400.0,1.5,Outil Pro SA,QUI-0044,0.18,1
+45,Scie égoïne 500 mm — réf 1,quincaillerie,Outillage,unité,9400.0,0.63,Outil Pro SA,QUI-0045,0.18,1
+46,Scie égoïne 500 mm — réf 2,Quincaillerie,Outillage,unité,8625.0,1.23,Outil Pro SA,QUI-0046,0.18,1
+47,Clé plate 13 — réf 1,Quincaillerie ,Outillage,unité,8300.0,1.36,Outil Pro SA,QUI-0047,0.18,1
+48,Clé plate 13 — réf 2,Quincaillerie,Outillage,unité,8975.0,1.6,Outil Pro SA,QUI-0048,0.18,1
+49,Tournevis cruciforme PH2 — réf 1,quincaillerie,Outillage,unité,6900.0,1.36,Outil Pro SA,QUI-0049,0.18,1
+50,Tournevis cruciforme PH2 — réf 2,Quincaillerie ,Outillage,unité,5400.0,1.35,Outil Pro SA,QUI-0050,0.18,1
+51,Mètre ruban 5 m — réf 1,Quincaillerie ,Outillage,unité,6375.0,0.69,Outil Pro SA,QUI-0051,0.18,1
+52,Mètre ruban 5 m — réf 2,Quincaillerie ,Outillage,unité,5575.0,0.68,Outil Pro SA,QUI-0052,0.18,1
+53,Pince coupante 200 mm — réf 1,quincaillerie,Outillage,unité,4550.0,1.48,Outil Pro SA,QUI-0053,0.18,1
+54,Pince coupante 200 mm — réf 2,QUINCAILLERIE,Outillage,unité,8875.0,1.14,Outil Pro SA,QUI-0054,0.18,1
+55,Niveau à bulle 600 mm — réf 1,QUINCAILLERIE,Outillage,unité,7825.0,0.75,Outil Pro SA,QUI-0055,0.18,1
+56,Niveau à bulle 600 mm — réf 2,Quincaillerie,Outillage,unité,4300.0,1.6,Outil Pro SA,QUI-0056,0.18,1
+57,Meuleuse 125 mm — réf 1,Quincaillerie ,Outillage,unité,6375.0,0.68,Outil Pro SA,QUI-0057,0.18,1
+58,Meuleuse 125 mm — réf 2,Quincaillerie ,Outillage,unité,5075.0,1.24,Outil Pro SA,QUI-0058,0.18,1
+59,Perforateur 800 W — réf 1,Quincaillerie,Outillage,unité,6875.0,0.98,Outil Pro SA,QUI-0059,0.18,1
+60,Perforateur 800 W — réf 2,Quincaillerie ,Outillage,unité,4900.0,1.4,Outil Pro SA,QUI-0060,0.18,1
+61,Tube PVC évacuation 100 mm (ml) — réf 1,Plomberie,Tubes & raccords,unité,2900.0,1.3,Hydro Ouest,PLO-0061,0.18,1
+62,Tube PVC évacuation 100 mm (ml) — réf 2,Plomberie,Tubes & raccords,unité,,-1.0,Hydro Ouest,PLO-0062,0.18,1
+63,Tube PER 16x2 (rouleau) — réf 1,Plomberie,Tubes & raccords,unité,3050.0,0.78,Hydro Ouest,PLO-0063,0.18,1
+64,Tube PER 16x2 (rouleau) — réf 2,Plomberie,Tubes & raccords,unité,2875.0,0.66,Hydro Ouest,PLO-0064,0.18,1
+65,Raccord laiton 20/27 — réf 1,Plomberie,Tubes & raccords,unité,4025.0,0.91,Hydro Ouest,PLO-0065,0.18,1
+66,Raccord laiton 20/27 — réf 2,Plomberie,Tubes & raccords,unité,4000.0,1.26,Hydro Ouest,PLO-0066,0.18,1
+67,Coude PVC 90° 100 — réf 1,Plomberie,Tubes & raccords,unité,3425.0,0.5,Hydro Ouest,PLO-0067,0.18,1
+68,Coude PVC 90° 100 — réf 2,Plomberie,Tubes & raccords,unité,2350.0,1.1,Hydro Ouest,PLO-0068,0.18,1
+69,Té fonte 100 — réf 1,Plomberie,Tubes & raccords,unité,2725.0,0.94,Hydro Ouest,PLO-0069,0.18,1
+70,Té fonte 100 — réf 2,Plomberie,Tubes & raccords,unité,3750.0,0.96,Hydro Ouest,PLO-0070,0.18,1
+71,Mastic d'étanchéité — réf 1,Plomberie,Tubes & raccords,unité,2900.0,0.69,Hydro Ouest,PLO-0071,0.18,1
+72,Mastic d'étanchéité — réf 2,Plomberie,Tubes & raccords,unité,3825.0,1.06,Hydro Ouest,PLO-0072,0.18,1
+73,Robinet mitigeur évier — réf 1,Plomberie,Appareils & robinetterie,unité,28125.0,6.34,Hydro Ouest,PLO-0073,0.18,1
+74,Robinet mitigeur évier — réf 2,Plomberie,Appareils & robinetterie,unité,30300.0,8.05,Hydro Ouest,PLO-0074,0.18,1
+75,Chasse d'eau 6 L — réf 1,Plomberie,Appareils & robinetterie,unité,22450.0,9.8,Hydro Ouest,PLO-0075,0.18,1
+76,Chasse d'eau 6 L — réf 2,Plomberie,Appareils & robinetterie,unité,17150.0,11.77,Hydro Ouest,PLO-0076,0.18,1
+77,Douche de toilettes — réf 1,Plomberie,Appareils & robinetterie,unité,26275.0,7.15,Hydro Ouest,PLO-0077,0.18,1
+78,Douche de toilettes — réf 2,Plomberie,Appareils & robinetterie,unité,26800.0,5.41,Hydro Ouest,PLO-0078,0.18,1
+79,Ballon d'eau chaude 50 L — réf 1,Plomberie,Appareils & robinetterie,unité,28800.0,6.48,Hydro Ouest,PLO-0079,0.18,1
+80,Ballon d'eau chaude 50 L — réf 2,Plomberie,Appareils & robinetterie,unité,31675.0,9.87,Hydro Ouest,PLO-0080,0.18,1
+81,Lavabo céramique — réf 1,Plomberie,Appareils & robinetterie,unité,30825.0,6.49,Hydro Ouest,PLO-0081,0.18,1
+82,Lavabo céramique — réf 2,Plomberie,Appareils & robinetterie,unité,34825.0,-1.0,Hydro Ouest,PLO-0082,0.18,1
+83,WC complet avec abattant — réf 1,Plomberie,Appareils & robinetterie,unité,22600.0,7.28,Hydro Ouest,PLO-0083,0.18,1
+84,WC complet avec abattant — réf 2,Plomberie,Appareils & robinetterie,unité,27125.0,5.83,Hydro Ouest,PLO-0084,0.18,1
+85,"Câble 2x1,5 (rouleau 100 m) — réf 1",Electricité,Câblage & protection,unité,10850.0,3.18,Élec-Faso,ELE-0085,0.18,1
+86,"Câble 2x1,5 (rouleau 100 m) — réf 2",Electricité,Câblage & protection,unité,8300.0,3.11,Élec-Faso,ELE-0086,0.18,1
+87,"Câble 3x2,5 (rouleau 100 m) — réf 1",Electricité,Câblage & protection,unité,9250.0,2.79,Élec-Faso,ELE-0087,0.18,1
+88,"Câble 3x2,5 (rouleau 100 m) — réf 2",Electricité,Câblage & protection,unité,14375.0,1.34,Élec-Faso,ELE-0088,0.18,1
+89,Disjoncteur 16 A — réf 1,Electricité,Câblage & protection,unité,8375.0,1.4,Élec-Faso,ELE-0089,0.18,1
+90,Disjoncteur 16 A — réf 2,Electricité,Câblage & protection,unité,9600.0,3.14,Élec-Faso,ELE-0090,0.18,1
+91,Disjoncteur différentiel 30 mA — réf 1,Electricité,Câblage & protection,unité,9600.0,1.28,Élec-Faso,ELE-0091,0.18,1
+92,Disjoncteur différentiel 30 mA — réf 2,Electricité,Câblage & protection,unité,10900.0,1.5,Élec-Faso,ELE-0092,0.18,1
+93,Tableau 18 modules — réf 1,Electricité,Câblage & protection,unité,7450.0,2.39,Élec-Faso,ELE-0093,0.18,1
+94,Tableau 18 modules — réf 2,Electricité,Câblage & protection,unité,7575.0,3.19,Élec-Faso,ELE-0094,0.18,1
+95,Douille E27 avec cordon — réf 1,Electricité,Câblage & protection,unité,10500.0,2.23,Élec-Faso,ELE-0095,0.18,1
+96,Douille E27 avec cordon — réf 2,Electricité,Câblage & protection,unité,15900.0,1.76,Élec-Faso,ELE-0096,0.18,1
+97,Passe-câble étanche — réf 1,Electricité,Câblage & protection,unité,14425.0,1.96,Élec-Faso,ELE-0097,0.18,1
+98,Passe-câble étanche — réf 2,Electricité,Câblage & protection,unité,13975.0,3.16,Élec-Faso,ELE-0098,0.18,1
+99,Ampoule LED 9 W — réf 1,Electricité,Éclairage & énergie solaire,unité,8050.0,2.33,Solaire Sahel SARL,ELE-0099,0.18,1
+100,Ampoule LED 9 W — réf 2,Electricité,Éclairage & énergie solaire,unité,16400.0,2.38,Solaire Sahel SARL,ELE-0100,0.18,1
+101,Panneau solaire 100 W — réf 1,Electricité,Éclairage & énergie solaire,unité,8100.0,1.94,Solaire Sahel SARL,ELE-0101,0.18,1
+102,Panneau solaire 100 W — réf 2,Electricité,Éclairage & énergie solaire,unité,13500.0,2.09,Solaire Sahel SARL,ELE-0102,0.18,1
+103,Batterie à décharge lente 120 Ah — réf 1,Electricité,Éclairage & énergie solaire,unité,14950.0,1.82,Solaire Sahel SARL,ELE-0103,0.18,1
+104,Batterie à décharge lente 120 Ah — réf 2,Electricité,Éclairage & énergie solaire,unité,16275.0,2.06,Solaire Sahel SARL,ELE-0104,0.18,1
+105,Régulateur de charge 10 A — réf 1,Electricité,Éclairage & énergie solaire,unité,18725.0,2.3,Solaire Sahel SARL,ELE-0105,0.18,1
+106,Régulateur de charge 10 A — réf 2,Electricité,Éclairage & énergie solaire,unité,9650.0,2.26,Solaire Sahel SARL,ELE-0106,0.18,1
+107,Lampe solaire murale — réf 1,Electricité,Éclairage & énergie solaire,unité,8850.0,0.95,Solaire Sahel SARL,ELE-0107,0.18,1
+108,Lampe solaire murale — réf 2,Electricité,Éclairage & énergie solaire,unité,18825.0,0.84,Solaire Sahel SARL,ELE-0108,0.18,1
+109,Projecteur LED 30 W — réf 1,Electricité,Éclairage & énergie solaire,unité,8100.0,2.22,Solaire Sahel SARL,ELE-0109,0.18,1
+110,Projecteur LED 30 W — réf 2,Electricité,Éclairage & énergie solaire,unité,15975.0,1.39,Solaire Sahel SARL,ELE-0110,0.18,0
+111,Lampe torche rechargeable — réf 1,Electricité,Éclairage & énergie solaire,unité,17225.0,-1.0,Solaire Sahel SARL,ELE-0111,0.18,1
+112,Lampe torche rechargeable — réf 2,Electricité,Éclairage & énergie solaire,unité,18200.0,1.2,Solaire Sahel SARL,ELE-0112,0.18,1
+113,Peinture acrylique blanc 10 L — réf 1,Peintures,Peintures & enduits,litre,3675.0,1.37,Peinture Saaba,PEI-0113,0.18,1
+114,Peinture acrylique blanc 10 L — réf 2,Peinture,Peintures & enduits,litre,5750.0,0.65,Peinture Saaba,PEI-0114,0.18,1
+115,Peinture glycéro 1 L — réf 1,Peinture,Peintures & enduits,litre,2750.0,1.57,Peinture Saaba,PEI-0115,0.18,1
+116,Peinture glycéro 1 L — réf 2,Peintures,Peintures & enduits,litre,3275.0,1.15,Peinture Saaba,PEI-0116,0.18,1
+117,Enduit de rebouchage 5 kg — réf 1,PEINTURE,Peintures & enduits,litre,3550.0,1.63,Peinture Saaba,PEI-0117,0.18,1
+118,Enduit de rebouchage 5 kg — réf 2,Peintures,Peintures & enduits,litre,4150.0,1.02,Peinture Saaba,PEI-0118,0.18,1
+119,Vernis marin 1 L — réf 1,Peintures,Peintures & enduits,litre,4825.0,0.76,Peinture Saaba,PEI-0119,0.18,1
+120,Vernis marin 1 L — réf 2,Peinture,Peintures & enduits,litre,3250.0,0.69,Peinture Saaba,PEI-0120,0.18,1
+121,Antirouille rouge brique 1 L — réf 1,peinture,Peintures & enduits,litre,4400.0,0.68,Peinture Saaba,PEI-0121,0.18,1
+122,Antirouille rouge brique 1 L — réf 2,Peinture,Peintures & enduits,litre,5975.0,0.71,Peinture Saaba,PEI-0122,0.18,1
+123,Peinture toiture 25 kg — réf 1,peinture,Peintures & enduits,litre,3425.0,0.59,Peinture Saaba,PEI-0123,0.18,1
+124,Peinture toiture 25 kg — réf 2,peinture,Peintures & enduits,litre,5225.0,1.59,Peinture Saaba,PEI-0124,0.18,1
+125,Diluant nitro 5 L — réf 1,Peinture,Peintures & enduits,litre,3875.0,0.94,Peinture Saaba,PEI-0125,0.18,1
+126,Diluant nitro 5 L — réf 2,peinture,Peintures & enduits,litre,3675.0,1.54,Peinture Saaba,PEI-0126,0.18,1
+127,Panneau contreplaqué 15 mm — réf 1,Bois & panneaux,Panels & lames,unité,15975.0,13.11,Boissonnerie de Koudougou,BOI-0127,0.18,1
+128,Panneau contreplaqué 15 mm — réf 2,Bois & panneaux,Panels & lames,unité,15675.0,15.28,Boissonnerie de Koudougou,BOI-0128,0.18,1
+129,Panneau MDF 12 mm — réf 1,Bois & panneaux,Panels & lames,unité,15450.0,17.47,Boissonnerie de Koudougou,BOI-0129,0.18,1
+130,Panneau MDF 12 mm — réf 2,Bois & panneaux,Panels & lames,unité,19650.0,10.9,Boissonnerie de Koudougou,BOI-0130,0.18,1
+131,Lame de lambris 4 m — réf 1,Bois & panneaux,Panels & lames,unité,9000.0,17.16,Boissonnerie de Koudougou,BOI-0131,0.18,1
+132,Lame de lambris 4 m — réf 2,Bois & panneaux,Panels & lames,unité,13400.0,11.85,Boissonnerie de Koudougou,BOI-0132,0.18,1
+133,Plaque de plâtre 13 mm — réf 1,Bois & panneaux,Panels & lames,unité,8275.0,9.82,Boissonnerie de Koudougou,BOI-0133,0.18,1
+134,Plaque de plâtre 13 mm — réf 2,Bois & panneaux,Panels & lames,unité,11750.0,18.4,Boissonnerie de Koudougou,BOI-0134,0.18,1
+135,"Baguette de finition 2,4 m — réf 1",Bois & panneaux,Panels & lames,unité,9625.0,8.8,Boissonnerie de Koudougou,BOI-0135,0.18,1
+136,"Baguette de finition 2,4 m — réf 2",Bois & panneaux,Panels & lames,unité,12150.0,17.1,Boissonnerie de Koudougou,BOI-0136,0.18,0
+137,Bêche à manche bois — réf 1,Consommables,Divers chantier,unité,4525.0,0.63,EPI Faso,CON-0137,0.18,1
+138,Bêche à manche bois — réf 2,Consommables,Divers chantier,unité,4900.0,0.52,EPI Faso,CON-0138,0.18,1
+139,Pelle carrée — réf 1,Consommables,Divers chantier,unité,8000.0,0.86,EPI Faso,CON-0139,0.18,1
+140,Pelle carrée — réf 2,Consommables,Divers chantier,unité,4425.0,0.49,EPI Faso,CON-0140,0.18,1
+141,Brouette 90 L — réf 1,Consommables,Divers chantier,unité,4375.0,0.95,EPI Faso,CON-0141,0.18,1
+142,Brouette 90 L — réf 2,Consommables,Divers chantier,unité,8400.0,0.8,EPI Faso,CON-0142,0.18,1
+143,Sac de transport 100 kg — réf 1,Consommables,Divers chantier,unité,7425.0,0.73,EPI Faso,CON-0143,0.18,1
+144,Sac de transport 100 kg — réf 2,Consommables,Divers chantier,unité,6625.0,0.92,EPI Faso,CON-0144,0.18,1
+145,Brouette en kit — réf 1,Consommables,Divers chantier,unité,8025.0,0.94,EPI Faso,CON-0145,0.18,1
+146,Brouette en kit — réf 2,Consommables,Divers chantier,unité,7800.0,0.41,EPI Faso,CON-0146,0.18,1
+147,Échelle aluminium 4 marches — réf 1,Consommables,Divers chantier,unité,7250.0,0.83,EPI Faso,CON-0147,0.18,1
+148,Échelle aluminium 4 marches — réf 2,Consommables,Divers chantier,unité,7250.0,0.75,EPI Faso,CON-0148,0.18,1
+149,Gants anti-coupure (paire) — réf 1,Consommables,Divers chantier,unité,,-1.0,EPI Faso,CON-0149,0.18,1
+150,Gants anti-coupure (paire) — réf 2,Consommables,Divers chantier,unité,4550.0,0.52,EPI Faso,CON-0150,0.18,1
+151,Lunettes de protection — réf 1,Consommables,Divers chantier,unité,5550.0,0.58,EPI Faso,CON-0151,0.18,1
+152,Lunettes de protection — réf 2,Consommables,Divers chantier,unité,4100.0,0.49,EPI Faso,CON-0152,0.18,1
+153,Casque de chantier — réf 1,Consommables,Divers chantier,unité,7225.0,0.77,EPI Faso,CON-0153,0.18,1
+154,Casque de chantier — réf 2,Consommables,Divers chantier,unité,4675.0,0.36,EPI Faso,CON-0154,0.18,1

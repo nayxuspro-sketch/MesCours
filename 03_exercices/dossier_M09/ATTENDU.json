@@ -1,0 +1,151 @@
+{
+  "graine": 45,
+  "quincaillerie": {
+    "formes": {
+      "vente": [
+        50008,
+        13
+      ],
+      "client": [
+        1200,
+        5
+      ],
+      "produit": [
+        380,
+        6
+      ],
+      "categorie": [
+        8,
+        3
+      ],
+      "magasin": [
+        5,
+        6
+      ],
+      "mode_paiement": [
+        5,
+        4
+      ],
+      "regle_tva": [
+        2,
+        2
+      ],
+      "objectif_magasin": [
+        0,
+        4
+      ]
+    },
+    "empreinte": "b9a8d973119342ec…",
+    "note": "réexport de la base M07 figée — mêmes totaux que M07/M08 (CA brut 7 908 259 732 FCFA, CA propre 7 876 320 164 FCFA, plus gros mois 78 965 529 FCFA : magasin 3, 2025-08, vue sans retours)"
+  },
+  "sante": {
+    "formes": {
+      "consultation": [
+        18818,
+        7
+      ],
+      "medicament": [
+        12,
+        4
+      ],
+      "stock_medicament": [
+        8767,
+        5
+      ]
+    },
+    "periode": [
+      "2025-01-01",
+      "2026-12-31"
+    ],
+    "n_consultations_brut": 18818,
+    "defauts": {
+      "manquants_motif": 23,
+      "doublons_stock": 7,
+      "consultations_date_future": 1,
+      "stocks_negatifs": 4
+    },
+    "median_consultations_par_jour": 29.0,
+    "moyenne_consultations_par_jour": 25.74,
+    "pic_mois": "2025-07",
+    "creux_midi": 927,
+    "jours_consultes": 731,
+    "n_patients_distincts": 1500,
+    "rupture_M01_jours": 3,
+    "rupture_M02_jours": 5,
+    "rupture_M04_jours": 2,
+    "rupture_la_plus_longue": 5,
+    "jours_sous_seuil_alerte": 143
+  },
+  "scolaire": {
+    "formes": {
+      "eleve": [
+        402,
+        3
+      ],
+      "note": [
+        6000,
+        5
+      ],
+      "absence": [
+        1687,
+        5
+      ]
+    },
+    "periode": [
+      "2025-09-01",
+      "2026-06-30"
+    ],
+    "n_eleves_declares": 402,
+    "n_eleves_distincts": 400,
+    "defauts": {
+      "notes_hors_bornes": 6,
+      "doublons_eleves": 2,
+      "absences_jour_ferie": 4,
+      "absents_not_t2": 3
+    },
+    "correlation_absent_notes": -0.232,
+    "segments_absences": [
+      123,
+      208,
+      69
+    ],
+    "taux_absence_par_classe": {
+      "5e": 3.35,
+      "4e": 4.26,
+      "3e": 2.63,
+      "2nde": 2.35
+    },
+    "classe_la_plus_absente": "4e",
+    "n_absences_brut": 1687
+  },
+  "projet": {
+    "formes": {
+      "fichier_inconnu": [
+        10014,
+        10
+      ]
+    },
+    "periode": [
+      "2026-01-01",
+      "2026-06-30"
+    ],
+    "defauts": {
+      "doublons_tx_ref": 14,
+      "montants_negatifs": 5,
+      "montants_enormes": 2,
+      "commissions_manquantes": 30
+    },
+    "statuts_bruts": {
+      "OK": 2037,
+      "ok": 2043,
+      "Reussie": 2082,
+      "REUSSI": 1962,
+      "Echouee": 909,
+      "echec": 981
+    },
+    "succes_normalises": 8124,
+    "ecchecs_normalises": 1890,
+    "n_agents": 20
+  },
+  "empreinte_dossier": "026d39a6f167b74c1f2635e854b6e2ad96ea71894215b050ce8628a242d8e126"
+}

@@ -1,0 +1,12 @@
+{
+  "montants_en_texte": 3360,
+  "dates_format_mixte": 2640,
+  "lignes_en_double": 3360,
+  "remises_aberrantes": 973,
+  "clients_non_referentes": 486,
+  "produits_categorie_heteroclite": 61,
+  "clients_manquants_ville": 1880,
+  "doublons_quasi_clients": 412,
+  "lignes_brutes": 243360,
+  "lignes_propres": 240000
+}

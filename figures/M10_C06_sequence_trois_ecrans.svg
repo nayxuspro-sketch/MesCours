@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="538.582677pt" height="504.566929pt" viewBox="0 0 538.582677 504.566929" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>sequence_M10.py</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 504.566929 
+L 538.582677 504.566929 
+L 538.582677 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #1f4e79" x="18.850394" y="45.328384" transform="rotate(-0 18.850394 45.328384)">Version direction — 74 mots, 17 chiffres, 3 lignes par écran</text>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_2">
+    <path d="M 18.850394 217.325139 
+L 178.054078 217.325139 
+L 178.054078 81.435815 
+L 18.850394 81.435815 
+z
+" style="fill: #fbfcfe"/>
+   </g>
+   <g id="matplotlib.axis_1"/>
+   <g id="matplotlib.axis_2"/>
+   <g id="patch_3">
+    <path d="M 18.850394 217.325139 
+L 18.850394 81.435815 
+" style="fill: none; stroke: #1f4e79; stroke-width: 1.1; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 178.054078 217.325139 
+L 178.054078 81.435815 
+" style="fill: none; stroke: #1f4e79; stroke-width: 1.1; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 18.850394 217.325139 
+L 178.054078 217.325139 
+" style="fill: none; stroke: #1f4e79; stroke-width: 1.1; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 18.850394 81.435815 
+L 178.054078 81.435815 
+" style="fill: none; stroke: #1f4e79; stroke-width: 1.1; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_2">
+    <text style="font-weight: 700; font-size: 7.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #1f4e79" x="25.218541" y="98.005789" transform="rotate(-0 25.218541 98.005789)">Écran 1 — le niveau</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 6.3px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="26.810578" y="125.630734" transform="rotate(-0 26.810578 125.630734)">· CA net 2026 : 3 965,4 M FCFA</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 6.3px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="26.810578" y="148.052473" transform="rotate(-0 26.810578 148.052473)">· +1,4 % sur un an (3 910,9 M en 2025)</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 6.3px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="26.810578" y="170.726211" transform="rotate(-0 26.810578 170.726211)">· 24 mois comparés, retours exclus</text>
+   </g>
+   <g id="text_6">
+    <text style="font-style: italic; font-size: 5.9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #8895a5" x="26.810578" y="207.944764" transform="rotate(-0 26.810578 207.944764)">→ où en est-on ? · la saisonnalité ?</text>
+   </g>
+  </g>
+  <g id="axes_3">
+   <g id="patch_7">
+    <path d="M 192.38241 217.325139 
+L 351.586094 217.325139 
+L 351.586094 81.435815 
+L 192.38241 81.435815 
+z
+" style="fill: #fbfcfe"/>
+   </g>
+   <g id="matplotlib.axis_3"/>
+   <g id="matplotlib.axis_4"/>
+   <g id="patch_8">
+    <path d="M 192.38241 217.325139 
+L 192.38241 81.435815 
+" style="fill: none; stroke: #1f4e79; stroke-width: 1.1; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 351.586094 217.325139 
+L 351.586094 81.435815 
+" style="fill: none; stroke: #1f4e79; stroke-width: 1.1; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 192.38241 217.325139 
+L 351.586094 217.325139 
+" style="fill: none; stroke: #1f4e79; stroke-width: 1.1; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 192.38241 81.435815 
+L 351.586094 81.435815 
+" style="fill: none; stroke: #1f4e79; stroke-width: 1.1; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 700; font-size: 7.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #1f4e79" x="198.750557" y="98.005789" transform="rotate(-0 198.750557 98.005789)">Écran 2 — le levier</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 6.3px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="200.342594" y="125.630734" transform="rotate(-0 200.342594 125.630734)">· 77,0 % des ventes = 47,3 % du CA</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 6.3px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="200.342594" y="148.052473" transform="rotate(-0 200.342594 148.052473)">· 1 044 ventes &gt; 500 000 = 7,1 % du CA</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 6.3px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="200.342594" y="170.726211" transform="rotate(-0 200.342594 170.726211)">· médiane 119 482 FCFA : la queue paie</text>
+   </g>
+   <g id="text_11">
+    <text style="font-style: italic; font-size: 5.9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #8895a5" x="200.342594" y="207.944764" transform="rotate(-0 200.342594 207.944764)">→ où est le levier ?</text>
+   </g>
+  </g>
+  <g id="axes_4">
+   <g id="patch_12">
+    <path d="M 365.914426 217.325139 
+L 525.11811 217.325139 
+L 525.11811 81.435815 
+L 365.914426 81.435815 
+z
+" style="fill: #fbfcfe"/>
+   </g>
+   <g id="matplotlib.axis_5"/>
+   <g id="matplotlib.axis_6"/>
+   <g id="patch_13">
+    <path d="M 365.914426 217.325139 
+L 365.914426 81.435815 
+" style="fill: none; stroke: #1f4e79; stroke-width: 1.1; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 525.11811 217.325139 
+L 525.11811 81.435815 
+" style="fill: none; stroke: #1f4e79; stroke-width: 1.1; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 365.914426 217.325139 
+L 525.11811 217.325139 
+" style="fill: none; stroke: #1f4e79; stroke-width: 1.1; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_16">
+    <path d="M 365.914426 81.435815 
+L 525.11811 81.435815 
+" style="fill: none; stroke: #1f4e79; stroke-width: 1.1; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_12">
+    <text style="font-weight: 700; font-size: 7.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #1f4e79" x="372.282573" y="98.005789" transform="rotate(-0 372.282573 98.005789)">Écran 3 — la décision</text>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 6.3px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="373.87461" y="125.630734" transform="rotate(-0 373.87461 125.630734)">· Objectif : 56,1 M FCFA (+10 %)</text>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 6.3px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="373.87461" y="148.052473" transform="rotate(-0 373.87461 148.052473)">· Mesure : 1 044 paniers, 4 semaines</text>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 6.3px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="373.87461" y="170.726211" transform="rotate(-0 373.87461 170.726211)">· Coût : 2 vendeurs ; suivi : la queue</text>
+   </g>
+   <g id="text_16">
+    <text style="font-style: italic; font-size: 5.9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #8895a5" x="373.87461" y="207.944764" transform="rotate(-0 373.87461 207.944764)">→ combien ça rapporte ? · qui fait quoi ?</text>
+   </g>
+  </g>
+  <g id="axes_5">
+   <g id="text_17">
+    <text style="font-weight: 700; font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #2e6f5e" x="18.850394" y="247.069675" transform="rotate(-0 18.850394 247.069675)">Version équipe — 73 mots, 12 chiffres, 3 lignes par écran</text>
+   </g>
+  </g>
+  <g id="axes_6">
+   <g id="patch_17">
+    <path d="M 18.850394 426.812121 
+L 178.054078 426.812121 
+L 178.054078 290.922797 
+L 18.850394 290.922797 
+z
+" style="fill: #fbfcfe"/>
+   </g>
+   <g id="matplotlib.axis_7"/>
+   <g id="matplotlib.axis_8"/>
+   <g id="patch_18">
+    <path d="M 18.850394 426.812121 
+L 18.850394 290.922797 
+" style="fill: none; stroke: #2e6f5e; stroke-width: 1.1; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_19">
+    <path d="M 178.054078 426.812121 
+L 178.054078 290.922797 
+" style="fill: none; stroke: #2e6f5e; stroke-width: 1.1; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_20">
+    <path d="M 18.850394 426.812121 
+L 178.054078 426.812121 
+" style="fill: none; stroke: #2e6f5e; stroke-width: 1.1; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_21">
+    <path d="M 18.850394 290.922797 
+L 178.054078 290.922797 
+" style="fill: none; stroke: #2e6f5e; stroke-width: 1.1; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_18">
+    <text style="font-weight: 700; font-size: 7.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #2e6f5e" x="25.218541" y="307.492771" transform="rotate(-0 25.218541 307.492771)">Écran 1 — la base</text>
+   </g>
+   <g id="text_19">
+    <text style="font-size: 6.3px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="26.810578" y="335.369716" transform="rotate(-0 26.810578 335.369716)">· 24 mois, la même courbe qu'au rapport</text>
+   </g>
+   <g id="text_20">
+    <text style="font-size: 6.3px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="26.810578" y="357.539455" transform="rotate(-0 26.810578 357.539455)">· Retours : 208 lignes, 0,4 % du CA</text>
+   </g>
+   <g id="text_21">
+    <text style="font-size: 6.3px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="26.810578" y="379.961193" transform="rotate(-0 26.810578 379.961193)">· Rien n'a été lissé ni recalculé</text>
+   </g>
+   <g id="text_22">
+    <text style="font-style: italic; font-size: 5.9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #8895a5" x="26.810578" y="417.431746" transform="rotate(-0 26.810578 417.431746)">→ les données sont-elles propres ?</text>
+   </g>
+  </g>
+  <g id="axes_7">
+   <g id="patch_22">
+    <path d="M 192.38241 426.812121 
+L 351.586094 426.812121 
+L 351.586094 290.922797 
+L 192.38241 290.922797 
+z
+" style="fill: #fbfcfe"/>
+   </g>
+   <g id="matplotlib.axis_9"/>
+   <g id="matplotlib.axis_10"/>
+   <g id="patch_23">
+    <path d="M 192.38241 426.812121 
+L 192.38241 290.922797 
+" style="fill: none; stroke: #2e6f5e; stroke-width: 1.1; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_24">
+    <path d="M 351.586094 426.812121 
+L 351.586094 290.922797 
+" style="fill: none; stroke: #2e6f5e; stroke-width: 1.1; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_25">
+    <path d="M 192.38241 426.812121 
+L 351.586094 426.812121 
+" style="fill: none; stroke: #2e6f5e; stroke-width: 1.1; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_26">
+    <path d="M 192.38241 290.922797 
+L 351.586094 290.922797 
+" style="fill: none; stroke: #2e6f5e; stroke-width: 1.1; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_23">
+    <text style="font-weight: 700; font-size: 7.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #2e6f5e" x="198.750557" y="307.492771" transform="rotate(-0 198.750557 307.492771)">Écran 2 — le mécanisme</text>
+   </g>
+   <g id="text_24">
+    <text style="font-size: 6.3px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="200.342594" y="335.117716" transform="rotate(-0 200.342594 335.117716)">· La queue (2,1 % des ventes) : 7,1 % du CA</text>
+   </g>
+   <g id="text_25">
+    <text style="font-size: 6.3px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="200.342594" y="357.791455" transform="rotate(-0 200.342594 357.791455)">· Sous le panier médian : la moitié du fichier</text>
+   </g>
+   <g id="text_26">
+    <text style="font-size: 6.3px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="200.342594" y="380.213193" transform="rotate(-0 200.342594 380.213193)">· Un devis qui traîne : 2 semaines de CA</text>
+   </g>
+   <g id="text_27">
+    <text style="font-style: italic; font-size: 5.9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #8895a5" x="200.342594" y="417.431746" transform="rotate(-0 200.342594 417.431746)">→ pourquoi ça se passe comme ça ?</text>
+   </g>
+  </g>
+  <g id="axes_8">
+   <g id="patch_27">
+    <path d="M 365.914426 426.812121 
+L 525.11811 426.812121 
+L 525.11811 290.922797 
+L 365.914426 290.922797 
+z
+" style="fill: #fbfcfe"/>
+   </g>
+   <g id="matplotlib.axis_11"/>
+   <g id="matplotlib.axis_12"/>
+   <g id="patch_28">
+    <path d="M 365.914426 426.812121 
+L 365.914426 290.922797 
+" style="fill: none; stroke: #2e6f5e; stroke-width: 1.1; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_29">
+    <path d="M 525.11811 426.812121 
+L 525.11811 290.922797 
+" style="fill: none; stroke: #2e6f5e; stroke-width: 1.1; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_30">
+    <path d="M 365.914426 426.812121 
+L 525.11811 426.812121 
+" style="fill: none; stroke: #2e6f5e; stroke-width: 1.1; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_31">
+    <path d="M 365.914426 290.922797 
+L 525.11811 290.922797 
+" style="fill: none; stroke: #2e6f5e; stroke-width: 1.1; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_28">
+    <text style="font-weight: 700; font-size: 7.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #2e6f5e" x="372.282573" y="308.732615" transform="rotate(-0 372.282573 308.732615)">Écran 3 — le plan</text>
+   </g>
+   <g id="text_29">
+    <text style="font-size: 6.3px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="373.87461" y="335.117716" transform="rotate(-0 373.87461 335.117716)">· Semaine 1 : extraire les 1 044 paniers</text>
+   </g>
+   <g id="text_30">
+    <text style="font-size: 6.3px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="373.87461" y="357.539455" transform="rotate(-0 373.87461 357.539455)">· Semaine 2-4 : relancer, noter les refus</text>
+   </g>
+   <g id="text_31">
+    <text style="font-size: 6.3px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="373.87461" y="379.961193" transform="rotate(-0 373.87461 379.961193)">· Vendredi : revue de 10 min, 3 chiffres</text>
+   </g>
+   <g id="text_32">
+    <text style="font-style: italic; font-size: 5.9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #8895a5" x="373.87461" y="417.431746" transform="rotate(-0 373.87461 417.431746)">→ qui fait quoi ? · comment on saura ?</text>
+   </g>
+  </g>
+  <g id="axes_9">
+   <g id="text_33">
+    <text style="font-weight: 700; font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #1f4e79" x="18.850394" y="453.023534" transform="rotate(-0 18.850394 453.023534)">Les cinq objections, et l'écran qui y répond</text>
+   </g>
+   <g id="text_34">
+    <text style="font-size: 6.4px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="18.850394" y="464.154507" transform="rotate(-0 18.850394 464.154507)">« où en est-on ? la saisonnalité ? » → écran 1</text>
+   </g>
+   <g id="text_35">
+    <text style="font-size: 6.4px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="18.850394" y="470.473361" transform="rotate(-0 18.850394 470.473361)">« où est le levier ? » → écran 2</text>
+   </g>
+   <g id="text_36">
+    <text style="font-size: 6.4px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="18.850394" y="476.792214" transform="rotate(-0 18.850394 476.792214)">« combien ça rapporte ? » → écran 3</text>
+   </g>
+   <g id="text_37">
+    <text style="font-size: 6.4px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="18.850394" y="483.111068" transform="rotate(-0 18.850394 483.111068)">« qui fait quoi ? » → écran 3</text>
+   </g>
+   <g id="text_38">
+    <text style="font-size: 6.4px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="18.850394" y="489.429921" transform="rotate(-0 18.850394 489.429921)">« comment on saura si ça marche ? » → écran 3</text>
+   </g>
+   <g id="text_39">
+    <text style="font-size: 6.4px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; fill: #a1382c" transform="translate(282.109606 469.273507)">Le cadre unique du rapport (v1) : 1 écran, 12 chiffres,</text>
+    <text style="font-size: 6.4px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; fill: #a1382c" transform="translate(282.109606 476.440107)">2 objections sur 5 couvertes.</text>
+   </g>
+   <g id="text_40">
+    <text style="font-size: 6.4px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; fill: #2e6f5e" transform="translate(282.109606 488.84157)">La séquence : 3 écrans, 29 chiffres (6 par écran au plus),</text>
+    <text style="font-size: 6.4px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; fill: #2e6f5e" transform="translate(282.109606 496.00817)">5 objections sur 5 (100 %), 60 s de lecture.</text>
+   </g>
+  </g>
+  <g id="text_41">
+   <text style="font-size: 9.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="18.850394" y="15.16702" transform="rotate(-0 18.850394 15.16702)">La séquence de trois écrans : le même fil rouge, deux destinataires</text>
+  </g>
+ </g>
+</svg>

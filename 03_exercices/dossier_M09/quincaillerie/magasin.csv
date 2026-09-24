@@ -1,0 +1,6 @@
+id_magasin,nom,ville,region,quartier,surface_m2
+1,Ouaga Centre,Ouagadougou,Centre,Centre-ville,450
+2,Ouaga Patte d'Oie,Ouagadougou,Centre,Patte d'Oie,380
+3,Bobo Centre,Bobo-Dioulasso,Hauts-Bassins,Centre,520
+4,Bobo Sarfalao,Bobo-Dioulasso,Hauts-Bassins,Sarfalao,290
+5,Koudougou,Koudougou,Centre-Ouest,Centre,210

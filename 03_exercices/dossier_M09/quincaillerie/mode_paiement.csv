@@ -1,0 +1,6 @@
+id_mode,libelle,frais_pct,delai_encaissement_jours
+1,Especes,0.0,0
+2,Carte Bancaire,1.5,1
+3,Mobile Money,1.0,0
+4,Credit 30j,0.0,30
+5,Virement,0.5,2

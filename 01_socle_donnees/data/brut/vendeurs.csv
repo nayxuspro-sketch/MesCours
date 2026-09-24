@@ -1,0 +1,23 @@
+﻿id_vendeur,nom_complet,id_magasin,date_embauche,statut,secteur_vente
+1,Awa Zongo,2,2019-08-11,Titulaire,Comptoir
+2,Issa Kaboré,3,2018-07-03,Titulaire,Comptoir
+3,Fatoumata Sanou,4,2022-06-21,Titulaire,Comptoir
+4,Boureima Ouédraogo,5,2021-02-09,CDD,Itinérant
+5,Salif Traoré,1,2017-07-04,Titulaire,Itinérant
+6,Mariam Compaoré,2,2019-12-21,Titulaire,Itinérant
+7,Karim Sawadogo,3,2020-05-31,Titulaire,Itinérant
+8,Rasmata Diallo,4,2018-06-14,Titulaire,Itinérant
+9,Adama Bationo,5,2016-07-28,Titulaire,Itinérant
+10,Safiatou Nikiéma,1,2020-05-02,Titulaire,Comptoir
+11,Boukary Ouattara,2,2019-05-20,Titulaire,Comptoir
+12,Alizéta Tapsoba,3,2016-07-01,CDD,Comptoir
+13,Wendpanga Kabré,4,2018-11-20,Titulaire,Comptoir
+14,Salamatu Sankara,5,2022-08-06,Titulaire,Comptoir
+15,Norgho Bonkoum,1,2018-04-12,Titulaire,Itinérant
+16,Kadidiatou Yaro,2,2021-04-18,CDD,Comptoir
+17,Etienne Guigma,3,2021-09-24,Titulaire,Itinérant
+18,Rokia Kinda,4,2022-09-29,Titulaire,Itinérant
+19,Moussa Ilboudo,5,2016-03-10,Titulaire,Itinérant
+20,Aïssata Barry,1,2021-10-05,Titulaire,Itinérant
+21,Blaise Dicko,2,2024-08-01,Titulaire,Comptoir
+22,Nafissatou Zoungrana,3,2018-12-13,CDD,Itinérant
