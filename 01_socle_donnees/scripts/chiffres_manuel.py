@@ -3340,6 +3340,87 @@ def m11():
         "de trois lignes passe par %s : le cadre de fenetre decide de ce que la fonction regarde"
         % (d["m11_c01_cumul_cinq_lignes"], d["m11_c01_moyenne_glissante_cinq_lignes"]))
 
+    # --- C02 : rang, cumul, decalage
+    d["m11_c02_valeurs_distinctes_tickets"] = int(un(
+        "SELECT COUNT(DISTINCT t) FROM (SELECT id_client, COUNT(DISTINCT id_ticket) t FROM ventes "
+        "WHERE NOT est_retour GROUP BY 1)")[0])
+    rang = un("""
+        WITH c AS (SELECT id_client, COUNT(DISTINCT id_ticket) t FROM ventes
+                   WHERE NOT est_retour GROUP BY 1),
+             r AS (SELECT t, RANK() OVER (ORDER BY t DESC) rk,
+                          DENSE_RANK() OVER (ORDER BY t DESC) dr FROM c)
+        SELECT MAX(rk), MAX(dr) FROM r""")
+    d["m11_c02_max_rank"] = int(rang[0])
+    d["m11_c02_max_dense_rank"] = int(rang[1])
+    d["m11_c02_rank_vs_dense_texte"] = (
+        "sur la meme mesure, RANK descend jusqu'a %s et DENSE_RANK s'arrete a %s : deux nombres justes, "
+        "un seul interpretable" % (FMT(rang[0]), rang[1]))
+    d["m11_c02_clients_20_tickets"] = int(un("""
+        SELECT COUNT(*) FROM (SELECT id_client, COUNT(DISTINCT id_ticket) t FROM ventes
+        WHERE NOT est_retour GROUP BY 1) WHERE t = 20""")[0])
+    d["m11_c02_clients_8_tickets"] = d["m11_ntile_egalite_clients"]
+    paniers = con.execute("""
+        SELECT m.nom, ROUND(SUM(v.montant_ttc) / COUNT(DISTINCT v.id_ticket)) p,
+               RANK() OVER (ORDER BY SUM(v.montant_ttc) DESC) rc,
+               RANK() OVER (ORDER BY SUM(v.montant_ttc) / COUNT(DISTINCT v.id_ticket) DESC) rp
+        FROM ventes v JOIN magasin m USING (id_magasin) WHERE NOT v.est_retour
+        GROUP BY 1 ORDER BY p DESC""").fetchall()
+    d["m11_c02_panier_par_magasin"] = " ; ".join(
+        "%s : %s FCFA (%de en CA, %de en panier)" % (n, FMT(p), rc, rp) for n, p, rc, rp in paniers)
+    premier_ca = [x for x in paniers if x[2] == 1][0]
+    d["m11_c02_panier_premier_fcfa"] = FMT(paniers[0][1]) + " FCFA"
+    d["m11_c02_panier_dernier_fcfa"] = FMT(paniers[-1][1]) + " FCFA"
+    d["m11_c02_rang_panier_du_premier_ca"] = int(premier_ca[3])
+    d["m11_c02_inversion_classement_texte"] = (
+        "le premier magasin en CA (%s) n'est que %se en panier moyen (%s) ; le dernier en CA (%s) est "
+        "premier en panier (%s FCFA) — le classement ne repond pas a la meme question que le total"
+        % (d["m11_magasin_premier"], premier_ca[3], FMT(premier_ca[1]),
+           d["m11_ca_magasin_min"], FMT(paniers[0][1])))
+    var = un("""
+        WITH m AS (SELECT strftime(date_trunc('month', date_vente), '%Y-%m') am, SUM(montant_ttc) ca
+                   FROM ventes WHERE NOT est_retour GROUP BY 1),
+             v AS (SELECT am, ca, LAG(ca, 12) OVER (ORDER BY am) p FROM m)
+        SELECT ROUND(AVG(100.0 * (ca - p) / p), 1), COUNT(*) FROM v WHERE p IS NOT NULL""")
+    d["m11_c02_variation_annuelle_moyenne_pct"] = float(var[0])
+    d["m11_c02_mois_comparables"] = int(var[1])
+    d["m11_c02_lag_premier_mois"] = (
+        "le premier mois n'a pas de mois precedent : LAG rend NULL et la variation aussi — "
+        "un trou a declarer, pas un zero a publier")
+    jours = con.execute("""
+        SELECT CAST(date_vente AS VARCHAR) j, ROUND(SUM(montant_ttc)) ca FROM ventes
+        WHERE NOT est_retour GROUP BY 1 ORDER BY ca DESC LIMIT 1""").fetchone()
+    jour_min = con.execute("""
+        SELECT CAST(date_vente AS VARCHAR) j, ROUND(SUM(montant_ttc)) ca FROM ventes
+        WHERE NOT est_retour GROUP BY 1 ORDER BY ca ASC LIMIT 1""").fetchone()
+    d["m11_c02_meilleur_jour"] = "%s (%s FCFA)" % (jours[0], FMT(jours[1]))
+    d["m11_c02_pire_jour"] = "%s (%s FCFA)" % (jour_min[0], FMT(jour_min[1]))
+    d["m11_c02_ratio_jour_max_min"] = round(float(jours[1]) / float(jour_min[1]), 1)
+    cum = con.execute("""
+        WITH m AS (SELECT YEAR(date_vente) an, date_trunc('month', date_vente) mm, SUM(montant_ttc) ca
+                   FROM ventes WHERE NOT est_retour GROUP BY 1, 2),
+             c AS (SELECT mm, SUM(ca) OVER (PARTITION BY an ORDER BY mm) cumul,
+                          ROUND(100.0 * SUM(ca) OVER (PARTITION BY an ORDER BY mm)
+                                / SUM(ca) OVER (PARTITION BY an), 1) part
+                   FROM m WHERE an = 2023)
+        SELECT * FROM c ORDER BY mm LIMIT 4""").fetchall()
+    d["m11_c02_cumul_2023_points"] = " ; ".join(FMT(r[1]) for r in cum) + " FCFA"
+    d["m11_c02_part_cumulee_2023_pct"] = " ; ".join("%s" % r[2] for r in cum)
+    va = con.execute("""
+        WITH m AS (SELECT strftime(date_trunc('month', date_vente), '%Y-%m') am, SUM(montant_ttc) ca
+                   FROM ventes WHERE NOT est_retour GROUP BY 1),
+             v AS (SELECT am, ca, LAG(ca, 12) OVER (ORDER BY am) p FROM m)
+        SELECT am, ROUND(100.0 * (ca - p) / p, 1) FROM v WHERE p IS NOT NULL ORDER BY am LIMIT 5""").fetchall()
+    d["m11_c02_variations_annuelles_2024"] = " ; ".join(
+        "%s %+.1f %%" % (a, v) for a, v in va)
+    d["m11_c02_top3_regroupement"] = int(un("""
+        SELECT COUNT(*) FROM (SELECT p.categorie, p.designation,
+            ROW_NUMBER() OVER (PARTITION BY p.categorie ORDER BY SUM(v.montant_ttc) DESC) rg
+            FROM ventes v JOIN produit p USING (id_produit) WHERE NOT v.est_retour GROUP BY 1, 2)
+        WHERE rg <= 3""")[0])
+    d["m11_c02_top3_texte"] = (
+        "un top 3 par categorie sur les libelles tels quels rend %s lignes (16 categories) ; sur les "
+        "6 familles reelles, il en rendrait 18" % d["m11_c02_top3_regroupement"])
+
     # --- Deux socles, deux perimetres (C07 / rapport R12)
     d["m11_socle_m09_lignes"] = 50008
     d["m11_socle_m09_ca"] = "7 908 259 732 FCFA"
