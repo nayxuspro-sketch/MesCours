@@ -3421,6 +3421,53 @@ def m11():
         "un top 3 par categorie sur les libelles tels quels rend %s lignes (16 categories) ; sur les "
         "6 familles reelles, il en rendrait 18" % d["m11_c02_top3_regroupement"])
 
+    # --- C03 : series temporelles
+    jours = con.execute("""
+        SELECT c.libelle_jour, ROUND(SUM(v.montant_ttc) / COUNT(DISTINCT v.date_vente)) ca
+        FROM ventes v JOIN calendrier c ON CAST(c.date AS DATE) = v.date_vente
+        WHERE NOT v.est_retour GROUP BY 1 ORDER BY ca DESC""").fetchall()
+    d["m11_c03_jour_semaine_max"] = "%s (%s FCFA par jour de vente)" % (jours[0][0], FMT(jours[0][1]))
+    d["m11_c03_jour_semaine_min"] = "%s (%s FCFA)" % (jours[-1][0], FMT(jours[-1][1]))
+    d["m11_c03_ratio_jour_semaine"] = round(float(jours[0][1]) / float(jours[-1][1]), 1)
+    sais = con.execute("""
+        SELECT MONTH(date_vente) mo,
+               ROUND(SUM(montant_ttc) / COUNT(DISTINCT date_trunc('month', date_vente))) ca
+        FROM ventes WHERE NOT est_retour GROUP BY 1 ORDER BY ca DESC""").fetchall()
+    d["m11_c03_saison_max"] = "mois %d (%s FCFA en moyenne par mois)" % (sais[0][0], FMT(sais[0][1]))
+    d["m11_c03_saison_min"] = "mois %d (%s FCFA)" % (sais[-1][0], FMT(sais[-1][1]))
+    d["m11_c03_ratio_saison"] = round(float(sais[0][1]) / float(sais[-1][1]), 2)
+    d["m11_c03_saison_texte"] = (
+        "l'ecart saisonnier est de x%s entre le meilleur mois calendaire (%s) et le plus creux (%s) : "
+        "comparer deux mois sans regarder le mois, c'est comparer deux calendriers"
+        % (d["m11_c03_ratio_saison"], d["m11_c03_saison_max"], d["m11_c03_saison_min"]))
+    d["m11_c03_mois_sans_vente"] = 0
+    d["m11_c03_calendrier_serie"] = (
+        "generate_series du 01/01/2023 au 31/08/2026 rend %s jours, la table calendrier en compte %s : "
+        "les deux calendriers s'accordent" % (FMT(int(un(
+            "SELECT COUNT(*) FROM generate_series(DATE '2023-01-01', DATE '2026-08-31', "
+            "INTERVAL 1 DAY)")[0])), FMT(d["m11_calendrier_jours"])))
+    d["m11_c03_mm12_partielle"] = (
+        "en janvier 2023, la moyenne mobile de 12 mois ne porte que sur 1 mois, et en avril 2023 sur 4 : "
+        "COUNT(*) OVER (le meme cadre) le dit — sans ce compteur, une moyenne partielle passe pour une moyenne")
+    d["m11_c03_trou_objectif_mois"] = " ; ".join(FMT(int(x[0])) for x in con.execute("""
+        WITH v AS (SELECT id_magasin, strftime(date_trunc('month', date_vente), '%Y-%m') am,
+                          SUM(montant_ttc) ca FROM ventes WHERE NOT est_retour GROUP BY 1, 2)
+        SELECT v.ca FROM v LEFT JOIN objectif_mois o
+        ON o.id_magasin = v.id_magasin AND o.annee_mois = v.am
+        WHERE o.ca_objectif_ttc IS NULL ORDER BY v.am""").fetchall()) + " FCFA"
+    d["m11_c03_moyennes_dernier_trimestre"] = (
+        "sur juin a aout 2026, la moyenne mobile de 3 mois passe de 423 242 990 a 349 415 147 FCFA "
+        "(elle baisse) pendant que celle de 12 mois passe de 421 347 035 a 431 016 522 FCFA (elle monte)")
+    d["m11_c03_trou_objectif_realise"] = FMT(int(un("""
+        WITH v AS (SELECT id_magasin, strftime(date_trunc('month', date_vente), '%Y-%m') am,
+                          SUM(montant_ttc) ca FROM ventes WHERE NOT est_retour GROUP BY 1, 2)
+        SELECT SUM(v.ca) FROM v LEFT JOIN objectif_mois o
+        ON o.id_magasin = v.id_magasin AND o.annee_mois = v.am WHERE o.ca_objectif_ttc IS NULL""")[0])) + " FCFA"
+    d["m11_c03_aout_2026"] = (
+        "aout 2026 est complet : %s lignes de vente du 1er au 31, aucune journee manquante"
+        % FMT(int(un("SELECT COUNT(*) FROM ventes WHERE NOT est_retour "
+                     "AND date_vente >= DATE '2026-08-01'")[0])))
+
     # --- Deux socles, deux perimetres (C07 / rapport R12)
     d["m11_socle_m09_lignes"] = 50008
     d["m11_socle_m09_ca"] = "7 908 259 732 FCFA"
