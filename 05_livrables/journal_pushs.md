@@ -51,18 +51,18 @@ bout (n° 36 → n° 57) ; M13 est **engagé** (plan n° 58, socle n° 59, C01 n
 | 77 | `7f320f4` | **M13.C06** — Le temps et le calendrier (**7 154** mots, 16 §) : le trou déclaré en C04 fermé (**1 339** lignes de calendrier, **240 000** lignes sur **240 000**), les **2** contrôles de complétude (**0** jour sans vente, **0** date de vente hors calendrier, mais **13** dates de livraison pour **46** commandes et **32 772 075** FCFA), les attributs lus dans la dimension (**18** fériés, dimanche **5,32 %**, 4ᵉ trimestre **29,7 %**), les deux calendriers (semaine normalisée **52** contre commerciale **53**), l'exercice fiscal décalé (**725** jours), la comparaison bornée (**− 28,9 %** contre **+ 15,4 %**, soit **44,3** points) et le cumul glissant (**+ 16,2 %**) | **94** clés `m13_c06_*` au relevé |
 | 78 | `4391dd1` | **M13.C07** — Qualité, documentation et revue en **15** points (**6 080** mots, 16 §) : les **4** contrôles de recette (**14** tables sur **14**, **7** faits sur **7**, **12** clés étrangères et **0** orphelin, **15 595 154 955** FCFA des deux côtés), ce que le script déclare (**315** lignes dont **99** de commentaire, **0** clé et **0** commentaire de colonne) et ce qui reste à documenter (**127** colonnes), la grille de revue dont **5** points échouent sur le modèle fautif (**2 826 394** caractères recopiés au lieu de **239 599**, deux temps, un objectif posé sur la vente à **+ 42,9 %**, **0** clé, **16** libellés pour **7** familles), et les **3** modèles fautifs qui s'exécutent sans erreur (**+ 43,0 %**, **+ 89,0 %**, **44** fois) | **3ᵉ planche** `M13_C07_grille_revue.svg` (**609** px) ; les durées de lecture des chapitres C02, C04 et C05 réalignées sur la dernière mesure |
 | 79 | `91a7d24` | Journal des pushs (n° 74 à 78 remis dans l'ordre) et état au 25/09 : M13 à **7/7** | compteurs mesurés sur le dépôt : **403** fichiers · **95** dans `02_modules/` · **72** planches |
-| 80 | *(ce push)* | **Clôture M13** — projet « Le modèle de Sahel Distribution » (**20** pts, seuil **13**, **8** totaux de contrôle), évaluation (**75** pts, seuil **48** : quiz **20**, normalisation **20**, étude de cas **30**, auto-test **5**), `05_livrables/M13.pdf` (**107** p., **774** Ko, **3/3** planches, **27/27** glyphes), `05_livrables/fiche_controle_M13.md` (**10/10** au vert, **5** nuances), et **2** correctifs : signe moins perdu **9** fois dans le chapitre C06 (`**, 28,9 %**` → `**− 28,9 %**`), déclaration d'exécution §1.5 ajoutée en tête des **5** chapitres qui ne l'avaient pas | `autovalide M13 --strict` **0** avertissement sur **9** fichiers · `controle_pdf.py M13` **0** défaut bloquant · PDF **107** p. pour **105** (fourchette [89, 121]) · socle reconstruit à l'empreinte près (`739e4ba68297bff8`) |
+| 80 | `2871fd7` | **Clôture M13** — projet « Le modèle de Sahel Distribution » (**20** pts, seuil **13**, **8** totaux de contrôle), évaluation (**75** pts, seuil **48** : quiz **20**, normalisation **20**, étude de cas **30**, auto-test **5**), `05_livrables/M13.pdf` (**107** p., **774** Ko, **3/3** planches, **27/27** glyphes), `05_livrables/fiche_controle_M13.md` (**10/10** au vert, **5** nuances), et **2** correctifs : signe moins perdu **9** fois dans le chapitre C06 (`**, 28,9 %**` → `**− 28,9 %**`), déclaration d'exécution §1.5 ajoutée en tête des **5** chapitres qui ne l'avaient pas | `autovalide M13 --strict` **0** avertissement sur **9** fichiers · `controle_pdf.py M13` **0** défaut bloquant · PDF **107** p. pour **105** (fourchette [89, 121]) · socle reconstruit à l'empreinte près (`739e4ba68297bff8`) |
 
 Chaque envoi a suivi la procédure en **ajout seul** (PATCH_11) : test du jeton → `git init` →
 `fetch --depth 1` → `update-ref` → `read-tree` → `git add` **des seuls chemins nommés** → push →
 bundle de secours dans `/tmp` → `rm -rf .git`. **Jamais** `git add -A` : les PDF de module vivent
 hors de l'atelier, et un ajout global les aurait marqués « supprimés » dès que la place manque.
 
-**Contrôles de dépôt après le n° 79 (mesurés sur le dépôt lui-même, chemins sans échappement)** :
-**403** fichiers · **95** dans `02_modules/` (dont **90** `.md` : **88** chapitres rédigés, l'ouverture
+**Contrôles de dépôt après le n° 80 (mesurés sur un clone neuf, `ls-tree -z`)** :
+**407** fichiers · **95** dans `02_modules/` (dont **90** `.md` : **88** chapitres rédigés, l'ouverture
 `M01_C00` et le bilan de M01, plus **5** PDF de chapitres M05) · **72** planches dans `figures/` ·
-**49** instruments dans `tools/` · **0** `.pyc` · **21** PDF · **41** pièces dans `05_livrables/` ·
-`03_exercices/dossier_M13/` complet (**8** fichiers) · la branche `main` pointe sur `91a7d24`.
+**49** instruments dans `tools/` · **0** `.pyc` · **22** PDF · **43** pièces dans `05_livrables/` ·
+`03_exercices/dossier_M13/` complet (**8** fichiers) · la branche `main` pointe sur `2871fd7`.
 
 **M13 est complet : 7 chapitres sur 7.** Le module passe de **86** à **88** chapitres rédigés (81
 publiés pour M01-M12, **7** pour M13), soit **62 %** des **143** chapitres du manuel.
@@ -98,30 +98,33 @@ Trois corrections que la mesure a imposées, et qui changent des chiffres déjà
    M07 : quiz 13/20, exercices 28/35 ; M12 : 70 points, seuil 45). Le guide donne le barème réel
    des douze modules, au lieu d'un format supposé.
 
-## Ce qui reste à pousser pour M13
+## M13 — état de livraison (clos au n° 80)
 
 | Étape | Livrable | État |
 |---|---|---|
 | Plan | `05_livrables/plan_M13.md` — 7 ch., 30 h, 105 p., 3 planches, 8 décisions | ✅ n° 58 |
 | Socle | `03_exercices/dossier_M13/` — 12 tables, 2 dimensions historisées en SQL, instrument `modele_M13.py` | ✅ n° 59 |
-| C01 | Modéliser : MCD, MLD, MPD (6 624 mots) | ✅ n° 61 |
+| C01 | Modéliser : MCD, MLD, MPD (6 644 mots) | ✅ n° 61 |
 | C02 | Normaliser : 1FN → 3FN, les 4 anomalies (5 577 mots) | ✅ n° 63 |
-| C03 | Grain, additivité, table de faits (16 §) + planche | ✅ n° 69 |
-| C04 | Étoile, dimensions conformes, SCD 0/1/2/3 (16 §) + planche | ✅ n° 72 |
-| — | **Le chapitre C03 a révélé un défaut de plus du socle** : le filtre silencieux par jointure d'agrégats (dépôt central, **28 893 543** FCFA) — corrigé dans le chapitre et l'instrument | ✅ n° 69 |
-| C05 | Flocon, pont, déchet, faits multiples (15 §) | ✅ n° 74 |
-| — | **Le chapitre C04 a rouvert un trou du modèle, déclaré et mesuré** : `dim_date` existe mais **aucun fait** ne pointe dessus par clé — à fermer en C06 | ⏳ C06 |
-| C06 | Le temps et le calendrier (15 §) | ✅ n° 77 |
-| C07 | Qualité, documentation, revue en 15 points (16 §) | ✅ n° 78 |
-| C07 | Qualité, documentation, revue en 15 points (16 §) + planche | à écrire |
-| Figures | **2** planches livrées sur **3** (`M13_C03`, `M13_C04`) ; reste celle de C07 | 2/3 |
-| PDF | `05_livrables/M13.pdf` — cible **[89, 121]** p. | à produire |
-| Fiche | `05_livrables/fiche_controle_M13.md` (Q1-Q10) | à écrire |
-| Projet | `03_exercices/M13_projet.md` — 4 livrables (**6 + 6 + 5 + 3 = 20** points, seuil **13**) | à écrire |
-| Évaluation | `04_evaluations/M13_evaluation.md` — **75** points, seuil **48** | à écrire |
-| Clôture | `README.md`, `05_livrables/etat_avancement.md` | à mettre à jour |
+| C03 | Grain, additivité, table de faits (7 089 mots) + planche | ✅ n° 69 |
+| C04 | Étoile, dimensions conformes, SCD 0/1/2/3 (6 656 mots) + planche | ✅ n° 72 |
+| C05 | Flocon, pont, déchet, faits multiples (6 291 mots) | ✅ n° 74 |
+| C06 | Le temps et le calendrier (7 154 mots) | ✅ n° 77 |
+| C07 | Qualité, documentation, revue en 15 points (6 080 mots) + planche | ✅ n° 78 |
+| Défaut révélé par C03 | le filtre silencieux par jointure d'agrégats (dépôt central, **28 893 543** FCFA) — corrigé dans le chapitre et l'instrument | ✅ n° 69 |
+| Trou ouvert par C04 | `dim_date` existait sans qu'aucun fait ne pointe dessus — déclaré et mesuré, fermé en C06 | ✅ n° 77 |
+| Figures | **3** planches : C03 **623** px, C04 **668** px, C07 **609** px (limite 776) | ✅ 3/3 |
+| PDF | `05_livrables/M13.pdf` — **107** p., cible [89, 121] (**+ 1,9 %**), 9 fichiers joints, 20 signets | ✅ n° 80 |
+| Fiche | `05_livrables/fiche_controle_M13.md` — Q1-Q10 **10/10**, 5 nuances déclarées | ✅ n° 80 |
+| Projet | `03_exercices/M13_projet.md` — 4 livrables (**6 + 6 + 5 + 3 = 20** points, seuil **13**) | ✅ n° 80 |
+| Évaluation | `04_evaluations/M13_evaluation.md` — **75** points, seuil **48** | ✅ n° 80 |
+| Veille de clôture | signe moins perdu **9** fois dans C06 restauré ; déclaration d'exécution §1.5 ajoutée en tête de C03 → C07 | ✅ n° 80 |
 
-## Procédure à rejouer (elle a fonctionné **35** fois de suite, n° 40 → n° 78)
+**Rien ne reste à pousser pour M13.** Le module suivant est **M14 — Power BI** (*Restituer et
+modéliser*, phase 4), dont le dossier sera documenté pas à pas et **déclaré non exécuté** (règle §1.5,
+aucun Power BI dans cet atelier).
+
+## Procédure à rejouer (elle a fonctionné **37** fois de suite, n° 40 → n° 80)
 
 ```bash
 cd /home/user/formation-data-bi
