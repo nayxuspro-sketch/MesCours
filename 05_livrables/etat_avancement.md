@@ -1,6 +1,6 @@
 # État d'avancement du manuel — *La Voie des Données* (Édition 2026)
 
-**Arrêté au 25 septembre 2026, après le push n° 65 (kit d'exploitation des douze modules publiés).**
+**Arrêté au 25 septembre 2026, après le push n° 67 (kit d'exploitation livré, sommaire du livre corrigé).**
 **M11 (n° 36 → n° 45), M12 (n° 46 → n° 57) et le kit M01-M12 (n° 65) sont poussés.** M13 est
 **engagé** : plan n° 58, socle et instrument n° 59, **C01** n° 61, **C02** n° 63 — **2 chapitres sur
 7**. Le modèle de Sahel Distribution compte **12** tables (**5** dimensions, **7** faits), **2**
@@ -21,7 +21,7 @@ kit, refaites à chaque exécution de `tools/kit_exploitation.py`).
 | Chapitres | **143** | **83** (81 publiés + 2 de M13) | **60** |
 | Heures du parcours | **660 h** | **360 h** livrées (+ 30 h engagées en M13) | **270 h** |
 | Pages de module | **2 226 p.** | **1 207 p.** composées et vérifiées | **1 019 p.** |
-| Appareil du livre | **229 p.** | **37 p.** (guide 5 p. + index 32 p.), assemblés dans le livre | **192 p.** |
+| Appareil du livre | **229 p.** | **36 p.** (guide 4 p. + index 32 p.), assemblés dans le livre | **193 p.** |
 | **Total manuel** | **2 455 p.** | **1 395 p.** dans un seul livre assemblé | — |
 | Exercices autonomes (mesurés) | — | **366** dans les 81 chapitres, **0** sans reprise au corrigé | — |
 | Exercices (unité de l'architecture, 180) | 180 | unité différente : l'architecture compte des exercices types, le manuel écrit des énoncés | — |
@@ -58,7 +58,7 @@ kit, refaites à chaque exécution de `tools/kit_exploitation.py`).
 | M12 | Fondamentaux de la Business Intelligence | 6 | 82 | 2 | clos, poussé |
 
 **Le kit d'exploitation (n° 65)** rend ces douze modules utilisables par un apprenant seul :
-`guide_apprenant_M01_M12.md` (1 886 mots), `index_glossaire_M01_M12.md` (488 notions, 367
+`guide_apprenant_M01_M12.md` (1 886 mots, 4 p.), `index_glossaire_M01_M12.md` (488 notions, 367
 définitions, 69 planches, 48 instruments, 10 jeux de données), `kit_M01_M12.json` (les mesures),
 `requirements.txt` (l'environnement), `tools/kit_exploitation.py` (le générateur) et le **livre
 assemblé de 1 395 pages avec 124 signets**, où le guide ouvre la partie I.
@@ -90,7 +90,7 @@ M16 (*Tableau et autres outils BI*, 5 ch.), M17 (*Automatisation du reporting*, 
 M20 (*Data storytelling et communication*, 6 ch.), M21 (*Projets professionnels complets*, 6 ch.,
 avec sa carte de 10 KPI héritée de M12), M22 (*Portfolio, emploi, feuille de route*, 4 ch.).
 
-### Appareil du livre — 229 p., dont 37 p. livrées
+### Appareil du livre — 229 p., dont 36 p. livrées
 
 Le **guide de l'apprenant** et l'**index avec glossaire** sont écrits et assemblés (n° 65). Restent
 l'ouverture générale, les annexes, la feuille de route, la bibliographie et la conclusion : à
@@ -126,4 +126,4 @@ mécanique — `tools/kit_exploitation.py` la fait déjà pour les 488 notions d
 5. **Options M23—M25** — seulement si le parcours obligatoire est clos.
 
 *Mise à jour du 25 septembre 2026 — remplace l'état arrêté après la clôture de M12. Les compteurs
-de dépôt de ce fichier sont ceux du push n° 65 (`e6d7ad8`).*
+de dépôt de ce fichier sont ceux du push n° 67 (`88ea9d5`).*
