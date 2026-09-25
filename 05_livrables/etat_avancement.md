@@ -1,8 +1,10 @@
 # État d'avancement du manuel — *La Voie des Données* (Édition 2026)
 
-**Arrêté au 24 septembre 2026, à la clôture de M11 (7 chapitres écrits et validés `--strict` ; pushs
-n° 36 à n° 39 pour le plan, le socle, C01 et C03 ; C02 et C04 à C07 **en attente de push** — jeton
-GitHub refusé le 24/09/2026).**
+**Arrêté au 25 septembre 2026, après la clôture de M11 et l'ouverture de M12.**
+**M11 est intégralement poussé** (pushs n° 36 à n° 45 : plan, socle et instruments, C01 à C07 un
+chapitre par push, puis la clôture — instruments, projet, évaluation, fiche Q1-Q10, PDF de 97 p.,
+2 figures, errata §C.3). **M12 est engagé** : plan n° 46, socle et instruments n° 47, chapitres C01,
+C02 et C03 (n° 48 à n° 50). Détail : `05_livrables/journal_pushs.md`.
 Chiffres pris aux sources du dépôt : `00_architecture/01_architecture_pedagogique.md` (§C.1, §F.2,
 §F.4, §E.3, §E.4, §B.6) et `tools/budget_pages.py` (budget recalculé, conforme).
 
@@ -89,21 +91,27 @@ M10 est clos le 24 septembre 2026 : 7 chapitres poussés un par un (n° 24 → n
 > (*« Vos résultats sont justes. S'ils sont illisibles, ils ne serviront à rien. »*), et son
 > emprunt le plus direct est la table question → graphique posée au C06.
 
-### Phase 4 — Business Intelligence (5 modules · 35 ch. · 150 h · 524 p.) — **OUVERTE** (M11 livré)
+### Phase 4 — Business Intelligence (5 modules · 35 ch. · 150 h · 524 p.) — **OUVERTE** (M11 livré et poussé, M12 engagé)
 
-M11 est **écrit et validé** : 7 chapitres, **42 410** mots, **97** pages composées pour 105 p. de
-budget, **301** clés de valeurs publiées, **2** planches (**609** et **686** px), un projet
-(« Les **12** rapports SQL de la cellule commerciale », **4** livrables) et une évaluation de
-**70** points (quiz **20** Q, **5** exercices dont **2** de niveau 4, étude de cas « **10 %** des
-clients font-ils **60 %** du CA ? » — réponse mesurée : **non**, **38,1 %**).
-État de publication : plan poussé n° **36**, socle et instruments n° **37**, C01 n° **38**, C03
-n° **39** — C02 et C04 à C07, le projet, l'évaluation et la fiche sont **en attente de push**, le
-jeton GitHub ayant été refusé le 24 septembre 2026 (lecture anonyme OK, dépôt public).
+**M12 est engagé** : plan poussé (n° 46, 6 ch., budget 92 p. [78, 106]) et socle livré (n° 47) — six CSV
+déterministes (**1,36 Mo**, graine 46) qui ajoutent au fil rouge les sources qu'un indicateur exige, et
+un instrument, `tools/kpi_M12.py`, qui mesure les **10 KPI** du projet, les **4** régimes de question et
+le vocabulaire du grain. Trois chapitres poussés (**C01**, **C02**, **C03**, **15 382** mots au total),
+relevé `m12_*` de **181** clés, `diff` = 0 entre deux exécutions.
+
+M11 est **écrit, validé et intégralement poussé** : 7 chapitres, **42 410** mots, **97** pages
+composées pour 105 p. de budget, **301** clés de valeurs publiées, **2** planches (**609** et
+**686** px), un projet (« Les **12** rapports SQL de la cellule commerciale », **4** livrables
+**8 + 5 + 4 + 3 = 20**, seuil 13) et une évaluation de **70** points (quiz **20** Q, **5** exercices
+dont **2** de niveau 4, étude de cas « **10 %** des clients font-ils **60 %** du CA ? » — réponse
+mesurée : **non**, **38,1 %**).
+État de publication : **10 pushs** (n° 36 → n° 45), du plan à la clôture, un par chapitre ; l'errata
+du §C.3 de l'architecture (M11/M12 de palier *P3* à *P4*) est **appliqué et publié**.
 
 | Module | Chap. | Budget | Contenu attendu |
 |---|---|---|---|
-| **M11 SQL avancé pour la BI** | 7 | 105 p. | **LIVRÉ** : fenêtres et partitions, rangs et cumuls, séries temporelles, cohortes et RFM, CTE / `PIVOT` / `UNNEST` / `QUALIFY` / `ROLLUP`, vues, index et plans, style et tests de non-régression — DuckDB et SQLite **exécutés**, PostgreSQL et SQL Server **cités** |
-| M12 Fondamentaux de la Business Intelligence | 6 | 92 p. | chaîne brut → décision, carte de KPI, gouvernance |
+| **M11 SQL avancé pour la BI** | 7 | 105 p. | **LIVRÉ ET POUSSÉ** : fenêtres et partitions, rangs et cumuls, séries temporelles, cohortes et RFM, CTE / `PIVOT` / `UNNEST` / `QUALIFY` / `ROLLUP`, vues, index et plans, style et tests de non-régression — DuckDB et SQLite **exécutés**, PostgreSQL et SQL Server **cités** |
+| **M12 Fondamentaux de la Business Intelligence** | 6 | 92 p. | **EN COURS** : C01 (définition de la BI), C02 (les 4 régimes de question) et C03 (vocabulaire exact : métrique, dimension, fait, grain) **poussés** ; C04 (6 critères et carte de définition), C05 (architecture en 7 étages) et C06 (10 causes d'échec) à écrire — socle dédié de 6 CSV (coût, stock, ruptures, commandes, encaissements, logistique) et instrument `kpi_M12.py` |
 | M13 Modélisation des données | 7 | 105 p. | étoile, flocon, MCD complet (dbdiagram, Power Pivot, SQL) |
 | M14 Power BI, de l'import à la publication | 8 | 117 p. | **2 projets** ; validation de dashboard |
 | M15 DAX pour la BI | 7 | 105 p. | bibliothèque de 40 mesures |

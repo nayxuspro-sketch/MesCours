@@ -20,7 +20,32 @@ contrôle, README, embarquement de la figure C01, retrait pyc du remote, `.gitig
 | 5 | Composition du manuel PDF (A4, couverture, mise en page éditeur) | ✅ moteur au point — `05_livrables/M01.pdf` (**117 p.**), `M02.pdf` (**122 p.**), `M03.pdf` (**126 p.**), `M04.pdf` (**92 p.**), `M05.pdf` (86 p.), `M06.pdf` (**69 p.**, budget 80 ±15 % = 68-92, OK), `M07.pdf` (**109 p.**, budget 117 ±15 % = 99-135, OK), `M08.pdf` (**119 p.**, budget 117 ±15 % = 99-135, OK), `M09.pdf` (**82 p.**, budget 92,5 ±15 % = [79, 106], OK) `M10.pdf` (**106 p.**, budget 105 ±15 % = [89, 121], OK) et `M11.pdf` (**97 p.**, budget 105 ±15 % = [89, 121], OK — projet et évaluation joints, **9** fichiers) ; les HTML de contrôle, régénérables en 20 s, ont été supprimés le 24/09/2026 pour tenir le quota de l'atelier (165,0 → 127,0 Mo) — les paginations M01-M04 et M08 ont été mesurées **après** le correctif de composition du 20/09/2026 (`img { max-width: 100 % }` : les planches 780 px n'étaient plus rognées à droite) |
 | 6 | Revue finale + errata | ⏳ |
 
-## Dernier module livré — M11 *SQL avancé pour la BI* (clôturé le 24/09/2026)
+## Module en cours — M12 *Fondamentaux de la Business Intelligence* (engagé le 25/09/2026)
+
+**6 chapitres · 30 h · N3 · budget 92 p. [78, 106].** Le module apprend à choisir **quoi** mesurer,
+pour **qui**, et à quelle condition un chiffre devient une décision. Trois chapitres sont poussés :
+**C01** (définition de la BI, ce qu'elle n'est pas, le coût d'une décision sans donnée),
+**C02** (reporting vs BI, les **4** régimes de question : quoi, pourquoi, quoi demain, que faire) et
+**C03** (métriques, dimensions, faits, grain — le vocabulaire exact et ses pièges chiffrés).
+Le **socle** ajoute au fil rouge six tables déterministes (**1,36 Mo**, graine **46**) : coût d'achat,
+stock, ruptures, commandes, encaissements, logistique — les sources qu'un indicateur exige. L'**instrument**
+`tools/kpi_M12.py` mesure les **10** KPI du mandat de reprise (CA, marge, rupture, rotation, panier,
+retour, service, recouvrement, logistique, part interne) **avec leur définition imprimée à côté du
+chiffre** : c'est la thèse du module, appliquée à lui-même.
+
+* Chiffres du module : marge **29,12 %** pour une cible de **18** à **24 %** (cause mesurée : prix de
+  vente **+25,0 %**) · rotation **9,42** tours contre **0,78** si l'on somme les stocks · taux de
+  service **81,0 %** ou **78,2 %** selon le dénominateur · **1 155** factures de plus de 90 jours
+  (**90,8 %** de l'encours) · clients : **188 886** si l'on additionne des comptages distincts pour
+  **23 497** réels · une clé oubliée multiplie un total par **15,8** sans lever d'erreur.
+* Matériel du projet : `03_exercices/dossier_M12/etude_avant.md` — les **12** pages d'un dispositif raté
+  (**41** indicateurs, **7** onglets, **7 940 000** FCFA, **4** ouvertures le premier jour, abandon en
+  **11** semaines) ; le livrable attendu est la **carte de définition de 10 KPI**, réutilisée en M13,
+  M14, M15 et M21.
+* Publication : plan n° **46**, socle n° **47**, C01 n° **48**, C02 n° **49**, C03 n° **50**
+  (`05_livrables/journal_pushs.md`).
+
+## Module précédent — M11 *SQL avancé pour la BI* (clôturé le 24/09/2026, poussé le 25/09/2026)
 
 **7 chapitres · 30 h · N3 → N4 · 97 pages composées (budget 105, dérive −8 %) · 42 410 mots · 301 clés
 de valeurs publiées.** Le module ouvre la **phase 4** (Business Intelligence) et fait passer l'écriture
@@ -61,10 +86,10 @@ pour **93 749 490** FCFA de ventes sans référence ; top 10 % des clients = **3
   `figures/M11_C01_carte_des_fenetres.svg` (**609** px) et `figures/M11_C04_matrice_retention.svg`
   (**686** px), `03_exercices/dossier_M11/`, `05_livrables/fiche_controle_M11.md`,
   `05_livrables/M11.pdf` (**97** p.).
-* **Publication en cours** : plan poussé n° **36**, socle et instruments n° **37**, C01 n° **38**, C03
-  n° **39** ; C02 et C04 à C07, le projet, l'évaluation et cette fiche sont **validés et en attente de
-  push** — le 24/09/2026, le jeton GitHub a été refusé par l'API (`401 Bad credentials`), le dépôt
-  restant lisible en anonyme (public). Reprise prévue en **ajout seul** (jamais `git add -A`).
+* **Publication : complète.** **10 pushs** (n° 36 → n° 45) du plan à la clôture, un par chapitre, puis
+  l'appareil du module ; le jeton fourni le 25/09/2026 a été validé avant tout envoi, et la file
+  d'attente a été vidée en une passe. Détail : `05_livrables/journal_pushs.md`. Dépôt : **363**
+  fichiers, **0** `.pyc`, **18** PDF, procédure en **ajout seul** (jamais `git add -A`).
 
 ## Module précédent — M10 *Data visualization* (clôturé le 24/09/2026)
 
