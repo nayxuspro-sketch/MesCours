@@ -896,6 +896,160 @@ def visuels(con):
     return out
 
 
+# --------------------------------------------------------------------------- 8
+def filtres(con):
+    """Ce qu'un filtre change : les deux cotes du taux, la profondeur, et le cout d'un visuel (C07)."""
+    import statistics as _st
+    import time as _t
+
+    def _chrono(requete, n=7):
+        temps = []
+        for _ in range(n):
+            depart = _t.perf_counter()
+            con.execute(requete).fetchall()
+            temps.append((_t.perf_counter() - depart) * 1000.0)
+        return int(round(_st.median(temps)))
+
+    un = lambda s: con.execute(s).fetchone()[0]
+    f_loc = f
+    d1 = lambda x: ("%.1f" % x).replace(".", ",")
+    d2 = lambda x: ("%.2f" % x).replace(".", ",")
+
+    # 1. le filtre change les deux cotes d'un taux : le panier moyen par famille
+    fam = con.execute("""SELECT p.famille, ROUND(SUM(v.montant_ttc)) ca,
+            COUNT(DISTINCT v.id_ticket) tickets,
+            ROUND(SUM(v.montant_ttc) / COUNT(DISTINCT v.id_ticket), 0) panier
+        FROM fait_ventes v JOIN dim_produit p ON p.id_produit = v.id_produit
+        WHERE v.est_retour = 0 GROUP BY 1 ORDER BY 4""").fetchall()
+    global_ = un("""SELECT ROUND(SUM(montant_ttc) / COUNT(DISTINCT id_ticket))
+        FROM fait_ventes WHERE est_retour = 0""")
+    dessous = sum(1 for _, _, _, p in fam if p < global_)
+    paniers = {n: int(p) for n, _, _, p in fam}
+    tickets_somme = int(un("""SELECT SUM(t) FROM (SELECT COUNT(DISTINCT v.id_ticket) t
+        FROM fait_ventes v JOIN dim_produit p ON p.id_produit = v.id_produit
+        WHERE v.est_retour = 0 GROUP BY p.famille)"""))
+    tickets_distincts = int(un("SELECT COUNT(DISTINCT id_ticket) FROM fait_ventes WHERE est_retour = 0"))
+    extra = tickets_somme - tickets_distincts
+    panier_min, panier_max = fam[0][3], fam[-1][3]
+
+    # 2. le filtre change un perimetre : la rupture, avec et sans le depot
+    servis = int(un("""SELECT COUNT(*) FROM (SELECT DISTINCT id_produit, id_magasin,
+        year(date_vente) a, month(date_vente) m FROM fait_ventes)"""))
+    ruptures = int(un("SELECT COUNT(*) FROM fait_ruptures"))
+    depot_rup = int(un("SELECT COUNT(*) FROM fait_ruptures WHERE id_magasin = 6"))
+    par_magasin = con.execute("""WITH s AS (SELECT id_magasin, COUNT(*) n FROM (SELECT DISTINCT
+            id_magasin, id_produit, year(date_vente) a, month(date_vente) m FROM fait_ventes) GROUP BY 1),
+          r AS (SELECT id_magasin, COUNT(*) n FROM fait_ruptures GROUP BY 1)
+        SELECT s.id_magasin, r.n, s.n, ROUND(100.0 * r.n / s.n, 2)
+        FROM s JOIN r USING (id_magasin) WHERE s.id_magasin <> 6 ORDER BY 1""").fetchall()
+    perimetre = round(100.0 * (ruptures - depot_rup) / servis, 2)
+
+    # 3. la profondeur d'exploration, du magasin au produit
+    niveaux = [
+        ("magasin", int(un("SELECT COUNT(DISTINCT id_magasin) FROM fait_ventes"))),
+        ("famille", int(un("""SELECT COUNT(DISTINCT p.famille) FROM fait_ventes v
+            JOIN dim_produit p ON p.id_produit = v.id_produit"""))),
+        ("produit", int(un("SELECT COUNT(DISTINCT id_produit) FROM fait_ventes"))),
+    ]
+    couples_mf = int(un("""SELECT COUNT(*) FROM (SELECT DISTINCT v.id_magasin, p.famille
+        FROM fait_ventes v JOIN dim_produit p ON p.id_produit = v.id_produit)"""))
+    couples_mp = int(un("""SELECT COUNT(*) FROM (SELECT DISTINCT id_magasin, id_produit
+        FROM fait_ventes)"""))
+    top = con.execute("""SELECT p.designation, ROUND(SUM(v.montant_ttc)) ca,
+            ROUND(100.0 * SUM(v.montant_ttc) / (SELECT SUM(montant_ttc) FROM fait_ventes
+              WHERE est_retour = 0), 2)
+        FROM fait_ventes v JOIN dim_produit p ON p.id_produit = v.id_produit
+        WHERE v.est_retour = 0 GROUP BY 1 ORDER BY 2 DESC LIMIT 1""").fetchone()
+
+    # 4. le cout d'un visuel, mediane de sept executions
+    temps = {
+        "carte": _chrono("SELECT SUM(montant_ttc) FROM fait_ventes WHERE est_retour = 0"),
+        "barres": _chrono("SELECT id_magasin, SUM(montant_ttc) FROM fait_ventes "
+                          "WHERE est_retour = 0 GROUP BY 1"),
+        "matrice": _chrono("""SELECT v.id_magasin, p.famille, SUM(v.montant_ttc)
+            FROM fait_ventes v JOIN dim_produit p ON p.id_produit = v.id_produit
+            WHERE v.est_retour = 0 GROUP BY 1, 2"""),
+        "filtre_jointure": _chrono("""SELECT ROUND(SUM(v.montant_ttc) / COUNT(DISTINCT v.id_ticket))
+            FROM fait_ventes v JOIN dim_produit p ON p.id_produit = v.id_produit
+            WHERE v.est_retour = 0 AND p.famille = 'Plomberie'"""),
+    }
+    source_ms = _chrono("""SELECT COUNT(*) FROM read_csv_auto(
+        '01_socle_donnees/data/reference/ventes_propres.csv')""", n=3)
+
+    out = {
+        "m14_c07_panier_global_fcfa": int(global_),
+        "m14_c07_panier_par_famille": " / ".join(
+            "%s : %s" % (n, f_loc(p)) for n, _, _, p in sorted(paniers.items())) if False else
+            " / ".join("%s : %s" % (n, f_loc(p)) for n, p in sorted(paniers.items(), key=lambda x: x[1])),
+        "m14_c07_panier_min_fcfa": int(panier_min),
+        "m14_c07_panier_max_fcfa": int(panier_max),
+        "m14_c07_familles": len(fam),
+        "m14_c07_familles_sous_le_panier": dessous,
+        "m14_c07_ratio_paniers": round(panier_max / panier_min, 2),
+        "m14_c07_tickets_par_famille": tickets_somme,
+        "m14_c07_tickets_distincts": tickets_distincts,
+        "m14_c07_tickets_comptes_deux_fois": extra,
+        "m14_c07_majoration_pct": round(100.0 * extra / tickets_distincts, 1),
+        "m14_c07_couples_servis": servis,
+        "m14_c07_ruptures": ruptures,
+        "m14_c07_rupture_depot": depot_rup,
+        "m14_c07_rupture_depot_pct": round(100.0 * depot_rup / ruptures, 1),
+        "m14_c07_rupture_bas_pct": min(x[3] for x in par_magasin),
+        "m14_c07_rupture_haut_pct": max(x[3] for x in par_magasin),
+        "m14_c07_rupture_perimetre_pct": perimetre,
+        "m14_c07_rupture_par_magasin": " / ".join("%s : %s" % (m, d2(t)) for m, _, _, t in par_magasin),
+        "m14_c07_niveaux": " > ".join("%s (%s)" % (n, f_loc(v)) for n, v in niveaux),
+        "m14_c07_profondeur": len(niveaux) - 1,
+        "m14_c07_couples_magasin_famille": couples_mf,
+        "m14_c07_couples_magasin_produit": couples_mp,
+        "m14_c07_top_designation": top[0],
+        "m14_c07_top_fcfa": int(top[1]),
+        "m14_c07_top_part_pct": top[2],
+        "m14_c07_temps_ms": temps,
+        "m14_c07_temps_source_ms": source_ms,
+        "m14_c07_ratio_source": round(source_ms / max(min(temps.values()), 1)),
+    }
+    out["m14_c07_texte_panier"] = (
+        "le panier moyen du reseau vaut %s FCFA, et il n'est le panier d'aucune des %s familles : "
+        "de %s FCFA en %s a %s FCFA en %s, un rapport de %s. Et %s familles sur %s sont sous la "
+        "moyenne du reseau — un filtre de famille ne decale pas le chiffre, il change de chiffre"
+        % (f_loc(global_), f_loc(len(fam)), f_loc(panier_min), fam[0][0], f_loc(panier_max),
+           fam[-1][0], d2(panier_max / panier_min), f_loc(dessous), f_loc(len(fam))))
+    out["m14_c07_texte_denominateur"] = (
+        "les %s familles totalisent %s tickets quand le reseau n'en compte que %s : %s tickets "
+        "sont comptes deux fois ou plus, soit %s %% de majoration. Un filtre de famille ne se "
+        "contente donc pas de reduire le numerateur — il change le denominateur, et deux "
+        "pourcentages calcules sous deux filtres ne s'additionnent jamais"
+        % (f_loc(len(fam)), f_loc(tickets_somme), f_loc(tickets_distincts), f_loc(extra),
+           d1(100.0 * extra / tickets_distincts)))
+    out["m14_c07_texte_perimetre"] = (
+        "le taux de rupture du rapport vaut %s %% : %s couples en rupture sur %s couples servis. "
+        "Mais son numerateur couvre %s magasins et son denominateur %s : le depot central, sans "
+        "aucune vente, porte %s couples en rupture (%s %% du total) et zero couple servi. A "
+        "perimetre egal, le taux tombe a %s %%. Le filtre n'a pas fausse le chiffre — il a "
+        "change le perimetre, et c'est ecrit nulle part"
+        % (d2(100.0 * ruptures / servis), f_loc(ruptures), f_loc(servis),
+           f_loc(len(par_magasin) + 1), f_loc(len(par_magasin)), f_loc(depot_rup),
+           d1(100.0 * depot_rup / ruptures), d2(perimetre)))
+    out["m14_c07_texte_exploration"] = (
+        "l'exploration descend de %s : %s couples magasin x famille portent des ventes, et %s "
+        "couples magasin x produit. Le plus gros produit du reseau, %s, pese %s %% du chiffre "
+        "d'affaires — a ce niveau de detail, un rapport qui descend jusqu'au produit doit dire "
+        "a quelle profondeur il est, sinon deux lecteurs comparent deux niveaux differents"
+        % (out["m14_c07_niveaux"], f_loc(couples_mf), f_loc(couples_mp), top[0],
+           d2(top[2])))
+    out["m14_c07_texte_cout"] = (
+        "chaque visuel est une requete : %s ms pour la carte du chiffre d'affaires, %s ms pour "
+        "les barres par magasin, %s ms pour la matrice magasin x famille, %s ms pour un panier "
+        "filtre sur une famille — medianes de sept executions. La meme donnee relue depuis le "
+        "fichier source coute %s ms, soit %s fois plus : c'est exactement ce que le mode Import "
+        "achete, et ce que DirectQuery paie a chaque affichage"
+        % (f_loc(temps["carte"]), f_loc(temps["barres"]), f_loc(temps["matrice"]),
+           f_loc(temps["filtre_jointure"]), f_loc(source_ms),
+           f_loc(int(round(source_ms / max(min(temps.values()), 1))))))
+    return out
+
+
 def grille():
     """La grille de conception en 18 points : ses familles et les 6 ajouts du module.
 
@@ -994,6 +1148,7 @@ def mesurer():
     out.update(modele(con))
     out.update(dax(con))
     out.update(visuels(con))
+    out.update(filtres(con))
     out.update(grille())
     out.update(controle_dossier())
     con.close()

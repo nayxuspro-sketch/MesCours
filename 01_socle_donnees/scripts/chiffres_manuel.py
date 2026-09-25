@@ -1864,6 +1864,26 @@ def m14():
                 "m14_c06_ca_8_mois_fcfa"):
         d[cle] = f(m[cle]) + " FCFA"
 
+    # --- C07 : ce qu'un filtre change, et ce qu'un visuel coute
+    for cle in ("m14_c07_panier_par_famille", "m14_c07_familles",
+                "m14_c07_familles_sous_le_panier", "m14_c07_ratio_paniers",
+                "m14_c07_tickets_par_famille", "m14_c07_tickets_distincts",
+                "m14_c07_tickets_comptes_deux_fois", "m14_c07_majoration_pct",
+                "m14_c07_couples_servis", "m14_c07_ruptures", "m14_c07_rupture_depot",
+                "m14_c07_rupture_depot_pct", "m14_c07_rupture_bas_pct",
+                "m14_c07_rupture_haut_pct", "m14_c07_rupture_perimetre_pct",
+                "m14_c07_rupture_par_magasin", "m14_c07_niveaux", "m14_c07_profondeur",
+                "m14_c07_couples_magasin_famille", "m14_c07_couples_magasin_produit",
+                "m14_c07_top_designation", "m14_c07_top_part_pct", "m14_c07_temps_ms",
+                "m14_c07_temps_source_ms", "m14_c07_ratio_source",
+                "m14_c07_texte_panier", "m14_c07_texte_denominateur",
+                "m14_c07_texte_perimetre", "m14_c07_texte_exploration",
+                "m14_c07_texte_cout"):
+        d[cle] = m[cle]
+    for cle in ("m14_c07_panier_global_fcfa", "m14_c07_panier_min_fcfa",
+                "m14_c07_panier_max_fcfa", "m14_c07_top_fcfa"):
+        d[cle] = f(m[cle]) + " FCFA"
+
     # --- Les dix valeurs du tableau de bord, et leur controle croise par M12
     d["m14_v01_ca_net_fcfa"] = f(m["m14_v01_ca_net_fcfa"]) + " FCFA"
     d["m14_v02_marge_fcfa"] = f(m["m14_v02_marge_fcfa"]) + " FCFA"
