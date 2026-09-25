@@ -1,6 +1,6 @@
 # Journal des pushs — M11, M12, M13 et le kit d'exploitation M01-M12
 
-**Dernier push : `fd04f86` (n° 74 — M13.C05, flocon et variantes).** Le jeton du 25 septembre
+**Dernier push : `4391dd1` (n° 78 — M13.C07, qualité et revue ; M13 complet à 7/7).** Le jeton du 25 septembre
 2026 a été re-testé avant **chaque** envoi (`GET /api.github.com/user` → **200**). Le script
 `pousser.sh` peut afficher « 401 » sur sa seconde sonde avant un push qui réussit : seuls
 `push OK` et `ls-remote` font foi (leçon PATCH_1). M11 et M12 sont **clos** et poussés de bout en
@@ -45,6 +45,10 @@ bout (n° 36 → n° 57) ; M13 est **engagé** (plan n° 58, socle n° 59, C01 n
 | 71 | `b942f05` | **Correction des compteurs du dépôt** dans le journal : la ligne du n° 69 annonçait **401** fichiers et **20** PDF, écrits de mémoire ; la mesure par `ls-tree` donne **397** fichiers et **21** PDF | compteurs relevés sur le dépôt : **397** fichiers · **91** dans `02_modules/` (dont **86** `.md`, soit **84** chapitres) · **70** planches · **49** instruments · **21** PDF · **41** pièces dans `05_livrables/` · **0** `.pyc` |
 | 72 | `3da3c55` | **M13.C04** — Le schéma en étoile et les changements lents (**6 636** mots, 16 §) : les dimensions conformes **mesurées** (`dim_magasin` sert **5** faits, `dim_date` **0** — trou déclaré, C06 le fermera), les **4** types de SCD (**980** versions / **140** corrections / **24 892** versions de clients / **4** clients à **3** villes), la jointure « au moment du fait » et ses **deux trous** (**43 161** + **28 784** = **71 945** lignes de ticket), l'écart de répartition de **102 917 580** FCFA, le tarif historisé (**9,1 %** d'écart de prix moyen) ; planche `M13_C04_frise_scd.svg` (**662** px) ; **25** clés `m13_c04_*` au relevé | `autovalide --strict` 0 avertissement ; les **6** blocs SQL du chapitre exécutés sur le socle ; planche en latin-1 strict, texte extractible du PDF |
 | 73 | `fabb777` | Journal des pushs (n° 70 à 72) et état au 25/09 : M13.C04 en ligne, **4/7** | compteurs mesurés sur le dépôt : **399** fichiers · **71** planches · **21** PDF |
+| 78 | `4391dd1` | **M13.C07** — Qualité, documentation et revue en **15** points (**6 080** mots, 16 §) : les **4** contrôles de recette (**14** tables sur **14**, **7** faits sur **7**, **12** clés étrangères et **0** orphelin, **15 595 154 955** FCFA des deux côtés), ce que le script déclare (**315** lignes dont **99** de commentaire, **0** clé et **0** commentaire de colonne) et ce qui reste à documenter (**127** colonnes), la grille de revue dont **5** points échouent sur le modèle fautif (**2 826 394** caractères recopiés au lieu de **239 599**, deux temps, un objectif posé sur la vente à **+ 42,9 %**, **0** clé, **16** libellés pour **7** familles), et les **3** modèles fautifs qui s'exécutent sans erreur (**+ 43,0 %**, **+ 89,0 %**, **44** fois) | **3ᵉ planche** `M13_C07_grille_revue.svg` (**609** px) ; les durées de lecture des chapitres C02, C04 et C05 réalignées sur la dernière mesure |
+| 77 | `7f320f4` | **M13.C06** — Le temps et le calendrier (**7 154** mots, 16 §) : le trou déclaré en C04 fermé (**1 339** lignes de calendrier, **240 000** lignes sur **240 000**), les **2** contrôles de complétude (**0** jour sans vente, **0** date de vente hors calendrier, mais **13** dates de livraison pour **46** commandes et **32 772 075** FCFA), les attributs lus dans la dimension (**18** fériés, dimanche **5,32 %**, 4ᵉ trimestre **29,7 %**), les deux calendriers (semaine normalisée **52** contre commerciale **53**), l'exercice fiscal décalé (**725** jours), la comparaison bornée (**− 28,9 %** contre **+ 15,4 %**, soit **44,3** points) et le cumul glissant (**+ 16,2 %**) | **94** clés `m13_c06_*` au relevé |
+| 76 | `519a053` | **Correctif** : **4** compteurs du journal écrits de mémoire remplacés par la mesure (**93** fichiers dans `02_modules/`, **88** `.md`, **86** chapitres, **71** planches), et la leçon du n° 75 consignée | comptage sur les **bases de noms uniques** : les chapitres de M05 comptent double en `.md` et `.pdf` sinon |
+| 75 | `d4d97d6` | Journal des pushs (n° 65 à 74, remis dans l'ordre) et état au 25/09 : M13.C05 en ligne, **5/7** | compteurs mesurés sur le dépôt |
 | 74 | `fd04f86` | **M13.C05** — Le schéma en flocon et ses variantes (**6 264** mots, 16 §) : étoile contre flocon **mesurés** (**154** → **173** lignes, **1** → **3** jointures, **3** → **4** ms, résultat **identique**), le N-M du ticket (**240 000** lignes / **146 161** tickets / **1,64** par ticket) et son **facteur de répétition de 2,01** (**31 298 080 184** FCFA au lieu de **15 595 154 955**), la **dimension déchet** de **30** combinaisons toutes occupées, les **faits multiples** et les **2 809** retours à montants négatifs (**175 169 798** FCFA) ; **35** clés `m13_c05_*` au relevé | `autovalide --strict` 0 avertissement ; les **8** requêtes citées exécutées, dont la lecture par la dimension déchet (Magasin **10 295 255 849** FCFA) qui somme exactement au total du modèle |
 
 Chaque envoi a suivi la procédure en **ajout seul** (PATCH_11) : test du jeton → `git init` →
@@ -52,13 +56,14 @@ Chaque envoi a suivi la procédure en **ajout seul** (PATCH_11) : test du jeton 
 bundle de secours dans `/tmp` → `rm -rf .git`. **Jamais** `git add -A` : les PDF de module vivent
 hors de l'atelier, et un ajout global les aurait marqués « supprimés » dès que la place manque.
 
-**Contrôles de dépôt après le n° 75 (mesurés sur le dépôt lui-même, chemins sans échappement)** :
-**400** fichiers · **93** dans `02_modules/` (dont **88** `.md` : **86** chapitres rédigés, l'ouverture
-`M01_C00` et le bilan de M01, plus **5** PDF de chapitres M05) · **71** planches dans `figures/` ·
+**Contrôles de dépôt après le n° 78 (mesurés sur le dépôt lui-même, chemins sans échappement)** :
+**403** fichiers · **95** dans `02_modules/` (dont **90** `.md` : **88** chapitres rédigés, l'ouverture
+`M01_C00` et le bilan de M01, plus **5** PDF de chapitres M05) · **72** planches dans `figures/` ·
 **49** instruments dans `tools/` · **0** `.pyc` · **21** PDF · **41** pièces dans `05_livrables/` ·
-`03_exercices/dossier_M13/` complet (**8** fichiers) · la branche `main` pointe sur `d4d97d6`.
-Écart atelier / dépôt : **384** fichiers locaux, **0** absent du dépôt (les 16 de plus au dépôt sont
-les PDF que l'atelier ne garde pas, plus les fichiers du kit).
+`03_exercices/dossier_M13/` complet (**8** fichiers) · la branche `main` pointe sur `4391dd1`.
+
+**M13 est complet : 7 chapitres sur 7.** Le module passe de **86** à **88** chapitres rédigés (81
+publiés pour M01-M12, **7** pour M13), soit **62 %** des **143** chapitres du manuel.
 
 **Leçon du n° 75.** La première rédaction de ces lignes portait **92** fichiers dans `02_modules/`,
 **87** `.md`, **85** chapitres et **70** planches : quatre nombres écrits **de mémoire**, donc faux,
@@ -104,8 +109,8 @@ Trois corrections que la mesure a imposées, et qui changent des chiffres déjà
 | — | **Le chapitre C03 a révélé un défaut de plus du socle** : le filtre silencieux par jointure d'agrégats (dépôt central, **28 893 543** FCFA) — corrigé dans le chapitre et l'instrument | ✅ n° 69 |
 | C05 | Flocon, pont, déchet, faits multiples (15 §) | ✅ n° 74 |
 | — | **Le chapitre C04 a rouvert un trou du modèle, déclaré et mesuré** : `dim_date` existe mais **aucun fait** ne pointe dessus par clé — à fermer en C06 | ⏳ C06 |
-| C06 | Le temps et le calendrier (15 §) | à écrire |
-| — | **C06 doit fermer le trou déclaré en C04** : `dim_date` n'est branchée sur aucun fait | ⏳ C06 |
+| C06 | Le temps et le calendrier (15 §) | ✅ n° 77 |
+| C07 | Qualité, documentation, revue en 15 points (16 §) | ✅ n° 78 |
 | C07 | Qualité, documentation, revue en 15 points (16 §) + planche | à écrire |
 | Figures | **2** planches livrées sur **3** (`M13_C03`, `M13_C04`) ; reste celle de C07 | 2/3 |
 | PDF | `05_livrables/M13.pdf` — cible **[89, 121]** p. | à produire |
@@ -114,7 +119,7 @@ Trois corrections que la mesure a imposées, et qui changent des chiffres déjà
 | Évaluation | `04_evaluations/M13_evaluation.md` — **75** points, seuil **48** | à écrire |
 | Clôture | `README.md`, `05_livrables/etat_avancement.md` | à mettre à jour |
 
-## Procédure à rejouer (elle a fonctionné **34** fois de suite, n° 40 → n° 74)
+## Procédure à rejouer (elle a fonctionné **35** fois de suite, n° 40 → n° 78)
 
 ```bash
 cd /home/user/formation-data-bi

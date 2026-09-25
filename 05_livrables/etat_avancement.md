@@ -1,11 +1,14 @@
 # État d'avancement du manuel — *La Voie des Données* (Édition 2026)
 
-**Arrêté au 25 septembre 2026, après le push n° 74 (kit d'exploitation livré, M13 à 5 chapitres sur 7).**
+**Arrêté au 25 septembre 2026, après le push n° 78 (kit d'exploitation livré, M13 complet : 7 chapitres sur 7).**
 **M11 (n° 36 → n° 45), M12 (n° 46 → n° 57) et le kit M01-M12 (n° 65) sont poussés.** M13 est
-**engagé** : plan n° 58, socle et instrument n° 59, **C01** n° 61, **C02** n° 63, **C03** n° 69, **C04** n° 72, **C05** n° 74 — **5 chapitres
-sur 7**. Le modèle de Sahel Distribution compte **12** tables (**5** dimensions, **7** faits), **2**
-dimensions historisées (bâties **en SQL**) et **4** contrôles de recette exécutés. Détail :
-`05_livrables/journal_pushs.md`.
+**écrit en entier** : plan n° 58, socle et instrument n° 59, **C01** n° 61, **C02** n° 63, **C03**
+n° 69, **C04** n° 72, **C05** n° 74, **C06** n° 77, **C07** n° 78 — **7 chapitres sur 7**. Le modèle de
+Sahel Distribution compte **14** tables (**7** dimensions, **7** faits), **2** dimensions historisées
+(bâties **en SQL**), une dimension de temps de **1 339** jours branchée sur les faits et **4**
+contrôles de recette exécutés (**14** tables sur **14**, **7** faits sur **7**, **12** clés
+étrangères, **0** orphelin, recette au franc près). Il reste à M13 le PDF du module (cible [89, 121]
+p.), la fiche Q1-Q10, le projet, l'évaluation et la clôture. Détail : `05_livrables/journal_pushs.md`.
 
 Chiffres pris aux sources du dépôt : `00_architecture/01_architecture_pedagogique.md` (§C.1, §F.2,
 §E.3, §E.4, §B.6), `tools/budget_pages.py` (budgets) et `05_livrables/kit_M01_M12.json` (mesures du
@@ -17,8 +20,8 @@ kit, refaites à chaque exécution de `tools/kit_exploitation.py`).
 
 | Agrégat | Prévu | Réalisé | Restant |
 |---|---|---|---|
-| Modules obligatoires | **22** (M01 → M22) | **12** clos (M01 → M12) · M13 engagé (2 ch.) | **10** |
-| Chapitres | **143** | **86** (81 publiés + 5 de M13) | **57** |
+| Modules obligatoires | **22** (M01 → M22) | **12** clos · M13 **écrit en entier** (7 ch., reste PDF, projet, éval) | **10** |
+| Chapitres | **143** | **88** (81 publiés + 7 de M13) | **55** |
 | Heures du parcours | **660 h** | **360 h** livrées (+ 30 h engagées en M13) | **270 h** |
 | Pages de module | **2 226 p.** | **1 207 p.** composées et vérifiées | **1 019 p.** |
 | Appareil du livre | **229 p.** | **36 p.** (guide 4 p. + index 32 p.), assemblés dans le livre | **193 p.** |
@@ -32,9 +35,9 @@ kit, refaites à chaque exécution de `tools/kit_exploitation.py`).
 | Soutenances (M19, M21) | 2 | 0 | 2 |
 | Options M23—M25 (hors obligatoire) | 14 ch. · 50 h · 226 p. | 0 | 14 ch. |
 
-> **Lecture.** Le manuel est rédigé à **60 %** de ses chapitres (86 sur 143) et **55 %** de ses
+> **Lecture.** Le manuel est rédigé à **62 %** de ses chapitres (88 sur 143) et **55 %** de ses
 > modules (12 sur 22) ; les phases 0 à 3 sont **terminées** (M01 → M10) et la phase 4 est **en
-> cours** (M11 et M12 livrés, M13 à 5/7). Deux mesures valent d'être notées : le livre assemblé
+> cours** (M11 et M12 livrés, M13 écrit en entier). Deux mesures valent d'être notées : le livre assemblé
 > retombe **page par page** sur la somme de ses parties (**1 395 p.** = sommaire, guide, 12 modules,
 > 2 cahiers, index), et la mesure des exercices donne **366** exercices autonomes là où l'ancien
 > comptage en annonçait **243** — l'unité de l'architecture (180) compte des exercices *types*, pas
@@ -63,17 +66,21 @@ définitions, 69 planches, 48 instruments, 10 jeux de données), `kit_M01_M12.js
 `requirements.txt` (l'environnement), `tools/kit_exploitation.py` (le générateur) et le **livre
 assemblé de 1 395 pages avec 124 signets**, où le guide ouvre la partie I.
 
-**Ce qui reste à pousser pour M13** (5 chapitres sur 7 sont en ligne) : les chapitres **C06** (le temps
-et le calendrier, 15 § — qui doit **fermer le trou déclaré en C04** : `dim_date` n'est branchée sur
-aucun fait) et **C07** (qualité, documentation, revue en 15 points, 16 § + la 3e planche), puis cette
-**3e planche**, le PDF cible **[89, 121]** p., la fiche Q1-Q10, le projet (**20** points, seuil **13**),
-l'évaluation (**75** points, seuil **48**) et la clôture.
+**Ce qui reste à M13** (les **7** chapitres sont en ligne, l'instrument et le relevé avec eux) :
+le **PDF du module**, à composer pour la cible de **[89, 121]** pages avec ses signets ; la **fiche de
+contrôle Q1-Q10** ; le **projet** « Le modèle de Sahel Distribution » (**20** points, seuil **13**,
+**4** livrables, **4**ᵉ pièce du portfolio) ; l'**évaluation** (**75** points, seuil **48**) ; puis la
+**clôture** du module et la mise à jour de l'appareil du livre.
 
-**C05 a tranché les quatre variantes par la mesure**, et aucune ne s'est imposée par principe :
-l'étoile et le flocon rendent **le même résultat** pour **1** et **3** jointures ; la table de pont est
-indispensable au N-M des tickets et **interdite de montants** (facteur **2,01**) ; la dimension déchet
-du socle tient en **30** combinaisons, toutes occupées ; les retours restent dans la table de ventes
-avec un **drapeau**, au prix d'une règle de filtrage à n'oublier dans aucun rapport.
+**Ce que les chapitres ont établi, en une phrase par chapitre.** C01 : ce que le modèle remplace, et
+ce qu'il coûte de le remplacer (**2 826 394** caractères de noms recopiés contre **239 599**). C02 :
+la normalisation ne se justifie pas par l'intuition mais par la mesure, et les **16** libellés du
+fichier plat deviennent **7** familles. C03 : le grain est la grammaire du modèle, et une clé trop
+large multiplie le chiffre d'affaires par **44**. C04 : l'étoile et ses changements lents, au prix de
+**9,1 %** d'écart entre l'attribut lu au moment du fait et le même lu aujourd'hui. C05 : le flocon,
+le pont et le déchet se choisissent en mesurant, pas en principe. C06 : le temps est la seule
+dimension qu'on remplit d'avance, et une borne mal choisie vaut **44,3** points d'écart. C07 : ce qui
+rend un modèle livrable tient en **4** contrôles et **15** points de revue.
 
 ## 3. Ce qui reste — 10 modules, 60 chapitres, 270 h
 
