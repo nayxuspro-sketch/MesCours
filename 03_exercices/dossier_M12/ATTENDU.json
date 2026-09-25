@@ -1,0 +1,19 @@
+{
+  "ca_perdu_estime_fcfa": 169386796,
+  "ca_ttc_total": 15595154955,
+  "commandes_a_lheure": 7035,
+  "cout_unitaire_moyen": 4160,
+  "factures_a_echeance": 6660,
+  "factures_ouvertes": 1272,
+  "graine": 46,
+  "lignes_commandes": 9000,
+  "lignes_encaissements": 9000,
+  "lignes_logistique": 264,
+  "lignes_ruptures": 2428,
+  "lignes_stock": 6776,
+  "magasins": 6,
+  "mois": 44,
+  "prix_manquants_referentiel": 2,
+  "produits": 154,
+  "retard_median_jours": 5
+}

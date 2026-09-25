@@ -1,0 +1,155 @@
+id_produit,categorie,sous_categorie,prix_vente_ht,cout_unitaire_ht,marge_cible_pct
+1,materiaux,Ciment & liants,5200,4110,21.0
+2,MATÉRIAUX,Ciment & liants,5575,4400,21.0
+3,materiaux,Ciment & liants,5275,4170,21.0
+4,Materiaux,Ciment & liants,3550,2800,21.0
+5,Matériaux ,Ciment & liants,4400,3480,21.0
+6,Materiaux,Ciment & liants,6925,5470,21.0
+7,materiaux,Ciment & liants,3750,2960,21.0
+8,Materiaux,Ciment & liants,5150,4070,21.0
+9,materiaux,Ciment & liants,5075,4010,21.0
+10,MATÉRIAUX,Ciment & liants,3775,2980,21.0
+11,Matériaux ,Ciment & liants,6300,4980,21.0
+12,Materiaux,Ciment & liants,5500,4340,21.0
+13,Matériaux ,Agglomérés & briques,1250,990,21.0
+14,Matériaux ,Agglomérés & briques,1200,950,21.0
+15,Materiaux,Agglomérés & briques,900,710,21.0
+16,Matériaux ,Agglomérés & briques,600,470,21.0
+17,MATÉRIAUX,Agglomérés & briques,900,710,21.0
+18,MATÉRIAUX,Agglomérés & briques,925,730,21.0
+19,Materiaux,Agglomérés & briques,900,710,21.0
+20,materiaux,Agglomérés & briques,1325,1050,21.0
+21,Matériaux ,Agglomérés & briques,975,770,21.0
+22,Materiaux,Agglomérés & briques,600,470,21.0
+23,Matériaux ,Sable & gravier,22275,17370,22.0
+24,Materiaux,Sable & gravier,22475,17530,22.0
+25,materiaux,Sable & gravier,26800,20900,22.0
+26,materiaux,Sable & gravier,18450,14390,22.0
+27,materiaux,Sable & gravier,13775,10740,22.0
+28,Matériaux ,Sable & gravier,20300,15830,22.0
+29,Quincaillerie,Fixations,1525,1190,22.0
+30,Quincaillerie,Fixations,1400,1090,22.0
+31,quincaillerie,Fixations,2125,1660,22.0
+32,quincaillerie,Fixations,1800,1400,22.0
+33,quincaillerie,Fixations,2125,1660,22.0
+34,Quincaillerie ,Fixations,1225,960,22.0
+35,QUINCAILLERIE,Fixations,1700,1330,22.0
+36,quincaillerie,Fixations,2250,1760,22.0
+37,quincaillerie,Fixations,1250,980,22.0
+38,Quincaillerie,Fixations,1825,1420,22.0
+39,quincaillerie,Fixations,1325,1030,22.0
+40,quincaillerie,Fixations,1950,1520,22.0
+41,Quincaillerie,Fixations,1375,1070,22.0
+42,quincaillerie,Fixations,1675,1310,22.0
+43,Quincaillerie ,Outillage,8050,6360,21.0
+44,QUINCAILLERIE,Outillage,7400,5850,21.0
+45,quincaillerie,Outillage,9400,7430,21.0
+46,Quincaillerie,Outillage,8625,6810,21.0
+47,Quincaillerie ,Outillage,8300,6560,21.0
+48,Quincaillerie,Outillage,8975,7090,21.0
+49,quincaillerie,Outillage,6900,5450,21.0
+50,Quincaillerie ,Outillage,5400,4270,21.0
+51,Quincaillerie ,Outillage,6375,5040,21.0
+52,Quincaillerie ,Outillage,5575,4400,21.0
+53,quincaillerie,Outillage,4550,3590,21.0
+54,QUINCAILLERIE,Outillage,8875,7010,21.0
+55,QUINCAILLERIE,Outillage,7825,6180,21.0
+56,Quincaillerie,Outillage,4300,3400,21.0
+57,Quincaillerie ,Outillage,6375,5040,21.0
+58,Quincaillerie ,Outillage,5075,4010,21.0
+59,Quincaillerie,Outillage,6875,5430,21.0
+60,Quincaillerie ,Outillage,4900,3870,21.0
+61,Plomberie,Tubes & raccords,2900,2290,21.0
+62,Plomberie,Tubes & raccords,3050,2410,21.0
+63,Plomberie,Tubes & raccords,3050,2410,21.0
+64,Plomberie,Tubes & raccords,2875,2270,21.0
+65,Plomberie,Tubes & raccords,4025,3180,21.0
+66,Plomberie,Tubes & raccords,4000,3160,21.0
+67,Plomberie,Tubes & raccords,3425,2710,21.0
+68,Plomberie,Tubes & raccords,2350,1860,21.0
+69,Plomberie,Tubes & raccords,2725,2150,21.0
+70,Plomberie,Tubes & raccords,3750,2960,21.0
+71,Plomberie,Tubes & raccords,2900,2290,21.0
+72,Plomberie,Tubes & raccords,3825,3020,21.0
+73,Plomberie,Appareils & robinetterie,28125,21380,24.0
+74,Plomberie,Appareils & robinetterie,30300,23030,24.0
+75,Plomberie,Appareils & robinetterie,22450,17060,24.0
+76,Plomberie,Appareils & robinetterie,17150,13030,24.0
+77,Plomberie,Appareils & robinetterie,26275,19970,24.0
+78,Plomberie,Appareils & robinetterie,26800,20370,24.0
+79,Plomberie,Appareils & robinetterie,28800,21890,24.0
+80,Plomberie,Appareils & robinetterie,31675,24070,24.0
+81,Plomberie,Appareils & robinetterie,30825,23430,24.0
+82,Plomberie,Appareils & robinetterie,34825,26470,24.0
+83,Plomberie,Appareils & robinetterie,22600,17180,24.0
+84,Plomberie,Appareils & robinetterie,27125,20620,24.0
+85,Electricité,Câblage & protection,10850,8680,20.0
+86,Electricité,Câblage & protection,8300,6640,20.0
+87,Electricité,Câblage & protection,9250,7400,20.0
+88,Electricité,Câblage & protection,14375,11500,20.0
+89,Electricité,Câblage & protection,8375,6700,20.0
+90,Electricité,Câblage & protection,9600,7680,20.0
+91,Electricité,Câblage & protection,9600,7680,20.0
+92,Electricité,Câblage & protection,10900,8720,20.0
+93,Electricité,Câblage & protection,7450,5960,20.0
+94,Electricité,Câblage & protection,7575,6060,20.0
+95,Electricité,Câblage & protection,10500,8400,20.0
+96,Electricité,Câblage & protection,15900,12720,20.0
+97,Electricité,Câblage & protection,14425,11540,20.0
+98,Electricité,Câblage & protection,13975,11180,20.0
+99,Electricité,Éclairage & énergie solaire,8050,6200,23.0
+100,Electricité,Éclairage & énergie solaire,16400,12630,23.0
+101,Electricité,Éclairage & énergie solaire,8100,6240,23.0
+102,Electricité,Éclairage & énergie solaire,13500,10400,23.0
+103,Electricité,Éclairage & énergie solaire,14950,11510,23.0
+104,Electricité,Éclairage & énergie solaire,16275,12530,23.0
+105,Electricité,Éclairage & énergie solaire,18725,14420,23.0
+106,Electricité,Éclairage & énergie solaire,9650,7430,23.0
+107,Electricité,Éclairage & énergie solaire,8850,6810,23.0
+108,Electricité,Éclairage & énergie solaire,18825,14500,23.0
+109,Electricité,Éclairage & énergie solaire,8100,6240,23.0
+110,Electricité,Éclairage & énergie solaire,15975,12300,23.0
+111,Electricité,Éclairage & énergie solaire,17225,13260,23.0
+112,Electricité,Éclairage & énergie solaire,18200,14010,23.0
+113,Peintures,Peintures & enduits,3675,2830,23.0
+114,Peinture,Peintures & enduits,5750,4430,23.0
+115,Peinture,Peintures & enduits,2750,2120,23.0
+116,Peintures,Peintures & enduits,3275,2520,23.0
+117,PEINTURE,Peintures & enduits,3550,2730,23.0
+118,Peintures,Peintures & enduits,4150,3200,23.0
+119,Peintures,Peintures & enduits,4825,3720,23.0
+120,Peinture,Peintures & enduits,3250,2500,23.0
+121,peinture,Peintures & enduits,4400,3390,23.0
+122,Peinture,Peintures & enduits,5975,4600,23.0
+123,peinture,Peintures & enduits,3425,2640,23.0
+124,peinture,Peintures & enduits,5225,4020,23.0
+125,Peinture,Peintures & enduits,3875,2980,23.0
+126,peinture,Peintures & enduits,3675,2830,23.0
+127,Bois & panneaux,Panels & lames,15975,12460,22.0
+128,Bois & panneaux,Panels & lames,15675,12230,22.0
+129,Bois & panneaux,Panels & lames,15450,12050,22.0
+130,Bois & panneaux,Panels & lames,19650,15330,22.0
+131,Bois & panneaux,Panels & lames,9000,7020,22.0
+132,Bois & panneaux,Panels & lames,13400,10450,22.0
+133,Bois & panneaux,Panels & lames,8275,6450,22.0
+134,Bois & panneaux,Panels & lames,11750,9160,22.0
+135,Bois & panneaux,Panels & lames,9625,7510,22.0
+136,Bois & panneaux,Panels & lames,12150,9480,22.0
+137,Consommables,Divers chantier,4525,3670,19.0
+138,Consommables,Divers chantier,4900,3970,19.0
+139,Consommables,Divers chantier,8000,6480,19.0
+140,Consommables,Divers chantier,4425,3580,19.0
+141,Consommables,Divers chantier,4375,3540,19.0
+142,Consommables,Divers chantier,8400,6800,19.0
+143,Consommables,Divers chantier,7425,6010,19.0
+144,Consommables,Divers chantier,6625,5370,19.0
+145,Consommables,Divers chantier,8025,6500,19.0
+146,Consommables,Divers chantier,7800,6320,19.0
+147,Consommables,Divers chantier,7250,5870,19.0
+148,Consommables,Divers chantier,7250,5870,19.0
+149,Consommables,Divers chantier,6625,5370,19.0
+150,Consommables,Divers chantier,4550,3690,19.0
+151,Consommables,Divers chantier,5550,4500,19.0
+152,Consommables,Divers chantier,4100,3320,19.0
+153,Consommables,Divers chantier,7225,5850,19.0
+154,Consommables,Divers chantier,4675,3790,19.0
