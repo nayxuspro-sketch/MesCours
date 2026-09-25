@@ -35,7 +35,7 @@ deux tableaux de montants.
 | 2 | Normaliser jusqu'à la **3FN** et savoir pourquoi | C02 | la table plate des ventes (**240 000** lignes) ramenée à **6** tables sans perte |
 | 3 | Reconnaître et éviter les **4** anomalies | C02, C07 | démonstration sur **12** lignes : mise à jour, insertion, suppression, jointure |
 | 4 | Choisir le **grain** d'une table de faits et le tenir | C03 | trois grains dans le même schéma, jamais mélangés |
-| 5 | Construire un **schéma en étoile** et le rendre conforme | C04 | **6** dimensions, **6** tables de faits, dimensions conformes partagées |
+| 5 | Construire un **schéma en étoile** et le rendre conforme | C04 | **5** dimensions, **7** tables de faits, dimensions conformes partagées |
 | 6 | Gérer les **changements lents** (SCD 0/1/2/3) | C04 | **1 120** mouvements clients, **616** révisions tarifaires |
 | 7 | Construire un **calendrier** juste et un modèle **vérifié** | C06, C07 | **1 339** jours, **18** fériés, **15** points de revue passés sur le modèle du projet |
 
@@ -81,7 +81,7 @@ deux tableaux de montants.
 
 | Livrable | Points | Contenu exigé |
 |---|---|---|
-| **P1 — MCD et MLD** | **6** | modèle conceptuel des **5** entités du fil rouge (client, produit, magasin, vendeur, temps) avec cardinalités ; modèle logique : **6** dimensions, **6** faits, clés, grain écrit sous chaque table |
+| **P1 — MCD et MLD** | **6** | modèle conceptuel des **5** entités du fil rouge (client, produit, magasin, vendeur, temps) avec cardinalités ; modèle logique : **5** dimensions, **7** faits, clés, grain écrit sous chaque table |
 | **P2 — Script de création exécutable** | **6** | `CREATE TABLE` + `INSERT` rejouables, clés primaires et étrangères, contraintes d'intégrité, et **4** contrôles de recette : unicité des clés, grains, orphelins, totaux |
 | **P3 — Revue de modèle en **15** points** | **5** | la grille de C07 passée sur son propre modèle, avec la preuve pour chaque point et les défauts corrigés **listés** |
 | **P4 — Note de choix (3 pages)** | **3** | justification de chaque décision : étoile ou flocon, SCD type retenu et pourquoi, dénormalisations assumées, ce qui a été refusé et pourquoi |
@@ -118,14 +118,14 @@ et chaque réponse devient une section démontrée.
 
 | # | Question | Décision du module | La mesure qui la justifie |
 |---|---|---|---|
-| 1 | Une seule grosse table ou un modèle ? | **modèle** : **6** dimensions + **6** faits | **240 000** lignes de ventes à **18** colonnes, contre **12** tables dont chacune ne porte que son sujet |
+| 1 | Une seule grosse table ou un modèle ? | **modèle** : **5** dimensions + **7** faits | **240 000** lignes de ventes à **18** colonnes, contre **12** tables dont chacune ne porte que son sujet |
 | 2 | Jusqu'où normaliser ? | **3FN** pour les référentiels, **dénormalisation assumée** pour les dimensions de restitution | **16** libellés pour **7** familles : la correction appartient au référentiel |
 | 3 | Quel grain pour les ventes ? | **ligne de ticket** | `COUNT(*) = COUNT(DISTINCT id_vente)` = **240 000** |
 | 4 | Faut-il une table de dates ? | **oui, une seule**, et jamais la date du fait | **1 339** jours, **18** fériés, **44** mois |
 | 5 | Comment suivre les changements de segment client ? | **SCD type 2**, avec période de validité | **1 120** mouvements générés, **2** statuts par client concerné |
 | 6 | Et les changements de tarif ? | **SCD type 2** aussi, parce que la marge dépend du prix **de la période** | **616** révisions, et l'écart de prix réel de M12 (**+ 25,0 %** de **8 219** à **10 271** FCFA) |
 | 7 | Étoile ou flocon ? | **étoile** par défaut, **flocon** seulement là où il paie : la hiérarchie produit | **16** libellés → **7** familles : **2** jointures contre **1**, pour une dimension **154** lignes |
-| 8 | Quelles dimensions sont conformes ? | le temps, le magasin, le produit, le client : **les mêmes** dans les **6** faits | un seul `dim_magasin` sert les ventes, les ruptures, la logistique et les objectifs |
+| 8 | Quelles dimensions sont conformes ? | le temps, le magasin, le produit, le client : **les mêmes** dans les **7** faits | un seul `dim_magasin` sert les ventes, les ruptures, la logistique et les objectifs |
 
 ---
 
@@ -212,8 +212,9 @@ sa règle de ne pas multiplier les images sans nécessité pédagogique.
   **42,9 %** du CA net — le piège du « fait déguisé en référentiel ».
 - **Les SCD** : **1 120** mouvements de clients (segment et ville), **616** révisions tarifaires
   (**154** produits × **4** dates), **2** types de changement à distinguer (correction ou histoire).
-- **Le modèle cible** : **6** dimensions, **6** tables de faits, **12** tables, **4** contrôles de
-  recette (unicité, grain, orphelins, totaux), **7** jointures de recette, **15** points de revue.
+- **Le modèle cible** : **5** dimensions (client, produit, magasin, vendeur, temps), **7** tables de
+  faits, **12** tables, **4** contrôles de recette (unicité, grain, orphelins, totaux), **12** clés
+  étrangères vérifiées, **15** points de revue.
 
 ---
 
@@ -235,10 +236,10 @@ sa règle de ne pas multiplier les images sans nécessité pédagogique.
 
 1. **Étape 1 — Plan** : ce fichier (poussé avant toute rédaction).
 2. **Étape 2 — Socle et instruments** : `tools/dossier_M13.py` construit le dossier
-   `03_exercices/dossier_M13/` : `socle_m13.sql` (**12** tables : **6** dimensions, **6** faits),
+   `03_exercices/dossier_M13/` : `socle_m13.sql` (**12** tables : **5** dimensions, **7** faits),
    `mouvements_clients.csv` (**1 120** lignes), `tarifs_produits.csv` (**616** lignes),
-   `table_plate.csv` (l'extrait dénormalisé de **12** lignes pour C02), `modele_fautif.sql` (les trois
-   tableaux qui donnent **+ 43,0 %**), `connexion.py`, `ATTENDU.json` (les mesures de référence),
+   `table_plate.csv` (l'extrait dénormalisé de **18** lignes pour C02), `modele_fautif.sql` (les trois
+   requêtes fautives : **+ 43,0 %**, **+ 89,0 %**, **× 44,0**), `connexion.py`, `ATTENDU.json` (les mesures de référence),
    `revue_modele.md` (le modèle annoté des **5** défauts à trouver) ;
    `tools/modele_M13.py` : **4** contrôles automatiques (unicité, grain, orphelins, totaux), la mesure
    des SCD et le compte de la grille de revue ; bloc `m13_*` dans `chiffres_manuel.py`.

@@ -3312,6 +3312,166 @@ def m12():
     return d
 
 
+def m13():
+    """Les cles du module M13 - Modelisation des donnees.
+
+    Le module ne mesure pas un tableau de bord : il mesure la STRUCTURE qui rend les
+    chiffres de M12 possibles. Ses cles portent donc deux familles de nombres —
+    la structure (12 tables, 5 dimensions, 7 faits, 4 controles de recette) et les
+    pieges qu'une structure se paie (une jointure sur le magasin seul multiplie le CA
+    par 44, un fait pose au mauvais grain l'augmente de 43 %).
+
+    L'instrument du module, `tools/modele_M13.py`, est **importe** : le releve du
+    manuel et le verdict du modele ne peuvent pas diverger, puisqu'ils executent le
+    meme code sur le meme socle (graine 47).
+    """
+    import importlib.util
+    d = {}
+    depot = os.path.dirname(ROOT)          # la racine du depot (ROOT = 01_socle_donnees)
+    dossier = os.path.join(depot, "03_exercices", "dossier_M13")
+
+    # --- La structure du module (05_livrables/plan_M13.md)
+    d["m13_chapitres"] = 7
+    d["m13_heures"] = 30
+    d["m13_niveau_cible"] = "N4 (concevoir une structure, pas seulement l'interroger)"
+    d["m13_budget_pages"] = 105
+    d["m13_prerequis"] = "M06 (le modele relationnel) ; M11 (le SQL) ; M12 (les indicateurs)"
+    d["m13_planches"] = 3
+    d["m13_planches_noms"] = ("M13_C03_grain_et_explosion ; M13_C04_frise_scd ; "
+                              "M13_C07_grille_revue")
+    d["m13_decisions_modelisation"] = 8
+    d["m13_revue_points"] = 15
+    d["m13_piece_portfolio"] = 4
+    d["m13_outils_executes"] = "DuckDB 1.5.5 et pandas (executes)"
+    d["m13_outils_cites"] = ("PostgreSQL et Power BI (cites, jamais executes : regle §1.5 — la "
+                             "traduction en relations d'outil appartient a M14)")
+
+    # --- Le socle : la structure construite (graine 47, deterministe)
+    d["m13_graine"] = 47
+    d["m13_socle_script"] = "03_exercices/dossier_M13/socle_m13.sql"
+    d["m13_socle_taille_octets"] = os.path.getsize(os.path.join(dossier, "socle_m13.sql"))
+    d["m13_tables_modele"] = 12
+    d["m13_dimensions"] = 5
+    d["m13_faits"] = 7
+    d["m13_dimensions_historisees"] = 2
+    d["m13_cles_etrangeres"] = 12
+    d["m13_sources_ajoutees"] = 2
+    d["m13_versions_client"] = 24892
+    d["m13_lignes_client_scd"] = 24893
+    d["m13_versions_produit"] = 616
+    d["m13_mouvements"] = 1120
+    d["m13_mouvements_scd2"] = 980
+    d["m13_mouvements_scd1"] = 140
+    d["m13_clients_avec_histoire"] = 900
+    d["m13_versions_max"] = 3
+    d["m13_table_plate_lignes"] = 18
+    d["m13_table_plate_clients"] = 6
+    d["m13_table_plate_libelles_categorie"] = 11
+    d["m13_familles"] = 7
+    d["m13_produits_par_famille_max"] = 32
+    d["m13_socle_texte"] = (
+        "le modele compte %s tables — %s dimensions (client, produit, magasin, vendeur, temps) et "
+        "%s tables de faits — plus %s dimensions historisees (type 2). M13 n'ajoute que deux "
+        "sources, et seulement de l'histoire : %s mouvements clients et %s revisions tarifaires"
+        % ("12", "5", "7", "2", "1 120", "616"))
+
+    # --- Les quatre controles de recette et les cinq mesures, par l'instrument du module
+    spec = importlib.util.spec_from_file_location(
+        "modele_M13", os.path.join(depot, "tools", "modele_M13.py"))
+    modele = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(modele)
+    m = modele.controler()
+    f = modele.f
+
+    d["m13_recette_modele_fcfa"] = f(m["c_ca_modele"]) + " FCFA"
+    d["m13_recette_source_fcfa"] = f(m["c_ca_source"]) + " FCFA"
+    d["m13_recette_identique"] = m["c_recette_ok"]
+    d["m13_unicite_tables_ok"] = m["c_tables_cles_uniques"]
+    d["m13_unicite_tables_total"] = m["c_tables"]
+    d["m13_grain_faits_ok"] = m["c_grain_ok"]
+    d["m13_grain_faits_total"] = m["c_faits_controles"]
+    d["m13_orphelins"] = m["c_orphelins_total"]
+    d["m13_verdict_unicite"] = m["c_verdict_unicite"]
+    d["m13_verdict_grain"] = m["c_verdict_grain"]
+    d["m13_client_inconnu_lignes"] = m["c_client_inconnu_lignes"]
+    d["m13_client_inconnu_ca"] = f(m["c_client_inconnu_ca"]) + " FCFA"
+    d["m13_client_inconnu_texte"] = (
+        "le client 0 des ventes n'existe pas dans le referentiel : le modele lui donne une ligne "
+        "« client non identifie » (%s lignes de ticket, %s FCFA) plutot qu'une cle qui ne pointe "
+        "nulle part" % (f(m["c_client_inconnu_lignes"]), f(m["c_client_inconnu_ca"])))
+
+    # --- Les changements lents et les deux trous que la jointure doit boucher
+    d["m13_asof_lignes"] = m["c_ventes_jointes_asof"]
+    d["m13_ventes_total"] = m["c_ventes_total"]
+    d["m13_asof_integrale"] = m["c_asof_integrale"]
+    d["m13_ventes_client_inconnu"] = m["c_ventes_client_inconnu"]
+    d["m13_clients_rattrapes"] = m["c_clients_rattrapes"]
+    d["m13_ventes_rattrapees"] = m["c_ventes_rattrapees"]
+    d["m13_asof_texte"] = m["c_asof_texte"]
+    d["m13_ca_segment_courant"] = m["c_ca_par_segment_courant"]
+    d["m13_ca_segment_historique"] = m["c_ca_par_segment_historique"]
+    d["m13_ecart_scd_max_fcfa"] = f(m["c_ecart_scd_max"]) + " FCFA"
+    d["m13_ecart_scd_detail"] = m["c_ecart_scd_detail"]
+    d["m13_scd_texte"] = m["c_scd_texte"]
+
+    # --- Les trois modeles fautifs (chapitre C03 et etude de cas)
+    d["m13_fautif_deux_fcfa"] = f(m["c_ca_deux_tableaux"]) + " FCFA"
+    d["m13_fautif_deux_pct"] = m["c_facteur_deux_tableaux"]
+    d["m13_fautif_trois_fcfa"] = f(m["c_ca_trois_tableaux"]) + " FCFA"
+    d["m13_fautif_trois_pct"] = m["c_facteur_trois_tableaux"]
+    d["m13_fautif_jointure_fcfa"] = f(m["c_ca_jointure_folle"]) + " FCFA"
+    d["m13_fautif_jointure_facteur"] = m["c_facteur_jointure_folle"]
+    d["m13_texte_fautifs"] = m["c_fautif_texte"]
+
+    # --- Les revisions tarifaires et le calendrier
+    d["m13_prix_tarif_2023_fcfa"] = f(m["c_prix_tarif_2023"]) + " FCFA"
+    d["m13_prix_tarif_2026_fcfa"] = f(m["c_prix_tarif_2026"]) + " FCFA"
+    d["m13_derive_tarif_pct"] = m["c_derive_tarif_pct"]
+    d["m13_texte_tarifs"] = m["c_tarif_texte"]
+    d["m13_calendrier_jours"] = m["c_calendrier_jours"]
+    d["m13_calendrier_feries"] = m["c_calendrier_feries"]
+    d["m13_calendrier_mois"] = m["c_calendrier_mois"]
+    d["m13_calendrier_annees_fiscales"] = m["c_calendrier_annees_fiscales"]
+    d["m13_calendrier_semaines_commerciales"] = m["c_calendrier_semaines_com"]
+    d["m13_calendrier_semaines_iso"] = m["c_calendrier_semaines_iso"]
+    d["m13_calendrier_cles_dans_les_faits"] = m["c_calendrier_tables_date"]
+    d["m13_calendrier_texte"] = m["c_calendrier_texte"]
+    d["m13_revue_defauts"] = m["c_revue_defauts"]
+    d["m13_texte_revue"] = m["c_revue_texte"]
+
+    # --- Le projet et l'evaluation (calibres sur M11 et M12)
+    d["m13_projet_livrables"] = 4
+    d["m13_projet_points"] = 20
+    d["m13_projet_seuil"] = 13
+    d["m13_projet_p1_points"] = 6
+    d["m13_projet_p2_points"] = 6
+    d["m13_projet_p3_points"] = 5
+    d["m13_projet_p4_points"] = 3
+    d["m13_projet_note_pages"] = 3
+    d["m13_eval_points"] = 75
+    d["m13_eval_seuil"] = 48
+    d["m13_quiz_points"] = 20
+    d["m13_quiz_questions"] = 15
+    d["m13_quiz_seuil"] = 11
+    d["m13_normalisation_points"] = 20
+    d["m13_normalisation_exercices"] = 2
+    d["m13_etude_cas_points"] = 30
+    d["m13_etude_cas_seuil"] = 18
+    d["m13_autotest_points"] = 5
+
+    # --- Le controle croise cote pandas : la recette doit se retrouver des deux cotes
+    v = pd.read_csv(os.path.join(os.path.dirname(ROOT), "01_socle_donnees", "data",
+                                 "reference", "ventes_propres.csv"),
+                    usecols=["montant_ttc", "est_retour"])
+    ca_pandas = round(v.loc[v["est_retour"] == 0, "montant_ttc"].sum())
+    if abs(ca_pandas - m["c_ca_modele"]) > 1:
+        raise ValueError("M13 : recette cote pandas (%s) differente du modele (%s)"
+                         % (f(ca_pandas), f(m["c_ca_modele"])))
+    d["m13_croisee_pandas"] = ("OK : la recette du modele est celle de la source, verifiee cote "
+                               "DuckDB et cote pandas (%s FCFA)" % f(ca_pandas))
+    return d
+
+
 def m11():
     """Les cles du module M11 - SQL avance pour la BI.
 
@@ -4237,7 +4397,7 @@ def m11():
     return d
 
 
-FONCS = OrderedDict([("structure", structure), ("M01", m01), ("M02", m02), ("M03", m03), ("M04", m04), ("M05", m05), ("M06", m06), ("M07", m07), ("M08", m08), ("M09", m09), ("M10", m10), ("M11", m11), ("M12", m12)])
+FONCS = OrderedDict([("structure", structure), ("M01", m01), ("M02", m02), ("M03", m03), ("M04", m04), ("M05", m05), ("M06", m06), ("M07", m07), ("M08", m08), ("M09", m09), ("M10", m10), ("M11", m11), ("M12", m12), ("M13", m13)])
 
 
 
