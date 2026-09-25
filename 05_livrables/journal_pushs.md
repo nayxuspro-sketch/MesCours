@@ -52,13 +52,20 @@ Chaque envoi a suivi la procédure en **ajout seul** (PATCH_11) : test du jeton 
 bundle de secours dans `/tmp` → `rm -rf .git`. **Jamais** `git add -A` : les PDF de module vivent
 hors de l'atelier, et un ajout global les aurait marqués « supprimés » dès que la place manque.
 
-**Contrôles de dépôt après le n° 74 (mesurés sur le dépôt lui-même, chemins sans échappement)** :
-**400** fichiers · **92** dans `02_modules/` (dont **87** `.md` : **85** chapitres, l'ouverture
-`M01_C00` et le bilan de M01, plus **5** PDF de chapitres M05) · **70** planches dans `figures/` ·
+**Contrôles de dépôt après le n° 75 (mesurés sur le dépôt lui-même, chemins sans échappement)** :
+**400** fichiers · **93** dans `02_modules/` (dont **88** `.md` : **86** chapitres rédigés, l'ouverture
+`M01_C00` et le bilan de M01, plus **5** PDF de chapitres M05) · **71** planches dans `figures/` ·
 **49** instruments dans `tools/` · **0** `.pyc` · **21** PDF · **41** pièces dans `05_livrables/` ·
-`03_exercices/dossier_M13/` complet (**8** fichiers) · la branche `main` pointe sur `fd04f86`.
-Écart atelier / dépôt : **381** fichiers locaux, **0** absent du dépôt (les 16 de plus au dépôt sont
+`03_exercices/dossier_M13/` complet (**8** fichiers) · la branche `main` pointe sur `d4d97d6`.
+Écart atelier / dépôt : **384** fichiers locaux, **0** absent du dépôt (les 16 de plus au dépôt sont
 les PDF que l'atelier ne garde pas, plus les fichiers du kit).
+
+**Leçon du n° 75.** La première rédaction de ces lignes portait **92** fichiers dans `02_modules/`,
+**87** `.md`, **85** chapitres et **70** planches : quatre nombres écrits **de mémoire**, donc faux,
+et repérés en confrontant la copie locale à `ls-tree -z`. C'est la troisième fois que ce type d'erreur
+apparaît (n° 71, n° 75, et la ligne du n° 69) : un compteur ne se rédige **jamais** avant d'avoir été
+mesuré par la commande qui le concerne. Le compte des chapitres se fait sur les **bases de noms
+uniques**, sans quoi les chapitres de M05 comptent double (`.md` et `.pdf`).
 
 ## Kit d'exploitation M01 à M12 (n° 65)
 
