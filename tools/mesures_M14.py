@@ -121,6 +121,26 @@ def ecosysteme():
             "l'economie. Au-dessus : modele %d Go et %d actualisations par jour pour Pro, "
             "%d Go et %d pour PPU."
             % (14, f(14 * 600), int(taux), 24, f(24 * 600), 64, 1, 8, 100, 48)),
+        "m14_prix_exemple_pro_personnes": 4,
+        "m14_prix_exemple_pro_fcfa": f(4 * 14 * 600),
+        "m14_prix_exemple_pro_an_fcfa": f(4 * 14 * 600 * 12),
+        "m14_prix_lecteurs_100_fcfa": f(100 * 14 * 600),
+        "m14_prix_lecteurs_300_fcfa": f(300 * 14 * 600),
+        "m14_prix_lecteurs_40_fcfa": f(40 * 14 * 600),
+        "m14_prix_lecteurs_5_mois_fcfa": f(5 * 14 * 600),
+        "m14_prix_lecteurs_5_an_fcfa": f(5 * 14 * 600 * 12),
+        "m14_prix_lecteurs_7_mois_fcfa": f(7 * 14 * 600),
+        "m14_prix_lecteurs_7_an_fcfa": f(7 * 14 * 600 * 12),
+        "m14_prix_texte_echelle": (
+            "en dessous du seuil, la facture suit les personnes : 100 lecteurs en formule simple "
+            "coutent 840 000 FCFA par mois, 300 en coutent 2 520 000, et 40 en coutent 336 000. "
+            "A partir du seuil F64, le cout suit la machine et le nombre de lecteurs ne se paie "
+            "plus"),
+        "m14_prix_texte_pilote": (
+            "un pilote pour 4 personnes (1 auteur et 3 lecteurs) coute 4 fois 8 400 FCFA par "
+            "mois, soit 33 600 FCFA par mois et 403 200 FCFA par an. Le dispositif rate de M12 "
+            "avait coute 7 940 000 FCFA et n'a servi que 11 semaines : la question n'est pas "
+            "« combien coute la licence », mais « combien coute le rapport qui ne sert pas »"),
         "m14_prix_texte_limite": (
             "le modele du fil rouge tient dans la formule gratuite : %s lignes de ventes "
             "et %s cellules au total, très loin du plafond de %d Go de la formule Pro"

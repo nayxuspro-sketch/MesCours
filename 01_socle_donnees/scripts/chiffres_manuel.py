@@ -1752,6 +1752,16 @@ def m14():
     d["m14_prix_modele_ppu_go"] = m["m14_prix_modele_ppu_go"]
     d["m14_prix_actualisations_pro"] = m["m14_prix_actualisations_pro"]
     d["m14_prix_actualisations_ppu"] = m["m14_prix_actualisations_ppu"]
+    d["m14_prix_exemple_pro_personnes"] = m["m14_prix_exemple_pro_personnes"]
+    d["m14_prix_exemple_pro_fcfa"] = m["m14_prix_exemple_pro_fcfa"] + " FCFA"
+    d["m14_prix_exemple_pro_an_fcfa"] = m["m14_prix_exemple_pro_an_fcfa"] + " FCFA"
+    for cle in ("m14_prix_lecteurs_100_fcfa", "m14_prix_lecteurs_300_fcfa",
+                "m14_prix_lecteurs_40_fcfa", "m14_prix_lecteurs_5_mois_fcfa",
+                "m14_prix_lecteurs_5_an_fcfa", "m14_prix_lecteurs_7_mois_fcfa",
+                "m14_prix_lecteurs_7_an_fcfa"):
+        d[cle] = m[cle] + " FCFA"
+    d["m14_prix_texte_echelle"] = m["m14_prix_texte_echelle"]
+    d["m14_prix_texte_pilote"] = m["m14_prix_texte_pilote"]
     d["m14_prix_texte"] = m["m14_prix_texte"]
     d["m14_prix_texte_limite"] = m["m14_prix_texte_limite"]
 
