@@ -222,8 +222,80 @@ def frise_scd() -> str:
     return enregistrer(fig, "M13_C04_frise_scd.svg")
 
 
+# --------------------------------------------------------------------------- (c) C07
+def grille_revue() -> str:
+    """La grille de revue en 15 points, et les 5 defauts du modele fautif annotes."""
+    c = chiffres()
+    fig, ax = plt.subplots(figsize=(7.6, 5.9))
+    ax.set_xlim(0, 100)
+    ax.set_ylim(0, 100)
+    ax.axis("off")
+
+    ax.text(50, 98.2, "La grille de revue en 15 points, et les 5 defauts qu'elle attrape",
+            ha="center", va="top", fontsize=9.6, fontweight="bold")
+    ax.text(50, 93.4, "sur le modele du fil rouge, les 15 points passent ; sur le modele fautif, "
+                      "5 points echouent", ha="center", va="top", fontsize=7.8, color="#444")
+
+    # les 15 points, numerotes, avec leur verdict : True = passe, False = defaut du modele fautif
+    # et, pour les cinq defauts, la mesure qui le prouve
+    points = [
+        ("1. Une cle primaire identifie la table", True, ""),
+        ("2. L'unicite de la cle est prouvee", True, ""),
+        ("3. Le grain du fait egale celui de la source", True, ""),
+        ("4. Aucune cle etrangere orpheline", True, ""),
+        ("5. La recette egale la source de verite", True, ""),
+        ("6. Aucun attribut de reference recopie", False,
+         "%s caracteres recopies au lieu de %s" % (c["m13_c07_defaut_1_caracteres_plate"],
+                                                   c["m13_c07_defaut_1_caracteres_modele"])),
+        ("7. Une seule table porte le temps", False,
+         "%s jours d'un cote, %s mois de l'autre" % (f(c["m13_c07_defaut_2_dates"]),
+                                                     f(c["m13_c07_defaut_2_mois"]))),
+        ("8. Chaque mesure est au grain de son fait", False,
+         "un objectif pose sur la vente : + %s %%" % str(c["m13_c07_defaut_3_pct"]).replace(".", ",")),
+        ("9. Les cles etrangeres sont declarees", False,
+         "%s declaree en tout et pour tout" % c["m13_c07_defaut_4_cles"]),
+        ("10. Les libelles viennent du referentiel", False,
+         "%s libelles pour %s familles" % (c["m13_c07_defaut_5_libelles"],
+                                           c["m13_c07_defaut_5_familles"])),
+        ("11. L'historique des changements est present", True, ""),
+        ("12. Une ligne inconnue accueille les cles absentes", True, ""),
+        ("13. Le calendrier est complet des deux cotes", True, ""),
+        ("14. Les mesures non additives sont isolees", True, ""),
+        ("15. La documentation nomme tables et mesures", True, ""),
+    ]
+
+    def ligne(x, y, texte, passe, preuve, largeur):
+        cote = "#3f7d3f" if passe else "#a33b3b"
+        ax.add_patch(Rectangle((x, y - 1.1), 2.0, 2.0, facecolor=cote, edgecolor="none"))
+        ax.text(x + 3.4, y, texte, ha="left", va="center", fontsize=7.5, color="#222")
+        if preuve:
+            ax.text(x + 3.4, y - 2.9, preuve, ha="left", va="center", fontsize=6.7,
+                    color="#a33b3b", style="italic")
+
+    for i, (texte, passe, preuve) in enumerate(points[:8]):
+        ligne(2.5, 87 - i * 9.4, texte, passe, preuve, 46)
+    for i, (texte, passe, preuve) in enumerate(points[8:]):
+        ligne(52, 87 - i * 9.4, texte, passe, preuve, 46)
+
+    # le bilan des deux modeles, lu dans l'instrument
+    ax.add_patch(Rectangle((2.5, 2.5), 95, 11.5, facecolor="#f7f7f7", edgecolor="#8a8a8a", lw=1.0))
+    ax.text(5, 11.1, "Le modele du fil rouge : %s tables sur %s, %s faits sur %s, %s cles etrangeres "
+                     "verifiees," % (c["m13_c07_tables_ok"], c["m13_c07_tables"], c["m13_c07_faits_ok"],
+                                     c["m13_c07_faits"], c["m13_c07_cles_etrangeres"]),
+            ha="left", va="center", fontsize=7.4, color="#222")
+    ax.text(5, 7.7, "%s orphelin et la recette au franc pres : %s FCFA des deux cotes."
+          % (c["m13_c07_orphelins"], sans_unite(c["m13_c07_recette_modele"])),
+            ha="left", va="center", fontsize=7.4, color="#222")
+    ax.text(5, 4.3, "Le modele fautif echoue sur les points 6 a 10 : cinq defauts que l'oeil ne voit "
+                    "pas, et cinq totaux faux.", ha="left", va="center", fontsize=7.4,
+            color="#a33b3b")
+
+    return enregistrer(fig, "M13_C07_grille_revue.svg")
+
+
 PLANCHES = {"M13_C03_grain_et_explosion.svg": grain_et_explosion,
-            "M13_C04_frise_scd.svg": frise_scd}
+            "M13_C04_frise_scd.svg": frise_scd,
+            "M13_C07_grille_revue.svg": grille_revue}
 
 
 def controler(chemins):

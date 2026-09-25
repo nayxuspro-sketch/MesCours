@@ -3711,6 +3711,42 @@ def m13():
     d["m13_c06_texte_partiel"] = m["c06_texte_partiel"]
     d["m13_c06_texte_orphelines"] = m["c06_texte_orphelines"]
 
+    # --- La qualite, la documentation et la revue (M13.C07)
+    d["m13_c07_controles"] = m["c07_controles"]
+    d["m13_c07_controles_ok"] = m["c07_controles_ok"]
+    d["m13_c07_tables"] = m["c07_tables"]
+    d["m13_c07_tables_ok"] = m["c07_tables_ok"]
+    d["m13_c07_faits"] = m["c07_faits"]
+    d["m13_c07_faits_ok"] = m["c07_faits_ok"]
+    d["m13_c07_cles_etrangeres"] = m["c07_cles_etrangeres"]
+    d["m13_c07_orphelins"] = m["c07_orphelins"]
+    d["m13_c07_recette_modele"] = f(m["c07_recette_modele"]) + " FCFA"
+    d["m13_c07_recette_source"] = f(m["c07_recette_source"]) + " FCFA"
+    d["m13_c07_fichiers_lisibles"] = m["c07_fichiers_lisibles"]
+    d["m13_c07_colonnes"] = m["c07_colonnes"]
+    d["m13_c07_colonnes_liste"] = m["c07_colonnes_liste"]
+    d["m13_c07_script_lignes"] = m["c07_script_lignes"]
+    d["m13_c07_script_commentaires"] = m["c07_script_commentaires"]
+    d["m13_c07_cles_declarees"] = m["c07_cles_declarees"]
+    d["m13_c07_fk_declarees"] = m["c07_fk_declarees"]
+    d["m13_c07_commentaires_colonnes"] = m["c07_commentaires_colonnes"]
+    d["m13_c07_defaut_1_caracteres_plate"] = f(m["c07_defaut_1_caracteres_plate"])
+    d["m13_c07_defaut_1_caracteres_modele"] = f(m["c07_defaut_1_caracteres_modele"])
+    d["m13_c07_defaut_1_facteur"] = m["c07_defaut_1_facteur"]
+    d["m13_c07_defaut_2_dates"] = m["c07_defaut_2_dates"]
+    d["m13_c07_defaut_2_mois"] = m["c07_defaut_2_mois"]
+    d["m13_c07_defaut_3_montant"] = f(m["c07_defaut_3_montant"]) + " FCFA"
+    d["m13_c07_defaut_3_pct"] = m["c07_defaut_3_pct"]
+    d["m13_c07_defaut_4_cles"] = m["c07_defaut_4_cles"]
+    d["m13_c07_defaut_5_libelles"] = m["c07_defaut_5_libelles"]
+    d["m13_c07_defaut_5_familles"] = m["c07_defaut_5_familles"]
+    d["m13_c07_grille_points"] = m["c07_grille_points"]
+    d["m13_c07_grille_defauts"] = m["c07_grille_defauts"]
+    d["m13_c07_controles_texte"] = m["c07_controles_texte"]
+    d["m13_c07_documentation_texte"] = m["c07_documentation_texte"]
+    d["m13_c07_texte_defauts"] = m["c07_texte_defauts"]
+    d["m13_c07_grille_texte"] = m["c07_grille_texte"]
+
     # --- Le projet et l'evaluation (calibres sur M11 et M12)
     d["m13_projet_livrables"] = 4
     d["m13_projet_points"] = 20

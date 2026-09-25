@@ -9,7 +9,7 @@ cardinalités), M04 (qualité des données), M12.C03 (grain et additivité).**
 > rangée de deux façons sur le fil rouge. Dans la table plate, le référentiel écrit la même famille de
 > produits de **4** façons, si bien que le classement par étiquette brute place la famille la plus
 > lourde du réseau en **5e** position — **3 492 592 638** FCFA cachés derrière quatre écritures. Dans le
-> modèle, la même requête prend **2** ms au lieu de **4** : normaliser, ici, ne coûte pas une
+> modèle, la même requête prend **3** ms au lieu de **6** : normaliser, ici, ne coûte pas une
 > milliseconde de lecture. Ce qu'elle coûte, c'est l'écriture et la discipline — et ce chapitre les
 > chiffre.
 
@@ -316,7 +316,7 @@ Une normalisation se justifie par un écart. Trois écarts mesurés sur le socle
 | Caractères de noms de clients | **2 826 394** | **239 599** |
 | Caractères de désignations (relevé de stock) | **196 328** | **4 462** |
 | Groupes obtenus par catégorie | **16** | **7** |
-| Durée de la même requête de groupe | **4** ms | **2** ms |
+| Durée de la même requête de groupe | **6** ms | **3** ms |
 
 La dernière ligne mérite qu'on s'y arrête : sur DuckDB, un moteur **en colonnes**, la version
 normalisée est **plus rapide** que la version plate, parce qu'elle ne lit que les colonnes utiles et
@@ -369,7 +369,7 @@ plus que la réalité.
 - **Contrôlez le nombre de groupes** après chaque correspondance : **16** étiquettes devenues **7**
   familles se vérifient en une ligne ; **9**, c'est un défaut.
 - **Mesurez le coût de vos choix** : une dénormalisation se justifie par un chiffre, pas par une
-  intuition (ici, **4** ms contre **2** ms).
+  intuition (ici, **6** ms contre **3** ms).
 
 > **Conseil professionnel.** Quand un référentiel est sale, la tentation est de le nettoyer
 > « plus tard ». Le module propose l'inverse : **consignez la saleté dans une table de correspondance**,
@@ -491,7 +491,7 @@ elle produit une famille fantôme ». Ce livrable est la matière de P4 (note de
 | Anomalies | redondance (**× 11,8**), mise à jour (**20** lignes), insertion (**416** clients), suppression (**2** lignes) |
 | Correspondance | **16** étiquettes → **7** familles, avec `TRIM` (sinon **9**) |
 | Classement juste | Materiaux **3 492 592 638** FCFA en tête, pas Plomberie en tête |
-| Coût mesuré | **4** ms contre **2** ms : normaliser ne ralentit pas la lecture |
+| Coût mesuré | **6** ms contre **3** ms : normaliser ne ralentit pas la lecture |
 | Dénormalisation | décidée, écrite et régénérable — jamais subie |
 
 ## 15. À retenir
@@ -532,7 +532,7 @@ correspondance appliquée dans la dimension, `TRIM` compris. 5. Redondance (**2 
 clients sans achat), suppression (le client 84, **2** lignes). 6. Parce que la même famille est écrite
 de **4** façons : Materiaux pèse **3 492 592 638** FCFA et n'apparaît pas dans un top trois par
 étiquette. 7. **9** groupes au lieu de **7**, à cause de deux étiquettes portant une espace finale.
-8. Non : **2** ms pour la version normalisée contre **4** ms pour la table plate, sur ce moteur en
+8. Non : **3** ms pour la version normalisée contre **6** ms pour la table plate, sur ce moteur en
 colonnes. 9. Dimension de restitution, table d'export, cache de calcul — à condition de l'écrire et de
 pouvoir la régénérer. 10. Oui : une table de ventes à clé `id_vente` qui porterait `categorie` et
 `famille` violerait la 3FN, la famille dépendant de la catégorie.

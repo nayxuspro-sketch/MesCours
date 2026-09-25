@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="438.48pt" height="341.496pt" viewBox="0 0 438.48 341.496" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.9, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 341.496 
+L 438.48 341.496 
+L 438.48 -0 
+L 0 -0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 17.802 53.320536 
+L 26.2836 53.320536 
+L 26.2836 46.778616 
+L 17.802 46.778616 
+z
+" clip-path="url(#p2c9a3099e6)" style="fill: #3f7d3f"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 17.802 84.06756 
+L 26.2836 84.06756 
+L 26.2836 77.52564 
+L 17.802 77.52564 
+z
+" clip-path="url(#p2c9a3099e6)" style="fill: #3f7d3f"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 17.802 114.814584 
+L 26.2836 114.814584 
+L 26.2836 108.272664 
+L 17.802 108.272664 
+z
+" clip-path="url(#p2c9a3099e6)" style="fill: #3f7d3f"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 17.802 145.561608 
+L 26.2836 145.561608 
+L 26.2836 139.019688 
+L 17.802 139.019688 
+z
+" clip-path="url(#p2c9a3099e6)" style="fill: #3f7d3f"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 17.802 176.308632 
+L 26.2836 176.308632 
+L 26.2836 169.766712 
+L 17.802 169.766712 
+z
+" clip-path="url(#p2c9a3099e6)" style="fill: #3f7d3f"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 17.802 207.055656 
+L 26.2836 207.055656 
+L 26.2836 200.513736 
+L 17.802 200.513736 
+z
+" clip-path="url(#p2c9a3099e6)" style="fill: #a33b3b"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 17.802 237.80268 
+L 26.2836 237.80268 
+L 26.2836 231.26076 
+L 17.802 231.26076 
+z
+" clip-path="url(#p2c9a3099e6)" style="fill: #a33b3b"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 17.802 268.549704 
+L 26.2836 268.549704 
+L 26.2836 262.007784 
+L 17.802 262.007784 
+z
+" clip-path="url(#p2c9a3099e6)" style="fill: #a33b3b"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 227.7216 53.320536 
+L 236.2032 53.320536 
+L 236.2032 46.778616 
+L 227.7216 46.778616 
+z
+" clip-path="url(#p2c9a3099e6)" style="fill: #a33b3b"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 227.7216 84.06756 
+L 236.2032 84.06756 
+L 236.2032 77.52564 
+L 227.7216 77.52564 
+z
+" clip-path="url(#p2c9a3099e6)" style="fill: #a33b3b"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 227.7216 114.814584 
+L 236.2032 114.814584 
+L 236.2032 108.272664 
+L 227.7216 108.272664 
+z
+" clip-path="url(#p2c9a3099e6)" style="fill: #3f7d3f"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 227.7216 145.561608 
+L 236.2032 145.561608 
+L 236.2032 139.019688 
+L 227.7216 139.019688 
+z
+" clip-path="url(#p2c9a3099e6)" style="fill: #3f7d3f"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 227.7216 176.308632 
+L 236.2032 176.308632 
+L 236.2032 169.766712 
+L 227.7216 169.766712 
+z
+" clip-path="url(#p2c9a3099e6)" style="fill: #3f7d3f"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 227.7216 207.055656 
+L 236.2032 207.055656 
+L 236.2032 200.513736 
+L 227.7216 200.513736 
+z
+" clip-path="url(#p2c9a3099e6)" style="fill: #3f7d3f"/>
+   </g>
+   <g id="patch_16">
+    <path d="M 227.7216 237.80268 
+L 236.2032 237.80268 
+L 236.2032 231.26076 
+L 227.7216 231.26076 
+z
+" clip-path="url(#p2c9a3099e6)" style="fill: #3f7d3f"/>
+   </g>
+   <g id="patch_17">
+    <path d="M 17.802 326.1186 
+L 420.678 326.1186 
+L 420.678 288.50256 
+L 17.802 288.50256 
+z
+" clip-path="url(#p2c9a3099e6)" style="fill: #f7f7f7; stroke: #8a8a8a; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 9.6px; font-family: 'DejaVu Sans'; text-anchor: middle" x="219.24" y="20.382228" transform="rotate(-0 219.24 20.382228)">La grille de revue en 15 points, et les 5 defauts qu'elle attrape</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 7.8px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #444444" x="219.24" y="34.715117" transform="rotate(-0 219.24 34.715117)">sur le modele du fil rouge, les 15 points passent ; sur le modele fautif, 5 points echouent</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #222222" x="32.22072" y="51.792011" transform="rotate(-0 32.22072 51.792011)">1. Une cle primaire identifie la table</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #222222" x="32.22072" y="82.539035" transform="rotate(-0 32.22072 82.539035)">2. L'unicite de la cle est prouvee</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #222222" x="32.22072" y="113.286059" transform="rotate(-0 32.22072 113.286059)">3. Le grain du fait egale celui de la source</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #222222" x="32.22072" y="144.033083" transform="rotate(-0 32.22072 144.033083)">4. Aucune cle etrangere orpheline</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #222222" x="32.22072" y="174.780107" transform="rotate(-0 32.22072 174.780107)">5. La recette egale la source de verite</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #222222" x="32.22072" y="205.527131" transform="rotate(-0 32.22072 205.527131)">6. Aucun attribut de reference recopie</text>
+   </g>
+   <g id="text_9">
+    <text style="font-style: italic; font-size: 6.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #a33b3b" x="32.22072" y="214.792165" transform="rotate(-0 32.22072 214.792165)">2 826 394 caracteres recopies au lieu de 239 599</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #222222" x="32.22072" y="236.274155" transform="rotate(-0 32.22072 236.274155)">7. Une seule table porte le temps</text>
+   </g>
+   <g id="text_11">
+    <text style="font-style: italic; font-size: 6.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #a33b3b" x="32.22072" y="245.539189" transform="rotate(-0 32.22072 245.539189)">1 339 jours d'un cote, 44 mois de l'autre</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #222222" x="32.22072" y="267.021179" transform="rotate(-0 32.22072 267.021179)">8. Chaque mesure est au grain de son fait</text>
+   </g>
+   <g id="text_13">
+    <text style="font-style: italic; font-size: 6.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #a33b3b" x="32.22072" y="276.286213" transform="rotate(-0 32.22072 276.286213)">un objectif pose sur la vente : + 42,9 %</text>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #222222" x="242.14032" y="51.792011" transform="rotate(-0 242.14032 51.792011)">9. Les cles etrangeres sont declarees</text>
+   </g>
+   <g id="text_15">
+    <text style="font-style: italic; font-size: 6.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #a33b3b" x="242.14032" y="61.057045" transform="rotate(-0 242.14032 61.057045)">0 declaree en tout et pour tout</text>
+   </g>
+   <g id="text_16">
+    <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #222222" x="242.14032" y="82.539035" transform="rotate(-0 242.14032 82.539035)">10. Les libelles viennent du referentiel</text>
+   </g>
+   <g id="text_17">
+    <text style="font-style: italic; font-size: 6.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #a33b3b" x="242.14032" y="91.804069" transform="rotate(-0 242.14032 91.804069)">16 libelles pour 7 familles</text>
+   </g>
+   <g id="text_18">
+    <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #222222" x="242.14032" y="113.286059" transform="rotate(-0 242.14032 113.286059)">11. L'historique des changements est present</text>
+   </g>
+   <g id="text_19">
+    <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #222222" x="242.14032" y="144.033083" transform="rotate(-0 242.14032 144.033083)">12. Une ligne inconnue accueille les cles absentes</text>
+   </g>
+   <g id="text_20">
+    <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #222222" x="242.14032" y="174.780107" transform="rotate(-0 242.14032 174.780107)">13. Le calendrier est complet des deux cotes</text>
+   </g>
+   <g id="text_21">
+    <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #222222" x="242.14032" y="205.527131" transform="rotate(-0 242.14032 205.527131)">14. Les mesures non additives sont isolees</text>
+   </g>
+   <g id="text_22">
+    <text style="font-size: 7.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #222222" x="242.14032" y="236.274155" transform="rotate(-0 242.14032 236.274155)">15. La documentation nomme tables et mesures</text>
+   </g>
+   <g id="text_23">
+    <text style="font-size: 7.4px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #222222" x="28.404" y="300.030282" transform="rotate(-0 28.404 300.030282)">Le modele du fil rouge : 14 tables sur 14, 7 faits sur 7, 12 cles etrangeres verifiees,</text>
+   </g>
+   <g id="text_24">
+    <text style="font-size: 7.4px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #222222" x="28.404" y="311.151545" transform="rotate(-0 28.404 311.151545)">0 orphelin et la recette au franc pres : 15 595 154 955 FCFA des deux cotes.</text>
+   </g>
+   <g id="text_25">
+    <text style="font-size: 7.4px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #a33b3b" x="28.404" y="322.27281" transform="rotate(-0 28.404 322.27281)">Le modele fautif echoue sur les points 6 a 10 : cinq defauts que l'oeil ne voit pas, et cinq totaux faux.</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p2c9a3099e6">
+   <rect x="7.2" y="7.2" width="424.08" height="327.096"/>
+  </clipPath>
+ </defs>
+</svg>

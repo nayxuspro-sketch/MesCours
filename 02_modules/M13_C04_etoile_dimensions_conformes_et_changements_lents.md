@@ -268,8 +268,9 @@ version à rejoindre, et disparaissent.
 
 Faut-il historiser ? La question se tranche par la mesure, et le socle donne les deux termes.
 
-**Ce qu'elle coûte.** La jointure par intervalle est plus chère qu'une égalité de clé : **9** ms
-contre **5** ms sur le fil rouge, médiane de sept exécutions, pour le même rapport par segment. Le
+**Ce qu'elle coûte.** La jointure par intervalle est plus chère qu'une égalité de clé : **14** ms
+contre **7** ms sur le fil rouge, médiane de sept exécutions, pour le même rapport par segment, soit
+deux fois plus de temps pour la même réponse. Le
 surcoût est modeste ici et il grandit avec la taille des dimensions — mais il se paie une fois, à la
 conception, pas à chaque lecture.
 
@@ -598,7 +599,7 @@ de module.
 | SCD type 3 | insuffisant : **4** clients ont **3** villes |
 | Jointure au moment du fait | `BETWEEN` et `COALESCE` : **240 000** lignes pour **240 000** ventes |
 | Les deux trous | client inconnu (**43 161** ventes) et faits antérieurs à la création (**28 784** ventes) |
-| Coût de l'historique | **9** ms contre **5** ms, médiane de sept exécutions |
+| Coût de l'historique | **14** ms contre **7** ms, médiane de sept exécutions |
 | Gain de l'historique | répartition par segment juste à **102 917 580** FCFA près |
 | Tarif historisé | **616** versions, **4** par produit, **9,1 %** d'écart de prix moyen |
 
@@ -624,8 +625,8 @@ de module.
 > **102 917 580** FCFA. Un rapport juste au total peut être faux dans chaque case.
 
 > **À retenir.** Historiser coûte deux choses et en rapporte une. Cela coûte des lignes (**24 893**
-> au lieu de **23 912**), une clause de date dans **chaque** jointure, et **4** ms de lecture en plus
-> sur le fil rouge. Cela rapporte la seule chose qu'un modèle ne peut pas fabriquer après coup :
+> au lieu de **23 912**), une clause de date dans **chaque** jointure, et une lecture environ deux
+> fois plus longue sur le fil rouge (**14** ms contre **7** ms, médiane de sept exécutions). Cela rapporte la seule chose qu'un modèle ne peut pas fabriquer après coup :
 > **l'état du monde au moment du fait**.
 
 ---

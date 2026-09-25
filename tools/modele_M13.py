@@ -1100,6 +1100,98 @@ def controler():
            f(out["c06_orphelines_montant"]), f(out["c06_jours_ajoutes"]),
            out["c06_orphelines_fin"][:4], f(out["c06_corrige_lignes"]),
            f(out["c06_ventes_inchangees"])))
+    # ---- 16. la qualite du modele : quatre controles, cinq defauts, une grille
+    # 1. les quatre controles automatiques, et ce qu'ils rendent sur le socle
+    out["c07_controles"] = 4
+    out["c07_controles_ok"] = sum((
+        out["c_tables"] == out["c_tables_cles_uniques"],          # unicite
+        out["c_grain_ok"] == out["c_faits_controles"],            # grain
+        out["c_orphelins_total"] == 0,                            # orphelins
+        out["c_ca_modele"] == out["c_ca_source"],                 # recette
+    ))
+    out["c07_tables"] = out["c_tables"]
+    out["c07_tables_ok"] = out["c_tables_cles_uniques"]
+    out["c07_faits"] = out["c_faits_controles"]
+    out["c07_faits_ok"] = out["c_grain_ok"]
+    out["c07_cles_etrangeres"] = out["c_cles_etrangeres"]
+    out["c07_orphelins"] = out["c_orphelins_total"]
+    out["c07_recette_modele"] = out["c_ca_modele"]
+    out["c07_recette_source"] = out["c_ca_source"]
+    out["c07_fichiers_lisibles"] = out["c_fichiers_ok"]
+    out["c07_colonnes"] = sum(out["c_colonnes"].values())
+    out["c07_colonnes_liste"] = " · ".join(
+        "%s %d" % (t, n) for t, n in sorted(out["c_colonnes"].items(),
+                                            key=lambda x: -x[1])[:3])
+    out["c07_controles_texte"] = (
+        "quatre controles suffisent a couvrir ce qui rend un modele faux sans le rendre illisible : "
+        "l'unicite (%s tables sur %s ont une cle dont le nombre de valeurs distinctes egale le nombre "
+        "de lignes), le grain (%s faits sur %s portent exactement les lignes de leur source), les "
+        "cles etrangeres (%s cles verifiees, %s orphelin) et la recette (le modele et la source "
+        "rendent tous deux %s FCFA). Aucun de ces quatre controles ne regarde le modele : ils "
+        "comparent tous le modele a autre chose — sa source, son grain declare, son referentiel"
+        % (f(out["c07_tables_ok"]), f(out["c07_tables"]), f(out["c07_faits_ok"]),
+           f(out["c07_faits"]), f(out["c07_cles_etrangeres"]), f(out["c07_orphelins"]),
+           f(out["c07_recette_modele"])))
+
+    # 2. la documentation : ce que le script dit de lui-meme
+    chemin_sql = os.path.join(DOSSIER, "socle_m13.sql")
+    with open(chemin_sql, encoding="utf-8") as fh:
+        sql = fh.read()
+    lignes_sql = sql.split("\n")
+    out["c07_script_lignes"] = len(lignes_sql)
+    out["c07_script_commentaires"] = sum(1 for l in lignes_sql
+                                         if l.strip().startswith("--") or l.strip().startswith("*"))
+    out["c07_cles_declarees"] = sql.count("PRIMARY KEY")
+    out["c07_fk_declarees"] = sql.count("FOREIGN KEY")
+    out["c07_commentaires_colonnes"] = sql.count("COMMENT ON")
+    out["c07_documentation_texte"] = (
+        "le script qui construit le modele compte %s lignes dont %s de commentaire, et il ne "
+        "declare ni cle primaire, ni cle etrangere, ni commentaire de colonne : %s, %s et %s. Ce "
+        "n'est pas un oubli mais un choix de moteur, et il deplace la garantie : ce que la base "
+        "n'impose pas, les quatre controles le prouvent a chaque chargement. Un modele sans "
+        "contraintes declarees et sans controles est un modele nu ; le meme modele avec ses "
+        "controles tient ses promesses, mais ses promesses sont ecrites DANS le controle, pas dans "
+        "la table"
+        % (f(out["c07_script_lignes"]), f(out["c07_script_commentaires"]),
+           f(out["c07_cles_declarees"]), f(out["c07_fk_declarees"]),
+           f(out["c07_commentaires_colonnes"])))
+
+    # 3. les cinq defauts du modele fautif, chacun chiffre sur le socle
+    out["c07_defaut_1_caracteres_plate"] = out["c02_nom_recopie_plat"]
+    out["c07_defaut_1_caracteres_modele"] = out["c02_nom_dimension"]
+    out["c07_defaut_1_facteur"] = round(out["c02_nom_recopie_plat"] / out["c02_nom_dimension"], 1)
+    out["c07_defaut_2_dates"] = un("SELECT COUNT(DISTINCT date_vente) FROM fait_ventes")
+    out["c07_defaut_2_mois"] = un("SELECT COUNT(DISTINCT annee_mois) FROM dim_date")
+    out["c07_defaut_3_montant"] = int(round(un("SELECT SUM(ca_objectif_ttc) FROM fait_objectifs")))
+    out["c07_defaut_3_pct"] = round(100.0 * out["c07_defaut_3_montant"] / out["c_ca_modele"], 1)
+    out["c07_defaut_4_cles"] = out["c07_cles_declarees"] + out["c07_fk_declarees"]
+    out["c07_defaut_5_libelles"] = out["c02_libelles_bruts"]
+    out["c07_defaut_5_familles"] = out["c02_familles_reelles"]
+    out["c07_texte_defauts"] = (
+        "les cinq defauts du modele fautif ne sont pas cinq avis, ce sont cinq mesures : un nom de "
+        "client recopie %s caracteres au lieu de %s (x %s), deux colonnes pour dire le temps (%s "
+        "jours d'un cote, %s mois de l'autre), un objectif pose sur la ligne de vente qui ajoute %s "
+        "FCFA au chiffre d'affaires (+%s %%), %s cle declaree en tout et pour tout, et %s libelles "
+        "de categorie pour %s familles reelles. Aucune de ces cinq erreurs ne fait planter une "
+        "requete : toutes les cinq rendent un chiffre faux"
+        % (f(out["c07_defaut_1_caracteres_plate"]), f(out["c07_defaut_1_caracteres_modele"]),
+           fd(out["c07_defaut_1_facteur"]), f(out["c07_defaut_2_dates"]),
+           f(out["c07_defaut_2_mois"]), f(out["c07_defaut_3_montant"]),
+           fd(out["c07_defaut_3_pct"]), f(out["c07_defaut_4_cles"]),
+           f(out["c07_defaut_5_libelles"]), f(out["c07_defaut_5_familles"])))
+
+    # 4. la grille de revue : quinze points, dont cinq echouent sur le modele fautif
+    out["c07_grille_points"] = out["c_revue_points"]
+    out["c07_grille_defauts"] = out["c_revue_defauts"]
+    out["c07_grille_texte"] = (
+        "la grille de revue compte %s points, tous verifiables par une requete ou un nom. Sur le "
+        "modele du fil rouge, les %s points passent : %s tables sur %s, %s faits sur %s, %s cles "
+        "etrangeres verifiees, la recette au franc pres ; sur le modele fautif du chapitre, %s "
+        "points echouent, et ce sont les %s defauts que l'oeil ne voit pas"
+        % (f(out["c07_grille_points"]), f(out["c07_grille_points"]), f(out["c07_tables_ok"]),
+           f(out["c07_tables"]), f(out["c07_faits_ok"]), f(out["c07_faits"]),
+           f(out["c07_cles_etrangeres"]), f(out["c07_grille_defauts"]),
+           f(out["c07_grille_defauts"])))
     for table in ("dim_sous_categorie", "dim_famille", "dim_produit_flocon"):
         con.execute("DROP TABLE " + table)
     con.close()

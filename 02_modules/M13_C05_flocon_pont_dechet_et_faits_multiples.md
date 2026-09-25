@@ -147,7 +147,7 @@ Le socle a choisi l'étoile, et le chapitre C02 a montré pourquoi la famille es
 | Tables pour la hiérarchie produit | `dim_produit` seul | `dim_produit`, `dim_sous_categorie`, `dim_famille` |
 | Lignes au total | **154** | **173** (**154** + **12** + **7**) |
 | Jointures pour aller du fait à la famille | **1** | **3** |
-| Temps mesuré sur le fil rouge | **3** ms | **4** ms |
+| Temps mesuré sur le fil rouge | **3** ms | **3** ms |
 | Résultat obtenu | Matériaux **3 535 582 421** FCFA | **le même** |
 | La famille est écrite | **154** fois | **7** fois |
 
@@ -156,8 +156,9 @@ Deux observations, et elles sont contre-intuitives.
 **Le flocon ne rend pas plus juste.** La mesure le prouve : les deux lectures rendent un résultat
 **identique**. Choisir le flocon ne protège d'aucune erreur de calcul.
 
-**Le flocon coûte peu à la lecture, et beaucoup à la discipline.** **4** ms contre **3** ms sur ce
-moteur : l'écart est négligeable, comme celui mesuré en C02 pour la normalisation. Le vrai prix est
+**Le flocon ne coûte rien à la lecture, et beaucoup à la discipline.** **3** ms contre **3** ms sur
+ce moteur, médiane de sept exécutions : ces durées changent d'une
+exécution et d'une machine à l'autre, seul le rapport entre les deux lectures est stable : l'écart est négligeable, comme celui mesuré en C02 pour la normalisation. Le vrai prix est
 ailleurs : trois jointures au lieu d'une, c'est trois fois plus d'occasions de se tromper de clé, et
 une requête que le lecteur ne comprend plus d'un coup d'œil.
 
@@ -339,7 +340,7 @@ CREATE OR REPLACE TABLE dim_famille AS SELECT DISTINCT famille FROM dim_produit;
 ```
 
 Puis la même question, par les deux chemins, et la comparaison : **1** jointure et **3** ms en étoile,
-**3** jointures et **4** ms en flocon, résultat **identique**. Une variante se mesure avant d'être
+**3** jointures et **3** ms en flocon, résultat **identique**. Une variante se mesure avant d'être
 écartée, sinon on ne saura pas répondre à celui qui la proposera dans six mois.
 
 **Étape 3 — écrire la contrainte du pont.**
@@ -454,8 +455,8 @@ retours séparée.
 familles, soit **173** lignes au total contre **154** en étoile. Les deux requêtes (par famille, avec
 **1** jointure et avec **3**) rendent un résultat **identique** : Matériaux **3 535 582 421** FCFA en
 tête. Le flocon n'a donc rien changé au chiffre ; il a partagé la hiérarchie et ramené l'écriture de
-la famille de **154** à **7** occurrences — au prix de deux jointures supplémentaires et de **4** ms
-contre **3** ms. Il se justifie le jour où plusieurs référentiels doivent partager le même niveau
+la famille de **154** à **7** occurrences — au prix de deux jointures supplémentaires, pour un temps
+de lecture indiscernable (**3** ms dans les deux cas). Il se justifie le jour où plusieurs référentiels doivent partager le même niveau
 « famille », pas avant.
 
 **Exercice 5.2.** Le comptage :
@@ -555,7 +556,7 @@ flocon, quand garder un drapeau, quand séparer un fait ». Ce livrable alimente
 |---|---|
 | Flocon | **173** lignes au lieu de **154**, **3** jointures au lieu d'**1** |
 | Résultat du flocon | **identique** à l'étoile : Matériaux **3 535 582 421** FCFA |
-| Prix du flocon | **4** ms contre **3** ms, et deux jointures de plus à écrire juste |
+| Prix du flocon | Deux jointures de plus à écrire juste, et un temps de lecture indiscernable |
 | Gain du flocon | la famille écrite **7** fois au lieu de **154** |
 | N-M du socle | **240 000** lignes pour **146 161** tickets (**1,64** par ticket) |
 | Tickets multi-lignes | **66 398**, soit **45,4 %**, jusqu'à **4** lignes |
@@ -604,7 +605,7 @@ flocon, quand garder un drapeau, quand séparer un fait ». Ce livrable alimente
     deux décisions du socle, dont une qui change tous les chiffres.
 
 **Corrigé :** 1. Le nombre de jointures pour atteindre un attribut : **1** en étoile, **3** en flocon ;
-le flocon coûte **2** jointures et **1** ms, et fait passer la dimension de **154** à **173** lignes
+le flocon coûte **2** jointures, et fait passer la dimension de **154** à **173** lignes
 au total. 2. Non : les deux lectures rendent un résultat **identique** (Matériaux **3 535 582 421**
 FCFA). 3. Une table qui matérialise une relation plusieurs à plusieurs : sur le socle, tickets et
 produits — **240 000** lignes pour **146 161** tickets. 4. Parce que le montant serait répété autant de
