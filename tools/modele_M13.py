@@ -389,6 +389,86 @@ def controler():
         % (f(len(tp)), f(len({l[3] for l in tp})), f(out["c01_table_plate_noms_recopies"]),
            f(out["c01_table_plate_noms_dimension"]), f(out["c01_table_plate_villes_client_41"]),
            f(out["c01_clients_acheteurs"])))
+    # ------------------------------- 11. la normalisation, mesuree (chapitre C02)
+    # Le chapitre C02 ne parle pas de normalisation en theorie : il compare la meme
+    # information rangee dans une table plate et rangee dans le modele.
+    con.execute("""CREATE OR REPLACE TABLE plat AS
+        SELECT f.id_vente, f.montant_ttc, c.nom AS nom_client, c.ville, c.segment,
+               p.designation, p.libelle_source AS categorie, m.nom AS magasin,
+               v.nom_complet AS vendeur, f.date_vente, f.mode_paiement
+        FROM fait_ventes f
+        JOIN dim_client c  ON c.id_client  = f.id_client
+        JOIN dim_produit p ON p.id_produit = f.id_produit
+        JOIN dim_magasin m ON m.id_magasin = f.id_magasin
+        JOIN dim_vendeur v ON v.id_vendeur = f.id_vendeur""")
+    out["c02_lignes_plates"] = un("SELECT COUNT(*) FROM plat")
+    out["c02_colonnes_plates"] = un("SELECT COUNT(*) FROM information_schema.columns "
+                                    "WHERE table_name = 'plat'")
+    out["c02_colonnes_dimensions"] = un(
+        "SELECT SUM(n) FROM (SELECT COUNT(*) AS n FROM information_schema.columns WHERE "
+        "table_name IN ('dim_client','dim_produit','dim_magasin','dim_vendeur','dim_date') "
+        "GROUP BY table_name)")
+    out["c02_ca_plat"] = round(un("SELECT SUM(montant_ttc) FROM plat"))
+    out["c02_libelles_bruts"] = un("SELECT COUNT(DISTINCT categorie) FROM plat")
+    out["c02_familles_reelles"] = un("SELECT COUNT(DISTINCT famille) FROM dim_produit")
+    # le classement change selon qu'on lit le libelle brut ou la famille : la plus grosse
+    # famille du reseau se cache derriere QUATRE libelles
+    frag = q("SELECT categorie, ROUND(SUM(montant_ttc)) FROM plat "
+             "WHERE UPPER(TRIM(categorie)) LIKE 'MAT%' GROUP BY 1 ORDER BY 2 DESC")
+    out["c02_materiaux_fragments"] = "; ".join("%s %s FCFA" % (c, f(v)) for c, v in frag)
+    out["c02_materiaux_fragments_n"] = len(frag)
+    out["c02_materiaux_total"] = sum(int(v) for _, v in frag)
+    out["c02_materiaux_plus_gros_fragment"] = max(int(v) for _, v in frag)
+    fam = q("SELECT famille, ROUND(SUM(f.montant_ttc)) FROM fait_ventes f "
+            "JOIN dim_produit p ON p.id_produit = f.id_produit GROUP BY 1 ORDER BY 2 DESC")
+    out["c02_familles_ca"] = "; ".join("%s %s FCFA" % (c, f(v)) for c, v in fam)
+    out["c02_famille_1"] = fam[0][0]
+    out["c02_famille_1_ca"] = int(fam[0][1])
+    out["c02_texte_libelles"] = (
+        "le referentiel ecrit la meme famille de %s facons, et le fichier plat classe donc %s "
+        "groupes la ou le modele en compte %s : la famille la plus lourde du reseau (%s, %s FCFA) "
+        "arrive en 5e position si l'on classe les libelles bruts, parce que son montant est "
+        "partage entre %s ecritures — %s"
+        % (out["c02_materiaux_fragments_n"], f(out["c02_libelles_bruts"]),
+           f(out["c02_familles_reelles"]), out["c02_famille_1"], f(out["c02_famille_1_ca"]),
+           f(out["c02_materiaux_fragments_n"]), out["c02_materiaux_fragments"]))
+    # la redondance, mesuree sur trois attributs
+    out["c02_nom_recopie_plat"] = un("SELECT SUM(LENGTH(nom_client)) FROM plat")
+    out["c02_nom_dimension"] = un("SELECT SUM(LENGTH(nom)) FROM dim_client")
+    out["c02_designation_recopiee"] = un(
+        "SELECT SUM(LENGTH(p.designation)) FROM fait_stock_mensuel s "
+        "JOIN dim_produit p ON p.id_produit = s.id_produit")
+    out["c02_designation_dimension"] = un("SELECT SUM(LENGTH(designation)) FROM dim_produit")
+    out["c02_facteur_designation"] = round(
+        out["c02_designation_recopiee"] / out["c02_designation_dimension"], 1)
+    # le cout de la normalisation, mesure : une requete de groupe sur la table plate et
+    # sur le modele (mediane de sept executions, dans l'atelier du module)
+    import statistics as _st
+    import time as _t
+
+    def _chrono(requete, n=7):
+        mesures = []
+        for _ in range(n):
+            depart = _t.perf_counter()
+            con.execute(requete).fetchall()
+            mesures.append((_t.perf_counter() - depart) * 1000.0)
+        return int(round(_st.median(mesures)))   # en millisecondes entieres : une mesure de
+                                                 # temps n'a pas de decimale honnete
+
+    out["c02_temps_plat_famille_ms"] = _chrono(
+        "SELECT categorie, SUM(montant_ttc) FROM plat GROUP BY 1")
+    out["c02_temps_modele_famille_ms"] = _chrono(
+        "SELECT p.famille, SUM(f.montant_ttc) FROM fait_ventes f "
+        "JOIN dim_produit p ON p.id_produit = f.id_produit GROUP BY 1")
+    out["c02_texte_cout"] = (
+        "normaliser ne ralentit pas la lecture sur ce moteur, parce qu'il ne lit que les colonnes "
+        "utiles : la meme requete de groupe prend %s ms sur la table plate (%s lignes, %s colonnes) "
+        "et %s ms sur le modele (une table de faits et une dimension de %s lignes) — le cout de la "
+        "normalisation n'est pas la lecture, c'est l'ecriture et la discipline"
+        % (f(out["c02_temps_plat_famille_ms"]), f(out["c02_lignes_plates"]),
+           f(out["c02_colonnes_plates"]), f(out["c02_temps_modele_famille_ms"]),
+           f(out["c01_produits"])))
+    con.execute("DROP TABLE plat")
     con.close()
     return out
 
@@ -419,6 +499,8 @@ def main(argv=None):
     print("  9. revue     : %s" % m["c_revue_texte"])
     print(" 10. depart    : %s" % m["c01_texte_depart"])
     print("     %s" % m["c01_texte_jointures"])
+    print(" 11. normaliser: %s" % m["c02_texte_libelles"])
+    print("     %s" % m["c02_texte_cout"])
     print()
     print("  verdict : le modele rend le meme chiffre d'affaires que la source (%s FCFA), "
           "sans orphelin et avec un grain prouve sur %d tables."

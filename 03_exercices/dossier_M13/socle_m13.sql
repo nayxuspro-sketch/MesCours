@@ -54,8 +54,11 @@ INSERT INTO dim_client VALUES
 CREATE OR REPLACE TABLE dim_produit AS
 SELECT CAST(id_produit AS INTEGER)             AS id_produit,
        designation,
-       categorie                                AS libelle_source,
-       CASE categorie
+       categorie                                AS libelle_source,  -- le libelle BRUT : la preuve
+       -- TRIM avant la correspondance : deux libelles du referentiel portent une espace finale
+       -- ('Materiaux ' et 'Quincaillerie '). Sans le TRIM, la meme famille se dedouble et le
+       -- modele rend NEUF familles au lieu de sept — sans qu'aucune requete ne soit fausse.
+       CASE TRIM(categorie)
             WHEN 'PEINTURE' THEN 'Peinture'   WHEN 'Peinture' THEN 'Peinture'
             WHEN 'Peintures' THEN 'Peinture'  WHEN 'peinture' THEN 'Peinture'
             WHEN 'MATÉRIAUX' THEN 'Materiaux' WHEN 'Materiaux' THEN 'Materiaux'
@@ -64,7 +67,9 @@ SELECT CAST(id_produit AS INTEGER)             AS id_produit,
             WHEN 'Quincaillerie' THEN 'Quincaillerie'
             WHEN 'quincaillerie' THEN 'Quincaillerie'
             WHEN 'Electricité' THEN 'Electricite'
-            ELSE categorie END                    AS famille,
+            WHEN 'Bois & panneaux' THEN 'Bois et panneaux'
+            WHEN 'Consommables' THEN 'Consommables'
+            ELSE TRIM(categorie) END              AS famille,
        sous_categorie,
        unite,
        CAST(prix_vente_ht AS DOUBLE)           AS prix_vente_ht,

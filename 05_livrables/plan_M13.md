@@ -152,7 +152,7 @@ le module, l'anglais n'étant donné qu'à la première occurrence.
 | Ch. | Titre | Contenu | Sections | H | Pages |
 |---|---|---|---|---|---|
 | **C01** | Modéliser : entités, attributs, relations, cardinalités | MCD, MLD, MPD ; le passage du tableur au modèle ; les **5** entités du fil rouge ; les **3** niveaux de lecture d'une relation | 15 | 5 | 12,5 |
-| **C02** | Normaliser : 1FN, 2FN, 3FN, et les **4** anomalies | formes normales ; **4** anomalies démontrées sur **12** lignes ; quand **ne pas** normaliser ; le coût mesuré de la normalisation | 16 | 5 | 12,5 |
+| **C02** | Normaliser : 1FN, 2FN, 3FN, et les **4** anomalies | formes normales ; **4** anomalies démontrées sur **18** lignes ; quand **ne pas** normaliser ; le coût mesuré de la normalisation | 16 | 5 | 12,5 |
 | **C03** | La dimension analytique : grain, additivité, faits | grain unique par table ; additif, semi-additif, non additif ; le théorème du « ne jamais mélanger les grains » ; les **3** façons de fabriquer un faux total | 16 | 5 | 12,5 |
 | **C04** | Le schéma en étoile et les changements lents | dimensions conformes, attributs, hiérarchies ; SCD **0/1/2/3** sur les clients et les tarifs ; la requête « comme c'était au moment des faits » | 16 | 5 | 12,5 |
 | **C05** | Le schéma en flocon et ses variantes | flocon, hiérarchies partagées, **table de pont** pour le N-M, **dimension déchet**, faits multiples ; quand dénormaliser exprès | 15 | 4 | 12,5 |

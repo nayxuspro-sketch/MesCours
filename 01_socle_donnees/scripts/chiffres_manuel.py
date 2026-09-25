@@ -3486,6 +3486,30 @@ def m13():
     d["m13_c01_table_plate_villes_client_41"] = m["c01_table_plate_villes_client_41"]
     d["m13_c01_texte_depart"] = m["c01_texte_depart"]
 
+    # --- C02 : la normalisation, mesuree (table plate contre modele)
+    d["m13_c02_lignes_plates"] = m["c02_lignes_plates"]
+    d["m13_c02_colonnes_plates"] = m["c02_colonnes_plates"]
+    d["m13_c02_colonnes_dimensions"] = m["c02_colonnes_dimensions"]
+    d["m13_c02_ca_plat"] = f(m["c02_ca_plat"]) + " FCFA"
+    d["m13_c02_libelles_bruts"] = m["c02_libelles_bruts"]
+    d["m13_c02_familles_reelles"] = m["c02_familles_reelles"]
+    d["m13_c02_materiaux_fragments_n"] = m["c02_materiaux_fragments_n"]
+    d["m13_c02_materiaux_total"] = f(m["c02_materiaux_total"]) + " FCFA"
+    d["m13_c02_materiaux_plus_gros_fragment"] = f(m["c02_materiaux_plus_gros_fragment"]) + " FCFA"
+    d["m13_c02_materiaux_fragments"] = m["c02_materiaux_fragments"]
+    d["m13_c02_familles_ca"] = m["c02_familles_ca"]
+    d["m13_c02_famille_1"] = m["c02_famille_1"]
+    d["m13_c02_famille_1_ca"] = f(m["c02_famille_1_ca"]) + " FCFA"
+    d["m13_c02_texte_libelles"] = m["c02_texte_libelles"]
+    d["m13_c02_nom_recopie_plat"] = m["c02_nom_recopie_plat"]
+    d["m13_c02_nom_dimension"] = m["c02_nom_dimension"]
+    d["m13_c02_designation_recopiee"] = m["c02_designation_recopiee"]
+    d["m13_c02_designation_dimension"] = m["c02_designation_dimension"]
+    d["m13_c02_facteur_designation"] = m["c02_facteur_designation"]
+    d["m13_c02_temps_plat_famille_ms"] = m["c02_temps_plat_famille_ms"]
+    d["m13_c02_temps_modele_famille_ms"] = m["c02_temps_modele_famille_ms"]
+    d["m13_c02_texte_cout"] = m["c02_texte_cout"]
+
     # --- Le projet et l'evaluation (calibres sur M11 et M12)
     d["m13_projet_livrables"] = 4
     d["m13_projet_points"] = 20
