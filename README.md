@@ -30,7 +30,8 @@ Markdown, aucun index général. Le kit comble cet écart, et il est **généré
   sommaire général paginé, les douze modules, les deux cahiers (projets, évaluations), l'index ;
   **124 signets** PDF pour naviguer.
 - **`05_livrables/guide_apprenant_M01_M12.md`** — le mode d'emploi de l'apprenant : ce qu'il a,
-  dans quel ordre le lire, ce qu'il produit, comment il est corrigé, où sont les fichiers.
+  dans quel ordre le lire, ce qu'il produit, comment il est corrigé, où sont les fichiers. Composé
+  à part (`guide_apprenant_M01_M12.pdf`, 6 p. avec sa couverture) et **dans** le livre (4 p., partie I).
 - **`05_livrables/index_glossaire_M01_M12.md`** — index des notions (**488** entrées, chacune avec
   les chapitres où elle est traitée), glossaire (**367** définitions), index des planches (**69**),
   des instruments (**48**) et des jeux de données (**10** dossiers) : 855 entrées, triées.
@@ -177,7 +178,8 @@ formation-data-bi/
 │                                       étude de cas, corrigés, décision d'orientation
 ├── 05_livrables/                     ← PDF assemblés par module (M01.pdf 117 p. … M12.pdf 82 p.), fiches de
 │                                       contrôle Q1–Q10, plans de module, et le KIT D'EXPLOITATION :
-│                                       La_Voie_des_Donnees_M01-M12.pdf (1 395 p., 124 signets), guide_apprenant,
+│                                       La_Voie_des_Donnees_M01-M12.pdf (1 395 p., 124 signets), guide_apprenant
+│                                       (.md et .pdf, 6 p.), index_glossaire,
 │                                       index_glossaire, kit_M01_M12.json (mesures). Le HTML de contrôle n'y est
 │                                       pas stocké : 6,6 Mo par module, `render.py` le rend en 20 s au besoin
 ├── figures/                          ← SVG des planches : 7 pour M01, 4 pour M02, 9 pour M03, citées en ../figures/… depuis 02_modules/
