@@ -767,6 +767,135 @@ def dax(con):
     return out
 
 
+# --------------------------------------------------------------------------- 7
+def visuels(con):
+    """Ce que les donnees imposent au dessin : les ordres de grandeur du rapport (C06)."""
+    un = lambda s: con.execute(s).fetchone()[0]
+    ca = "SUM(montant_ttc)"
+    filt = "WHERE est_retour = 0"
+    magasins = con.execute("""SELECT m.nom, %s FROM fait_ventes v
+        JOIN dim_magasin m ON m.id_magasin = v.id_magasin %s
+        GROUP BY 1 ORDER BY 2 DESC""" % (ca, filt)).fetchall()
+    familles = con.execute("""SELECT p.famille, %s FROM fait_ventes v
+        JOIN dim_produit p ON p.id_produit = v.id_produit %s
+        GROUP BY 1 ORDER BY 2 DESC""" % (ca, filt)).fetchall()
+    total = un("SELECT %s FROM fait_ventes %s" % (ca, filt))
+    mois = con.execute("""SELECT strftime(date_vente, '%%Y-%%m') m, %s FROM fait_ventes %s
+        GROUP BY 1 ORDER BY 2""" % (ca, filt)).fetchall()
+    cases = int(un("""SELECT COUNT(*) FROM (SELECT DISTINCT id_magasin FROM dim_magasin) a
+                      CROSS JOIN (SELECT DISTINCT famille FROM dim_produit) b"""))
+    vendues = int(un("""SELECT COUNT(*) FROM (SELECT DISTINCT v.id_magasin, p.famille
+                        FROM fait_ventes v JOIN dim_produit p ON p.id_produit = v.id_produit)"""))
+    parts = [round(100.0 * v / total, 1) for _, v in magasins]
+    fam_max, fam_min = familles[0][1], familles[-1][1]
+    mois_min, mois_max = mois[0][1], mois[-1][1]
+    fenetre = """SELECT DISTINCT strftime(date_vente, '%Y-%m') m FROM fait_ventes
+                 ORDER BY 1 DESC LIMIT 12"""
+    douze = con.execute("""SELECT COUNT(*) l, %s ca FROM fait_ventes
+        WHERE strftime(date_vente, '%%Y-%%m') IN (%s) AND est_retour = 0""" % (ca, fenetre)).fetchone()
+    up = magasins[0][1] / magasins[-1][1]
+    dec = lambda x: ("%.2f" % x).replace(".", ",")
+    pct = lambda x: ("%.1f" % x).replace(".", ",")
+    out = {
+        "m14_c06_magasins_qui_vendent": len(magasins),
+        "m14_c06_parts_magasins": " / ".join("%s" % p for p in parts),
+        "m14_c06_premier_part_pct": parts[0],
+        "m14_c06_dernier_part_pct": parts[-1],
+        "m14_c06_ratio_magasins": round(up, 2),
+        "m14_c06_familles": len(familles),
+        "m14_c06_famille_max_fcfa": round(fam_max),
+        "m14_c06_famille_max_part_pct": round(100.0 * fam_max / total, 1),
+        "m14_c06_famille_min_fcfa": round(fam_min),
+        "m14_c06_ratio_familles": round(fam_max / fam_min, 2),
+        "m14_c06_mois": len(mois),
+        "m14_c06_mois_min_fcfa": round(mois_min),
+        "m14_c06_mois_max_fcfa": round(mois_max),
+        "m14_c06_ratio_mois": round(mois_max / mois_min, 2),
+        "m14_c06_matrice_cases": cases,
+        "m14_c06_matrice_vendues": vendues,
+        "m14_c06_matrice_vides": cases - vendues,
+        "m14_c06_lignes_12_mois": int(douze[0]),
+        "m14_c06_ca_12_mois_fcfa": round(douze[1]),
+        "m14_c06_part_12_mois_pct": round(100.0 * douze[1] / total, 1),
+        "m14_c06_dec_ratio_magasins": dec(up),
+        "m14_c06_dec_ratio_familles": dec(fam_max / fam_min),
+        "m14_c06_dec_ratio_mois": dec(mois_max / mois_min),
+    }
+
+    # la jauge : l'objectif contre la realisation, et les villes de la carte
+    obj = round(un("""SELECT SUM(ca_objectif_ttc) FROM fait_objectifs
+                      WHERE annee_mois BETWEEN '2026-01' AND '2026-08'"""))
+    ca26 = round(un("""SELECT SUM(montant_ttc) FROM fait_ventes WHERE est_retour = 0
+                       AND date_vente >= DATE '2026-01-01'"""))
+    taux = round(100.0 * ca26 / obj, 1)
+    bas = round(un("""SELECT MIN(t) FROM (SELECT 100 * (SELECT SUM(montant_ttc) FROM fait_ventes v
+        WHERE v.est_retour = 0 AND v.id_magasin = o.id_magasin
+          AND strftime(v.date_vente, '%Y-%m') = o.annee_mois) / o.ca_objectif_ttc t
+        FROM fait_objectifs o)"""), 1)
+    haut = round(un("""SELECT MAX(t) FROM (SELECT 100 * (SELECT SUM(montant_ttc) FROM fait_ventes v
+        WHERE v.est_retour = 0 AND v.id_magasin = o.id_magasin
+          AND strftime(v.date_vente, '%Y-%m') = o.annee_mois) / o.ca_objectif_ttc t
+        FROM fait_objectifs o)"""), 1)
+    annees = con.execute("""SELECT o.annee, ROUND(100 * (SELECT SUM(montant_ttc) FROM fait_ventes
+        WHERE est_retour = 0 AND strftime(date_vente, '%Y') = CAST(o.annee AS VARCHAR))
+        / SUM(o.ca_objectif_ttc), 1) FROM fait_objectifs o GROUP BY 1 ORDER BY 1""").fetchall()
+    villes = con.execute("""SELECT DISTINCT m.ville FROM fait_ventes v
+        JOIN dim_magasin m ON m.id_magasin = v.id_magasin WHERE v.est_retour = 0""").fetchall()
+    ouaga = un("""SELECT 100 * SUM(v.montant_ttc) / (SELECT SUM(montant_ttc) FROM fait_ventes
+        WHERE est_retour = 0) FROM fait_ventes v JOIN dim_magasin m ON m.id_magasin = v.id_magasin
+        WHERE v.est_retour = 0 AND m.ville = 'Ouagadougou'""")
+    out.update({
+        "m14_c06_objectif_8_mois_fcfa": obj,
+        "m14_c06_ca_8_mois_fcfa": ca26,
+        "m14_c06_taux_2026_pct": taux,
+        "m14_c06_taux_bas_pct": bas,
+        "m14_c06_taux_haut_pct": haut,
+        "m14_c06_taux_par_annee": " / ".join(dec(v) for _, v in annees),
+        "m14_c06_villes": len(villes),
+        "m14_c06_part_ouaga_pct": round(ouaga, 1),
+    })
+    out["m14_c06_texte_jauge"] = (
+        "l'objectif des huit mois de 2026 vaut %s FCFA, pour %s FCFA vendus : un taux de "
+        "realisation de %s %%, et de %s a %s %% selon le magasin et le mois. Une jauge "
+        "plafonnee a 100 %% ne peut pas afficher %s %% ; le maximum d'un cadran vient des "
+        "donnees, jamais du dessin — et au dela d'une fois et demie l'objectif, une barre "
+        "avec un repere d'objectif se lit mieux qu'une jauge"
+        % (f(obj), f(ca26), pct(taux), pct(bas), pct(haut), pct(taux)))
+    out["m14_c06_texte_carte"] = (
+        "les ventes tiennent dans %s villes, dont %s %% a Ouagadougou : une carte a bulles "
+        "de %s points ne montre rien qu'une barre ne montre pas, et elle ajoute une "
+        "projection, une echelle et une surface. La carte se justifie quand la question "
+        "porte sur l'implantation, pas sur le classement"
+        % (f(len(villes)), pct(ouaga), f(len(magasins))))
+    out["m14_c06_texte_tri"] = (
+        "les %s magasins qui vendent vont de %s %% a %s %% du chiffre d'affaires, soit un "
+        "rapport de %s entre le premier et le dernier : barres rangees ou matrice triee "
+        "rendent cette hierarchie en une seconde, alors qu'un ordre alphabetique la disperse "
+        "(Bobo, Gounghin, Kaya, Koudougou, Ouaga 2000). Une categorie non triee ne cache pas "
+        "un chiffre, elle cache un classement"
+        % (f(len(magasins)), parts[-1], parts[0], dec(up)))
+    out["m14_c06_texte_camembert"] = (
+        "cinq parts entre %s %% et %s %%, et un depot qui n'a aucune part : voila ce qu'un "
+        "camembert devrait montrer. L'oeil ne compare pas des angles de 11 %% et de 13 %% ; "
+        "il les classe au hasard, alors que les memes donnees en barres se lisent dans "
+        "l'ordre. Ce n'est pas une preference : c'est la hierarchie des perceptions "
+        "(position, longueur, angle, aire) — et c'est pourquoi les %s familles du rapport "
+        "tiennent dans des barres et pas dans un disque"
+        % (parts[-1], parts[0], f(len(familles))))
+    out["m14_c06_texte_echelle"] = (
+        "le chiffre d'affaires mensuel va de %s a %s FCFA, un rapport de %s : un axe qui ne "
+        "part pas de zero exagere chaque variation, et plus l'axe est etroit, plus la courbe "
+        "semble dramatique. La courbe du rapport part de zero et porte son unite dans le titre"
+        % (f(round(mois_min)), f(round(mois_max)), dec(mois_max / mois_min)))
+    out["m14_c06_texte_matrice"] = (
+        "la matrice magasin x famille compte %s cases, dont %s portent des ventes : %s cases "
+        "vides, et un rapport qui les masque fait croire a une gamme complete. Une case vide "
+        "s'explique, elle ne se cache pas — c'est la ligne « gestion des vides » de la grille "
+        "en 18 points"
+        % (f(cases), f(vendues), f(cases - vendues)))
+    return out
+
+
 def grille():
     """La grille de conception en 18 points : ses familles et les 6 ajouts du module.
 
@@ -838,7 +967,8 @@ def grille():
 def controle_dossier():
     """Les pieces du dossier M14 sont-elles la ?"""
     attendus = ("modele_powerbi.md", "retours_comite.md", "rapport_avant.md",
-               "grille_conception_M14.md", "connexion.py", "ATTENDU.json")
+               "grille_conception_M14.md", "connexion.py", "ATTENDU.json",
+               "modele_import/LISEZ_MOI.md")
     presents = {n: os.path.exists(os.path.join(DOSSIER, n)) for n in attendus}
     return {
         "m14_dossier_pieces": sum(1 for v in presents.values() if v),
@@ -863,6 +993,7 @@ def mesurer():
     out.update(controle_croise(con, vals))
     out.update(modele(con))
     out.update(dax(con))
+    out.update(visuels(con))
     out.update(grille())
     out.update(controle_dossier())
     con.close()

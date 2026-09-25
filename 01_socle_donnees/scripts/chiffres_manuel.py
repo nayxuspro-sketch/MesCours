@@ -1844,6 +1844,26 @@ def m14():
         d[cle] = m[cle]
     d["m14_c05_ca_net_fcfa"] = f(m["m14_c05_ca_net_fcfa"]) + " FCFA"
 
+    # --- C06 : ce que les donnees imposent au dessin
+    for cle in ("m14_c06_magasins_qui_vendent", "m14_c06_parts_magasins",
+                "m14_c06_premier_part_pct", "m14_c06_dernier_part_pct",
+                "m14_c06_ratio_magasins", "m14_c06_dec_ratio_magasins",
+                "m14_c06_dec_ratio_familles", "m14_c06_dec_ratio_mois",
+                "m14_c06_familles", "m14_c06_famille_max_part_pct",
+                "m14_c06_ratio_familles", "m14_c06_mois", "m14_c06_ratio_mois",
+                "m14_c06_matrice_cases", "m14_c06_matrice_vendues", "m14_c06_matrice_vides",
+                "m14_c06_lignes_12_mois", "m14_c06_part_12_mois_pct",
+                "m14_c06_taux_2026_pct", "m14_c06_taux_bas_pct", "m14_c06_taux_haut_pct",
+                "m14_c06_taux_par_annee", "m14_c06_villes", "m14_c06_part_ouaga_pct",
+                "m14_c06_texte_tri", "m14_c06_texte_camembert", "m14_c06_texte_echelle",
+                "m14_c06_texte_matrice", "m14_c06_texte_jauge", "m14_c06_texte_carte"):
+        d[cle] = m[cle]
+    for cle in ("m14_c06_famille_max_fcfa", "m14_c06_famille_min_fcfa",
+                "m14_c06_mois_min_fcfa", "m14_c06_mois_max_fcfa",
+                "m14_c06_ca_12_mois_fcfa", "m14_c06_objectif_8_mois_fcfa",
+                "m14_c06_ca_8_mois_fcfa"):
+        d[cle] = f(m[cle]) + " FCFA"
+
     # --- Les dix valeurs du tableau de bord, et leur controle croise par M12
     d["m14_v01_ca_net_fcfa"] = f(m["m14_v01_ca_net_fcfa"]) + " FCFA"
     d["m14_v02_marge_fcfa"] = f(m["m14_v02_marge_fcfa"]) + " FCFA"
