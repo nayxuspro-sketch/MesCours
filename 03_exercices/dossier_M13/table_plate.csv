@@ -6,8 +6,8 @@ id_ligne,id_ticket,date_vente,id_client,nom_client,ville_client,segment_client,i
 5,T-1005,2024-02-11,58,Quincaillerie du Sahel,Koudougou,Standard,7,Peinture acrylique 20 l,peinture,3,23900
 6,T-1006,2024-02-11,58,Quincaillerie du Sahel,Koudougou,Standard,19,Tole bac alu 6 m,Materiaux,12,9400
 7,T-1007,2024-05-30,58,Quincaillerie du Sahel,Koudougou,Standard,19,Tole bac alu 6 m,MATÉRIAUX,8,9600
-8,T-1008,2024-09-04,63,Entreprise Zongo,Kaya,Argent,31,Cable electrique 2,5 mm,Electricité,120,1150
-9,T-1009,2025-01-15,63,Entreprise Zongo,Kaya,Argent,31,Cable electrique 2,5 mm,Electricité,80,1210
+8,T-1008,2024-09-04,63,Entreprise Zongo,Kaya,Argent,31,"Cable electrique 2,5 mm",Electricité,120,1150
+9,T-1009,2025-01-15,63,Entreprise Zongo,Kaya,Argent,31,"Cable electrique 2,5 mm",Electricité,80,1210
 10,T-1010,2025-01-15,63,Entreprise Zongo,Kaya,Or,44,Tube PVC 100 mm,Plomberie,30,5400
 11,T-1011,2025-04-22,71,GIE Wende,Ouagadougou,Standard,44,Tube PVC 100 mm,Plomberie,45,5400
 12,T-1012,2025-04-22,71,GIE Wende,Ouagadougou,Standard,52,Disjoncteur 32 A,quincaillerie,24,3250

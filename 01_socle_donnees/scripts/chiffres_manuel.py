@@ -3439,6 +3439,53 @@ def m13():
     d["m13_revue_defauts"] = m["c_revue_defauts"]
     d["m13_texte_revue"] = m["c_revue_texte"]
 
+    # --- C01 : le point de depart, les cardinalites, le cout de la redondance
+    d["m13_colonnes"] = m["c_colonnes"]
+    d["m13_c01_entites"] = 5
+    d["m13_c01_associations"] = 7
+    d["m13_c01_clients_referentiel"] = m["c01_clients_referentiel"]
+    d["m13_c01_clients_acheteurs"] = m["c01_clients_acheteurs"]
+    d["m13_c01_clients_sans_vente"] = m["c01_clients_sans_vente"]
+    d["m13_c01_produits"] = m["c01_produits"]
+    d["m13_c01_produits_jamais_vendus"] = m["c01_produits_jamais_vendus"]
+    d["m13_c01_magasins"] = m["c01_magasins"]
+    d["m13_c01_magasins_vendeurs"] = m["c01_magasins_vendeurs"]
+    d["m13_c01_depot_sans_vente"] = m["c01_depot_sans_vente"]
+    d["m13_c01_vendeurs"] = m["c01_vendeurs"]
+    d["m13_c01_vendeurs_actifs"] = m["c01_vendeurs_vendeurs"]
+    d["m13_c01_jours"] = m["c01_jours"]
+    d["m13_c01_ventes_par_client_min"] = m["c01_ventes_par_client_min"]
+    d["m13_c01_ventes_par_client_moyenne"] = m["c01_ventes_par_client_moyenne"]
+    d["m13_c01_ventes_par_client_mediane"] = m["c01_ventes_par_client_mediane"]
+    d["m13_c01_ventes_par_client_max"] = m["c01_ventes_par_client_max"]
+    d["m13_c01_ventes_par_produit_min"] = m["c01_ventes_par_produit_min"]
+    d["m13_c01_ventes_par_produit_max"] = m["c01_ventes_par_produit_max"]
+    d["m13_c01_ventes_par_magasin_min"] = m["c01_ventes_par_magasin_min"]
+    d["m13_c01_ventes_par_magasin_max"] = m["c01_ventes_par_magasin_max"]
+    d["m13_c01_tickets"] = m["c01_tickets"]
+    d["m13_c01_ticket_exemple"] = m["c01_ticket_exemple"]
+    d["m13_c01_lignes_par_ticket_moyenne"] = m["c01_lignes_par_ticket_moyenne"]
+    d["m13_c01_lignes_par_ticket_max"] = m["c01_lignes_par_ticket_max"]
+    d["m13_c01_noms_recopies_caracteres"] = m["c01_noms_recopies_caracteres"]
+    d["m13_c01_noms_dimension_caracteres"] = m["c01_noms_dimension_caracteres"]
+    d["m13_c01_noms_facteur"] = m["c01_noms_facteur"]
+    d["m13_c01_jointure_commandes_fcfa"] = f(m["c01_jointure_commandes_ca"]) + " FCFA"
+    d["m13_c01_jointure_commandes_lignes"] = m["c01_jointure_commandes_lignes"]
+    d["m13_c01_jointure_encaissements_fcfa"] = f(m["c01_jointure_encaissements_ca"]) + " FCFA"
+    d["m13_c01_jointure_encaissements_lignes"] = m["c01_jointure_encaissements_lignes"]
+    d["m13_c01_jointure_facteur"] = m["c01_jointure_commandes_facteur"]
+    d["m13_c01_texte_jointures"] = m["c01_texte_jointures"]
+    d["m13_c01_clients_servis_somme"] = m["c01_clients_servis_somme"]
+    d["m13_c01_table_plate_lignes"] = m["c01_table_plate_lignes"]
+    d["m13_c01_table_plate_clients"] = m["c01_table_plate_clients"]
+    d["m13_c01_table_plate_categories"] = m["c01_table_plate_categories"]
+    d["m13_c01_table_plate_noms_recopies"] = m["c01_table_plate_noms_recopies"]
+    d["m13_c01_table_plate_noms_dimension"] = m["c01_table_plate_noms_dimension"]
+    d["m13_c01_table_plate_nom_max"] = m["c01_table_plate_nom_max"]
+    d["m13_c01_table_plate_nom_max_fois"] = m["c01_table_plate_nom_max_fois"]
+    d["m13_c01_table_plate_villes_client_41"] = m["c01_table_plate_villes_client_41"]
+    d["m13_c01_texte_depart"] = m["c01_texte_depart"]
+
     # --- Le projet et l'evaluation (calibres sur M11 et M12)
     d["m13_projet_livrables"] = 4
     d["m13_projet_points"] = 20

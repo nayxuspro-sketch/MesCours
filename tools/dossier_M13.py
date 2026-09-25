@@ -64,6 +64,20 @@ def date_de(jour):
     return (DEBUT + datetime.timedelta(days=int(jour))).isoformat()
 
 
+def ecrire_csv(nom, entete, lignes):
+    """Ecrit un CSV RECEVABLE : un champ qui contient une virgule est protege par des guillemets.
+
+    `table_plate.csv` portait « Cable electrique 2,5 mm » sans protection : la ligne comptait
+    13 champs au lieu de 12 et le fichier ne se lisait plus. Aucun total ne s'en apercevait —
+    c'est le genre de defaut qu'un chapitre de modelisation doit montrer, puis corriger.
+    """
+    with open(os.path.join(DOSSIER, nom), "w", encoding="utf-8", newline="") as f:
+        w = csv.writer(f, lineterminator="\n")
+        w.writerow(entete.split(","))
+        for l in lignes:
+            w.writerow(["" if v is None else v for v in l])
+
+
 def ecrire(nom, lignes):
     with open(os.path.join(DOSSIER, nom), "w", encoding="utf-8", newline="\n") as f:
         f.write("\n".join(lignes) + "\n")
@@ -692,21 +706,20 @@ def main():
     produits = lire(PRODUITS)
 
     mvts, scd2, scd1 = mouvements(clients)
-    ecrire("mouvements_clients.csv",
-           ["id_mouvement,id_client,date_effet,nature,valeur_avant,valeur_apres,type_scd"] +
-           ["%d,%d,%s,%s,%s,%s,%d" % (i + 1, ident, date, nature, avant, apres, ts)
-            for i, (ident, date, nature, avant, apres, ts) in enumerate(mvts)])
+    ecrire_csv("mouvements_clients.csv",
+               "id_mouvement,id_client,date_effet,nature,valeur_avant,valeur_apres,type_scd",
+               [(i + 1, ident, date, nature, avant, apres, ts)
+                for i, (ident, date, nature, avant, apres, ts) in enumerate(mvts)])
 
 
     grille = tarifs(produits)
-    ecrire("tarifs_produits.csv", ["id_produit,date_effet,prix_vente_ht"] +
-           ["%d,%s,%d" % t for t in grille])
+    ecrire_csv("tarifs_produits.csv", "id_produit,date_effet,prix_vente_ht",
+               [tuple(t) for t in grille])
 
-    ecrire("table_plate.csv",
-           ["id_ligne,id_ticket,date_vente,id_client,nom_client,ville_client,segment_client,"
-            "id_produit,designation,categorie,quantite,prix_unitaire"] +
-           ["%d,%s,%s,%d,%s,%s,%s,%d,%s,%s,%d,%d" % ((i + 1,) + tuple(l))
-            for i, l in enumerate(table_plate())])
+    ecrire_csv("table_plate.csv",
+               "id_ligne,id_ticket,date_vente,id_client,nom_client,ville_client,segment_client,"
+               "id_produit,designation,categorie,quantite,prix_unitaire",
+               [(i + 1,) + tuple(l) for i, l in enumerate(table_plate())])
 
     ecrire("socle_m13.sql", SQL.strip().split("\n"))
     ecrire("modele_fautif.sql", FAUTIF.strip().split("\n"))

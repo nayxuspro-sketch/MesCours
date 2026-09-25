@@ -31,6 +31,7 @@ Usage :
 """
 from __future__ import annotations
 
+import csv
 import json
 import os
 import sys
@@ -43,6 +44,11 @@ sys.path.insert(0, DOSSIER)
 def f(x):
     """1500000 -> '1 500 000' (l'espace insecable fine du manuel est rendue par une espace)."""
     return "{:,}".format(int(round(float(x)))).replace(",", " ")
+
+
+def fd(x):
+    """0.31 -> '0,31' : un facteur n'est pas un entier, et le manuel ecrit la virgule."""
+    return ("%g" % float(x)).replace(".", ",")
 
 
 def controler():
@@ -76,6 +82,8 @@ def controler():
     out["c_faits"] = 7
     out["c_dimensions_historisees"] = 2
     out["c_tables_du_modele"] = len(tables)
+    out["c_colonnes"] = {t: un("SELECT COUNT(*) FROM information_schema.columns "
+                               "WHERE table_name = '%s'" % t) for t in cles}
     out["c_grains"] = "; ".join(
         "%s %s" % (t, f(v["lignes"])) for t, v in sorted(tables.items()))
     out["c_verdict_unicite"] = ("%d tables sur %d ont une cle unique : le grain de chaque "
@@ -99,10 +107,22 @@ def controler():
     out["c_grain_detail"] = grains
     out["c_grain_ok"] = sum(1 for v in grains.values() if v["ok"])
     out["c_faits_controles"] = len(grains)
+    # et les fichiers du dossier doivent se LIRE : un champ qui contient une virgule sans
+    # guillemets casse le fichier sans qu'aucun total ne s'en apercoive
+    lisibles = {}
+    for nom in ("mouvements_clients.csv", "tarifs_produits.csv", "table_plate.csv"):
+        with open(os.path.join(DOSSIER, nom), encoding="utf-8", newline="") as flux:
+            lignes = list(csv.reader(flux))
+        n = len(lignes[0])
+        lisibles[nom] = {"lignes": len(lignes) - 1, "colonnes": n,
+                         "ok": all(len(l) == n for l in lignes)}
+    out["c_fichiers_lisibles"] = lisibles
+    out["c_fichiers_ok"] = sum(1 for v in lisibles.values() if v["ok"])
     out["c_verdict_grain"] = (
         "%d tables de faits sur %d portent exactement les lignes de leur source : le grain "
-        "declare est celui du chargement, et aucune jointure ne l'a ni multiplie ni filtre"
-        % (out["c_grain_ok"], out["c_faits_controles"]))
+        "declare est celui du chargement, et aucune jointure ne l'a ni multiplie ni filtre ; "
+        "les %d fichiers du dossier se lisent, colonne par colonne"
+        % (out["c_grain_ok"], out["c_faits_controles"], out["c_fichiers_ok"]))
 
     # ---------------------------------------------------------- 3. orphelins
     fks = [
@@ -279,6 +299,96 @@ def controler():
         "defauts a trouver : une dimension recopiee dans les faits, deux temps dans la meme "
         "table, un objectif pose sur la mauvaise ligne, aucune cle declaree, et une categorie "
         "reprise telle quelle du fichier source" % (out["c_revue_points"], out["c_revue_defauts"]))
+    # ------------------------------- 10. le point de depart (chapitre C01)
+    # Ce que le chapitre C01 mesure : ce que le modele remplace, et ce que coute de le
+    # faire autrement. Un modele ne se justifie pas par une opinion, par un ecart.
+    out["c01_clients_referentiel"] = un("SELECT COUNT(*) FROM dim_client WHERE id_client <> 0")
+    out["c01_clients_acheteurs"] = un(
+        "SELECT COUNT(DISTINCT id_client) FROM fait_ventes WHERE id_client <> 0")
+    out["c01_clients_sans_vente"] = un(
+        "SELECT COUNT(*) FROM dim_client d WHERE d.id_client <> 0 AND NOT EXISTS "
+        "(SELECT 1 FROM fait_ventes f WHERE f.id_client = d.id_client)")
+    out["c01_produits"] = un("SELECT COUNT(*) FROM dim_produit")
+    out["c01_produits_jamais_vendus"] = un(
+        "SELECT COUNT(*) FROM dim_produit p WHERE NOT EXISTS "
+        "(SELECT 1 FROM fait_ventes f WHERE f.id_produit = p.id_produit)")
+    out["c01_magasins"] = un("SELECT COUNT(*) FROM dim_magasin")
+    out["c01_magasins_vendeurs"] = un("SELECT COUNT(DISTINCT id_magasin) FROM fait_ventes")
+    out["c01_depot_sans_vente"] = out["c01_magasins"] - out["c01_magasins_vendeurs"]
+    out["c01_vendeurs"] = un("SELECT COUNT(*) FROM dim_vendeur")
+    out["c01_vendeurs_vendeurs"] = un("SELECT COUNT(DISTINCT id_vendeur) FROM fait_ventes")
+    out["c01_jours"] = un("SELECT COUNT(*) FROM dim_date")
+    par_client = q("SELECT MIN(n), ROUND(AVG(n), 1), MEDIAN(n), MAX(n) FROM "
+                   "(SELECT id_client, COUNT(*) AS n FROM fait_ventes "
+                   " WHERE id_client <> 0 GROUP BY id_client)")
+    out["c01_ventes_par_client"] = "%s a %s, %s en moyenne" % tuple(
+        f(x) for x in (par_client[0][0], par_client[0][3], par_client[0][1]))
+    out["c01_ventes_par_client_min"] = par_client[0][0]
+    out["c01_ventes_par_client_moyenne"] = par_client[0][1]
+    out["c01_ventes_par_client_mediane"] = par_client[0][2]
+    out["c01_ventes_par_client_max"] = par_client[0][3]
+    par_produit = q("SELECT MIN(n), MAX(n) FROM (SELECT id_produit, COUNT(*) AS n "
+                    "FROM fait_ventes GROUP BY id_produit)")
+    out["c01_ventes_par_produit_min"] = par_produit[0][0]
+    out["c01_ventes_par_produit_max"] = par_produit[0][1]
+    par_magasin = q("SELECT MAX(n), MIN(n) FROM (SELECT id_magasin, COUNT(*) AS n "
+                    "FROM fait_ventes GROUP BY id_magasin)")
+    out["c01_ventes_par_magasin_max"] = par_magasin[0][0]
+    out["c01_ventes_par_magasin_min"] = par_magasin[0][1]
+    out["c01_tickets"] = un("SELECT COUNT(DISTINCT id_ticket) FROM fait_ventes")
+    out["c01_ticket_exemple"] = un("SELECT MIN(id_ticket) FROM fait_ventes")
+    par_ticket = q("SELECT ROUND(AVG(n), 2), MAX(n) FROM (SELECT id_ticket, COUNT(*) AS n "
+                   "FROM fait_ventes GROUP BY id_ticket)")
+    out["c01_lignes_par_ticket_moyenne"] = par_ticket[0][0]
+    out["c01_lignes_par_ticket_max"] = par_ticket[0][1]
+    # le cout de la redondance : le nom du client, recopie sur chaque ligne de vente
+    out["c01_noms_recopies_caracteres"] = un(
+        "SELECT SUM(LENGTH(c.nom)) FROM fait_ventes f JOIN dim_client c ON c.id_client = f.id_client")
+    out["c01_noms_dimension_caracteres"] = un("SELECT SUM(LENGTH(nom)) FROM dim_client")
+    out["c01_noms_facteur"] = round(
+        out["c01_noms_recopies_caracteres"] / out["c01_noms_dimension_caracteres"], 1)
+    # le point de depart a nettoyer : deux tables jointes au mauvais niveau
+    ca = un("SELECT SUM(montant_ttc) FROM fait_ventes WHERE est_retour = 0")
+    deux = q("SELECT SUM(v.montant_ttc), COUNT(*) FROM fait_ventes v "
+             "JOIN fait_commandes c ON c.id_client = v.id_client WHERE v.est_retour = 0")
+    trois = q("SELECT SUM(v.montant_ttc), COUNT(*) FROM fait_ventes v "
+              "JOIN fait_encaissements e ON e.id_client = v.id_client WHERE v.est_retour = 0")
+    out["c01_jointure_commandes_ca"] = round(deux[0][0])
+    out["c01_jointure_commandes_lignes"] = deux[0][1]
+    out["c01_jointure_commandes_facteur"] = round(deux[0][0] / ca, 2)
+    out["c01_jointure_encaissements_ca"] = round(trois[0][0])
+    out["c01_jointure_encaissements_lignes"] = trois[0][1]
+    out["c01_jointure_encaissements_facteur"] = round(trois[0][0] / ca, 2)
+    out["c01_texte_jointures"] = (
+        "au niveau du client, les ventes jointes aux commandes donnent %s FCFA (x %s) et les "
+        "ventes jointes aux encaissements %s FCFA (x %s) : les deux requetes s'executent, "
+        "aucune ne leve d'erreur, et les deux faux totaux sont credibles"
+        % (f(out["c01_jointure_commandes_ca"]), fd(out["c01_jointure_commandes_facteur"]),
+           f(out["c01_jointure_encaissements_ca"]), fd(out["c01_jointure_encaissements_facteur"])))
+    # l'extrait denormalise du chapitre C02, lu comme un fichier (et non par le socle)
+    with open(os.path.join(DOSSIER, "table_plate.csv"), encoding="utf-8", newline="") as flux:
+        tp = list(csv.reader(flux))[1:]
+    noms = {}
+    for ligne in tp:
+        noms[ligne[4]] = noms.get(ligne[4], 0) + 1
+    out["c01_table_plate_lignes"] = len(tp)
+    out["c01_table_plate_clients"] = len({l[3] for l in tp})
+    out["c01_table_plate_categories"] = len({l[9] for l in tp})
+    out["c01_table_plate_noms_recopies"] = sum(len(l[4]) for l in tp)
+    out["c01_table_plate_noms_dimension"] = sum(len(n) for n in noms)
+    out["c01_table_plate_nom_max"] = max(noms, key=lambda x: (noms[x], x))
+    out["c01_table_plate_nom_max_fois"] = max(noms.values())
+    out["c01_table_plate_villes_client_41"] = len({l[5] for l in tp if l[3] == "41"})
+    out["c01_clients_servis_somme"] = un(
+        "SELECT SUM(n) FROM (SELECT COUNT(DISTINCT id_client) AS n FROM fait_ventes "
+        "GROUP BY id_magasin)")
+    out["c01_texte_depart"] = (
+        "l'extrait denormalise compte %s lignes pour %s clients : le nom du client y est "
+        "recopie %s caracteres contre %s ranges une fois, et le client 41 y porte deja %s "
+        "villes differentes — le defaut est visible sur 18 lignes, il est invisible sur %s"
+        % (f(len(tp)), f(len({l[3] for l in tp})), f(out["c01_table_plate_noms_recopies"]),
+           f(out["c01_table_plate_noms_dimension"]), f(out["c01_table_plate_villes_client_41"]),
+           f(out["c01_clients_acheteurs"])))
     con.close()
     return out
 
@@ -307,6 +417,8 @@ def main(argv=None):
     print("  7. fautifs   : %s" % m["c_fautif_texte"])
     print("  8. tarifs    : %s" % m["c_tarif_texte"])
     print("  9. revue     : %s" % m["c_revue_texte"])
+    print(" 10. depart    : %s" % m["c01_texte_depart"])
+    print("     %s" % m["c01_texte_jointures"])
     print()
     print("  verdict : le modele rend le meme chiffre d'affaires que la source (%s FCFA), "
           "sans orphelin et avec un grain prouve sur %d tables."
