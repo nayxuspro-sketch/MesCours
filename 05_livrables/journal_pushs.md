@@ -1,9 +1,10 @@
-# Journal des pushs — M11 et M12
+# Journal des pushs — M11, M12 et M13
 
-**Dernier push : `0bc2360` (M12.C03).** Le jeton fourni le 25 septembre 2026 a été validé avant tout
-envoi (`GET /api.github.com/user` → **200**, `permissions.push = true`, `info/refs?service=`
-`git-receive-pack` → **200**) : la file d'attente constituée pendant le blocage a été vidée **en une
-passe**, sans perte.
+**Dernier push : `2f23ff5` (n° 59 — socle M13).** Le jeton du 25 septembre 2026 a été re-testé avant
+**chaque** envoi (`GET /api.github.com/user` → **200**). Le script `pousser.sh` peut afficher « 401 »
+sur sa seconde sonde avant un push qui réussit : seuls `push OK` et `ls-remote` font foi (leçon
+PATCH_1). M12 est **clos** et poussé de bout en bout (n° 46 → n° 57) ; M13 est **engagé** (plan n° 58,
+socle et instrument n° 59).
 
 ## Ce qui a été poussé
 
@@ -26,31 +27,41 @@ passe**, sans perte.
 | 54 | `77ba622` | Journal des pushs et état au 25/09 | — |
 | 55 | `8a194d7` | **M12.C05** — architecture en 7 étages (5 098 mots) + planche | `autovalide --strict`, figure déterministe |
 | 56 | `eecb80e` | **M12.C06** — les 10 causes d'échec (4 901 mots) + planche des 10 couples ; C05 aligné sur **255** clés | `autovalide --strict`, figures 2/2 |
+| 57 | `0c6c26c` | **Clôture M12** — projet, évaluation, fiche Q1-Q10, `M12.pdf` (**82** p., **585 751** o), **2** planches, README et état réalignés | `controle_pdf.py` : 0 défaut bloquant ; PATCH_6 : **29** livrables nommés vérifiés ; `autovalide` M11 **et** M12 OK |
+| 58 | `b035e5f` | **Plan M13** — Modélisation des données (7 ch., 30 h, **105** p., **3** planches, **8** décisions) | plan poussé avant toute rédaction |
+| 59 | `2f23ff5` | **Socle M13** — `dossier_M13` (**2** CSV générés ; les **2** dimensions historisées sont construites **en SQL**), `socle_m13.sql` (**12** tables), `modele_M13.py` (**4** contrôles de recette + **5** mesures), relevé `m13_*` (**100** clés), plan corrigé (**5** dimensions + **7** faits) | jointure « au moment du fait » : **240 000** sur **240 000**, **0** doublon ; recette du modèle = recette de la source (**15 595 154 955** FCFA) ; `autovalide` M10, M11, M12 : 0 avertissement |
 
 Chaque envoi a suivi la procédure en **ajout seul** (PATCH_11) : test du jeton → `git init` →
 `fetch --depth 1` → `update-ref` → `read-tree` → `git add` **des seuls chemins nommés** → push →
 bundle de secours dans `/tmp` → `rm -rf .git`. **Jamais** `git add -A` : les 18 PDF de module vivent
 hors du dépôt de travail, et un ajout global les aurait marqués « supprimés ».
 
-**Contrôles de dépôt après le dernier push** : **363** fichiers · **85** fichiers dans `02_modules/`
-(**75** chapitres) · **0** `.pyc` · **18** PDF · `figures/M11_C01_carte_des_fenetres.svg` et
-`M11_C04_matrice_retention.svg` présents · `03_exercices/dossier_M12/` complet (**10** fichiers).
+**Contrôles de dépôt après le dernier push (n° 59, mesurés sur un clone neuf)** : **385** fichiers ·
+**85** fichiers dans `02_modules/` (dont **79** chapitres `.md`) · **68** planches dans `figures/` ·
+**47** fichiers dans `tools/` · **0** `.pyc` · **19** PDF · `03_exercices/dossier_M13/` complet
+(**8** fichiers) · la branche `main` pointe sur `2f23ff5`.
 
-## Ce qui reste à pousser pour M12
+## Ce qui reste à pousser pour M13
 
 | Étape | Livrable | État |
 |---|---|---|
-| C05 | L'architecture BI de bout en bout (7 étages) | à écrire |
-| — | **C04 fait** : poussé n° 52 (6 007 mots, `--strict` OK) | ✅ |
-| C06 | Réussir le projet BI : 10 causes d'échec | à écrire |
-| Figures | 2 planches (`tools/figures_M12.py`) | à produire |
-| PDF | `05_livrables/M12.pdf` — cible [78, 106] p. | à produire |
-| Fiche | `05_livrables/fiche_controle_M12.md` (Q1–Q10) | à écrire |
-| Projet | `03_exercices/M12_projet.md` — les 10 cartes de KPI, 4 livrables /20 | à écrire |
-| Évaluation | `04_evaluations/M12_evaluation.md` — quiz 15 Q + 2 rédactions + étude de cas | à écrire |
+| Plan | `05_livrables/plan_M13.md` — 7 ch., 30 h, 105 p., 3 planches, 8 décisions | ✅ n° 58 |
+| Socle | `03_exercices/dossier_M13/` — 12 tables, 2 dimensions historisées en SQL, instrument `modele_M13.py` | ✅ n° 59 |
+| C01 | Modéliser : MCD, MLD, MPD (15 §) | à écrire |
+| C02 | Normaliser : 1FN → 3FN, les 4 anomalies (16 §) | à écrire |
+| C03 | Grain, additivité, table de faits (16 §) + planche | à écrire |
+| C04 | Étoile, dimensions conformes, SCD 0/1/2/3 (16 §) + planche | à écrire |
+| C05 | Flocon, pont, déchet, faits multiples (15 §) | à écrire |
+| C06 | Le temps et le calendrier (15 §) | à écrire |
+| C07 | Qualité, documentation, revue en 15 points (16 §) + planche | à écrire |
+| Figures | **3** planches (`tools/figures_M13.py`), ≤ 776 px | à produire |
+| PDF | `05_livrables/M13.pdf` — cible **[89, 121]** p. | à produire |
+| Fiche | `05_livrables/fiche_controle_M13.md` (Q1-Q10) | à écrire |
+| Projet | `03_exercices/M13_projet.md` — 4 livrables (**6 + 6 + 5 + 3 = 20** points, seuil **13**) | à écrire |
+| Évaluation | `04_evaluations/M13_evaluation.md` — **75** points, seuil **48** | à écrire |
 | Clôture | `README.md`, `05_livrables/etat_avancement.md` | à mettre à jour |
 
-## Procédure à rejouer (elle a fonctionné 11 fois de suite)
+## Procédure à rejouer (elle a fonctionné **20** fois de suite, n° 40 → n° 59)
 
 ```bash
 cd /home/user/formation-data-bi
