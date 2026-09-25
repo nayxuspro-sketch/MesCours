@@ -1,6 +1,6 @@
 # Journal des pushs — M11, M12, M13 et le kit d'exploitation M01-M12
 
-**Dernier push : n° 71 — compteurs du dépôt corrigés par la mesure (M13.C03 est en ligne, n° 69).** Le jeton du 25 septembre
+**Dernier push : `3da3c55` (n° 72 — M13.C04, étoile et changements lents).** Le jeton du 25 septembre
 2026 a été re-testé avant **chaque** envoi (`GET /api.github.com/user` → **200**). Le script
 `pousser.sh` peut afficher « 401 » sur sa seconde sonde avant un push qui réussit : seuls
 `push OK` et `ls-remote` font foi (leçon PATCH_1). M11 et M12 sont **clos** et poussés de bout en
@@ -41,7 +41,8 @@ bout (n° 36 → n° 57) ; M13 est **engagé** (plan n° 58, socle n° 59, C01 n
 | 67 | `88ea9d5` | **Correctif du livre assemblé** : le guide (partie I) n'était pas compté dans les plages du sommaire — **décalage de 4 pages** sur les douze modules ; **guide livré en PDF autonome** (`guide_apprenant_M01_M12.pdf`, 6 p.) ; pagination alignée (journal, état, README) | M01 **9–125** · guide **5–8** · M12 **1134–1215** · index **1364–1395**, vérifiés sur le PDF composé |
 | 68 | `2901a38` | Journal des pushs (n° 66 et 67) et état au 25/09 | — |
 | 70 | `1cc33ff` | Journal des pushs (n° 68 et 69) et état au 25/09 : M13 à **3/7** | — |
-| 71 | `(ce commit)` | **Correction des compteurs du dépôt** dans le journal : la ligne du n° 69 annonçait **401** fichiers et **20** PDF, écrits de mémoire ; la mesure par `ls-tree` donne **397** fichiers et **21** PDF | compteurs relevés sur le dépôt : **397** fichiers · **91** dans `02_modules/` (dont **86** `.md`, soit **84** chapitres) · **70** planches · **49** instruments · **21** PDF · **41** pièces dans `05_livrables/` · **0** `.pyc` |
+| 72 | `3da3c55` | **M13.C04** — Le schéma en étoile et les changements lents (**6 636** mots, 16 §) : les dimensions conformes **mesurées** (`dim_magasin` sert **5** faits, `dim_date` **0** — trou déclaré, C06 le fermera), les **4** types de SCD (**980** versions / **140** corrections / **24 892** versions de clients / **4** clients à **3** villes), la jointure « au moment du fait » et ses **deux trous** (**43 161** + **28 784** = **71 945** lignes de ticket), l'écart de répartition de **102 917 580** FCFA, le tarif historisé (**9,1 %** d'écart de prix moyen) ; planche `M13_C04_frise_scd.svg` (**662** px) ; **25** clés `m13_c04_*` au relevé | `autovalide --strict` 0 avertissement ; les **6** blocs SQL du chapitre exécutés sur le socle ; planche en latin-1 strict, texte extractible du PDF |
+| 71 | `b942f05` | **Correction des compteurs du dépôt** dans le journal : la ligne du n° 69 annonçait **401** fichiers et **20** PDF, écrits de mémoire ; la mesure par `ls-tree` donne **397** fichiers et **21** PDF | compteurs relevés sur le dépôt : **397** fichiers · **91** dans `02_modules/` (dont **86** `.md`, soit **84** chapitres) · **70** planches · **49** instruments · **21** PDF · **41** pièces dans `05_livrables/` · **0** `.pyc` |
 | 69 | `1158f0d` | **M13.C03** — Grain, additivité et tables de faits (**7 089** mots, 16 §) : les **3** faux totaux mesurés (clé trop large **44,0** ; clé trop fine **0,36** ; grains mélangés **+ 43,0 %**), le piège de la mauvaise clé de contrôle (**60** valeurs pour **218** lignes), le **filtre silencieux par jointure d'agrégats** (**28 893 543** FCFA du dépôt central, trouvé en écrivant l'exercice guidé) ; planche `M13_C03_grain_et_explosion.svg` et instrument `tools/figures_M13.py` ; **37** clés `m13_c03_*` au relevé | `autovalide --strict` 0 avertissement ; les 9 requêtes citées ont été exécutées une par une ; planche **623** px, texte extractible du PDF |
 
 Chaque envoi a suivi la procédure en **ajout seul** (PATCH_11) : test du jeton → `git init` →
@@ -49,11 +50,11 @@ Chaque envoi a suivi la procédure en **ajout seul** (PATCH_11) : test du jeton 
 bundle de secours dans `/tmp` → `rm -rf .git`. **Jamais** `git add -A` : les PDF de module vivent
 hors de l'atelier, et un ajout global les aurait marqués « supprimés » dès que la place manque.
 
-**Contrôles de dépôt après le n° 70 (mesurés sur le dépôt lui-même, chemins sans échappement)** :
+**Contrôles de dépôt après le n° 72 (mesurés sur le dépôt lui-même, chemins sans échappement)** :
 **397** fichiers · **91** dans `02_modules/` (dont **86** `.md` : **84** chapitres, l'ouverture
 `M01_C00` et le bilan de M01, plus **5** PDF de chapitres M05) · **70** planches dans `figures/` ·
 **49** instruments dans `tools/` · **0** `.pyc` · **21** PDF · **41** pièces dans `05_livrables/` ·
-`03_exercices/dossier_M13/` complet (**8** fichiers) · la branche `main` pointe sur `1cc33ff`.
+`03_exercices/dossier_M13/` complet (**8** fichiers) · la branche `main` pointe sur `3da3c55`.
 Écart atelier / dépôt : **381** fichiers locaux, **0** absent du dépôt (les 16 de plus au dépôt sont
 les PDF que l'atelier ne garde pas, plus les fichiers du kit).
 
@@ -90,19 +91,20 @@ Trois corrections que la mesure a imposées, et qui changent des chiffres déjà
 | C01 | Modéliser : MCD, MLD, MPD (6 624 mots) | ✅ n° 61 |
 | C02 | Normaliser : 1FN → 3FN, les 4 anomalies (5 577 mots) | ✅ n° 63 |
 | C03 | Grain, additivité, table de faits (16 §) + planche | ✅ n° 69 |
-| C04 | Étoile, dimensions conformes, SCD 0/1/2/3 (16 §) + planche | à écrire |
+| C04 | Étoile, dimensions conformes, SCD 0/1/2/3 (16 §) + planche | ✅ n° 72 |
 | — | **Le chapitre C03 a révélé un défaut de plus du socle** : le filtre silencieux par jointure d'agrégats (dépôt central, **28 893 543** FCFA) — corrigé dans le chapitre et l'instrument | ✅ n° 69 |
 | C05 | Flocon, pont, déchet, faits multiples (15 §) | à écrire |
+| — | **Le chapitre C04 a rouvert un trou du modèle, déclaré et mesuré** : `dim_date` existe mais **aucun fait** ne pointe dessus par clé — à fermer en C06 | ⏳ C06 |
 | C06 | Le temps et le calendrier (15 §) | à écrire |
 | C07 | Qualité, documentation, revue en 15 points (16 §) + planche | à écrire |
-| Figures | **3** planches (`tools/figures_M13.py`), ≤ 776 px | à produire |
+| Figures | **2** planches livrées sur **3** (`M13_C03`, `M13_C04`) ; reste celle de C07 | 2/3 |
 | PDF | `05_livrables/M13.pdf` — cible **[89, 121]** p. | à produire |
 | Fiche | `05_livrables/fiche_controle_M13.md` (Q1-Q10) | à écrire |
 | Projet | `03_exercices/M13_projet.md` — 4 livrables (**6 + 6 + 5 + 3 = 20** points, seuil **13**) | à écrire |
 | Évaluation | `04_evaluations/M13_evaluation.md` — **75** points, seuil **48** | à écrire |
 | Clôture | `README.md`, `05_livrables/etat_avancement.md` | à mettre à jour |
 
-## Procédure à rejouer (elle a fonctionné **32** fois de suite, n° 40 → n° 71)
+## Procédure à rejouer (elle a fonctionné **33** fois de suite, n° 40 → n° 72)
 
 ```bash
 cd /home/user/formation-data-bi
