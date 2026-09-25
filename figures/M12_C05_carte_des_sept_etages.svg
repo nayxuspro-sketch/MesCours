@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="448.310682pt" height="305.506211pt" viewBox="0 0 448.310682 305.506211" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.9, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 305.506211 
+L 448.310682 305.506211 
+L 448.310682 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 21.092922 72.000131 
+L 237.596922 72.000131 
+L 237.596922 43.171331 
+L 21.092922 43.171331 
+z
+" clip-path="url(#p3d18c95585)" style="fill: #e8f1ff; stroke: #5c6b7a; stroke-width: 0.7; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 129.344922 74.001396 
+Q 129.344922 75.028444 129.344922 74.937458 
+" clip-path="url(#p3d18c95585)" style="fill: none; stroke: #5c6b7a; stroke-linecap: round"/>
+    <path d="M 130.944922 71.737458 
+L 129.344922 74.937458 
+L 127.744922 71.737458 
+z
+" clip-path="url(#p3d18c95585)" style="fill: #5c6b7a; stroke: #5c6b7a; stroke-linecap: round"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 21.092922 106.882979 
+L 237.596922 106.882979 
+L 237.596922 78.054179 
+L 21.092922 78.054179 
+z
+" clip-path="url(#p3d18c95585)" style="fill: #eaf6ee; stroke: #5c6b7a; stroke-width: 0.7; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 129.344922 108.884244 
+Q 129.344922 109.911292 129.344922 109.820306 
+" clip-path="url(#p3d18c95585)" style="fill: none; stroke: #5c6b7a; stroke-linecap: round"/>
+    <path d="M 130.944922 106.620306 
+L 129.344922 109.820306 
+L 127.744922 106.620306 
+z
+" clip-path="url(#p3d18c95585)" style="fill: #5c6b7a; stroke: #5c6b7a; stroke-linecap: round"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 21.092922 141.765827 
+L 237.596922 141.765827 
+L 237.596922 112.937027 
+L 21.092922 112.937027 
+z
+" clip-path="url(#p3d18c95585)" style="fill: #fff6e0; stroke: #5c6b7a; stroke-width: 0.7; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 129.344922 143.767092 
+Q 129.344922 144.79414 129.344922 144.703154 
+" clip-path="url(#p3d18c95585)" style="fill: none; stroke: #5c6b7a; stroke-linecap: round"/>
+    <path d="M 130.944922 141.503154 
+L 129.344922 144.703154 
+L 127.744922 141.503154 
+z
+" clip-path="url(#p3d18c95585)" style="fill: #5c6b7a; stroke: #5c6b7a; stroke-linecap: round"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 21.092922 176.648675 
+L 237.596922 176.648675 
+L 237.596922 147.819875 
+L 21.092922 147.819875 
+z
+" clip-path="url(#p3d18c95585)" style="fill: #fdeaea; stroke: #5c6b7a; stroke-width: 0.7; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 129.344922 178.64994 
+Q 129.344922 179.676988 129.344922 179.586002 
+" clip-path="url(#p3d18c95585)" style="fill: none; stroke: #5c6b7a; stroke-linecap: round"/>
+    <path d="M 130.944922 176.386002 
+L 129.344922 179.586002 
+L 127.744922 176.386002 
+z
+" clip-path="url(#p3d18c95585)" style="fill: #5c6b7a; stroke: #5c6b7a; stroke-linecap: round"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 21.092922 211.531523 
+L 237.596922 211.531523 
+L 237.596922 182.702723 
+L 21.092922 182.702723 
+z
+" clip-path="url(#p3d18c95585)" style="fill: #f0eaff; stroke: #5c6b7a; stroke-width: 0.7; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 129.344922 213.532788 
+Q 129.344922 214.559836 129.344922 214.46885 
+" clip-path="url(#p3d18c95585)" style="fill: none; stroke: #5c6b7a; stroke-linecap: round"/>
+    <path d="M 130.944922 211.26885 
+L 129.344922 214.46885 
+L 127.744922 211.26885 
+z
+" clip-path="url(#p3d18c95585)" style="fill: #5c6b7a; stroke: #5c6b7a; stroke-linecap: round"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 21.092922 246.414371 
+L 237.596922 246.414371 
+L 237.596922 217.585571 
+L 21.092922 217.585571 
+z
+" clip-path="url(#p3d18c95585)" style="fill: #eaf4f8; stroke: #5c6b7a; stroke-width: 0.7; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 129.344922 248.415636 
+Q 129.344922 249.442684 129.344922 249.351698 
+" clip-path="url(#p3d18c95585)" style="fill: none; stroke: #5c6b7a; stroke-linecap: round"/>
+    <path d="M 130.944922 246.151698 
+L 129.344922 249.351698 
+L 127.744922 246.151698 
+z
+" clip-path="url(#p3d18c95585)" style="fill: #5c6b7a; stroke: #5c6b7a; stroke-linecap: round"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 21.092922 281.297219 
+L 237.596922 281.297219 
+L 237.596922 252.468419 
+L 21.092922 252.468419 
+z
+" clip-path="url(#p3d18c95585)" style="fill: #f2f2f2; stroke: #5c6b7a; stroke-width: 0.7; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 345.848922 209.818124 
+Q 345.848922 165.694049 345.848922 123.582435 
+" clip-path="url(#p3d18c95585)" style="fill: none; stroke: #1f4e9c; stroke-width: 1.8; stroke-linecap: round"/>
+    <path d="M 343.448922 128.382435 
+L 345.848922 123.582435 
+L 348.248922 128.382435 
+z
+" clip-path="url(#p3d18c95585)" style="fill: #1f4e9c; stroke: #1f4e9c; stroke-width: 1.8; stroke-linecap: round"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #12202e" x="23.257962" y="22.991171" transform="rotate(-0 23.257962 22.991171)">Les 7 etages, du bas vers le haut : ce que chacun apporte</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #8a2b1e" x="245.391066" y="22.991171" transform="rotate(-0 245.391066 22.991171)">La panne typique de l'etage</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 8.2px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #12202e" x="26.289018" y="53.506083" transform="rotate(-0 26.289018 53.506083)">7. Diffusion</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 6.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #33414f" x="26.289018" y="64.019527" transform="rotate(-0 26.289018 64.019527)">14 destinataires, 4 ouvertures le 1er jour</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 6.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #8a2b1e" x="245.391066" y="59.379325" transform="rotate(-0 245.391066 59.379325)">panne : livrer sans adopter : 28,6 % de lecteurs a J1</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 8.2px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #12202e" x="26.289018" y="88.388931" transform="rotate(-0 26.289018 88.388931)">6. Visualisation</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 6.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #33414f" x="26.289018" y="98.902375" transform="rotate(-0 26.289018 98.902375)">2 planches, 1 graphique juste vaut mieux que 7 onglets</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 6.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #8a2b1e" x="245.391066" y="94.262173" transform="rotate(-0 245.391066 94.262173)">panne : le camembert illisible et l'axe tronque</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 8.2px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #12202e" x="26.289018" y="123.271779" transform="rotate(-0 26.289018 123.271779)">5. Couche semantique</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 6.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #33414f" x="26.289018" y="133.785223" transform="rotate(-0 26.289018 133.785223)">10 KPI, 7 champs de carte, 70 cases a signer</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 6.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #8a2b1e" x="245.391066" y="129.145021" transform="rotate(-0 245.391066 129.145021)">panne : deux definitions du meme mot : 1,12 % ou 1,91 %</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 8.2px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #12202e" x="26.289018" y="158.154627" transform="rotate(-0 26.289018 158.154627)">4. Modele</text>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 6.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #33414f" x="26.289018" y="168.668071" transform="rotate(-0 26.289018 168.668071)">8 tables, 8 cles uniques, 1 vue de marge</text>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 6.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #8a2b1e" x="245.391066" y="164.027869" transform="rotate(-0 245.391066 164.027869)">panne : une cle oubliee : x 15,8 de chiffre d'affaires</text>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 8.2px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #12202e" x="26.289018" y="193.037475" transform="rotate(-0 26.289018 193.037475)">3. Stockage</text>
+   </g>
+   <g id="text_16">
+    <text style="font-size: 6.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #33414f" x="26.289018" y="203.550919" transform="rotate(-0 26.289018 203.550919)">socle rejoue en 0,7 s, aucun fichier de base</text>
+   </g>
+   <g id="text_17">
+    <text style="font-size: 6.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #8a2b1e" x="245.391066" y="198.910717" transform="rotate(-0 245.391066 198.910717)">panne : un stock de fichiers que personne ne peut rejouer</text>
+   </g>
+   <g id="text_18">
+    <text style="font-size: 8.2px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #12202e" x="26.289018" y="227.920323" transform="rotate(-0 26.289018 227.920323)">2. Extraction</text>
+   </g>
+   <g id="text_19">
+    <text style="font-size: 6.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #33414f" x="26.289018" y="238.433767" transform="rotate(-0 26.289018 238.433767)">6 sources lues en 0,12 s, 2 prix manquants</text>
+   </g>
+   <g id="text_20">
+    <text style="font-size: 6.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #8a2b1e" x="245.391066" y="233.793565" transform="rotate(-0 245.391066 233.793565)">panne : nettoyer sans laisser de trace du nettoyage</text>
+   </g>
+   <g id="text_21">
+    <text style="font-size: 8.2px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #12202e" x="26.289018" y="262.803171" transform="rotate(-0 26.289018 262.803171)">1. Sources</text>
+   </g>
+   <g id="text_22">
+    <text style="font-size: 6.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #33414f" x="26.289018" y="273.316615" transform="rotate(-0 26.289018 273.316615)">240 000 lignes de ventes, 1,33 Mo de sources M12</text>
+   </g>
+   <g id="text_23">
+    <text style="font-size: 6.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #8a2b1e" x="245.391066" y="268.676413" transform="rotate(-0 245.391066 268.676413)">panne : completer un trou par une recopie</text>
+   </g>
+   <g id="text_24">
+    <text style="font-size: 9.4px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #12202e" x="129.344922" y="14.342531" transform="rotate(-0 129.344922 14.342531)">La chaine BI en 7 etages : de la source a la decision</text>
+   </g>
+   <g id="text_25">
+    <text style="font-size: 7.4px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #5c6b7a" x="345.848922" y="96.504611" transform="rotate(-0 345.848922 96.504611)">Le sens de lecture</text>
+   </g>
+   <g id="text_26">
+    <text style="font-size: 6.8px; font-family: 'DejaVu Sans'; fill: #1f4e9c" transform="translate(308.836203 227.268339)">les donnees montent,</text>
+    <text style="font-size: 6.8px; font-family: 'DejaVu Sans'; fill: #1f4e9c" transform="translate(312.347766 234.882851)">la decision descend</text>
+   </g>
+   <g id="text_27">
+    <text style="font-size: 6.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #33414f" x="21.092922" y="288.216131" transform="rotate(-0 21.092922 288.216131)">Chaque etage casse a sa maniere : 10 KPI, 70 cases de carte a signer,</text>
+   </g>
+   <g id="text_28">
+    <text style="font-size: 6.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #33414f" x="21.092922" y="295.999907" transform="rotate(-0 21.092922 295.999907)">6 sources operationnelles, 240 000 lignes de ventes, 1.33 Mo de socle M12.</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p3d18c95585">
+   <rect x="8.102682" y="10.018211" width="433.008" height="288.288"/>
+  </clipPath>
+ </defs>
+</svg>
