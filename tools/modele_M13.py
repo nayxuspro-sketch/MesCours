@@ -846,6 +846,260 @@ def controler():
         "pour lire un chiffre net"
         % (f(out["c05_retours_lignes"]), f(out["c05_retours_montant"]),
            fd(out["c05_retours_pct_lignes"]), f(out["c05_retours_montant"])))
+    # ---- 15. le temps et le calendrier : le trou declare en C04, ferme
+    out["c06_calendrier_lignes"] = un("SELECT COUNT(*) FROM dim_date")
+    out["c06_calendrier_debut"] = str(un("SELECT MIN(date) FROM dim_date"))
+    out["c06_calendrier_fin"] = str(un("SELECT MAX(date) FROM dim_date"))
+    annees = q("SELECT annee, COUNT(*) FROM dim_date GROUP BY 1 ORDER BY 1")
+    out["c06_calendrier_annees"] = " · ".join("%d : %d jours" % (a, n) for a, n in annees)
+    out["c06_calendrier_annee_courte"] = annees[-1][1]          # 2026, l'annee en cours
+    out["c06_calendrier_bissextile"] = [n for a, n in annees if n == 366][0]
+    # le trou declare en C04 : dim_date n'etait branchee sur aucun fait. On la branche.
+    out["c06_branchee_lignes"] = un("SELECT COUNT(*) FROM fait_ventes f "
+                                    "JOIN dim_date d ON d.date = f.date_vente")
+    out["c06_branchee_total"] = un("SELECT COUNT(*) FROM fait_ventes")
+    out["c06_jours_sans_vente"] = un(
+        "SELECT COUNT(*) FROM dim_date d WHERE NOT EXISTS "
+        "(SELECT 1 FROM fait_ventes f WHERE f.date_vente = d.date)")
+    out["c06_ventes_hors_calendrier"] = un(
+        "SELECT COUNT(*) FROM (SELECT DISTINCT date_vente FROM fait_ventes) v "
+        "LEFT JOIN dim_date d ON d.date = v.date_vente WHERE d.date IS NULL")
+    out["c06_rapport_lignes"] = round(out["c06_branchee_total"] / out["c06_calendrier_lignes"], 1)
+    # 1. les accidents que seul un calendrier sait dire
+    out["c06_29_fevrier_lignes"] = un("SELECT COUNT(*) FROM fait_ventes "
+                                      "WHERE date_vente = DATE '2024-02-29'")
+    out["c06_29_fevrier_ca"] = int(round(un(
+        "SELECT COALESCE(SUM(montant_ttc), 0) FROM fait_ventes "
+        "WHERE date_vente = DATE '2024-02-29' AND est_retour = 0")))
+    par_an = q("""SELECT d.annee, COUNT(*), ROUND(SUM(f.montant_ttc))
+                  FROM fait_ventes f JOIN dim_date d ON d.date = f.date_vente
+                  WHERE f.est_retour = 0 GROUP BY 1 ORDER BY 1""")
+    out["c06_ca_par_annee"] = " · ".join("%d %s FCFA" % (a, f(c)) for a, n, c in par_an)
+    out["c06_ca_annee_courante"] = int(par_an[-1][2])
+    out["c06_ca_annee_precedente"] = int(par_an[-2][2])
+    out["c06_ca_jour_moyen"] = int(round(un(
+        "SELECT SUM(montant_ttc) / %d FROM fait_ventes WHERE est_retour = 0"
+        % out["c06_calendrier_lignes"])))
+    out["c06_jours_20m"] = un("""SELECT COUNT(*) FROM (SELECT date_vente, SUM(montant_ttc) c
+                                 FROM fait_ventes WHERE est_retour = 0 GROUP BY 1
+                                 HAVING c > 20000000)""")
+    pic = q("""SELECT date_vente, ROUND(SUM(montant_ttc)) FROM fait_ventes
+               WHERE est_retour = 0 GROUP BY 1 ORDER BY 2 DESC LIMIT 1""")[0]
+    creux = q("""SELECT date_vente, ROUND(SUM(montant_ttc)) FROM fait_ventes
+                 WHERE est_retour = 0 GROUP BY 1 ORDER BY 2 ASC LIMIT 1""")[0]
+    out["c06_pic_jour"], out["c06_pic_ca"] = str(pic[0]), int(pic[1])
+    out["c06_creux_jour"], out["c06_creux_ca"] = str(creux[0]), int(creux[1])
+    out["c06_pic_jour_libelle"] = un("SELECT libelle_jour FROM dim_date WHERE date = DATE '%s'" % pic[0])
+    out["c06_creux_jour_libelle"] = un("SELECT libelle_jour FROM dim_date WHERE date = DATE '%s'" % creux[0])
+    out["c06_ratio_pic_creux"] = round(float(pic[1]) / float(creux[1]), 1)
+    out["c06_t4_2025"] = int(round(un("""SELECT SUM(f.montant_ttc) FROM fait_ventes f
+                                        JOIN dim_date d ON d.date = f.date_vente
+                                        WHERE f.est_retour = 0 AND d.annee = 2025
+                                          AND d.trimestre = 4""")))
+    # dix annees civiles, du 1er janvier 2023 au 31 decembre 2032 : 3652 jours d'ecart, 3653 lignes
+    out["c06_calendrier_dix_ans"] = un("""SELECT COUNT(*) FROM
+        generate_series(DATE '2023-01-01', DATE '2023-01-01' + INTERVAL 3652 DAY, INTERVAL 1 DAY)""")
+    out["c06_faits_dix_ans"] = int(round(out["c06_calendrier_dix_ans"] * out["c06_rapport_lignes"]))
+    # 2. les feries : presents au calendrier, mais travailles
+    out["c06_feries_jours"] = un("SELECT COUNT(*) FROM dim_date WHERE est_ferie = 1")
+    libelles = q("SELECT libelle_ferie FROM dim_date WHERE est_ferie = 1 GROUP BY 1 ORDER BY 1")
+    out["c06_feries_libelles_n"] = len(libelles)
+    out["c06_feries_libelles"] = ", ".join(r[0] for r in libelles)
+    out["c06_feries_jours_travailles"] = un(
+        "SELECT COUNT(DISTINCT d.date) FROM fait_ventes f JOIN dim_date d "
+        "ON d.date = f.date_vente AND d.est_ferie = 1")
+    out["c06_feries_ca"] = int(round(un(
+        "SELECT SUM(f.montant_ttc) FROM fait_ventes f JOIN dim_date d "
+        "ON d.date = f.date_vente WHERE f.est_retour = 0 AND d.est_ferie = 1")))
+    out["c06_part_feries"] = round(100.0 * out["c06_feries_ca"] / out["c_branchee_total_ca"]
+                                   if "c_branchee_total_ca" in out else
+                                   100.0 * out["c06_feries_ca"] / un(
+                                       "SELECT SUM(montant_ttc) FROM fait_ventes WHERE est_retour = 0"), 2)
+    # 3. le jour de la semaine : la dimension porte l'attribut, pas le fait
+    jours = q("""SELECT d.libelle_jour, d.jour_semaine, ROUND(SUM(f.montant_ttc))
+                 FROM fait_ventes f JOIN dim_date d ON d.date = f.date_vente
+                 WHERE f.est_retour = 0 GROUP BY 1, 2 ORDER BY 2""")
+    out["c06_ca_par_jour_semaine"] = " · ".join("%s %s FCFA" % (j, f(v)) for j, n, v in jours)
+    out["c06_lundi_ca"] = int(jours[0][2])
+    out["c06_dimanche_ca"] = int(jours[6][2])
+    out["c06_ratio_lundi_dimanche"] = round(float(jours[0][2]) / float(jours[6][2]), 2)
+    out["c06_dimanches"] = un("SELECT COUNT(*) FROM dim_date WHERE est_dimanche = 1")
+    out["c06_moyenne_dimanche"] = int(round(un(
+        "SELECT SUM(f.montant_ttc) / COUNT(DISTINCT d.date) FROM fait_ventes f "
+        "JOIN dim_date d ON d.date = f.date_vente WHERE f.est_retour = 0 AND d.est_dimanche = 1")))
+    out["c06_part_dimanche"] = round(100.0 * out["c06_dimanche_ca"] /
+                                     un("SELECT SUM(montant_ttc) FROM fait_ventes WHERE est_retour = 0"), 2)
+    out["c06_part_lundi"] = round(100.0 * out["c06_lundi_ca"] /
+                                  un("SELECT SUM(montant_ttc) FROM fait_ventes WHERE est_retour = 0"), 1)
+    out["c06_part_weekend"] = round(un("""SELECT 100.0 * SUM(CASE WHEN d.jour_semaine >= 5
+                                        THEN f.montant_ttc END) / SUM(f.montant_ttc)
+                                        FROM fait_ventes f JOIN dim_date d ON d.date = f.date_vente
+                                        WHERE f.est_retour = 0"""), 1)
+    # 4. les deux calendriers du socle : ISO et commercial ne tombent pas d'accord
+    out["c06_semaine_iso_max"] = max(r[1] for r in q(
+        "SELECT annee, MAX(semaine_iso) FROM dim_date GROUP BY 1"))
+    out["c06_semaine_commerciale_max"] = un("SELECT MAX(semaine_commerciale) FROM dim_date")
+    out["c06_semaine53_jours"] = un("SELECT COUNT(*) FROM dim_date WHERE semaine_commerciale = 53")
+    out["c06_iso_decalage_jours"] = un("""SELECT COUNT(*) FROM dim_date
+                                          WHERE annee = 2023 AND mois = 1 AND semaine_iso > 50""")
+    out["c06_iso_1er_janvier"] = un("SELECT semaine_iso FROM dim_date WHERE date = DATE '2023-01-01'")
+    # 5. l'exercice fiscal : un decalage, donc deux lectures de la meme annee
+    out["c06_fiscal_lignes"] = un("SELECT COUNT(*) FROM dim_date WHERE annee <> annee_fiscale")
+    out["c06_fiscal_debut"] = str(un("SELECT MIN(date) FROM dim_date WHERE annee_fiscale = 2022"))
+    out["c06_fiscal_fin"] = str(un("SELECT MAX(date) FROM dim_date WHERE annee_fiscale = 2022"))
+    out["c06_periode_fiscale_valeurs"] = un("SELECT COUNT(DISTINCT periode_fiscale) FROM dim_date")
+    # 6. le piege du mois partiel : deux ecarts contradictoires sur le meme socle
+    out["c06_mois_comparables"] = 8
+    an_courante = annees[-1][0]
+    cumul = lambda an: un("""SELECT SUM(f.montant_ttc) FROM fait_ventes f
+                             JOIN dim_date d ON d.date = f.date_vente
+                             WHERE f.est_retour = 0 AND d.annee = %d AND d.mois <= %d"""
+                          % (an, out["c06_mois_comparables"]))
+    ytd_cur, ytd_prev = cumul(an_courante), cumul(an_courante - 1)
+    out["c06_ytd_courant"] = int(round(ytd_cur))
+    out["c06_ytd_precedent"] = int(round(ytd_prev))
+    out["c06_ytd_comparable"] = f(ytd_cur) + " FCFA contre " + f(ytd_prev) + " FCFA"
+    out["c06_ecart_comparable_pct"] = round(100.0 * (ytd_cur - ytd_prev) / ytd_prev, 1)
+    out["c06_ytd_par_annee"] = " · ".join(
+        "%d %s FCFA" % (a, f(cumul(a))) for a in sorted({a for a, n, c in par_an}))
+
+    out["c06_ecart_brut_pct"] = round(100.0 * (out["c06_ca_annee_courante"]
+                                               - out["c06_ca_annee_precedente"])
+                                      / out["c06_ca_annee_precedente"], 1)
+    out["c06_ecart_points"] = round(out["c06_ecart_comparable_pct"] - out["c06_ecart_brut_pct"], 1)
+    glissant = un("SELECT SUM(montant_ttc) FROM fait_ventes WHERE est_retour = 0 "
+                  "AND date_vente > DATE '2025-08-31'")
+    glissant_avant = un("SELECT SUM(montant_ttc) FROM fait_ventes WHERE est_retour = 0 "
+                        "AND date_vente > DATE '2024-08-31' AND date_vente <= DATE '2025-08-31'")
+    out["c06_glissant_12_mois"] = int(round(glissant))
+    out["c06_glissant_12_mois_avant"] = int(round(glissant_avant))
+    out["c06_glissant_pct"] = round(100.0 * (glissant - glissant_avant) / glissant_avant, 1)
+    out["c06_part_t4"] = un("""SELECT ROUND(100.0 * SUM(CASE WHEN trimestre = 4 THEN ca END) / SUM(ca), 1)
+                              FROM (SELECT d.annee, d.trimestre, SUM(f.montant_ttc) ca
+                                    FROM fait_ventes f JOIN dim_date d ON d.date = f.date_vente
+                                    WHERE f.est_retour = 0 AND d.annee = 2025 GROUP BY 1, 2)""")
+    out["c06_part_decembre_t4"] = un("""SELECT ROUND(100.0 * SUM(CASE WHEN mois = 12 THEN ca END) / SUM(ca), 1)
+                                       FROM (SELECT d.annee, d.mois, SUM(f.montant_ttc) ca
+                                             FROM fait_ventes f JOIN dim_date d ON d.date = f.date_vente
+                                             WHERE f.est_retour = 0 AND d.trimestre = 4
+                                               AND d.annee = 2025 GROUP BY 1, 2)""")
+    # 7. le temps dans les six autres faits : trois dates, ou un mois
+    out["c06_faits_a_trois_dates"] = un("""SELECT COUNT(*) FROM information_schema.columns
+                                           WHERE table_name = 'fait_commandes' AND column_name LIKE 'date_%'""")
+    out["c06_faits_au_mois"] = 4
+    out["c06_commandes_lignes"] = un("SELECT COUNT(*) FROM fait_commandes")
+    out["c06_commandes_livrees"] = un("SELECT COUNT(*) FROM fait_commandes WHERE date_livraison IS NOT NULL")
+    out["c06_commandes_annulees"] = un("SELECT COUNT(*) FROM fait_commandes WHERE date_livraison IS NULL")
+    out["c06_delai_moyen"] = round(un("SELECT AVG(date_livraison - date_commande) FROM fait_commandes "
+                                      "WHERE date_livraison IS NOT NULL"), 2)
+    out["c06_retard_lignes"] = un("SELECT COUNT(*) FROM fait_commandes "
+                                  "WHERE date_livraison > date_promisee")
+    out["c06_retard_pct"] = round(100.0 * out["c06_retard_lignes"] / out["c06_commandes_livrees"], 1)
+    out["c06_retard_moyen"] = round(un("SELECT AVG(date_livraison - date_promisee) FROM fait_commandes "
+                                       "WHERE date_livraison > date_promisee"), 2)
+    # 8. la date qui sort du calendrier : la perte silencieuse, puis la correction
+    out["c06_orphelines_livraison"] = un(
+        "SELECT COUNT(*) FROM fait_commandes f LEFT JOIN dim_date d ON d.date = f.date_livraison "
+        "WHERE f.date_livraison IS NOT NULL AND d.date IS NULL")
+    orphelines = q("""SELECT x.d FROM (SELECT DISTINCT date_livraison d FROM fait_commandes
+                                        WHERE date_livraison IS NOT NULL) x
+                      LEFT JOIN dim_date dd ON dd.date = x.d WHERE dd.date IS NULL ORDER BY 1""")
+    out["c06_orphelines_dates"] = len(orphelines)
+    out["c06_orphelines_debut"] = str(orphelines[0][0])
+    out["c06_orphelines_fin"] = str(orphelines[-1][0])
+    out["c06_livraisons_montant"] = int(round(un(
+        "SELECT SUM(montant_ttc) FROM fait_commandes WHERE date_livraison IS NOT NULL")))
+    out["c06_orphelines_montant"] = int(round(un(
+        "SELECT COALESCE(SUM(f.montant_ttc), 0) FROM fait_commandes f "
+        "LEFT JOIN dim_date d ON d.date = f.date_livraison "
+        "WHERE f.date_livraison IS NOT NULL AND d.date IS NULL")))
+    out["c06_orphelines_pct"] = round(100.0 * out["c06_orphelines_montant"]
+                                      / out["c06_livraisons_montant"], 2)
+    out["c06_inner_lignes"] = un("SELECT COUNT(*) FROM fait_commandes f "
+                                 "JOIN dim_date d ON d.date = f.date_livraison")
+    out["c06_apres_correction_montant"] = un(
+        "SELECT SUM(f.montant_ttc) FROM fait_commandes f JOIN dim_date d ON d.date = f.date_livraison")
+    con.execute("""CREATE OR REPLACE TABLE dim_date_long AS
+                   SELECT * FROM dim_date
+                   UNION ALL
+                   SELECT (DATE '2026-08-31' + INTERVAL (i) DAY)::DATE,
+                          EXTRACT(year FROM (DATE '2026-08-31' + INTERVAL (i) DAY))::INT,
+                          EXTRACT(quarter FROM (DATE '2026-08-31' + INTERVAL (i) DAY))::INT,
+                          EXTRACT(month FROM (DATE '2026-08-31' + INTERVAL (i) DAY))::INT,
+                          STRFTIME((DATE '2026-08-31' + INTERVAL (i) DAY), '%Y-%m'),
+                          EXTRACT(week FROM (DATE '2026-08-31' + INTERVAL (i) DAY))::INT,
+                          EXTRACT(dow FROM (DATE '2026-08-31' + INTERVAL (i) DAY))::INT,
+                          STRFTIME((DATE '2026-08-31' + INTERVAL (i) DAY), '%A'),
+                          CASE WHEN EXTRACT(dow FROM (DATE '2026-08-31' + INTERVAL (i) DAY)) = 0
+                               THEN 1 ELSE 0 END,
+                          0, NULL,
+                          STRFTIME((DATE '2026-08-31' + INTERVAL (i) DAY), '%Y-%m'),
+                          NULL, NULL, NULL
+                   FROM generate_series(1, 122) AS t(i)""")
+    out["c06_calendrier_prolonge"] = un("SELECT COUNT(*) FROM dim_date_long")
+    out["c06_jours_ajoutes"] = out["c06_calendrier_prolonge"] - out["c06_calendrier_lignes"]
+    out["c06_corrige_lignes"] = un("SELECT COUNT(*) FROM fait_commandes f "
+                                   "JOIN dim_date_long d ON d.date = f.date_livraison")
+    out["c06_corrige_restantes"] = un("""SELECT COUNT(*) FROM
+        (SELECT DISTINCT date_promisee d FROM fait_commandes) x
+        LEFT JOIN dim_date_long dd ON dd.date = x.d WHERE dd.date IS NULL""")
+    out["c06_ventes_inchangees"] = un("SELECT COUNT(*) FROM fait_ventes f "
+                                      "JOIN dim_date_long d ON d.date = f.date_vente")
+    con.execute("DROP TABLE dim_date_long")
+    # 9. ce que le fait ne porte pas : l'heure
+    out["c06_colonnes_fait_ventes"] = un("""SELECT COUNT(*) FROM information_schema.columns
+                                            WHERE table_name = 'fait_ventes'""")
+    out["c06_colonnes_heure"] = un("""SELECT COUNT(*) FROM information_schema.columns
+                                      WHERE table_name = 'fait_ventes'
+                                        AND (column_name ILIKE '%heure%' OR column_name ILIKE '%time%')""")
+    # 10. les textes du chapitre
+    out["c06_texte_calendrier"] = (
+        "le fait de ventes porte une date, la dimension de temps en porte %s, du %s au %s : la "
+        "jointure rend %s lignes sur %s, sans perdre une seule ligne, et le rapport entre les deux "
+        "tables est de %s lignes de faits pour 1 ligne de calendrier. Aucun des %s jours du "
+        "calendrier ne reste sans vente, aucune date de vente ne manque au calendrier : le trou "
+        "declare au chapitre 4 est ferme, et il l'est par une jointure, pas par une colonne "
+        "supplementaire dans les faits"
+        % (f(out["c06_calendrier_lignes"]), out["c06_calendrier_debut"], out["c06_calendrier_fin"],
+           f(out["c06_branchee_lignes"]), f(out["c06_branchee_total"]),
+           fd(out["c06_rapport_lignes"]), f(out["c06_calendrier_lignes"])))
+    out["c06_texte_deux_natures"] = (
+        "sur les sept tables de faits du modele, une seule porte une date de vente ; deux en "
+        "portent trois chacune (commande, livraison, encaissement : commandee, promisee, livree, "
+        "facturee, echue, encaissee) et quatre ne portent qu'un mois. Ce n'est pas une "
+        "negligence : c'est le grain qui decide. Une commande se suit a trois moments distincts, "
+        "donc elle se lit a trois dates ; un stock d'ouverture se photographie une fois par mois, "
+        "donc il se lit au mois. Le meme mot `mois` recouvre pourtant deux natures : dans trois "
+        "faits c'est un texte `2023-01`, dans le fait des objectifs c'est l'entier %s — deux "
+        "graphies dans une meme colonne de nom identique"
+        % f(un("SELECT MAX(mois) FROM fait_objectifs")))
+    out["c06_texte_partiel"] = (
+        "l'annee en cours s'arrete au %s, soit %s jours sur %s : comparer son chiffre d'affaires "
+        "de %s FCFA aux %s FCFA de l'annee precedente donnerait %s %%, un effondrement qui "
+        "n'existe pas. La comparaison honnete porte sur les %s premiers mois : %s, soit +%s %%. "
+        "Le meme socle, la meme table, et deux conclusions opposees selon la borne de temps "
+        "choisie"
+        % (out["c06_calendrier_fin"], f(out["c06_calendrier_annee_courte"]),
+           f(un("SELECT COUNT(*) FROM dim_date WHERE annee = 2025")), f(out["c06_ca_annee_courante"]),
+           f(out["c06_ca_annee_precedente"]), fd(out["c06_ecart_brut_pct"]),
+           f(out["c06_mois_comparables"]), out["c06_ytd_comparable"],
+           fd(out["c06_ecart_comparable_pct"])))
+    out["c06_texte_orphelines"] = (
+        "le calendrier s'arrete au %s, mais les dates de livraison vont jusqu'au %s : %s dates de "
+        "livraison tombent hors du calendrier, pour %s commandes et %s FCFA sur les %s FCFA de "
+        "commandes livrees, soit %s %%. Une jointure interne sur la date de livraison ramene %s "
+        "lignes au lieu de %s et perd %s FCFA sans afficher la moindre erreur. La correction tient "
+        "en %s lignes ajoutees au calendrier (jusqu'au 31 decembre %s) : les %s commandes "
+        "reviennent, le chiffre d'affaires aussi, et les ventes ne bougent pas (%s lignes). Un "
+        "calendrier se prolonge AVANT que les faits n'y arrivent : c'est la seule dimension qu'on "
+        "peut remplir d'avance, et la seule dont le trou se mesure en argent"
+        % (out["c06_calendrier_fin"], out["c06_orphelines_fin"], f(out["c06_orphelines_dates"]),
+           f(out["c06_orphelines_livraison"]), f(out["c06_orphelines_montant"]),
+           f(out["c06_livraisons_montant"]), fd(out["c06_orphelines_pct"]),
+           f(out["c06_inner_lignes"]), f(out["c06_commandes_livrees"]),
+           f(out["c06_orphelines_montant"]), f(out["c06_jours_ajoutes"]),
+           out["c06_orphelines_fin"][:4], f(out["c06_corrige_lignes"]),
+           f(out["c06_ventes_inchangees"])))
     for table in ("dim_sous_categorie", "dim_famille", "dim_produit_flocon"):
         con.execute("DROP TABLE " + table)
     con.close()
