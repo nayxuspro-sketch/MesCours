@@ -3578,6 +3578,43 @@ def m13():
     d["m13_c04_texte_lecture"] = m["c04_texte_lecture"]
     d["m13_c04_texte_tarifs"] = m["c04_texte_tarifs"]
 
+    # --- C05 : le flocon, la table de pont, la dimension dechet, les faits multiples
+    d["m13_c05_produit_etoile_lignes"] = m["c05_produit_etoile_lignes"]
+    d["m13_c05_flocon_sous_categories"] = m["c05_flocon_sous_categories"]
+    d["m13_c05_flocon_familles"] = m["c05_flocon_familles"]
+    d["m13_c05_flocon_lignes"] = m["c05_flocon_lignes"]
+    d["m13_c05_etoile_flocon_identiques"] = m["c05_etoile_flocon_identiques"]
+    d["m13_c05_famille_1"] = m["c05_famille_1"]
+    d["m13_c05_temps_etoile_ms"] = m["c05_temps_etoile_ms"]
+    d["m13_c05_temps_flocon_ms"] = m["c05_temps_flocon_ms"]
+    d["m13_c05_famille_ecrite_etoile"] = m["c05_famille_ecrite_etoile"]
+    d["m13_c05_famille_ecrite_flocon"] = m["c05_famille_ecrite_flocon"]
+    d["m13_c05_texte_flocon"] = m["c05_texte_flocon"]
+    d["m13_c05_tickets_une_ligne"] = m["c05_tickets_une_ligne"]
+    d["m13_c05_tickets_plusieurs_lignes"] = m["c05_tickets_plusieurs_lignes"]
+    d["m13_c05_pct_tickets_multi"] = m["c05_pct_tickets_multi"]
+    d["m13_c05_lignes_par_ticket_max"] = m["c05_lignes_par_ticket_max"]
+    d["m13_c05_ca_lignes"] = f(m["c05_ca_lignes"]) + " FCFA"
+    d["m13_c05_ca_pont"] = f(m["c05_ca_pont"]) + " FCFA"
+    d["m13_c05_pont_facteur"] = m["c05_pont_facteur"]
+    d["m13_c05_pont_ecart"] = f(m["c05_pont_ecart"]) + " FCFA"
+    d["m13_c05_texte_pont"] = m["c05_texte_pont"]
+    d["m13_c05_dechet_colonnes"] = m["c05_dechet_colonnes"]
+    d["m13_c05_dechet_combinaisons"] = m["c05_dechet_combinaisons"]
+    d["m13_c05_dechet_espace"] = m["c05_dechet_espace"]
+    d["m13_c05_mode_paiement_valeurs"] = m["c05_mode_paiement_valeurs"]
+    d["m13_c05_canal_valeurs"] = m["c05_canal_valeurs"]
+    d["m13_c05_statut_livree"] = m["c05_statut_livree"]
+    d["m13_c05_statut_annulee"] = m["c05_statut_annulee"]
+    d["m13_c05_ca_par_canal"] = m["c05_ca_par_canal"]
+    d["m13_c05_canal_1"] = m["c05_canal_1"]
+    d["m13_c05_canal_1_ca"] = f(m["c05_canal_1_ca"]) + " FCFA"
+    d["m13_c05_texte_dechet"] = m["c05_texte_dechet"]
+    d["m13_c05_retours_lignes"] = m["c05_retours_lignes"]
+    d["m13_c05_retours_montant"] = f(m["c05_retours_montant"]) + " FCFA"
+    d["m13_c05_retours_pct_lignes"] = m["c05_retours_pct_lignes"]
+    d["m13_c05_texte_faits_multiples"] = m["c05_texte_faits_multiples"]
+
     # --- Le projet et l'evaluation (calibres sur M11 et M12)
     d["m13_projet_livrables"] = 4
     d["m13_projet_points"] = 20

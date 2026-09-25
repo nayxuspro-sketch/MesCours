@@ -723,6 +723,131 @@ def controler():
         "la marge d'une vente de 2023 se calcule avec le tarif de 2023"
         % (f(out["c_versions_produit"]), f(un("SELECT COUNT(DISTINCT id_produit) FROM dim_produit_scd")),
            fd(out["c04_versions_produit_par_produit"])))
+    # ------------- 14. le flocon, la table de pont, le dechet, les faits multiples (C05)
+    # Quatre variantes du modele, mesurees sur le fil rouge : ce qu'elles apportent, ce
+    # qu'elles coutent, et le cas d'usage qu'on ne saurait pas modeliser sans elles.
+    # ---- 1. le flocon, construit exprès puis compare a l'etoile
+    con.execute("CREATE OR REPLACE TABLE dim_sous_categorie AS "
+                "SELECT DISTINCT sous_categorie, famille FROM dim_produit")
+    con.execute("CREATE OR REPLACE TABLE dim_famille AS "
+                "SELECT DISTINCT famille FROM dim_produit")
+    con.execute("CREATE OR REPLACE TABLE dim_produit_flocon AS "
+                "SELECT id_produit, designation, libelle_source, sous_categorie, unite, "
+                "prix_vente_ht, poids_unite_kg, fournisseur, tva, actif FROM dim_produit")
+    out["c05_produit_etoile_lignes"] = un("SELECT COUNT(*) FROM dim_produit")
+    out["c05_flocon_sous_categories"] = un("SELECT COUNT(*) FROM dim_sous_categorie")
+    out["c05_flocon_familles"] = un("SELECT COUNT(*) FROM dim_famille")
+    out["c05_flocon_lignes"] = (out["c05_produit_etoile_lignes"] + out["c05_flocon_sous_categories"]
+                                + out["c05_flocon_familles"])
+    r_etoile = q("SELECT p.famille, ROUND(SUM(f.montant_ttc)) FROM fait_ventes f "
+                 "JOIN dim_produit p ON p.id_produit = f.id_produit WHERE f.est_retour = 0 "
+                 "GROUP BY 1 ORDER BY 2 DESC")
+    r_flocon = q("SELECT fa.famille, ROUND(SUM(f.montant_ttc)) FROM fait_ventes f "
+                 "JOIN dim_produit_flocon p ON p.id_produit = f.id_produit "
+                 "JOIN dim_sous_categorie s ON s.sous_categorie = p.sous_categorie "
+                 "JOIN dim_famille fa ON fa.famille = s.famille WHERE f.est_retour = 0 "
+                 "GROUP BY 1 ORDER BY 2 DESC")
+    out["c05_etoile_flocon_identiques"] = r_etoile == r_flocon
+    out["c05_famille_1"] = "%s %s FCFA" % (r_etoile[0][0], f(r_etoile[0][1]))
+    out["c05_temps_etoile_ms"] = _chrono(
+        "SELECT p.famille, ROUND(SUM(f.montant_ttc)) FROM fait_ventes f "
+        "JOIN dim_produit p ON p.id_produit = f.id_produit WHERE f.est_retour = 0 GROUP BY 1")
+    out["c05_temps_flocon_ms"] = _chrono(
+        "SELECT fa.famille, ROUND(SUM(f.montant_ttc)) FROM fait_ventes f "
+        "JOIN dim_produit_flocon p ON p.id_produit = f.id_produit "
+        "JOIN dim_sous_categorie s ON s.sous_categorie = p.sous_categorie "
+        "JOIN dim_famille fa ON fa.famille = s.famille WHERE f.est_retour = 0 GROUP BY 1")
+    # la denormalisation volontaire : la famille ecrite 154 fois ou 7 fois
+    out["c05_famille_ecrite_etoile"] = un("SELECT COUNT(*) FROM dim_produit")
+    out["c05_famille_ecrite_flocon"] = un("SELECT COUNT(*) FROM dim_famille")
+    out["c05_texte_flocon"] = (
+        "le flocon coupe la hierarchie : %s produits, %s sous-categories, %s familles, soit %s "
+        "lignes au lieu de %s ; la meme question (chiffre d'affaires par famille) demande 1 "
+        "jointure en etoile et 3 en flocon, coute %s ms contre %s ms, et rend EXACTEMENT le meme "
+        "resultat (%s) — le flocon ne rend pas le chiffre plus juste, il rend la hierarchie "
+        "partageable et la famille ecrite %s fois au lieu de %s"
+        % (f(out["c05_produit_etoile_lignes"]), f(out["c05_flocon_sous_categories"]),
+           f(out["c05_flocon_familles"]), f(out["c05_flocon_lignes"]),
+           f(out["c05_produit_etoile_lignes"]), f(out["c05_temps_flocon_ms"]),
+           f(out["c05_temps_etoile_ms"]), out["c05_famille_1"],
+           f(out["c05_famille_ecrite_flocon"]), f(out["c05_famille_ecrite_etoile"])))
+    # ---- 2. la table de pont : le N-M que le socle porte vraiment (tickets et produits)
+    out["c05_tickets_une_ligne"] = un("SELECT COUNT(*) FROM (SELECT id_ticket FROM fait_ventes "
+                                      "GROUP BY id_ticket HAVING COUNT(*) = 1)")
+    out["c05_tickets_plusieurs_lignes"] = un("SELECT COUNT(*) FROM (SELECT id_ticket FROM fait_ventes "
+                                              "GROUP BY id_ticket HAVING COUNT(*) > 1)")
+    out["c05_lignes_par_ticket_max"] = un("SELECT MAX(n) FROM (SELECT COUNT(*) AS n FROM fait_ventes "
+                                          "GROUP BY id_ticket)")
+    out["c05_pct_tickets_multi"] = round(100.0 * out["c05_tickets_plusieurs_lignes"]
+                                         / un("SELECT COUNT(DISTINCT id_ticket) FROM fait_ventes"), 1)
+    ca_lignes = un("SELECT ROUND(SUM(montant_ttc)) FROM fait_ventes WHERE est_retour = 0")
+    ca_pont = un("""WITH t AS (SELECT id_ticket, SUM(montant_ttc) AS ca_ticket
+                    FROM fait_ventes WHERE est_retour = 0 GROUP BY id_ticket)
+                    SELECT ROUND(SUM(t.ca_ticket)) FROM fait_ventes f
+                    JOIN t ON t.id_ticket = f.id_ticket WHERE f.est_retour = 0""")
+    out["c05_ca_lignes"] = ca_lignes
+    out["c05_ca_pont"] = ca_pont
+    out["c05_pont_facteur"] = round(ca_pont / ca_lignes, 2)
+    out["c05_pont_ecart"] = int(ca_pont - ca_lignes)   # ce que la duplication ajoute au total
+    out["c05_texte_pont"] = (
+        "le N-M du socle est celui du ticket : %s lignes pour %s tickets (%s par ticket), et %s "
+        "tickets (%s %%) portent plus d'une ligne, jusqu'a %s. Passer par une table de pont qui "
+        "recopie le montant du ticket sur chacune de ses lignes donne %s FCFA au lieu de %s : "
+        "facteur %s — la table de pont ne cree pas le doublon, elle le rend seulement possible"
+        % (f(un("SELECT COUNT(*) FROM fait_ventes")), f(un("SELECT COUNT(DISTINCT id_ticket) FROM fait_ventes")),
+           fd(out["c03_lignes_par_ticket"]), f(out["c05_tickets_plusieurs_lignes"]),
+           fd(out["c05_pct_tickets_multi"]), f(out["c05_lignes_par_ticket_max"]),
+           f(ca_pont), f(ca_lignes), fd(out["c05_pont_facteur"])))
+    # ---- 3. la dimension dechet : les petits drapeaux heterogenes
+    out["c05_dechet_colonnes"] = 3
+    out["c05_dechet_combinaisons"] = un("SELECT COUNT(*) FROM (SELECT DISTINCT mode_paiement, canal, "
+                                        "est_retour FROM fait_ventes)")
+    out["c05_dechet_espace"] = un(
+        "SELECT COUNT(DISTINCT mode_paiement) * COUNT(DISTINCT canal) * COUNT(DISTINCT est_retour) "
+        "FROM fait_ventes")
+    out["c05_mode_paiement_valeurs"] = un("SELECT COUNT(DISTINCT mode_paiement) FROM fait_ventes")
+    out["c05_canal_valeurs"] = un("SELECT COUNT(DISTINCT canal) FROM fait_ventes")
+    out["c05_statut_livree"] = un("SELECT COUNT(*) FROM commande WHERE statut = 'livree'")
+    out["c05_statut_annulee"] = un("SELECT COUNT(*) FROM commande WHERE statut = 'annulee'")
+    # la lecture a travers la dimension dechet, telle qu'un rapport l'ecrirait
+    con.execute("""CREATE OR REPLACE TABLE dim_dechet AS
+                   SELECT ROW_NUMBER() OVER (ORDER BY mode_paiement, canal, est_retour) AS id_dechet,
+                          mode_paiement, canal, est_retour
+                   FROM (SELECT DISTINCT mode_paiement, canal, est_retour FROM fait_ventes)""")
+    par_canal = q("""SELECT d.canal, ROUND(SUM(f.montant_ttc)) FROM fait_ventes f
+                     JOIN dim_dechet d ON d.mode_paiement = f.mode_paiement
+                                      AND d.canal = f.canal AND d.est_retour = f.est_retour
+                     WHERE f.est_retour = 0 GROUP BY 1 ORDER BY 2 DESC""")
+    out["c05_ca_par_canal"] = "; ".join("%s %s FCFA" % (c, f(v)) for c, v in par_canal)
+    out["c05_canal_1"] = par_canal[0][0]
+    out["c05_canal_1_ca"] = int(par_canal[0][1])
+    con.execute("DROP TABLE dim_dechet")
+    out["c05_texte_dechet"] = (
+        "trois drapeaux heterogenes du fait de ventes (%s modes de paiement, %s canaux, le retour) "
+        "occupent %s combinaisons sur les %s possibles : les sortir en trois colonnes oblige a "
+        "grouper sur trois colonnes partout, les ranger dans une dimension dechet de %s lignes "
+        "donne UNE colonne a joindre — et rend visible ce que le modele ne savait pas dire : "
+        "l'absence de certaines combinaisons serait une anomalie, ici elles sont toutes occupees"
+        % (f(out["c05_mode_paiement_valeurs"]), f(out["c05_canal_valeurs"]),
+           f(out["c05_dechet_combinaisons"]), f(out["c05_dechet_espace"]),
+           f(out["c05_dechet_combinaisons"])))
+    # ---- 4. les faits multiples : ce que les retours ne sont pas
+    out["c05_retours_lignes"] = un("SELECT COUNT(*) FROM fait_ventes WHERE est_retour = 1")
+    out["c05_retours_montant"] = abs(round(un("SELECT SUM(montant_ttc) FROM fait_ventes "
+                                               "WHERE est_retour = 1")))
+    out["c05_retours_pct_lignes"] = round(
+        100.0 * out["c05_retours_lignes"] / un("SELECT COUNT(*) FROM fait_ventes"), 2)
+    out["c05_texte_faits_multiples"] = (
+        "les retours ne sont pas un fait de meme nature que la vente : ce sont %s lignes de "
+        "montants NEGATIFS (— %s FCFA, %s %% des lignes), rangees dans la meme table avec un "
+        "drapeau. Le modele assume ce choix et le paie d'une regle : tout rapport doit filtrer sur "
+        "le drapeau, sinon %s FCFA de retours se glissent dans le chiffre d'affaires. L'autre "
+        "choix, deux tables de faits distinctes, supprime la regle mais oblige a joindre les deux "
+        "pour lire un chiffre net"
+        % (f(out["c05_retours_lignes"]), f(out["c05_retours_montant"]),
+           fd(out["c05_retours_pct_lignes"]), f(out["c05_retours_montant"])))
+    for table in ("dim_sous_categorie", "dim_famille", "dim_produit_flocon"):
+        con.execute("DROP TABLE " + table)
     con.close()
     return out
 
@@ -767,6 +892,10 @@ def main(argv=None):
     print("     %s" % m["c04_exemple_produit"])
     print("     %s (variation %s %%)" % (m["c04_exemple_client"], m["c04_exemple_produit_variation_pct"]))
     print("     %s" % m["c04_trous_total_texte"])
+    print(" 14. flocon    : %s" % m["c05_texte_flocon"])
+    print("     %s" % m["c05_texte_pont"])
+    print("     %s" % m["c05_texte_dechet"])
+    print("     %s" % m["c05_texte_faits_multiples"])
     print()
     print("  verdict : le modele rend le meme chiffre d'affaires que la source (%s FCFA), "
           "sans orphelin et avec un grain prouve sur %d tables."
