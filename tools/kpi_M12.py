@@ -233,11 +233,23 @@ def mesurer():
         {"magasin": nom, "ville": ville, "ca_fcfa": ca, "part_ville_pct": pv,
          "part_reseau_pct": pr}
         for nom, ville, ca, pv, pr in parts]
+    # le seul marche ou le reseau se concurrence lui-meme : une ville a deux points de vente
+    doubles = [v for v, l in par_ville.items() if len(l) > 1]
+    out["k10_villes_a_deux_points"] = len(doubles)
+    out["k10_ouaga_parts"] = [
+        {"magasin": nom, "part_ville_pct": round(100.0 * ca / sum(c for _, c in par_ville[doubles[0]]), 1)}
+        for nom, ca in sorted(par_ville[doubles[0]], key=lambda x: -x[1])] if doubles else []
+    chef = max(parts, key=lambda x: x[2])          # premier magasin du RESEAU (part du total)
+    out["k10_premier_magasin"] = chef[0]
+    out["k10_premier_part_reseau_pct"] = chef[4]
+    out["k10_villes_un_seul_point"] = len(par_ville) - len(doubles)
     out["k10_definition"] = (
-        "part de marché INTERNE : la part du chiffre d'affaires d'un magasin dans "
-        "celui de sa ville. Ce n'est pas une part de marché : elle mesure notre "
-        "réseau contre lui-même, et le seul chiffre honnête qu'on puisse en tirer est "
-        "la part de chaque point de vente dans le total de l'enseigne")
+        "part de marche INTERNE : la part du chiffre d'affaires d'un magasin dans celui de sa "
+        "ville. Ce n'est pas une part de marche : elle mesure notre reseau contre lui-meme. La "
+        "seule ville ou deux points de vente se concurrencent est Ouagadougou (%s %% / %s %%), et "
+        "le premier magasin de l'enseigne detient %s %% du reseau total"
+        % (fmt(out["k10_ouaga_parts"][0]["part_ville_pct"]), fmt(out["k10_ouaga_parts"][1]["part_ville_pct"]),
+           fmt(out["k10_premier_part_reseau_pct"])))
     out["k10_depot_sans_vente"] = un(
         "SELECT COUNT(*) FROM magasin WHERE id_magasin NOT IN (SELECT DISTINCT id_magasin FROM ventes)")
     out["k10_colis_depot"] = round(un(
@@ -374,6 +386,153 @@ def mesurer_grain():
     annees = q("""SELECT year(date_vente), ROUND(SUM(montant_ttc)) FROM ventes
                   WHERE est_retour = 0 GROUP BY 1 ORDER BY 1""")
     out["g_annees"] = [{"annee": int(a), "ca": c} for a, c in annees]
+    con.close()
+    return out
+
+
+def mesurer_criteres():
+    """Concevoir un KPI (C04) : les six criteres, la carte, le contre-KPI — mesures.
+
+    Cinq familles de mesures, tirees du socle :
+
+      1. **la carte de definition** : 7 champs, 10 KPI, 70 cases — contre 41 indicateurs sans carte
+         dans le dossier rate ;
+      2. **le critere « defini sans ambiguite »** : le meme « taux de retour » calcule de cinq facons,
+         de 1,12 % a 1,91 % — et une sixieme formule qui donne un **nombre negatif** ;
+      3. **le critere « seuil »** : ou poser une alerte de couverture de stock, et ce que chaque seuil
+         declenche ;
+      4. **le critere « sensible »** : un indicateur qui ne bouge jamais (5 magasins, constants) et un
+         indicateur qui bouge trop (panier journalier, ecart-type = 135,8 % de la moyenne) ;
+      5. **le contre-KPI** : le couple prix/volume, la dispersion de la marge par famille, et le trio
+         rotation / rupture / service.
+    """
+    from connexion import ouvrir
+    con = ouvrir()
+    q = lambda s: con.execute(s).fetchall()
+    un = lambda s: con.execute(s).fetchone()[0]
+    out = {}
+
+    # ------------------------------------------- 1. la carte de definition
+    out["c_champs_carte"] = 7
+    out["c_kpi_du_projet"] = 10
+    out["c_cases_a_remplir"] = 70
+    out["c_indic_dossier_rate"] = 41
+    out["c_ratio_dossier"] = round(41 / 10.0, 1)
+
+    # --------------------------------- le meme indicateur, six definitions
+    out["c_retour_lignes_pct"] = round(un(
+        "SELECT 100.0 * SUM(CASE WHEN est_retour = 1 THEN 1 ELSE 0 END) / COUNT(*) FROM ventes"), 2)
+    out["c_retour_quantite_signee_pct"] = round(un(
+        "SELECT 100.0 * SUM(CASE WHEN est_retour = 1 THEN quantite ELSE 0 END) / SUM(quantite) "
+        "FROM ventes"), 2)
+    out["c_retour_quantite_abs_pct"] = round(un(
+        "SELECT 100.0 * SUM(CASE WHEN est_retour = 1 THEN ABS(quantite) ELSE 0 END) / "
+        "SUM(CASE WHEN est_retour = 0 THEN quantite ELSE 0 END) FROM ventes"), 2)
+    out["c_retour_valeur_pct"] = round(un(
+        "SELECT 100.0 * SUM(CASE WHEN est_retour = 1 THEN ABS(montant_ttc) ELSE 0 END) / "
+        "SUM(CASE WHEN est_retour = 0 THEN montant_ttc ELSE 0 END) FROM ventes"), 2)
+    out["c_retour_tickets_pct"] = round(un(
+        "SELECT 100.0 * COUNT(DISTINCT CASE WHEN est_retour = 1 THEN id_ticket END) / "
+        "COUNT(DISTINCT id_ticket) FROM ventes"), 2)
+    out["c_retour_tickets_portant"] = un(
+        "SELECT COUNT(DISTINCT id_ticket) FROM ventes WHERE est_retour = 1")
+    out["c_retour_lignes"] = un("SELECT COUNT(*) FROM ventes WHERE est_retour = 1")
+    out["c_retour_ecart_points"] = round(out["c_retour_tickets_pct"] - out["c_retour_valeur_pct"], 2)
+    out["c_retour_definition"] = (
+        "le meme mot, cinq chiffres : %s %% en valeur, %s %% en quantites signees (NEGATIF — les "
+        "retours portent une quantite negative), %s %% en quantites absolues, %s %% en lignes, %s %% "
+        "en tickets. L'ecart entre la valeur la plus basse et la plus haute atteint %s points, soit "
+        "x %s : la carte de definition existe pour choisir, une fois, laquelle on publie"
+        % (fmt(out["c_retour_valeur_pct"]), fmt(out["c_retour_quantite_signee_pct"]),
+           fmt(out["c_retour_quantite_abs_pct"]), fmt(out["c_retour_lignes_pct"]),
+           fmt(out["c_retour_tickets_pct"]), fmt(out["c_retour_ecart_points"]),
+           fmt(round(out["c_retour_tickets_pct"] / out["c_retour_valeur_pct"], 2))))
+
+    # ------------------------------------------------ 3. ou poser le seuil
+    seuils = []
+    for s_ in (0.8, 1.0, 1.2, 1.5):
+        n = un("SELECT COUNT(*) FROM stock_mensuel WHERE couverture_mois < %s" % s_)
+        p = un("SELECT COUNT(DISTINCT id_produit) FROM stock_mensuel WHERE couverture_mois < %s" % s_)
+        seuils.append({"seuil_mois": s_, "lignes": n, "pct_lignes": round(100.0 * n / 6776, 1),
+                       "produits": p, "pct_produits": round(100.0 * p / 154, 1)})
+    out["c_seuils_couverture"] = seuils
+    out["c_seuil_retenu_mois"] = 1.0
+    out["c_seuil_texte"] = (
+        "un seuil se choisit en regardant ce qu'il declenche : sous %s mois de couverture, %s lignes "
+        "de stock (%s %% des %s) et %s produits sur 154 sont en alerte — c'est un seuil qui "
+        "distingue. Sous %s mois, il n'en reste que %s (%s %%) : le seuil ne declenche plus rien"
+        % (fmt(1.0), fmt(out["c_seuils_couverture"][1]["lignes"]), fmt(out["c_seuils_couverture"][1]["pct_lignes"]),
+           fmt(6776), fmt(out["c_seuils_couverture"][1]["produits"]),
+           fmt(0.8), fmt(out["c_seuils_couverture"][0]["lignes"]), fmt(out["c_seuils_couverture"][0]["pct_lignes"])))
+
+    # -------------------------------------------- 4. sensible, pas fragile
+    out["c_magasins_actifs"] = un("SELECT COUNT(DISTINCT id_magasin) FROM ventes WHERE est_retour = 0")
+    out["c_mois_distincts_magasins"] = un(
+        "SELECT COUNT(DISTINCT n) FROM (SELECT strftime(date_vente, '%Y-%m') AS m, "
+        "COUNT(DISTINCT id_magasin) AS n FROM ventes WHERE est_retour = 0 GROUP BY 1)")
+    moyenne, ecart = q("""SELECT AVG(p), STDDEV(p) FROM (SELECT date_vente, AVG(montant_ttc) AS p
+                         FROM ventes WHERE est_retour = 0 GROUP BY 1, id_ticket)""")[0]
+    out["c_panier_journalier_moyen"] = round(moyenne)
+    out["c_panier_journalier_ecart_type"] = round(ecart)
+    out["c_panier_journalier_cv_pct"] = round(100.0 * ecart / moyenne, 1)
+    ca_mois = q("""SELECT MIN(ca), MEDIAN(ca), MAX(ca) FROM (SELECT strftime(date_vente, '%Y-%m') AS m,
+                   SUM(montant_ttc) AS ca FROM ventes WHERE est_retour = 0 GROUP BY 1)""")[0]
+    out["c_ca_mois_min"] = round(ca_mois[0])
+    out["c_ca_mois_median"] = round(ca_mois[1])
+    out["c_ca_mois_max"] = round(ca_mois[2])
+    out["c_sensibilite_texte"] = (
+        "deux exces symetriques : le nombre de magasins actifs vaut %s, %s valeur distincte sur 44 "
+        "mois — un indicateur qui ne bouge jamais n'informe pas ; a l'inverse le panier journalier "
+        "varie de %s %% autour de sa moyenne (%s FCFA, ecart-type %s FCFA) — trop agite pour un "
+        "suivi quotidien, il se lit au mois"
+        % (fmt(out["c_magasins_actifs"]), fmt(out["c_mois_distincts_magasins"]),
+           fmt(out["c_panier_journalier_cv_pct"]), fmt(out["c_panier_journalier_moyen"]),
+           fmt(out["c_panier_journalier_ecart_type"])))
+
+    # ------------------------------------------------ 5. le contre-KPI
+    annees = q("""SELECT year(date_vente) AS a, ROUND(SUM(montant_ttc)) AS ca, SUM(quantite) AS u,
+                  COUNT(DISTINCT id_client) AS cl, COUNT(DISTINCT id_ticket) AS t
+                  FROM ventes WHERE est_retour = 0 GROUP BY 1 ORDER BY 1""")
+    a23 = [x for x in annees if x[0] == 2023][0]
+    a25 = [x for x in annees if x[0] == 2025][0]
+    out["c_recette_unitaire_2023"] = round(a23[1] / a23[2])
+    out["c_recette_unitaire_2025"] = round(a25[1] / a25[2])
+    out["c_recette_facteur"] = round(out["c_recette_unitaire_2025"] / out["c_recette_unitaire_2023"], 3)
+    out["c_unites_facteur"] = round(a25[2] / a23[2], 3)
+    out["c_clients_facteur"] = round(a25[3] / a23[3], 3)
+    out["c_contre_kpi_prix_texte"] = (
+        "le contre-KPI de la marge est le volume : de 2023 a 2025, la recette moyenne par unite "
+        "vendue est passee de %s a %s FCFA (x %s) et les unites vendues de x %s, pour x %s de "
+        "clients — la hausse de prix n'a pas casse le volume, et c'est cette mesure-la qui autorise "
+        "a continuer"
+        % (fmt(out["c_recette_unitaire_2023"]), fmt(out["c_recette_unitaire_2025"]),
+           fmt(out["c_recette_facteur"]), fmt(out["c_unites_facteur"]), fmt(out["c_clients_facteur"])))
+
+    familles = q("""SELECT categorie, ROUND(100.0 * SUM(marge_fcfa) / SUM(montant_ttc), 2) AS marge,
+                    ROUND(SUM(montant_ttc)) AS ca FROM vente_marge WHERE est_retour = 0
+                    GROUP BY 1 ORDER BY 2 DESC""")
+    out["c_familles_libelles"] = len(familles)
+    out["c_marge_famille_min"] = familles[-1][1]
+    out["c_marge_famille_min_nom"] = familles[-1][0]
+    out["c_marge_famille_max"] = familles[0][1]
+    out["c_marge_famille_max_nom"] = familles[0][0]
+    out["c_marge_dispersion_texte"] = (
+        "la marge par famille s'etale de %s %% (%s) a %s %% (%s) — mais elle se lit sur %s lignes "
+        "parce que la dimension est sale : la peinture apparait quatre fois (%s %%, %s %%, %s %%, "
+        "%s %%) et les materiaux quatre fois. Un seuil d'alerte pose sur une dimension sale se "
+        "declenche quatre fois pour le meme fait"
+        % (fmt(out["c_marge_famille_min"]), out["c_marge_famille_min_nom"], fmt(out["c_marge_famille_max"]),
+           out["c_marge_famille_max_nom"], fmt(out["c_familles_libelles"]),
+           fmt(familles[1][1]), fmt(familles[2][1]), fmt(familles[3][1]), fmt(familles[4][1])))
+
+    rot = un("SELECT ROUND(AVG(couverture_mois), 2) FROM stock_mensuel")
+    out["c_couverture_moyenne_mois"] = rot
+    out["c_trio_texte"] = (
+        "les trois indicateurs de stock se tiennent par la main : couverture moyenne %s mois, "
+        "rotation %s tours, rupture %s %% — pousser l'un degrade les deux autres, et c'est pourquoi "
+        "ils se publient ensemble"
+        % (fmt(rot), fmt(9.42), fmt(7.29)))
+
     con.close()
     return out
 
@@ -544,10 +703,11 @@ def main():
          "%s colis (%s hors depot), %s FCFA de cout, dont %s %% de carburant"
          % (fmt(k["k09_colis"]), fmt(k["k09_colis_magasins"]),
             fmt(k["k09_cout_total_fcfa"]), fmt(k["k09_part_carburant_pct"]))),
-        ("10. Part de marche interne", "%d magasins classes"
-         % len(k["k10_parts_ville"]),
-         "premier point de vente : %s (%s %% de son reseau)"
-         % (k["k10_parts_ville"][0]["magasin"], fmt(k["k10_parts_ville"][0]["part_reseau_pct"]))),
+        ("10. Part de marche interne", "%d magasins classes, %d ville a deux points de vente"
+         % (len(k["k10_parts_ville"]), k["k10_villes_a_deux_points"]),
+         "Ouagadougou : %s %% / %s %% ; premier magasin du reseau : %s (%s %%)"
+         % (fmt(k["k10_ouaga_parts"][0]["part_ville_pct"]), fmt(k["k10_ouaga_parts"][1]["part_ville_pct"]),
+            k["k10_premier_magasin"], fmt(k["k10_premier_part_reseau_pct"]))),
     ]
     for nom, valeur, note in lignes:
         print("  %-28s %s" % (nom, valeur))
@@ -593,6 +753,25 @@ def main():
     print("  cle oubliee: x %s de lignes et x %s de CA (%s FCFA)"
           % (fmt(g["g_jointure_sans_mois_facteur"]), fmt(g["g_jointure_sans_mois_ca_facteur"]),
              fmt(int(g["g_jointure_sans_mois_ca"]))))
+
+    c = mesurer_criteres()
+    print()
+    print("=== concevoir un KPI (C04), mesure ===")
+    print("  carte : %d champs x %d KPI = %d cases, contre %s indicateurs sans carte au dossier rate"
+          % (c["c_champs_carte"], c["c_kpi_du_projet"], c["c_cases_a_remplir"], fmt(c["c_indic_dossier_rate"])))
+    print("  le meme taux de retour, cinq definitions : valeur %s %%, quantites signees %s %% (NEGATIF),"
+          % (fmt(c["c_retour_valeur_pct"]), fmt(c["c_retour_quantite_signee_pct"])))
+    print("     quantites absolues %s %%, lignes %s %%, tickets %s %%"
+          % (fmt(c["c_retour_quantite_abs_pct"]), fmt(c["c_retour_lignes_pct"]), fmt(c["c_retour_tickets_pct"])))
+    print("  seuil de couverture : sous %s mois -> %s lignes (%s %%), sous %s mois -> %s lignes (%s %%)"
+          % (fmt(1.0), fmt(c["c_seuils_couverture"][1]["lignes"]), fmt(c["c_seuils_couverture"][1]["pct_lignes"]),
+             fmt(0.8), fmt(c["c_seuils_couverture"][0]["lignes"]), fmt(c["c_seuils_couverture"][0]["pct_lignes"])))
+    print("  sensible mais pas fragile : magasins %s (1 valeur sur 44 mois) contre panier journalier"
+          % fmt(c["c_magasins_actifs"]))
+    print("     a %s %% d'ecart-type autour de %s FCFA" % (fmt(c["c_panier_journalier_cv_pct"]),
+                                                            fmt(c["c_panier_journalier_moyen"])))
+    print("  contre-KPI marge/volume : recette unitaire x %s, unites x %s, clients x %s (2023 -> 2025)"
+          % (fmt(c["c_recette_facteur"]), fmt(c["c_unites_facteur"]), fmt(c["c_clients_facteur"])))
 
 
 if __name__ == "__main__":

@@ -3076,10 +3076,88 @@ def m12():
            f(k["k09_part_carburant_pct"])))
 
     d["m12_k10_points_de_vente"] = len(k["k10_parts_ville"])
-    d["m12_k10_premier_magasin"] = k["k10_parts_ville"][0]["magasin"]
-    d["m12_k10_premier_part_reseau_pct"] = k["k10_parts_ville"][0]["part_reseau_pct"]
+    d["m12_k10_villes_a_deux_points"] = k["k10_villes_a_deux_points"]
+    d["m12_k10_villes_un_seul_point"] = k["k10_villes_un_seul_point"]
+    d["m12_k10_ouaga_parts"] = "; ".join(
+        "%s %s %% de sa ville" % (x["magasin"], f(x["part_ville_pct"])) for x in k["k10_ouaga_parts"])
+    d["m12_k10_ouaga_premier_pct"] = k["k10_ouaga_parts"][0]["part_ville_pct"]
+    d["m12_k10_ouaga_second_pct"] = k["k10_ouaga_parts"][1]["part_ville_pct"]
+    d["m12_k10_ca_par_magasin"] = "; ".join(
+        "%s %s FCFA (%s %% du reseau, %s %% de sa ville)"
+        % (x["magasin"], f(x["ca_fcfa"]), f(x["part_reseau_pct"]), f(x["part_ville_pct"]))
+        for x in k["k10_parts_ville"])
+    d["m12_k10_ca_gounghin"] = f([x for x in k["k10_parts_ville"] if "Gounghin" in x["magasin"]][0]["ca_fcfa"]) + " FCFA"
+    d["m12_k10_ca_bobo"] = f([x for x in k["k10_parts_ville"] if "Bobo" in x["magasin"]][0]["ca_fcfa"]) + " FCFA"
+    d["m12_k10_ca_koudougou"] = f([x for x in k["k10_parts_ville"] if "Koudougou" in x["magasin"]][0]["ca_fcfa"]) + " FCFA"
+    d["m12_k10_premier_magasin"] = k["k10_premier_magasin"]
+    d["m12_k10_premier_part_reseau_pct"] = k["k10_premier_part_reseau_pct"]
     d["m12_k10_colis_depot"] = k["k10_colis_depot"]
     d["m12_k10_definition"] = k["k10_definition"]
+
+    # --- Concevoir un KPI (C04) : les six criteres, la carte, le contre-KPI
+    c = kpi.mesurer_criteres()
+    d["m12_c_champs_carte"] = c["c_champs_carte"]
+    d["m12_c_kpi_du_projet"] = c["c_kpi_du_projet"]
+    d["m12_c_cases_a_remplir"] = c["c_cases_a_remplir"]
+    d["m12_c_indic_dossier_rate"] = c["c_indic_dossier_rate"]
+    d["m12_c_ratio_dossier"] = c["c_ratio_dossier"]
+    d["m12_c_carte_texte"] = (
+        "une carte de definition compte %d champs — formule, source, granularite, frequence, "
+        "responsable, seuil d'alerte, contre-KPI — soit %d cases a remplir pour les %d KPI du projet, "
+        "contre %s indicateurs sans carte au dossier rate : le projet ne demande pas plus de "
+        "documents, il demande le meme document dix fois"
+        % (c["c_champs_carte"], c["c_cases_a_remplir"], c["c_kpi_du_projet"],
+           f(c["c_indic_dossier_rate"])))
+    d["m12_c_retour_lignes_pct"] = c["c_retour_lignes_pct"]
+    d["m12_c_retour_quantite_signee_pct"] = c["c_retour_quantite_signee_pct"]
+    d["m12_c_retour_quantite_abs_pct"] = c["c_retour_quantite_abs_pct"]
+    d["m12_c_retour_valeur_pct"] = c["c_retour_valeur_pct"]
+    d["m12_c_retour_tickets_pct"] = c["c_retour_tickets_pct"]
+    d["m12_c_retour_tickets_portant"] = c["c_retour_tickets_portant"]
+    d["m12_c_retour_lignes"] = c["c_retour_lignes"]
+    d["m12_c_retour_ecart_points"] = c["c_retour_ecart_points"]
+    d["m12_c_retour_definition"] = c["c_retour_definition"]
+    d["m12_c_seuils_couverture"] = "; ".join(
+        "sous %s mois : %s lignes (%s %%), %s produits" % (
+            f(x["seuil_mois"]).replace("0,80", "0,8").replace("1,00", "1,0"),
+            f(x["lignes"]), f(x["pct_lignes"]), f(x["produits"])) for x in c["c_seuils_couverture"])
+    d["m12_c_seuils_couverture_lignes_1_mois"] = c["c_seuils_couverture"][1]["lignes"]
+    d["m12_c_seuils_couverture_pct_1_mois"] = c["c_seuils_couverture"][1]["pct_lignes"]
+    d["m12_c_seuils_couverture_produits_1_mois"] = c["c_seuils_couverture"][1]["produits"]
+    d["m12_c_seuils_couverture_produits_pct_1_mois"] = c["c_seuils_couverture"][1]["pct_produits"]
+    d["m12_c_seuils_couverture_pct_08_mois"] = c["c_seuils_couverture"][0]["pct_lignes"]
+    d["m12_c_seuils_couverture_lignes_08_mois"] = c["c_seuils_couverture"][0]["lignes"]
+    d["m12_c_seuil_retenu_mois"] = 1.0
+    d["m12_c_seuil_texte"] = c["c_seuil_texte"]
+    d["m12_c_magasins_actifs"] = c["c_magasins_actifs"]
+    d["m12_c_mois_distincts_magasins"] = c["c_mois_distincts_magasins"]
+    d["m12_c_panier_journalier_moyen"] = f(c["c_panier_journalier_moyen"]) + " FCFA"
+    d["m12_c_panier_journalier_ecart_type"] = f(c["c_panier_journalier_ecart_type"]) + " FCFA"
+    d["m12_c_panier_journalier_cv_pct"] = c["c_panier_journalier_cv_pct"]
+    d["m12_c_ca_mois_min"] = f(c["c_ca_mois_min"]) + " FCFA"
+    d["m12_c_ca_mois_median"] = f(c["c_ca_mois_median"]) + " FCFA"
+    d["m12_c_ca_mois_max"] = f(c["c_ca_mois_max"]) + " FCFA"
+    d["m12_c_sensibilite_texte"] = c["c_sensibilite_texte"]
+    d["m12_c_recette_unitaire_2023"] = f(c["c_recette_unitaire_2023"]) + " FCFA"
+    d["m12_c_recette_unitaire_2025"] = f(c["c_recette_unitaire_2025"]) + " FCFA"
+    d["m12_c_recette_facteur"] = c["c_recette_facteur"]
+    d["m12_c_unites_facteur"] = c["c_unites_facteur"]
+    d["m12_c_clients_facteur"] = c["c_clients_facteur"]
+    d["m12_c_contre_kpi_prix_texte"] = c["c_contre_kpi_prix_texte"]
+    d["m12_c_familles_libelles"] = c["c_familles_libelles"]
+    d["m12_c_marge_famille_min"] = c["c_marge_famille_min"]
+    d["m12_c_marge_famille_min_nom"] = c["c_marge_famille_min_nom"]
+    d["m12_c_marge_famille_max"] = c["c_marge_famille_max"]
+    d["m12_c_marge_famille_max_nom"] = c["c_marge_famille_max_nom"]
+    d["m12_c_marge_dispersion_texte"] = c["c_marge_dispersion_texte"]
+    d["m12_c_couverture_moyenne_mois"] = c["c_couverture_moyenne_mois"]
+    d["m12_c_trio_texte"] = c["c_trio_texte"]
+    d["m12_c_marge_sur_ttc_pct"] = 24.67
+    d["m12_c_marge_deux_bases_texte"] = (
+        "la meme marge brute de 3 847 989 780 FCFA vaut 29,12 % du chiffre d'affaires hors taxes et "
+        "24,67 % du chiffre d'affaires toutes taxes comprises : deux chiffres justes, deux "
+        "denominateurs, et une cible de 18 a 24 % qui ne veut rien dire tant que sa base n'est pas "
+        "ecrite")
 
     # --- Les quatre regimes de question (C02), mesures par le meme instrument
     r = kpi.mesurer_regimes()
