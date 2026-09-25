@@ -1,6 +1,6 @@
 # M14 — Le modèle à construire dans Power BI
 
-**Ce que vous montez, dans l'ordre.** Le modèle est celui de M13, importé tel quel : **12** tables du rapport, **12** relations actives, **2** relations inactives, **10** mesures, **3** pages et **14** visuels. Aucune capture d'écran : chaque geste est décrit par son libellé, son emplacement et son effet vérifiable.
+**Ce que vous montez, dans l'ordre.** Le modèle est celui de M13, importé tel quel : **12** tables du rapport, **12** relations actives, **2** relations inactives, **11** mesures, **3** pages et **14** visuels. Aucune capture d'écran : chaque geste est décrit par son libellé, son emplacement et son effet vérifiable.
 
 **Déclaration d'exécution (§1.5).** Power BI Desktop n'est pas installé dans l'atelier : rien de ce document n'a été exécuté dans l'outil. Ce qui **est** mesuré, c'est ce que le rapport doit afficher : les **10** valeurs du fichier `ATTENDU.json`, calculées en SQL sur le modèle de M13.
 
@@ -30,7 +30,7 @@
 
 **La règle.** `fait_commandes` porte **trois** dates et il n'existe qu'**une** table de dates : une seule relation peut porter le filtre du rapport. Les deux autres restent **inactives** — elles existent, elles ne filtrent pas — et s'activent dans une mesure précise. Ce n'est pas un défaut : c'est la seule façon d'avoir trois temps dans un même fait.
 
-**Le piège à ne pas commettre.** Ne reliez **jamais** un fait à la table de dates par une colonne non unique, comme `annee_mois` : elle apparaît **44** fois dans le calendrier (une fois par mois), le filtre se propage à ces **44** lignes, chaque ligne de vente se répète et le chiffre d'affaires est multiplié. C'est la faute que M13 a mesurée : un facteur **44,0** sur une jointure trop large.
+**Les deux pièges à ne pas commettre.** Une clé qui se répète multiplie les lignes, et cela se paie deux fois. **Premier piège, la date** : `annee_mois` compte **44** valeurs distinctes mais **28** à **31** lignes par mois (une par jour) ; une jointure par `annee_mois` affiche **474 681 181 861** FCFA au lieu de **15 595 154 955** FCFA, facteur **30,44**. **Second piège, deux faits joints entre eux** : `fait_logistique` porte **44** lignes par magasin, et ventes x logistique sur le magasin seul rend **10 436 404** lignes et **686 186 818 020** FCFA, facteur **44,0** — la faute que M13 a mesurée. Dans les deux cas, l'outil n'affiche aucune erreur.
 
 ## 3. Les 15 gestes de Power Query
 | # | Geste | Porte sur | Ce qu'il fait sur le fil rouge |
@@ -53,7 +53,7 @@
 
 **Deux consignes de méthode.** (1) **Nommez chaque étape** : une étape laissée « Personnalisée1 » est une étape que personne ne pourra relire dans six mois. (2) **Une requête qui commence par un filtre** traite moins de lignes qu'une requête qui convertit tout avant de filtrer : l'ordre des étapes change le temps d'actualisation, pas seulement l'élégance.
 
-## 4. Les 10 mesures, avec leur code
+## 4. Les 11 mesures, avec leur code
 | Mesure | Code DAX | Ce qu'elle rend | Définition écrite |
 |---|---|---|---|
 | **[CA net]** | `CALCULATE(SUM(fait_ventes[montant_ttc]), fait_ventes[est_retour] = 0)` | le chiffre d'affaires hors retours | somme des montants TTC des lignes de vente, retours exclus |

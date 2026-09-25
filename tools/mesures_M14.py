@@ -576,12 +576,52 @@ def modele(con):
             % (len(RELATIONS), "verifie" if all(d["unique"] for d in detail) else "A VERIFIER",
                len(INACTIVES), len(BIDIRECTIONNELS))),
         "m14_modele_piege_texte": (
-            "le piege du module : relier un fait a la table de dates par une colonne NON "
-            "unique, comme `annee_mois` (44 lignes par mois dans le calendrier). Le filtre "
-            "se propage alors a 44 lignes du calendrier, chaque ligne de vente se repete, et "
-            "le chiffre d'affaires est multiplie — c'est la faute que M13 a mesuree : "
-            "facteur 44,0 sur une jointure trop large"),
+            "le piege du module : joindre par une colonne NON unique. Deux cas sont "
+            "mesures ici. La colonne `annee_mois` du calendrier porte 44 valeurs distinctes "
+            "mais 28 a 31 lignes par mois (une par jour) : une jointure par `annee_mois` "
+            "multiplie chaque ligne de vente par le nombre de jours du mois. Et deux tables "
+            "de faits jointes directement multiplient l'une par l'autre : `fait_logistique` "
+            "porte 44 lignes par magasin (264 lignes pour 6 magasins), et ventes x "
+            "logistique sur le magasin seul donne 10 436 404 lignes et 686 186 818 020 FCFA "
+            "— facteur 44,0, mesure par M13"),
     }
+    # Les deux pieges, en francs. Rien ici n'est un produit de tete : la jointure par
+    # `annee_mois` ET la jointure entre deux faits sont rejouees sur le socle.
+    ca_net = un("SELECT SUM(montant_ttc) FROM fait_ventes WHERE est_retour = 0")
+    mois_distincts = int(un("SELECT COUNT(DISTINCT annee_mois) FROM dim_date"))
+    jours_min = int(un("SELECT MIN(n) FROM (SELECT COUNT(*) n FROM dim_date GROUP BY annee_mois)"))
+    jours_max = int(un("SELECT MAX(n) FROM (SELECT COUNT(*) n FROM dim_date GROUP BY annee_mois)"))
+    jours_exemple = int(un("SELECT COUNT(*) FROM dim_date WHERE annee_mois = '2026-08'"))
+    ca_mois = un("""SELECT SUM(v.montant_ttc) FROM fait_ventes v
+                    JOIN dim_date d ON d.annee_mois = strftime(v.date_vente, '%Y-%m')
+                    WHERE v.est_retour = 0""")
+    log_par_magasin = int(un("SELECT COUNT(*) FROM fait_logistique")
+                          // un("SELECT COUNT(DISTINCT id_magasin) FROM fait_logistique"))
+    log_lignes = int(un("""SELECT COUNT(*) FROM fait_ventes v
+                           JOIN fait_logistique l ON l.id_magasin = v.id_magasin
+                           WHERE v.est_retour = 0"""))
+    log_ca = un("""SELECT SUM(v.montant_ttc) FROM fait_ventes v
+                   JOIN fait_logistique l ON l.id_magasin = v.id_magasin
+                   WHERE v.est_retour = 0""")
+    out["m14_c04_mois_distincts"] = mois_distincts
+    out["m14_c04_jours_par_mois_min"] = jours_min
+    out["m14_c04_jours_par_mois_max"] = jours_max
+    out["m14_c04_jours_2026_08"] = jours_exemple
+    out["m14_c04_ca_mois_fcfa"] = round(ca_mois)
+    out["m14_c04_facteur_mois"] = round(ca_mois / ca_net, 2)
+    out["m14_c04_logistique_par_magasin"] = log_par_magasin
+    out["m14_c04_logistique_lignes"] = log_lignes
+    out["m14_c04_logistique_ca_fcfa"] = round(log_ca)
+    out["m14_c04_texte_piege"] = (
+        "deux pieges, un seul mecanisme : une cle qui se repete multiplie les lignes. "
+        "Premier piege, la date : `annee_mois` compte %s valeurs distinctes mais %s a %s "
+        "lignes par mois (une par jour, %s pour 2026-08) — la jointure par `annee_mois` "
+        "affiche %s FCFA au lieu de %s, facteur %s. Second piege, deux faits joints "
+        "directement : `fait_logistique` porte %s lignes par magasin, et ventes x "
+        "logistique sur le magasin seul rend %s lignes et %s FCFA — facteur 44,0. Dans "
+        "les deux cas l'outil ne leve aucune erreur"
+        % (mois_distincts, jours_min, jours_max, jours_exemple, f(round(ca_mois)), f(round(ca_net)),
+           round(ca_mois / ca_net, 2), log_par_magasin, f(log_lignes), f(round(log_ca))))
     return out
 
 

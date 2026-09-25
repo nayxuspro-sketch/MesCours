@@ -1811,6 +1811,17 @@ def m14():
                 "m14_c03_texte_defauts"):
         d[cle] = m[cle]
 
+    # --- Le modele en etoile : les relations, le piege mesure en francs (C04)
+    for cle in ("m14_modele_relations_nombre", "m14_modele_inactives_nombre",
+                "m14_modele_bidirectionnels", "m14_modele_texte", "m14_modele_piege_texte",
+                "m14_c04_mois_distincts", "m14_c04_jours_par_mois_min",
+                "m14_c04_jours_par_mois_max", "m14_c04_jours_2026_08",
+                "m14_c04_facteur_mois", "m14_c04_logistique_par_magasin",
+                "m14_c04_logistique_lignes", "m14_c04_texte_piege"):
+        d[cle] = m[cle]
+    d["m14_c04_ca_mois_fcfa"] = f(m["m14_c04_ca_mois_fcfa"]) + " FCFA"
+    d["m14_c04_logistique_ca_fcfa"] = f(m["m14_c04_logistique_ca_fcfa"]) + " FCFA"
+
     # --- Les dix valeurs du tableau de bord, et leur controle croise par M12
     d["m14_v01_ca_net_fcfa"] = f(m["m14_v01_ca_net_fcfa"]) + " FCFA"
     d["m14_v02_marge_fcfa"] = f(m["m14_v02_marge_fcfa"]) + " FCFA"

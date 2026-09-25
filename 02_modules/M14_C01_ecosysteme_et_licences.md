@@ -161,7 +161,7 @@ kiosque de composer un journal, ou acheter une imprimerie pour faire lire trois 
 Trois remarques de terrain, qui évitent trois déceptions.
 
 **Premièrement, tout le travail de construction est gratuit.** Le module entier — les **12**
-relations, les **10** mesures, les **3** pages — se fait sans licence payante, sur le poste. C'est une
+relations, les **11** mesures, les **3** pages — se fait sans licence payante, sur le poste. C'est une
 bonne nouvelle pédagogique : vous pouvez apprendre l'outil complet sans qu'on vous ouvre un compte.
 
 **Deuxièmement, le service n'est pas un lecteur de fichiers.** Le rapport que vous voyez sur votre
@@ -287,7 +287,7 @@ construit sur cette base, sans jamais y revenir.
 ## 6. Exemple concret — trois scénarios, une décision
 
 **La situation.** Une entreprise de distribution de **40** personnes veut publier le rapport du fil
-rouge — **3** pages, **14** visuels, **10** mesures. Trois populations sont concernées : **1** auteur
+rouge — **3** pages, **14** visuels, **11** mesures. Trois populations sont concernées : **1** auteur
 (le contrôle de gestion), **3** lecteurs réguliers (direction commerciale, direction générale,
 responsable des achats) et, à terme, **20** lecteurs occasionnels (les chefs de rayon).
 

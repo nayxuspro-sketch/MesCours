@@ -225,11 +225,91 @@ def quatre_modes_de_connexion() -> str:
     return enregistrer(fig, "M14_C02_quatre_modes_de_connexion.svg")
 
 
-PLANCHES = {"M14_C01_ecosysteme_et_licences.svg": ecosysteme_et_licences,
-            "M14_C02_quatre_modes_de_connexion.svg": quatre_modes_de_connexion}
 
-A_PRODURE = ("M14_C04_modele_etoile_powerbi.svg",
-             "M14_C08_grille_conception_enrichie.svg")
+# --------------------------------------------------------------------------- (c) C04
+def modele_etoile_powerbi() -> str:
+    """Le modele du rapport : 12 relations, 2 inactives, et le piege de la cle non unique."""
+    c = chiffres()
+    fig, ax = plt.subplots(figsize=(7.6, 5.6))
+    ax.set_xlim(0, 100)
+    ax.set_ylim(0, 100)
+    ax.axis("off")
+
+    ax.text(50, 99.0, "Le modele du rapport : douze relations, deux inactives",
+            ha="center", va="top", fontsize=9.4, fontweight="bold", color="#1b1b1b")
+    ax.text(50, 94.4,
+            "une relation se declare de plusieurs vers un : la colonne de dimension est unique, et c'est ce qui empeche la ligne de se multiplier",
+            ha="center", va="top", fontsize=6.8, color="#555")
+
+    # --- a gauche : les faits ---
+    faits = (("fait_ventes", "240 000 l.", ("id_magasin", "id_produit", "id_client",
+                                            "id_vendeur", "date_vente")),
+             ("fait_commandes", "9 000 l.", ("id_magasin", "id_client", "date_commande")),
+             ("fait_encaissements", "9 000 l.", ("id_client", "date_facture")),
+             ("fait_ruptures", "2 428 l.", ("id_produit", "id_magasin")))
+    y = 89.5
+    for nom, n, cles in faits:
+        h = 5.2 + 2.6 * len(cles)
+        ax.add_patch(Rectangle((2.0, y - h), 38.0, h, facecolor="#eef3fb",
+                               edgecolor="#2f5d9e", lw=1.2))
+        ax.text(4.0, y - 1.6, "%s  (%s)" % (nom, n), ha="left", va="top", fontsize=7.2,
+                fontweight="bold", color="#24487a")
+        for i, cle in enumerate(cles):
+            ax.text(6.0, y - 5.0 - i * 2.6, cle, ha="left", va="top", fontsize=6.4,
+                    color="#333")
+        y -= h + 1.8
+
+    # --- a droite : les dimensions ---
+    dims = (("dim_client", c["m14_import_lignes_client"] + " l."),
+            ("dim_produit", "154 l."), ("dim_magasin", "6 l."), ("dim_vendeur", "22 l."),
+            ("dim_date", c["m14_import_lignes_date"] + " l."))
+    y = 89.5
+    for nom, n in dims:
+        ax.add_patch(Rectangle((62.0, y - 10.0), 36.0, 10.0, facecolor="#e8f4ea",
+                               edgecolor="#2f7d4f", lw=1.2))
+        ax.text(64.0, y - 1.8, nom, ha="left", va="top", fontsize=7.6, fontweight="bold",
+                color="#245c3a")
+        ax.text(64.0, y - 5.6, "cle unique · " + n, ha="left", va="top", fontsize=6.4,
+                color="#333")
+        y -= 11.6
+
+    # --- les filaments : trois exemples de relation, pas douze traits illisibles
+    for y2 in (84.6, 72.0, 59.4):
+        ax.add_patch(FancyArrowPatch((40.2, 85.5), (61.8, y2), arrowstyle="-|>",
+                                     mutation_scale=9, color="#8a8a8a", lw=1.0,
+                                     shrinkA=0, shrinkB=0))
+    ax.text(51.0, 84.0, "12 relations", ha="center", va="center", fontsize=7.2,
+            fontweight="bold", color="#555")
+    ax.text(51.0, 80.6, "actives", ha="center", va="center", fontsize=6.6, color="#777")
+
+    # --- le bas : les deux inactives et le piege
+    ax.add_patch(Rectangle((2.0, 1.5), 96.0, 20.0, facecolor="#fdf3e3",
+                           edgecolor="#b07a1e", lw=1.2))
+    ax.text(4.0, 20.2, "Deux relations restent INACTIVES, et ce n'est pas une erreur",
+            ha="left", va="top", fontsize=7.6, fontweight="bold", color="#8a5c14")
+    ax.text(4.0, 16.8,
+            "la commande porte trois dates (commande, promise, livree) pour une seule table de dates :",
+            ha="left", va="top", fontsize=6.7, color="#333")
+    ax.text(4.0, 13.9,
+            "la date promise reste inactive et s'active dans la mesure du taux de service ; la date de",
+            ha="left", va="top", fontsize=6.7, color="#333")
+    ax.text(4.0, 11.0,
+            "livraison reste inactive, parce que le rapport se lit par date de commande.",
+            ha="left", va="top", fontsize=6.7, color="#333")
+    ax.text(4.0, 7.6,
+            "Le piege : relier la date a une colonne NON unique comme annee_mois, c'est 44 lignes de calendrier",
+            ha="left", va="top", fontsize=6.7, color="#8a2f2f")
+    ax.text(4.0, 4.7,
+            "par mois ; chaque ligne de vente se repete et le chiffre d'affaires est multiplie par 44.",
+            ha="left", va="top", fontsize=6.7, color="#8a2f2f")
+    return enregistrer(fig, "M14_C04_modele_etoile_powerbi.svg")
+
+
+PLANCHES = {"M14_C01_ecosysteme_et_licences.svg": ecosysteme_et_licences,
+            "M14_C02_quatre_modes_de_connexion.svg": quatre_modes_de_connexion,
+            "M14_C04_modele_etoile_powerbi.svg": modele_etoile_powerbi}
+
+A_PRODURE = ("M14_C08_grille_conception_enrichie.svg",)
 
 
 def controler(chemins):

@@ -41,7 +41,7 @@ de l'apprenant. Déclaration §1.5 : **Power BI cité, non exécuté ; DuckDB 1.
 | 2 | Obtenir la donnée et choisir le **mode de connexion** | C02 | les **4** modes comparés sur le fil rouge : coût d'actualisation, taille, fraîcheur |
 | 3 | Transformer proprement, en gardant la trace des gestes | C03 | la requête du fil rouge en **15** gestes nommés, rejouable, sans étape orpheline |
 | 4 | Monter un **modèle juste** dans l'outil | C04 | les **12** relations du modèle M13, cardinalités et sens du filtre, **2** ambiguïtés guéries |
-| 5 | Écrire les **mesures de survie** et refuser les colonnes calculées inutiles | C05 | les **10** mesures du tableau de bord, chacune avec sa définition et son format |
+| 5 | Écrire les **mesures de survie** et refuser les colonnes calculées inutiles | C05 | les **11** mesures du tableau de bord, chacune avec sa définition et son format |
 | 6 | Construire des pages lisibles et navigables | C06 | **3** pages, **14** visuels, **1** page d'aide, un thème et **4** signets |
 | 7 | Faire parler un rapport : filtres, interactions, exploration | C07 | page, visuel et rapport filtrés ; segment synchronisé ; exploration à deux niveaux |
 | 8 | Publier, actualiser, sécuriser et **tester** | C08 | espace de travail, application, permissions, actualisation planifiée, passerelle, sécurité au niveau des lignes, **18** points de grille passés avant publication |
@@ -111,7 +111,7 @@ justifier**, refus compris.
 |---|---|---|
 | **A. Récupération** | non notée | **5** questions de prérequis (grain, additivité, dimensions conformes, KPI, perception) |
 | **B. Quiz** | **20** | **15** questions (seuil **14**) : écosystème et licences, modes de connexion, Power Query, relations, mesures contre colonnes, visuels, filtres, publication |
-| **C. Quatre exercices pratiques** | **24** | E1 monter le modèle (**12** relations) · E2 écrire les **10** mesures de survie · E3 lire un plan de requête de l'outil · **E4 « ce tableau de bord affiche un total double »** — diagnostiquer la relation qui duplique |
+| **C. Quatre exercices pratiques** | **24** | E1 monter le modèle (**12** relations) · E2 écrire les **11** mesures de survie · E3 lire un plan de requête de l'outil · **E4 « ce tableau de bord affiche un total double »** — diagnostiquer la relation qui duplique |
 | **D. Étude de cas** | **30** | « le client ne comprend pas le tableau de bord » : **8** pages décrites, la grille en **18** points passée, puis la première page refaite avec les **3** chiffres justes (seuil **18**) |
 | **E. Auto-évaluation** | **6** | la grille de conception remplie sur son propre P1, preuve à l'appui pour chaque point |
 
@@ -177,7 +177,7 @@ l'étage de Fabric, parce que M12 l'a déjà nommé.
 | **C02** | Obtenir la donnée : connecteurs et modes | les connecteurs du fil rouge (CSV, Excel, dossier, SQL) ; **Import**, **DirectQuery**, **connexion directe**, **Direct Lake** ; la stratégie du cache ; actualisation et passerelle ; erreurs de connexion typiques | 16 | 4 | 12,5 |
 | **C03** | Transformer avec Power Query | les **15** gestes sur les données du fil rouge ; types et locale ; colonne conditionnelle ; paramètres et fonctions ; requêtes combinées ; les **3** défauts de requête qui coûtent des performances ; nommer ses étapes | 16 | 4 | 12,5 |
 | **C04** | Modéliser : relations, cardinalité, sens du filtre | les **12** relations du modèle M13 dans l'outil ; direction du filtrage et ses **2** exceptions ; dates marquées et la table de dates unique ; intégrité référentielle ; **2** ambiguïtés guéries ; colonnes masquées, tri par colonne | 16 | 4 | 12,5 |
-| **C05** | Mesures ou colonnes, et le premier DAX | mesure contre colonne calculée, mesuré sur un cas ; les **10** mesures de survie (`SUM`, `COUNTROWS`, `DISTINCTCOUNT`, `DIVIDE`, `CALCULATE` d'un seul usage) ; formatage ; nommage ; traduction des libellés ; ce que M15 prendra en charge | 16 | 4 | 12,5 |
+| **C05** | Mesures ou colonnes, et le premier DAX | mesure contre colonne calculée, mesuré sur un cas ; les **11** mesures de survie (`SUM`, `COUNTROWS`, `DISTINCTCOUNT`, `DIVIDE`, `CALCULATE` d'un seul usage) ; formatage ; nommage ; traduction des libellés ; ce que M15 prendra en charge | 16 | 4 | 12,5 |
 | **C06** | Construire les visuels | les **3** pages du rapport commercial ; carte, jauge, matrice, barres, courbe ; mise en page et hiérarchie ; **4** signets et la navigation par boutons ; thème et charte ; accessibilité ; les **6** erreurs de visuel qui se voient | 16 | 4 | 12,5 |
 | **C07** | Faire parler le rapport | filtres de page, de visuel et de rapport ; **4** segments et leur synchronisation ; interactions entre visuels ; exploration à **2** niveaux et par clic ; info-bulles personnalisées ; Q&A ; performance du rapport | 16 | 4 | 12,5 |
 | **C08** | Publier, actualiser, faire vivre | espace de travail et application ; permissions ; actualisation planifiée et passerelle ; modèles réutilisables ; sécurité au niveau des lignes ; abonnements et alertes ; **grille de conception en 18 points enrichie** ; les **7** tests avant mise en production | 16 | 2 | 12,5 |
@@ -188,7 +188,7 @@ et la maintient. Chaque chapitre **ajoute une pièce au même rapport** : à la 
 rouge existe et passe la grille.
 
 **Le fil rouge du module.** Le rapport « Ventes Sahel Distribution » construit pas à pas : **12**
-relations importées du modèle M13, **10** mesures, **3** pages, **14** visuels, **4** segments, **2**
+relations importées du modèle M13, **11** mesures, **3** pages, **14** visuels, **4** segments, **2**
 pages de détail, **1** page d'aide. Les **8** chapitres produisent chacun une partie de ce rapport.
 
 ---
@@ -238,7 +238,7 @@ l'ancien P1, à partir de laquelle les lecteurs en licence gratuite consultent �
 **8** actualisations par jour · PPU **100** Go et **48** actualisations par jour.
 
 **Les mesures du module** : **15** gestes de Power Query · **12** relations dont **2** exceptions de
-sens · **10** mesures · **3** pages, **14** visuels, **4** segments, **2** pages de détail, **1** page
+sens · **11** mesures · **3** pages, **14** visuels, **4** segments, **2** pages de détail, **1** page
 d'aide · **4** signets · **18** points de grille dont **6** ajouts · **11** retours de comité et **7**
 tests avant mise en production.
 
@@ -252,7 +252,7 @@ tests avant mise en production.
 | Une documentation qui invente l'interface | interdiction de capture d'écran et de faux bouton dans tout le module ; les planches ne montrent que des schémas de **données** et de **décisions**, jamais des fenêtres |
 | Recouvrir M05.C02 (Power Query) | le module ne réexplique pas Power Query : il l'**exerce** sur les données du fil rouge, avec les **15** gestes et les **3** défauts de performance, qui ne sont pas dans M05 |
 | Recouvrir M10 et M12 | la perception graphique et la définition d'un KPI sont **citées** avec leur renvoi ; la grille en **18** points est réutilisée, pas réécrite ; les **6** ajouts du module sont explicitement listés |
-| Empiéter sur M15 (DAX) | frontière écrite : M14 écrit les **10** mesures de survie et **refuse** les fonctions temporelles ; `CALCULATE` n'est employé qu'une fois, pour montrer qu'il existe, et la bibliothèque de mesures appartient à M15 |
+| Empiéter sur M15 (DAX) | frontière écrite : M14 écrit les **11** mesures de survie et **refuse** les fonctions temporelles ; `CALCULATE` n'est employé qu'une fois, pour montrer qu'il existe, et la bibliothèque de mesures appartient à M15 |
 | Deux projets qui se ressemblent | P1 **construit** et se note à la grille ; P2 **arbitre** des retours contradictoires et se note au raisonnement ; le barème de P2 interdit de tout accepter (**3** refus argumentés exigés) |
 | Un tableau de bord qui « marche » mais se trompe | l'étude de cas et l'exercice E4 visent exactement la panne la plus fréquente du parcours : les totaux incohérents aux **3** niveaux, dont M13 a déjà mesuré la cause (**× 44,0** pour une jointure trop large) |
 | Le prix des licences qui vieillit | ils sont **datés** dans le texte (« vérifié en septembre 2026 »), rangés sous des clés `m14_prix_*`, et le module apprend la démarche : aller chercher le tarif officiel, ne pas le citer de mémoire |
@@ -265,7 +265,7 @@ tests avant mise en production.
 2. **Étape 2 — Socle et instruments** : `tools/dossier_M14.py` construit
    `03_exercices/dossier_M14/` : les **12** tables du modèle M13 exportées en CSV d'import
    (`modele_import/`), `modele_powerbi.md` (les **12** relations à déclarer, les **15** gestes de
-   requête, les **10** mesures avec leur code, les **3** pages), `retours_comite.md` (les **11**
+   requête, les **11** mesures avec leur code, les **3** pages), `retours_comite.md` (les **11**
    retours), `rapport_avant.md` (les **8** pages du cas), `grille_conception_M14.md` (**18** points
    et **6** ajouts, questions fermées), `connexion.py`, `ATTENDU.json` ; `tools/mesures_M14.py` :
    export du modèle, contrôle du dossier, les **10** valeurs attendues (exécutées), la grille en
