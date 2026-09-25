@@ -1898,6 +1898,12 @@ def m14():
                 "m14_c08_texte_publication"):
         d[cle] = m[cle]
 
+    # --- Les ancres chiffrees de l'evaluation (E4 : le total double)
+    for cle in ("m14_e4_multiplicateur", "m14_e4_lignes_double", "m14_e4_texte"):
+        d[cle] = m[cle]
+    for cle in ("m14_e4_ca_simple_fcfa", "m14_e4_ca_double_fcfa", "m14_e4_ecart_fcfa"):
+        d[cle] = f(m[cle]) + " FCFA"
+
     # --- Les dix valeurs du tableau de bord, et leur controle croise par M12
     d["m14_v01_ca_net_fcfa"] = f(m["m14_v01_ca_net_fcfa"]) + " FCFA"
     d["m14_v02_marge_fcfa"] = f(m["m14_v02_marge_fcfa"]) + " FCFA"

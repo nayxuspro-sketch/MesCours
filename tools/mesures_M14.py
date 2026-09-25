@@ -1142,6 +1142,35 @@ def publication(con, mesures=None):
     return out
 
 
+# --------------------------------------------------------------------------- 10
+def evaluation(con):
+    """Les ancres chiffrees des exercices de l'evaluation (E4 : le total double)."""
+    un = lambda s: con.execute(s).fetchone()[0]
+    simple = un("SELECT SUM(montant_ttc) FROM fait_ventes WHERE est_retour = 0")
+    double = un("""SELECT SUM(montant_ttc) FROM (
+        SELECT montant_ttc FROM fait_ventes WHERE est_retour = 0
+        UNION ALL
+        SELECT montant_ttc FROM fait_ventes WHERE est_retour = 0)""")
+    lignes = int(un("SELECT COUNT(*) FROM fait_ventes"))
+    out = {
+        "m14_e4_ca_simple_fcfa": round(simple),
+        "m14_e4_ca_double_fcfa": round(double),
+        "m14_e4_multiplicateur": round(double / simple, 2),
+        "m14_e4_lignes_double": lignes * 2,
+        "m14_e4_ecart_fcfa": round(double - simple),
+    }
+    out["m14_e4_texte"] = (
+        "deux requetes qui pointent sur le meme fichier, deux tables dans le modele, deux "
+        "relations actives : chaque ligne de vente existe deux fois, et le total passe de %s a "
+        "%s FCFA — soit %s fois le chiffre juste, pour %s lignes au lieu de %s. Un total double "
+        "ne vient jamais d'une mesure : il vient du modele, et il se trouve en comptant les "
+        "lignes"
+        % (f(round(simple)), f(round(double)), ("%.2f" % (double / simple)).replace(".", ","),
+           f(lignes * 2), f(lignes)))
+    return out
+
+
+# --------------------------------------------------------------------------- 11
 def grille():
     """La grille de conception en 18 points : ses familles et les 6 ajouts du module.
 
@@ -1209,7 +1238,7 @@ def grille():
     }
 
 
-# --------------------------------------------------------------------------- 7
+# --------------------------------------------------------------------------- 12
 def controle_dossier():
     """Les pieces du dossier M14 sont-elles la ?"""
     attendus = ("modele_powerbi.md", "retours_comite.md", "rapport_avant.md",
@@ -1242,6 +1271,7 @@ def mesurer():
     out.update(visuels(con))
     out.update(filtres(con))
     out.update(publication(con, out))
+    out.update(evaluation(con))
     out.update(grille())
     out.update(controle_dossier())
     con.close()

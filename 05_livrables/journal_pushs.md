@@ -124,7 +124,33 @@ Trois corrections que la mesure a imposées, et qui changent des chiffres déjà
 modéliser*, phase 4), dont le dossier sera documenté pas à pas et **déclaré non exécuté** (règle §1.5,
 aucun Power BI dans cet atelier).
 
-## Procédure à rejouer (elle a fonctionné **37** fois de suite, n° 40 → n° 80)
+## M14 — état de livraison (clos au n° 90)
+
+| Étape | Ce qui est livré | Statut |
+|---|---|---|
+| Plan | `05_livrables/plan_M14.md` — 8 ch. · 30 h · N4 · 117 p. [99, 135] · 2 projets · éval 80/51 · 4 planches | ✅ n° 82 |
+| Socle et dossier | `03_exercices/dossier_M14/` — **7** pièces : `modele_powerbi.md` (12 relations, 2 inactives, 15 gestes, **11** mesures, 3 pages, 14 visuels, 4 signets, RLS), `retours_comite.md` (11), `rapport_avant.md`, `grille_conception_M14.md` (18 pts + 6 ajouts), `connexion.py`, `modele_import/LISEZ_MOI.md`, `ATTENDU.json` | ✅ n° 83 |
+| Chapitre C01 | écosystème, 4 surfaces, 4 formules de licence chiffrées | ✅ n° 84 |
+| Chapitre C02 | connecteurs, 4 modes, cache, passerelle | ✅ n° 85 |
+| Chapitre C03 | Power Query : **15** gestes, 240 000 → 33 323 lignes | ✅ n° 86 |
+| Chapitre C04 | **12** relations, **2** inactives, la recette 10/8/0, et le complément §5.9 (intégrité, colonnes masquées, tri) | ✅ n° 87 |
+| Chapitre C05 | mesures contre colonnes, **11** mesures, **8** fonctions DAX | ✅ n° 88 |
+| Chapitre C06 | **3** pages, **14** visuels, tri, échelles, jauge à **259,1 %**, **6** erreurs de visuel | ✅ n° 89 |
+| Chapitre C07 | filtres, dénominateur, périmètre, exploration, performance | ✅ n° 90 |
+| Chapitre C08 | publication, **6** rôles testés, actualisation, alertes, **7** tests, grille en **18** points | ✅ n° 90 |
+| Instrument | `tools/mesures_M14.py` — **12** sections, **277** clés `m14_*`, **3 003** clés au total ; contrôle croisé M12 : **8** appariements, **0** écart | ✅ n° 90 |
+| Figures | **4** planches : C01 **609** px · C02 **609** px · C04 **638** px · C08 **681** px (limite 776), empreinte `3841e32e46d8d13c` | ✅ 4/4 |
+| PDF | `05_livrables/M14.pdf` — **116** p., cible [99, 135] (**− 0,9 %**), 10 fichiers joints, 22 signets | ✅ |
+| Fiche | `05_livrables/fiche_controle_M14.md` — Q1-Q10 **10/10**, 5 nuances déclarées | ✅ |
+| Projets | `03_exercices/M14_projet.md` — **2** projets, **20** points chacun (seuil **13**) : P1 le tableau de bord, P2 la version 2 après les **11** retours | ✅ |
+| Évaluation | `04_evaluations/M14_evaluation.md` — **80** points, seuil **51** (quiz 15 Q/20 · **4** exercices/24 dont E4 le total doublé · étude de cas 30/18 · auto-évaluation 6) | ✅ |
+| Veille de clôture | compte des mesures tranché à **11** contre les **10** du plan ; piège `annee_mois` rechiffré (**30,44**) ; section `visuels` puis `filtres`, `publication`, `évaluation` ajoutées à l'instrument | ✅ |
+
+**Rien ne reste à pousser pour M14.** Le module suivant est **M15 — DAX avancé** (calculs de temps,
+`ALL`, itérateurs), dont la frontière est écrite au chapitre C05 : ce que M14 n'enseigne pas
+volontairement.
+
+## Procédure à rejouer (elle a servi les pushs n° 40 à n° 90) (elle a fonctionné **37** fois de suite, n° 40 → n° 80)
 
 ```bash
 cd /home/user/formation-data-bi
