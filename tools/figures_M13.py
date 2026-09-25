@@ -52,6 +52,11 @@ def chiffres() -> dict:
         return json.load(f)["M13"]
 
 
+def f(x) -> str:
+    """24892 -> '24 892' : le separateur de milliers du manuel."""
+    return "{:,}".format(int(round(float(x)))).replace(",", " ")
+
+
 def sans_unite(valeur) -> str:
     """« 15 595 154 955 FCFA » -> « 15 595 154 955 » : l'unite s'ecrit une seule fois."""
     return re.sub(r"\s*(FCFA|unites|%)$", "", str(valeur))
@@ -165,7 +170,60 @@ def grain_et_explosion() -> str:
     return enregistrer(fig, "M13_C03_grain_et_explosion.svg")
 
 
-PLANCHES = {"M13_C03_grain_et_explosion.svg": grain_et_explosion}
+# --------------------------------------------------------------------------- (b) C04
+def frise_scd() -> str:
+    """Les 4 types de SCD, sur la frise d'un produit dont le tarif change chaque 1er janvier."""
+    c = chiffres()
+    fig, ax = plt.subplots(figsize=(7.6, 4.4))
+    ax.set_xlim(0, 100)
+    ax.set_ylim(0, 100)
+    ax.axis("off")
+    ax.text(50, 97.5, "Les 4 types de changement lent, sur un tarif qui monte de 24 % en 4 ans",
+            ha="center", va="top", fontsize=9.4, fontweight="bold")
+
+    annees = [("2023", "5 415"), ("2024", "5 769"), ("2025", "6 225"), ("2026", "6 816")]
+    y0 = 76
+    ax.text(2, y0 + 11.5, "Le fait reel : une vente par annee, au tarif de son annee",
+            ha="left", va="center", fontsize=8.2, fontweight="bold", color="#333")
+    for i, (a, prix) in enumerate(annees):
+        x = 8 + i * 22
+        ax.add_patch(Rectangle((x, y0), 18, 8.6, facecolor="#eaf4ff", edgecolor="#3b6ea5", lw=1.1))
+        ax.text(x + 9, y0 + 4.3, "vente %s" % a, ha="center", va="center", fontsize=7.6)
+        ax.text(x + 9, y0 - 3.4, "tarif %s FCFA" % prix, ha="center", va="center", fontsize=7.4,
+                color="#3b6ea5")
+
+    types = [
+        ("Type 0, ne change jamais", "#f2f2f2", "#7a7a7a",
+         "date de creation, nom : une seule ligne,",
+         "la valeur d'origine, pour toujours"),
+        ("Type 1, on ecrase (correction)", "#fff6e0", "#a3781f",
+         "%s mouvements : conditions, ville" % c["m13_c04_mouvements_type1"].__str__(),
+         "l'ancienne valeur n'existe plus (67 + 73)"),
+        ("Type 2, on versionne (histoire)", "#eef7ee", "#3f7d3f",
+         "%s mouvements : segment (658), ville (322)" % c["m13_c04_mouvements_type2"].__str__(),
+         "%s versions de clients, %s clients concernes" % (f(c["m13_versions_client"]), c["m13_c04_clients_avec_histoire"])),
+        ("Type 3, colonne de la valeur d'avant", "#fdeaea", "#a33b3b",
+         "une seule valeur precedente par attribut :",
+         "%s clients ont change 3 fois de ville" % c["m13_c04_clients_deux_changements"].__str__()),
+    ]
+    y = 60
+    for titre, fond, bord, l1, l2 in types:
+        ax.add_patch(Rectangle((2, y - 11), 96, 11, facecolor=fond, edgecolor=bord, lw=1.1))
+        ax.text(3.6, y - 3.1, titre, ha="left", va="center", fontsize=8.4, fontweight="bold",
+                color="#1b1b1b")
+        ax.text(38, y - 3.1, l1, ha="left", va="center", fontsize=7.5, color="#333")
+        ax.text(38, y - 7.8, l2, ha="left", va="center", fontsize=7.3, color="#555")
+        y -= 13.4
+
+    ax.text(2, 3.4, "Lire le passe coute %s ms au lieu de %s ms, et change le prix moyen des ventes : %s FCFA historise contre %s FCFA courant."
+            % (c["m13_c04_temps_historise_ms"], c["m13_c04_temps_courant_ms"],
+               sans_unite(c["m13_c04_prix_moyen_historise"]), sans_unite(c["m13_c04_prix_moyen_courant"])),
+            ha="left", va="center", fontsize=7.1, color="#444")
+    return enregistrer(fig, "M13_C04_frise_scd.svg")
+
+
+PLANCHES = {"M13_C03_grain_et_explosion.svg": grain_et_explosion,
+            "M13_C04_frise_scd.svg": frise_scd}
 
 
 def controler(chemins):
@@ -197,7 +255,7 @@ def main(argv=None):
     chemins = [a_faire[nom]() for nom in sorted(a_faire)]
     print("=== planches M13 ===")
     defauts = controler(chemins)
-    for nom in ("M13_C04_frise_scd.svg", "M13_C07_grille_revue.svg"):
+    for nom in ("M13_C07_grille_revue.svg",):
         if not os.path.exists(os.path.join(SORTIE, nom)):
             print("  %-40s a produire avec son chapitre" % nom)
     if defauts:

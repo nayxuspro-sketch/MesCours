@@ -607,6 +607,122 @@ def controler():
            f(out["c03_faux_filtre_lignes"]), f(out["c03_faux_filtre_ca"]),
            fd(out["c03_faux_filtre_facteur"]), f(out["c03_faux_filtre_manquants"]),
            f(out["c03_bon_grain_lignes"]), fd(out["c03_bon_grain_facteur"])))
+    # ------------------- 13. l'etoile et les changements lents (chapitre C04)
+    # Un schema en etoile se juge sur trois choses : ses dimensions CONFORMES (les memes
+    # dans plusieurs faits), sa gestion du TEMPS QUI PASSE (les types de SCD), et la
+    # requete qui lit le passe sans le reecrire.
+    faits = ["fait_ventes", "fait_commandes", "fait_encaissements", "fait_stock_mensuel",
+             "fait_ruptures", "fait_logistique", "fait_objectifs"]
+    conformes = {}
+    for dim in ("dim_client", "dim_produit", "dim_magasin", "dim_vendeur", "dim_date"):
+        prefixe = dim.replace("dim_", "id_")
+        servis = []
+        for fait in faits:
+            colonnes = [c[0] for c in q("SELECT column_name FROM information_schema.columns "
+                                        "WHERE table_name = '%s'" % fait)]
+            if any(c == prefixe for c in colonnes):
+                servis.append(fait.replace("fait_", ""))
+        conformes[dim] = servis
+    out["c04_dimension_magasin_faits"] = len(conformes["dim_magasin"])
+    out["c04_dimension_client_faits"] = len(conformes["dim_client"])
+    out["c04_dimension_produit_faits"] = len(conformes["dim_produit"])
+    out["c04_dimension_vendeur_faits"] = len(conformes["dim_vendeur"])
+    out["c04_dimension_date_faits"] = len(conformes["dim_date"])
+    out["c04_texte_conformes"] = (
+        "sur les %s tables de faits du modele, une dimension est CONFORME quand plusieurs faits "
+        "pointent sur la meme : dim_magasin sert %s faits (%s), dim_client et dim_produit en "
+        "servent %s chacune, dim_vendeur une seule, et dim_date aucune — elle existe, elle est "
+        "juste, et aucun fait ne pointe dessus par cle : c'est le trou que le chapitre C06 "
+        "viendra fermer"
+        % (f(len(faits)), f(out["c04_dimension_magasin_faits"]),
+           ", ".join(conformes["dim_magasin"]), f(out["c04_dimension_client_faits"])))
+    # ---- les deux trous reunis : ce qu'une jointure interne perdrait sans le dire
+    out["c04_trous_total_lignes"] = out["c_ventes_client_inconnu"] + out["c_ventes_rattrapees"]
+    out["c04_trous_total_texte"] = (
+        "les deux trous d'une jointure historisee mal bornee se cumulent : %s ventes du client non "
+        "identifie et %s ventes anterieures a la creation du compte, soit %s lignes de ticket "
+        "perdues par une jointure interne, sans erreur et sans avertissement"
+        % (f(out["c_ventes_client_inconnu"]), f(out["c_ventes_rattrapees"]),
+           f(out["c04_trous_total_lignes"])))
+    # ---- les quatre types de SCD, mesures sur les 1 120 mouvements du socle
+    mouvements = "read_csv_auto('03_exercices/dossier_M13/mouvements_clients.csv', header = true)"
+    par_type = dict(q("SELECT type_scd, COUNT(*) FROM " + mouvements + " GROUP BY 1"))
+    out["c04_mouvements_type1"] = int(par_type.get(1, 0))
+    out["c04_mouvements_type2"] = int(par_type.get(2, 0))
+    par_nature = q("SELECT nature, type_scd, COUNT(*) FROM " + mouvements + " GROUP BY 1, 2 "
+                   "ORDER BY 1, 2")
+    out["c04_mouvements_detail"] = "; ".join("%s type %s : %s" % (n, t, f(c)) for n, t, c in par_nature)
+    out["c04_attributs_historiises"] = ", ".join(sorted({n for n, _, _ in par_nature}))
+    # type 3 : une colonne « valeur precedente » ne sait garder QU'un changement
+    out["c04_clients_deux_changements"] = un(
+        "SELECT COUNT(*) FROM (SELECT id_client FROM dim_client_scd "
+        "GROUP BY 1 HAVING COUNT(DISTINCT ville) > 2)")
+    # GROUP BY id_client, jamais GROUP BY 1 : ici le premier item du SELECT est un agregat,
+    # et le moteur refuse de grouper sur un agregat (lecon deja payee au chapitre C03)
+    out["c04_villes_max"] = un(
+        "SELECT MAX(n) FROM (SELECT COUNT(DISTINCT ville) AS n FROM dim_client_scd "
+        "GROUP BY id_client)")
+    out["c04_clients_avec_histoire"] = un(
+        "SELECT COUNT(*) FROM (SELECT id_client FROM dim_client_scd GROUP BY 1 HAVING COUNT(*) > 1)")
+    out["c04_texte_types"] = (
+        "les %s mouvements du referentiel se rangent en deux familles : %s de type 2 (une nouvelle "
+        "version, l'ancienne reste lisible) et %s de type 1 (une correction, l'ancienne valeur est "
+        "ecrasee) ; les attributs historises sont %s. Le type 3, qui range la valeur precedente "
+        "dans une colonne, ne representerait pas ce socle : %s clients ont change de ville plus de "
+        "deux fois (jusqu'a %s villes distinctes), et il aurait fallu autant de colonnes que de "
+        "changements possibles"
+        % (f(out["c_mouvements"]), f(out["c04_mouvements_type2"]), f(out["c04_mouvements_type1"]),
+           out["c04_attributs_historiises"], f(out["c04_clients_deux_changements"]),
+           f(out["c04_villes_max"])))
+    # ---- ce que coute la lecture historisee, et ce qu'elle rapporte
+    o_courant = _chrono("SELECT c.segment, ROUND(SUM(f.montant_ttc)) FROM fait_ventes f "
+                       "JOIN dim_client c ON c.id_client = f.id_client "
+                       "WHERE f.est_retour = 0 GROUP BY 1")
+    o_histo = _chrono("SELECT h.segment, ROUND(SUM(f.montant_ttc)) FROM fait_ventes f "
+                     "JOIN dim_client_scd h ON h.id_client = f.id_client AND f.date_vente "
+                     "BETWEEN h.date_debut AND COALESCE(h.date_fin, DATE '2100-01-01') "
+                     "WHERE f.est_retour = 0 GROUP BY 1")
+    out["c04_temps_courant_ms"] = o_courant
+    out["c04_temps_historise_ms"] = o_histo
+    prix_courant = un("SELECT ROUND(AVG(p.prix_vente_ht)) FROM fait_ventes f "
+                      "JOIN dim_produit p ON p.id_produit = f.id_produit WHERE f.est_retour = 0")
+    prix_histo = un("SELECT ROUND(AVG(h.prix_vente_ht)) FROM fait_ventes f "
+                    "JOIN dim_produit_scd h ON h.id_produit = f.id_produit AND f.date_vente "
+                    "BETWEEN h.date_debut AND COALESCE(h.date_fin, DATE '2100-01-01') "
+                    "WHERE f.est_retour = 0")
+    out["c04_prix_moyen_courant"] = prix_courant
+    out["c04_prix_moyen_historise"] = prix_histo
+    out["c04_prix_ecart_pct"] = round(abs(prix_courant - prix_histo) / prix_histo * 100, 1)
+    out["c04_texte_lecture"] = (
+        "lire le passe coute %s ms au lieu de %s ms sur le fil rouge (une jointure par intervalle "
+        "au lieu d'une egalite de cle, mediane de sept executions), et rapporte davantage : le prix "
+        "moyen des ventes vaut %s FCFA lu sur la dimension historisee et %s FCFA lu sur la "
+        "dimension courante, soit %s %% d'ecart — le prix d'aujourd'hui n'a pas ete pratique sur "
+        "les ventes de 2023"
+        % (f(o_histo), f(o_courant), f(prix_histo), f(prix_courant),
+           fd(out["c04_prix_ecart_pct"])))
+    out["c04_versions_produit_par_produit"] = round(out["c_versions_produit"]
+                                                    / un("SELECT COUNT(DISTINCT id_produit) "
+                                                         "FROM dim_produit_scd"), 1)
+    # ---- deux exemples nommes, pour le chapitre : un produit et un client qui bougent
+    versions_produit_exemple = q("SELECT version, date_debut, prix_vente_ht FROM dim_produit_scd "
+                                 "WHERE id_produit = 12 ORDER BY version")
+    out["c04_exemple_produit"] = "produit 12 : " + " ; ".join(
+        "version %s (%s) %s FCFA" % (v, d.year, f(p_)) for v, d, p_ in versions_produit_exemple)
+    out["c04_exemple_produit_variation_pct"] = round(
+        (versions_produit_exemple[-1][2] / versions_produit_exemple[0][2] - 1) * 100, 1)
+    client_exemple = q("SELECT id_client FROM dim_client_scd GROUP BY id_client "
+                       "HAVING COUNT(DISTINCT ville) > 2 ORDER BY id_client LIMIT 1")[0][0]
+    out["c04_exemple_client"] = "client %s : " % f(client_exemple) + " ; ".join(
+        "version %s du %s au %s, %s" % (v, d1, d2 or "aujourd'hui", ville)
+        for v, d1, d2, ville in q("SELECT version, date_debut, date_fin, ville FROM dim_client_scd "
+                                  "WHERE id_client = %s ORDER BY version" % client_exemple))
+    out["c04_texte_tarifs"] = (
+        "la grille tarifaire est historisee elle aussi : %s versions pour %s produits (%s versions "
+        "par produit), une nouvelle version chaque 1er janvier, et jamais d'ecriture par-dessus — "
+        "la marge d'une vente de 2023 se calcule avec le tarif de 2023"
+        % (f(out["c_versions_produit"]), f(un("SELECT COUNT(DISTINCT id_produit) FROM dim_produit_scd")),
+           fd(out["c04_versions_produit_par_produit"])))
     con.close()
     return out
 
@@ -644,6 +760,13 @@ def main(argv=None):
     print("     %s" % m["c03_texte_additivite"])
     print("     %s" % m["c03_texte_faux"])
     print("     %s" % m["c03_texte_jointure_agregats"])
+    print(" 13. etoile    : %s" % m["c04_texte_conformes"])
+    print("     %s" % m["c04_texte_types"])
+    print("     %s" % m["c04_texte_lecture"])
+    print("     %s" % m["c04_texte_tarifs"])
+    print("     %s" % m["c04_exemple_produit"])
+    print("     %s (variation %s %%)" % (m["c04_exemple_client"], m["c04_exemple_produit_variation_pct"]))
+    print("     %s" % m["c04_trous_total_texte"])
     print()
     print("  verdict : le modele rend le meme chiffre d'affaires que la source (%s FCFA), "
           "sans orphelin et avec un grain prouve sur %d tables."

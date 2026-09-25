@@ -3549,6 +3549,35 @@ def m13():
     d["m13_c03_depot_mois"] = m["c03_depot_mois"]
     d["m13_c03_texte_jointure_agregats"] = m["c03_texte_jointure_agregats"]
 
+    # --- C04 : l'etoile, les dimensions conformes et les changements lents
+    d["m13_c04_dimension_magasin_faits"] = m["c04_dimension_magasin_faits"]
+    d["m13_c04_dimension_client_faits"] = m["c04_dimension_client_faits"]
+    d["m13_c04_dimension_produit_faits"] = m["c04_dimension_produit_faits"]
+    d["m13_c04_dimension_vendeur_faits"] = m["c04_dimension_vendeur_faits"]
+    d["m13_c04_dimension_date_faits"] = m["c04_dimension_date_faits"]
+    d["m13_c04_texte_conformes"] = m["c04_texte_conformes"]
+    d["m13_c04_mouvements_type1"] = m["c04_mouvements_type1"]
+    d["m13_c04_mouvements_type2"] = m["c04_mouvements_type2"]
+    d["m13_c04_mouvements_detail"] = m["c04_mouvements_detail"]
+    d["m13_c04_attributs_historiises"] = m["c04_attributs_historiises"]
+    d["m13_c04_clients_avec_histoire"] = m["c04_clients_avec_histoire"]
+    d["m13_c04_clients_deux_changements"] = m["c04_clients_deux_changements"]
+    d["m13_c04_villes_max"] = m["c04_villes_max"]
+    d["m13_c04_texte_types"] = m["c04_texte_types"]
+    d["m13_c04_temps_courant_ms"] = m["c04_temps_courant_ms"]
+    d["m13_c04_temps_historise_ms"] = m["c04_temps_historise_ms"]
+    d["m13_c04_prix_moyen_courant"] = f(m["c04_prix_moyen_courant"]) + " FCFA"
+    d["m13_c04_prix_moyen_historise"] = f(m["c04_prix_moyen_historise"]) + " FCFA"
+    d["m13_c04_prix_ecart_pct"] = m["c04_prix_ecart_pct"]
+    d["m13_c04_versions_produit_par_produit"] = m["c04_versions_produit_par_produit"]
+    d["m13_c04_trous_total_lignes"] = m["c04_trous_total_lignes"]
+    d["m13_c04_trous_total_texte"] = m["c04_trous_total_texte"]
+    d["m13_c04_exemple_produit"] = m["c04_exemple_produit"]
+    d["m13_c04_exemple_produit_variation_pct"] = m["c04_exemple_produit_variation_pct"]
+    d["m13_c04_exemple_client"] = m["c04_exemple_client"]
+    d["m13_c04_texte_lecture"] = m["c04_texte_lecture"]
+    d["m13_c04_texte_tarifs"] = m["c04_texte_tarifs"]
+
     # --- Le projet et l'evaluation (calibres sur M11 et M12)
     d["m13_projet_livrables"] = 4
     d["m13_projet_points"] = 20
