@@ -1,0 +1,251 @@
+{
+  "controles": {
+    "chapitres_attendus": 81,
+    "exercices_sans_reprise_au_corrige": [],
+    "sections_exercices_decalees": [
+      "M06_C04_v §13",
+      "M06_C05_p §13"
+    ]
+  },
+  "fichiers": {
+    "index_glossaire": "index_glossaire_M01_M12.md",
+    "livre_assemble": "La_Voie_des_Donnees_M01-M12.pdf"
+  },
+  "modules": {
+    "M01": {
+      "chapitres": 7,
+      "chapitres_titres": [
+        "M01.C01 — Se repérer dans un ordinateur de travail : dossiers, fichiers, extensions, chemins, sauvegardes",
+        "M01.C02 — Donnée, information, connaissance, décision : ce que votre travail ajoute réellement",
+        "M01.C03 — La table : lignes, colonnes, cellules, en-têtes, identifiants",
+        "M01.C04 — Types de données et ce qu'ils autorisent : texte, nombre, date, booléen, montant",
+        "M01.C05 — Structurées, semi-structurées, non structurées ; qualitatives et quantitatives",
+        "M01.C06 — Le cycle de vie d'une donnée : naissance, stockage, transformation, usage, archivage, suppression",
+        "M01.C07 — Les métiers de la donnée, la chaîne de valeur, et l'anatomie d'une analyse"
+      ],
+      "exercices": 37,
+      "heures": 30,
+      "mots": 46261,
+      "pages": 117,
+      "prerequis": "aucun",
+      "titre": "Lire les données, comprendre le métier"
+    },
+    "M02": {
+      "chapitres": 8,
+      "chapitres_titres": [
+        ".C01 — Population, échantillon, individu, variable, modalité, fréquence",
+        ".C02 — Les centres : moyenne, médiane, mode ; minimum, maximum, étendue",
+        "M02.C03 — Mesurer la dispersion : étendue, intervalle interquartiles, écart-type",
+        "M02.C04 — Se situer : quartiles, déciles, percentiles, lecture du boxplot",
+        "M02.C05 — La forme d'une distribution : histogramme, asymétrie, valeurs extrêmes",
+        "M02.C06 — Relier deux variables : covariance, corrélation, causalité, paradoxes",
+        "M02.C07 — Hasard et incertitude : probabilités de base, échantillonnage, biais",
+        "M02.C08 — Décider avec incertitude : intervalle de confiance, tests, interprétation et limites"
+      ],
+      "exercices": 40,
+      "heures": 30,
+      "mots": 53806,
+      "pages": 122,
+      "prerequis": "M01",
+      "titre": "Statistiques appliquées, depuis zéro"
+    },
+    "M03": {
+      "chapitres": 8,
+      "chapitres_titres": [
+        ".C01 — Interface, classeur, feuille, cellule : se déplacer sans se perdre",
+        ".C02 — Formats et saisie intelligente : monétaire FCFA, dates, validation, mise en forme conditionnelle",
+        ".C03 — Le tableau structuré, le tri, les filtres, la recherche et les doublons",
+        ".C04 — La formule : références relatives, absolues, mixtes, et les sept erreurs",
+        ".C05 — La boîte à fonctions d'agrégation et conditionnelle : SOMME, MOYENNE, NB, MEDIANE, SOMME.SI.ENS",
+        ".C06 — Rechercher et assembler : RECHERCHEV et ses quatre pièges, RECHERCHEX, INDEX/EQUIV, les fonctions de texte",
+        ".C07 — Dates, durées, périodes, puis les fonctions matricielles : `FIN.MOIS`, `NB.JOURS.OUVRES`, `FILTRE`, `TRIERPAR`, `LET`",
+        ".C08 — Croiser, charger, protéger : tableaux croisés dynamiques, segments, Power Query, modèle de données, DAX de survie"
+      ],
+      "exercices": 43,
+      "heures": 30,
+      "mots": 56023,
+      "pages": 126,
+      "prerequis": "M01, M02",
+      "titre": "Excel pour l'analyse de données"
+    },
+    "M04": {
+      "chapitres": 6,
+      "chapitres_titres": [
+        ".C01 — Le diagnostic en douze points : savoir ce qui ne va pas avant de toucher à quoi que ce soit",
+        ".C02 — Les absences : cinq mécanismes, cinq traitements, et le coût de chaque choix",
+        ".C03 — Doublons : la clé qui ment, la clé qui dit vrai, et le dictionnaire de correspondances",
+        ".C04 — Valeurs aberrantes et règles de contrôle : une règle doit rendre une décision, pas un nombre",
+        ".C05 — Normaliser et rendre comparable : changer l'écriture, jamais la valeur",
+        ".C06 — Documenter, nommer, protéger : la dernière étape est une écriture, pas un calcul"
+      ],
+      "exercices": 29,
+      "heures": 30,
+      "mots": 41751,
+      "pages": 92,
+      "prerequis": "M02, M03",
+      "titre": "Qualité, préparation, documentation"
+    },
+    "M05": {
+      "chapitres": 5,
+      "chapitres_titres": [
+        ".C01 — Le langage commun des transformations : un fichier, trois moteurs, un verdict",
+        ".C02 — Power Query : sources, étapes, types, requêtes paramétrées",
+        ".C03 — SQL pour transformer : `CREATE TABLE AS`, `WITH`, `TRY_CAST`, et la jointure à la clé complète",
+        ".C04 — pandas pour transformer : `pipe`, `assign`, `query`, `merge`, et le notebook reproductible",
+        ".C05 — Arbitrer un outil par situation : taille, fréquence, compétences, gouvernance"
+      ],
+      "exercices": 20,
+      "heures": 30,
+      "mots": 35750,
+      "pages": 86,
+      "prerequis": "M03, M04",
+      "titre": "Chaîne de transformation (M/Q, SQL, pandas)"
+    },
+    "M06": {
+      "chapitres": 5,
+      "chapitres_titres": [
+        ".C01 — Pourquoi une base et pas un classeur Excel : redondance, anomalie, concurrence, volumétrie",
+        ".C02 — Table, colonne, ligne, schéma, type, contrainte, valeur nulle",
+        ".C03 — Clés et relations : primaire, étrangère, candidate, composite, 1-1, 1-N, N-M",
+        ".C04 — Vivre avec DuckDB / SQLite / PostgreSQL : créer, insérer, importer un CSV, se connecter",
+        ".C05 — Les autres mondes : NoSQL (document, clé-valeur, graphe, colonnes), datalake, entrepôt, lac"
+      ],
+      "exercices": 20,
+      "heures": 30,
+      "mots": 28009,
+      "pages": 69,
+      "prerequis": "M04",
+      "titre": "Bases de données relationnelles"
+    },
+    "M07": {
+      "chapitres": 8,
+      "chapitres_titres": [
+        ".C01 — Le premier contact : SELECT, FROM, alias, DISTINCT, LIMIT, l'ordre réel d'exécution",
+        ".C02 — Filtrer : WHERE, opérateurs, IN, BETWEEN, LIKE, IS NULL, dates, priorités logiques",
+        ".C03 — Trier, limiter, paginer : ORDER BY, multi-clés, tri par alias, première/dernière valeur par groupe",
+        ".C04 — Agréger : COUNT, SUM, AVG, MIN, MAX, ROUND",
+        ".C05 — Résumer par groupe : GROUP BY, HAVING, comptages conditionnels",
+        ".C06 — Catégoriser : CASE, COALESCE, NULLIF",
+        ".C07 — Joindre : INNER, LEFT, FULL, CROSS, jointures multiples",
+        ".C08 — Sous-requêtes, CTE, vues, EXISTS vs IN"
+      ],
+      "exercices": 63,
+      "heures": 30,
+      "mots": 40084,
+      "pages": 109,
+      "prerequis": "M06",
+      "titre": "SQL : interroger, agréger, rejoindre"
+    },
+    "M08": {
+      "chapitres": 8,
+      "chapitres_titres": [
+        ".C01 — Installer sans stress : Python, `pip`, environnements virtuels, VS Code et Jupyter, exécuter son premier script",
+        ".C02 — Les fondations sans données : variables, types, opérateurs, entrées/sorties, commentaires, erreurs",
+        ".C03 — Décider et répéter : `if/elif/else`, boucles `for`/`while`, `break`/`continue`, compréhensions",
+        ".C04 — Ranger : listes, tuples, chaînes, dictionnaires, ensembles, index, tris",
+        ".C05 — Organiser : fonctions, arguments, portée, docstring, modules, `try/except`, fichiers",
+        ".C06 — NumPy utile et suffisant : tableaux, vecteurisation, statistiques, `nan`, `where`, broadcasting",
+        ".C07 — pandas I : `Series`, `DataFrame`, `read_csv`/`read_excel`, `loc`/`iloc`, filtres, nouvelles colonnes, `describe`, valeurs manquantes",
+        ".C08 — pandas II : `groupby`/`transform`/`merge`, `pivot_table`, dates, `apply`, export Excel — et l'annexe migration 2.3 → 3.x"
+      ],
+      "exercices": 39,
+      "heures": 30,
+      "mots": 47406,
+      "pages": 119,
+      "prerequis": "M05, M07",
+      "titre": "Python pour l'analyse de données"
+    },
+    "M09": {
+      "chapitres": 6,
+      "chapitres_titres": [
+        ".C01 — Le protocole en 10 étapes : inspecter sans se fier, la « fiche d'entrée » et le temps à y consacrer",
+        ".C02 — Audit et premières statistiques : les 3 familles de défauts, l'audit vide est suspect, cadrer l'hypothèse",
+        ".C03 — Tendances : la série, la saison, le bruit — et les périodes qu'on a le droit de comparer",
+        ".C04 — Anomalies et raretés : ce qui est inhabituel, comment le prouver, quoi en conclure",
+        ".C05 — Relations et hypothèses : ce qui bouge ensemble, ce qui ne bouge pas, et les 3 fausses causes",
+        ".C06 — Visualisations d'exploration et conclusions provisoires : la note d'EDA"
+      ],
+      "exercices": 12,
+      "heures": 30,
+      "mots": 36747,
+      "pages": 82,
+      "prerequis": "M02, M08",
+      "titre": "Analyse exploratoire (EDA)"
+    },
+    "M10": {
+      "chapitres": 7,
+      "chapitres_titres": [
+        ".C01 — Comment l'œil lit un graphique : l'ordre perceptuel et ce qu'il prescrit",
+        ".C02 — Le tableau question → graphique : les 16 graphiques du manuel et la carte de définition des métriques",
+        ".C03 — Couleurs, palettes, accessibilité et culture locale",
+        ".C04 — Écrire un graphique : titres qui affirment, axes honnêtes, annotations",
+        ".C05 — Les 10 erreurs qui tuent la crédibilité",
+        ".C06 — Storytelling : raconter pour décider",
+        ".C07 — matplotlib, Excel, Power BI : support, résolution, export"
+      ],
+      "exercices": 14,
+      "heures": 30,
+      "mots": 52663,
+      "pages": 106,
+      "prerequis": "M09",
+      "titre": "Data visualization"
+    },
+    "M11": {
+      "chapitres": 7,
+      "chapitres_titres": [
+        ".C01 — La fonction de fenêtre : `OVER`, `PARTITION BY`, `ORDER BY`, et pourquoi `GROUP BY` ne suffit plus",
+        ".C02 — Classer, cumuler, décaler : `ROW_NUMBER`, `RANK`, `DENSE_RANK`, `NTILE`, `SUM() OVER`, `LAG`, `LEAD`",
+        ".C03 — Le temps en SQL : table calendrier, année sur année, mois glissants, et le mois qui manque",
+        ".C04 — Cohortes, rétention et récurrence : RFM, et le client qui n'a pas de nom",
+        ".C05 — Requêtes avancées : CTE, tableau croisé, `UNNEST`, `QUALIFY`, récapitulatifs",
+        ".C06 — Le rapport lent : vues, index, plans d'exécution, `SELECT *`, partitions",
+        ".C07 — La requête comme livrable : style, convention, tests de non-régression"
+      ],
+      "exercices": 14,
+      "heures": 30,
+      "mots": 39363,
+      "pages": 97,
+      "prerequis": "M07, M08",
+      "titre": "SQL avancé pour la BI"
+    },
+    "M12": {
+      "chapitres": 6,
+      "chapitres_titres": [
+        ".C01 — Qu'est-ce que la BI, et ce qu'elle n'est pas",
+        ".C02 — Reporting, BI, et les quatre régimes de question",
+        ".C03 — Métriques, dimensions, faits, grain : le vocabulaire exact",
+        ".C04 — Concevoir un KPI : les 6 critères et la carte de définition",
+        ".C05 — L'architecture BI de bout en bout",
+        ".C06 — Réussir le projet BI"
+      ],
+      "exercices": 35,
+      "heures": 30,
+      "mots": 31389,
+      "pages": 82,
+      "prerequis": "M09, M10",
+      "titre": "Fondamentaux de la Business Intelligence"
+    }
+  },
+  "totaux": {
+    "chapitres": 81,
+    "cles_chiffres": 2499,
+    "dossiers_exercices": 10,
+    "evaluations": 12,
+    "exercices_autonomes": 366,
+    "fiches_controle": 10,
+    "heures": 360,
+    "instruments": 48,
+    "mini_projets": 81,
+    "modules": 12,
+    "mots": 509252,
+    "mots_fichiers_de_cours": 510627,
+    "mots_ouverture": 1375,
+    "mots_projets_et_evaluations": 67516,
+    "notions_indexees": 488,
+    "pages_index_glossaire": 32,
+    "pages_livre": 1395,
+    "pages_modules": 1207,
+    "planches": 69,
+    "projets_module": 12
+  }
+}

@@ -1,0 +1,23 @@
+# La Voie des Données — environnement de travail
+# Installer une fois :  python3 -m venv .venv && source .venv/bin/activate
+#                       pip install -r requirements.txt
+#
+# Versions vérifiées dans l'atelier de production le 25 septembre 2026 (Python 3.13).
+
+# --- données et tableaux (M05, M08, M09, M12, M13)
+duckdb==1.5.5
+pandas==2.2.3
+numpy==2.3.5
+
+# --- graphiques (M10) et exports Excel (M03, M10)
+matplotlib==3.10.9
+seaborn==0.13.2
+openpyxl==3.1.5
+
+# --- fabrication du livre : Markdown a HTML, HTML a PDF, assemblage des modules
+markdown==3.10.3
+weasyprint==70.0
+pypdf==6.19.0
+
+# --- optionnel : mesure du nombre de pages des PDF completes (tools/budget_pages.py --mesure)
+# pypdfium2

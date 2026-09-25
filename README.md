@@ -20,6 +20,36 @@ contrôle, README, embarquement de la figure C01, retrait pyc du remote, `.gitig
 | 5 | Composition du manuel PDF (A4, couverture, mise en page éditeur) | ✅ moteur au point — `05_livrables/M01.pdf` (**117 p.**), `M02.pdf` (**122 p.**), `M03.pdf` (**126 p.**), `M04.pdf` (**92 p.**), `M05.pdf` (86 p.), `M06.pdf` (**69 p.**, budget 80 ±15 % = 68-92, OK), `M07.pdf` (**109 p.**, budget 117 ±15 % = 99-135, OK), `M08.pdf` (**119 p.**, budget 117 ±15 % = 99-135, OK), `M09.pdf` (**82 p.**, budget 92,5 ±15 % = [79, 106], OK) `M10.pdf` (**106 p.**, budget 105 ±15 % = [89, 121], OK) et `M11.pdf` (**97 p.**, budget 105 ±15 % = [89, 121], OK — projet et évaluation joints, **9** fichiers) ; les HTML de contrôle, régénérables en 20 s, ont été supprimés le 24/09/2026 pour tenir le quota de l'atelier (165,0 → 127,0 Mo) — les paginations M01-M04 et M08 ont été mesurées **après** le correctif de composition du 20/09/2026 (`img { max-width: 100 % }` : les planches 780 px n'étaient plus rognées à droite) |
 | 6 | Revue finale + errata | ⏳ |
 
+## Kit d'exploitation — M01 à M12 (25/09/2026)
+
+Les douze modules publiés (81 chapitres, 1 207 pages de cours, 366 exercices autonomes) étaient
+diffusables mais pas utilisables seuls : douze PDF séparés, douze projets et douze évaluations en
+Markdown, aucun index général. Le kit comble cet écart, et il est **généré**, jamais recopié :
+
+- **`05_livrables/La_Voie_des_Donnees_M01-M12.pdf`** — **1 395 pages**, 14,0 Mo : couverture,
+  sommaire général paginé, les douze modules, les deux cahiers (projets, évaluations), l'index ;
+  **124 signets** PDF pour naviguer.
+- **`05_livrables/guide_apprenant_M01_M12.md`** — le mode d'emploi de l'apprenant : ce qu'il a,
+  dans quel ordre le lire, ce qu'il produit, comment il est corrigé, où sont les fichiers.
+- **`05_livrables/index_glossaire_M01_M12.md`** — index des notions (**488** entrées, chacune avec
+  les chapitres où elle est traitée), glossaire (**367** définitions), index des planches (**69**),
+  des instruments (**48**) et des jeux de données (**10** dossiers) : 855 entrées, triées.
+- **`05_livrables/kit_M01_M12.json`** — les mesures du kit, seule source des chiffres du guide.
+- **`requirements.txt`** — l'environnement de travail, versions vérifiées le 25/09/2026 :
+  duckdb 1.5.5, pandas 2.2.3, numpy 2.3.5, matplotlib 3.10.9, seaborn 0.13.2, openpyxl 3.1.5,
+  markdown 3.10.3, weasyprint 70.0, pypdf 6.19.0.
+- **`tools/kit_exploitation.py`** — le générateur : mesure, index, puis livre assemblé (sommaire
+  auto-paginé par itération, signets repris module par module). `--mesures-seules` mesure en 2 s
+  sans composer le livre.
+
+**Contrôles du kit** : 81 chapitres attendus par l'architecture, 81 trouvés ; **366** exercices
+autonomes, **0** sans reprise au corrigé ; 2 chapitres de M06 portent leur section d'exercices au
+§13 au lieu du §11, ce que l'index signale au lecteur. Deux erreurs de comptage corrigées au
+passage : le total de « 243 exercices » annoncé le 25/09 venait d'un artefact de comptage (quatre
+mises en forme d'exercices cohabitent dans le manuel), et le fichier d'ouverture `M01_C00`
+(1 375 mots) était compté comme un chapitre. Mesure juste : **509 252 mots de cours** dans les 81
+chapitres (510 627 avec l'ouverture).
+
 ## Dernier module livré — M12 *Fondamentaux de la Business Intelligence* (25/09/2026)
 
 **6 chapitres · 30 h · N3 · budget 92 p. [78, 106].** Le module apprend à choisir **quoi** mesurer,
@@ -127,6 +157,7 @@ deux parts de camembert ; **5,4 %** de totaux masqués par un cumul à 100 % ; m
 ```
 formation-data-bi/
 ├── README.md                         ← ce fichier
+├── requirements.txt                  ← environnement de travail (versions vérifiées le 25/09/2026)
 ├── 00_architecture/                  ← étape 1 : plan directeur validé (+ son PDF)
 ├── 01_socle_donnees/
 │   ├── data/brut/                    ← 243 360 lignes de ventes brutes, défauts compris (20 fichiers)
@@ -144,11 +175,14 @@ formation-data-bi/
 ├── 04_evaluations/                   ← M01_evaluation.md (quiz 15 Q) · M02_evaluation.md (quiz 20 Q) · M03_evaluation.md
 │                                       (quiz 15 Q, 4 exercices, étude de cas) : récupération, exercices,
 │                                       étude de cas, corrigés, décision d'orientation
-├── 05_livrables/                     ← PDF assemblés par module (M01.pdf 110 p., M02.pdf 113 p., M03.pdf 121 p.)
-│                                       et fiches de contrôle Q1–Q10. Le HTML de contrôle n'y est pas stocké :
-│                                       6,6 Mo par module, `render.py` le rend en 20 s quand on en a besoin
+├── 05_livrables/                     ← PDF assemblés par module (M01.pdf 117 p. … M12.pdf 82 p.), fiches de
+│                                       contrôle Q1–Q10, plans de module, et le KIT D'EXPLOITATION :
+│                                       La_Voie_des_Donnees_M01-M12.pdf (1 395 p., 124 signets), guide_apprenant,
+│                                       index_glossaire, kit_M01_M12.json (mesures). Le HTML de contrôle n'y est
+│                                       pas stocké : 6,6 Mo par module, `render.py` le rend en 20 s au besoin
 ├── figures/                          ← SVG des planches : 7 pour M01, 4 pour M02, 9 pour M03, citées en ../figures/… depuis 02_modules/
-└── tools/                            ← render.py (Markdown → HTML → PDF), poids.py (garde-fou de quota),
+└── tools/                            ← render.py (Markdown → HTML → PDF), kit_exploitation.py (le kit M01-M12),
+│                                       poids.py (garde-fou de quota),
 │                                       figures_M01.py, figures_M02.py,
 │                                       figures_M03.py, classeur_M03.py (le classeur d'atelier de M03),
 │                                       budget_pages.py, nb_pages.py, controle_sql.py, controle_python.py et
