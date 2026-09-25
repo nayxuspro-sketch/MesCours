@@ -1694,6 +1694,131 @@ def m05():
         d["m05p_" + k] = v
     return d
 
+def m14():
+    """Les cles du module M14 - Construire un tableau de bord avec Power BI.
+
+    L'outil du module n'existe pas dans cet atelier : le releve ne peut donc PAS mesurer
+    Power BI. Il mesure ce que le rapport doit AFFICHER — les dix valeurs du tableau de
+    bord, calculees sur le modele en etoile de M13, puis comparees a la mesure
+    operationnelle de M12 : deux chemins, un seul chiffre.
+
+    Les prix de licence sont des constantes DOCUMENTAIRES, datees (septembre 2026) :
+    elles ne sont pas mesurees ici, elles sont verifiees, et le module apprend a les
+    reverifier a la source plutot qu'a les citer de memoire.
+    """
+    import importlib.util
+    d = {}
+    depot = os.path.dirname(ROOT)
+    spec = importlib.util.spec_from_file_location(
+        "mesures_M14", os.path.join(depot, "tools", "mesures_M14.py"))
+    mesures = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mesures)
+    m = mesures.mesurer()
+    f = mesures.f
+    fd = mesures.fd
+    par_nom = {t["table"]: t for t in m["m14_import_tables"]}
+
+    # --- La structure du module (05_livrables/plan_M14.md)
+    d["m14_chapitres"] = 8
+    d["m14_heures"] = 30
+    d["m14_niveau_cible"] = "N4 (construire et publier un tableau de bord, en argumenter chaque choix)"
+    d["m14_budget_pages"] = 117
+    d["m14_prerequis"] = "M05.C02 (Power Query), M10 (le visuel), M12 (les KPI), M13 (le modele)"
+    d["m14_planches"] = 4
+    d["m14_planches_noms"] = ("M14_C01_ecosysteme_et_licences ; M14_C02_quatre_modes_de_connexion ; "
+                              "M14_C04_modele_etoile_powerbi ; M14_C08_grille_conception_enrichie")
+    d["m14_projets"] = 2
+    d["m14_projet_points"] = 20
+    d["m14_projet_seuil"] = 13
+    d["m14_evaluation_points"] = 80
+    d["m14_evaluation_seuil"] = 51
+    d["m14_quiz_questions"] = 15
+    d["m14_exercices_pratiques"] = 4
+    d["m14_outils_cites"] = ("Power BI Desktop, Service, Fabric et Mobile (cites, JAMAIS executes : "
+                             "regle §1.5 — l'outil n'est pas installable dans cet atelier)")
+    d["m14_outils_executes"] = ("DuckDB 1.5.5 (execute) : les dix valeurs du rapport, les poids "
+                                "d'import, les douze relations et la grille sont calcules a chaque appel")
+    d["m14_piece_portfolio"] = "les deux projets M14.P1 et M14.P2 (le rapport construit, puis arbitre)"
+
+    # --- L'ecosysteme et les licences : des constantes datees, converties au taux du manuel
+    d["m14_taux_usd_fcfa"] = m["m14_taux_usd_fcfa"]
+    d["m14_prix_desktop_usd"] = m["m14_prix_desktop_usd"]
+    d["m14_prix_pro_usd"] = m["m14_prix_pro_usd"]
+    d["m14_prix_pro_fcfa"] = f(m["m14_prix_pro_fcfa"]) + " FCFA"
+    d["m14_prix_ppu_usd"] = m["m14_prix_ppu_usd"]
+    d["m14_prix_ppu_fcfa"] = f(m["m14_prix_ppu_fcfa"]) + " FCFA"
+    d["m14_prix_f64_unites"] = m["m14_prix_f64_unites"]
+    d["m14_prix_modele_pro_go"] = m["m14_prix_modele_pro_go"]
+    d["m14_prix_modele_ppu_go"] = m["m14_prix_modele_ppu_go"]
+    d["m14_prix_actualisations_pro"] = m["m14_prix_actualisations_pro"]
+    d["m14_prix_actualisations_ppu"] = m["m14_prix_actualisations_ppu"]
+    d["m14_prix_texte"] = m["m14_prix_texte"]
+    d["m14_prix_texte_limite"] = m["m14_prix_texte_limite"]
+
+    # --- Le poids de l'import : la matiere du choix Import contre DirectQuery
+    d["m14_import_tables"] = len(m["m14_import_tables"])
+    d["m14_import_total_lignes"] = f(m["m14_import_total_lignes"])
+    d["m14_import_total_mo"] = m["m14_import_total_mo"]
+    d["m14_import_total_cellules"] = f(m["m14_import_total_cellules"])
+    d["m14_import_ventes_lignes"] = f(par_nom["fait_ventes"]["lignes"])
+    d["m14_import_ventes_mo"] = par_nom["fait_ventes"]["mo"]
+    d["m14_import_lecture_ms"] = m["m14_import_lecture_ms"]
+    d["m14_import_lignes"] = " ; ".join(
+        "%s %s" % (t["table"], f(t["lignes"])) for t in m["m14_import_tables"])
+    d["m14_import_lignes_client"] = f(par_nom["dim_client"]["lignes"])
+    d["m14_import_lignes_ventes"] = f(par_nom["fait_ventes"]["lignes"])
+    d["m14_import_lignes_date"] = f(par_nom["dim_date"]["lignes"])
+    d["m14_import_texte"] = m["m14_import_texte"]
+
+    # --- Les dix valeurs du tableau de bord, et leur controle croise par M12
+    d["m14_v01_ca_net_fcfa"] = f(m["m14_v01_ca_net_fcfa"]) + " FCFA"
+    d["m14_v02_marge_fcfa"] = f(m["m14_v02_marge_fcfa"]) + " FCFA"
+    d["m14_v02_taux_marge_pct"] = m["m14_v02_taux_marge_pct"]
+    d["m14_v02_colonne_ajoutee_texte"] = m["m14_v02_colonne_ajoutee_texte"]
+    d["m14_v03_panier_fcfa"] = f(m["m14_v03_panier_fcfa"]) + " FCFA"
+    d["m14_v04_taux_rupture_pct"] = m["m14_v04_taux_rupture_pct"]
+    d["m14_v04_couples_rupture"] = m["m14_v04_couples_rupture"]
+    d["m14_v04_couples_servis"] = m["m14_v04_couples_servis"]
+    d["m14_v05_rotation"] = m["m14_v05_rotation"]
+    d["m14_v06_retour_lignes_pct"] = m["m14_v06_retour_lignes_pct"]
+    d["m14_v06_retour_tickets_pct"] = m["m14_v06_retour_tickets_pct"]
+    d["m14_v07_service_livrees_pct"] = m["m14_v07_service_livrees_pct"]
+    d["m14_v07_service_commandes_pct"] = m["m14_v07_service_commandes_pct"]
+    d["m14_v07_texte_inactive"] = m["m14_v07_texte_inactive"]
+    d["m14_v08_encours_fcfa"] = f(m["m14_v08_encours_fcfa"]) + " FCFA"
+    d["m14_v08_factures_ouvertes"] = m["m14_v08_factures_ouvertes"]
+    d["m14_v09_cout_colis_fcfa"] = f(m["m14_v09_cout_colis_fcfa"]) + " FCFA"
+    d["m14_v09_colis"] = f(m["m14_v09_colis"])
+    d["m14_v10_premier_magasin"] = m["m14_v10_premier_magasin"]
+    d["m14_v10_premier_part_reseau_pct"] = m["m14_v10_premier_part_reseau_pct"]
+    d["m14_v_texte"] = m["m14_v_texte"]
+    d["m14_v_controle_texte"] = m["m14_v_controle_texte"]
+    d["m14_v_controle_ecarts"] = m["m14_v_controle_ecarts"]
+
+    # --- Le modele du rapport : relations, inactives, bidirectionnels refuses
+    d["m14_modele_relations"] = m["m14_modele_relations_nombre"]
+    d["m14_modele_inactives"] = m["m14_modele_inactives_nombre"]
+    d["m14_modele_bidirectionnels"] = len(m["m14_modele_bidirectionnels"])
+    d["m14_modele_colonnes_uniques"] = sum(1 for r in m["m14_modele_relations"] if r["unique"])
+    d["m14_modele_texte"] = m["m14_modele_texte"]
+    d["m14_modele_piege_texte"] = m["m14_modele_piege_texte"]
+
+    # --- La grille de conception en 18 points et les six ajouts du module
+    d["m14_grille_points"] = m["m14_grille_points"]
+    d["m14_grille_questions"] = m["m14_grille_questions"]
+    d["m14_grille_ajouts"] = m["m14_grille_ajouts_nombre"]
+    d["m14_grille_familles"] = " ; ".join(
+        "%s (%d)" % (x["famille"], x["points"]) for x in m["m14_grille_familles"])
+    d["m14_grille_detail"] = m["m14_grille_questions_texte"]
+    d["m14_grille_texte"] = m["m14_grille_texte"]
+
+    # --- Le dossier de l'apprenant
+    d["m14_dossier_pieces"] = m["m14_dossier_pieces"]
+    d["m14_dossier_attendues"] = m["m14_dossier_attendues"]
+    d["m14_dossier_texte"] = m["m14_dossier_texte"]
+    return d
+
+
 FONCS = OrderedDict([("structure", structure), ("M01", m01), ("M02", m02), ("M03", m03), ("M04", m04), ("M05", m05)])
 
 
@@ -4705,7 +4830,7 @@ def m11():
     return d
 
 
-FONCS = OrderedDict([("structure", structure), ("M01", m01), ("M02", m02), ("M03", m03), ("M04", m04), ("M05", m05), ("M06", m06), ("M07", m07), ("M08", m08), ("M09", m09), ("M10", m10), ("M11", m11), ("M12", m12), ("M13", m13)])
+FONCS = OrderedDict([("structure", structure), ("M01", m01), ("M02", m02), ("M03", m03), ("M04", m04), ("M05", m05), ("M06", m06), ("M07", m07), ("M08", m08), ("M09", m09), ("M10", m10), ("M11", m11), ("M12", m12), ("M13", m13), ("M14", m14)])
 
 
 

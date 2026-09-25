@@ -1,0 +1,35 @@
+{
+ "compteurs_du_module": {
+  "gestes_power_query": 15,
+  "grille_ajouts": 6,
+  "grille_points": 18,
+  "grille_questions": 18,
+  "lignes_import": 293120,
+  "mesures": 11,
+  "mo_import": 29.32,
+  "pages": 3,
+  "relations_actives": 12,
+  "relations_inactives": 2,
+  "retours_comite": 11,
+  "segments": 4,
+  "signets": 4,
+  "tables_import": 12,
+  "visuels": 14
+ },
+ "controle": "8 valeurs comparees a la mesure operationnelle de M12 : toutes identiques",
+ "genere_par": "tools/dossier_M14.py (mesures lues sur le socle M13)",
+ "valeurs_du_rapport": {
+  "ca_net_fcfa": 15595154955,
+  "cout_par_colis_fcfa": 3284,
+  "encours_fcfa": 1202550590,
+  "panier_moyen_fcfa": 107396,
+  "premier_magasin_part_reseau_pct": 34.1,
+  "retour_lignes_pct": 1.17,
+  "retour_tickets_pct": 1.91,
+  "rotation": 9.42,
+  "service_commandes_pct": 78.2,
+  "service_livrees_pct": 81.0,
+  "taux_marge_pct": 29.12,
+  "taux_rupture_pct": 7.29
+ }
+}
