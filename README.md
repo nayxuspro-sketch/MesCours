@@ -26,7 +26,9 @@ contrôle, README, embarquement de la figure C01, retrait pyc du remote, `.gitig
 pour **qui**, et à quelle condition un chiffre devient une décision. Trois chapitres sont poussés :
 **C01** (définition de la BI, ce qu'elle n'est pas, le coût d'une décision sans donnée),
 **C02** (reporting vs BI, les **4** régimes de question : quoi, pourquoi, quoi demain, que faire) et
-**C03** (métriques, dimensions, faits, grain — le vocabulaire exact et ses pièges chiffrés).
+**C03** (métriques, dimensions, faits, grain — le vocabulaire exact et ses pièges chiffrés) et
+**C04** (concevoir un KPI : six critères, carte de définition de sept champs, contre-KPI et effets
+pervers — avec les six définitions mesurées du taux de retour, de **1,12 %** à **1,91 %**).
 Le **socle** ajoute au fil rouge six tables déterministes (**1,36 Mo**, graine **46**) : coût d'achat,
 stock, ruptures, commandes, encaissements, logistique — les sources qu'un indicateur exige. L'**instrument**
 `tools/kpi_M12.py` mesure les **10** KPI du mandat de reprise (CA, marge, rupture, rotation, panier,
@@ -42,8 +44,8 @@ chiffre** : c'est la thèse du module, appliquée à lui-même.
   (**41** indicateurs, **7** onglets, **7 940 000** FCFA, **4** ouvertures le premier jour, abandon en
   **11** semaines) ; le livrable attendu est la **carte de définition de 10 KPI**, réutilisée en M13,
   M14, M15 et M21.
-* Publication : plan n° **46**, socle n° **47**, C01 n° **48**, C02 n° **49**, C03 n° **50**
-  (`05_livrables/journal_pushs.md`).
+* Publication : plan n° **46**, socle n° **47**, C01 n° **48**, C02 n° **49**, C03 n° **50**, C04
+  n° **52** — et l'état / le journal n° **51** (`05_livrables/journal_pushs.md`).
 
 ## Module précédent — M11 *SQL avancé pour la BI* (clôturé le 24/09/2026, poussé le 25/09/2026)
 

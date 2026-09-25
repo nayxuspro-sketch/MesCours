@@ -95,9 +95,11 @@ M10 est clos le 24 septembre 2026 : 7 chapitres poussés un par un (n° 24 → n
 
 **M12 est engagé** : plan poussé (n° 46, 6 ch., budget 92 p. [78, 106]) et socle livré (n° 47) — six CSV
 déterministes (**1,36 Mo**, graine 46) qui ajoutent au fil rouge les sources qu'un indicateur exige, et
-un instrument, `tools/kpi_M12.py`, qui mesure les **10 KPI** du projet, les **4** régimes de question et
-le vocabulaire du grain. Trois chapitres poussés (**C01**, **C02**, **C03**, **15 382** mots au total),
-relevé `m12_*` de **181** clés, `diff` = 0 entre deux exécutions.
+un instrument, `tools/kpi_M12.py`, qui mesure les **10 KPI** du projet, les **4** régimes de question, le
+vocabulaire du grain et les **6** critères d'un KPI. Quatre chapitres poussés (**C01** à **C04**,
+**21 389** mots au total : 5 186 + 5 063 + 5 133 + 6 007), relevé `m12_*` de **239** clés, `diff` = 0
+entre deux exécutions. C05 (architecture en **7** étages) et C06 (les **10** causes d'échec) restent à
+écrire.
 
 M11 est **écrit, validé et intégralement poussé** : 7 chapitres, **42 410** mots, **97** pages
 composées pour 105 p. de budget, **301** clés de valeurs publiées, **2** planches (**609** et

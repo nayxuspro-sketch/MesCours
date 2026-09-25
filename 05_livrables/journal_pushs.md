@@ -20,6 +20,9 @@ passe**, sans perte.
 | 48 | `0403087` | **M12.C01** — définition de la BI, ce qu'elle n'est pas | `autovalide --strict` |
 | 49 | `0e12715` | **M12.C02** — reporting, BI, les 4 régimes de question | `autovalide --strict` |
 | 50 | `0bc2360` | **M12.C03** — métriques, dimensions, faits, grain | `autovalide --strict` |
+| 51 | `460d3c7` | État au 25/09 + journal des pushs | — |
+| 52 | `c8f2255` | **M12.C04** — concevoir un KPI : 6 critères, carte de définition, contre-KPI (6 007 mots) + instruments mis à jour | `autovalide --strict`, relevé `m12_*` diff = 0 |
+| 53 | `d7bfb82` | `chiffres_cites.md` régénéré (bloc M12 : **239** clés) | — |
 
 Chaque envoi a suivi la procédure en **ajout seul** (PATCH_11) : test du jeton → `git init` →
 `fetch --depth 1` → `update-ref` → `read-tree` → `git add` **des seuls chemins nommés** → push →
@@ -34,8 +37,8 @@ hors du dépôt de travail, et un ajout global les aurait marqués « supprimés
 
 | Étape | Livrable | État |
 |---|---|---|
-| C04 | Concevoir un KPI : 6 critères, carte de définition, contre-KPI | à écrire |
 | C05 | L'architecture BI de bout en bout (7 étages) | à écrire |
+| — | **C04 fait** : poussé n° 52 (6 007 mots, `--strict` OK) | ✅ |
 | C06 | Réussir le projet BI : 10 causes d'échec | à écrire |
 | Figures | 2 planches (`tools/figures_M12.py`) | à produire |
 | PDF | `05_livrables/M12.pdf` — cible [78, 106] p. | à produire |
