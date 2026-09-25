@@ -1,14 +1,15 @@
 # État d'avancement du manuel — *La Voie des Données* (Édition 2026)
 
-**Arrêté au 25 septembre 2026, après la clôture de M12 et l'ouverture de M13.**
-**M11 (n° 36 à n° 45) et M12 (n° 46 à n° 57) sont intégralement poussés** : pour chacun, le plan, le
-socle et ses instruments, les chapitres un par push, puis la clôture (projet, évaluation, fiche
-Q1-Q10, PDF et planches). **M13 est engagé** : plan n° 58, socle et instrument n° 59, **C01** n° 61 et **C02** n° 63 — le modèle de
-Sahel Distribution compte **12** tables (**5** dimensions, **7** faits), **2** dimensions historisées
-(bâties **en SQL**, par requête) et **4** contrôles de recette exécutés. Détail :
+**Arrêté au 25 septembre 2026, après le push n° 65 (kit d'exploitation des douze modules publiés).**
+**M11 (n° 36 → n° 45), M12 (n° 46 → n° 57) et le kit M01-M12 (n° 65) sont poussés.** M13 est
+**engagé** : plan n° 58, socle et instrument n° 59, **C01** n° 61, **C02** n° 63 — **2 chapitres sur
+7**. Le modèle de Sahel Distribution compte **12** tables (**5** dimensions, **7** faits), **2**
+dimensions historisées (bâties **en SQL**) et **4** contrôles de recette exécutés. Détail :
 `05_livrables/journal_pushs.md`.
+
 Chiffres pris aux sources du dépôt : `00_architecture/01_architecture_pedagogique.md` (§C.1, §F.2,
-§F.4, §E.3, §E.4, §B.6) et `tools/budget_pages.py` (budget recalculé, conforme).
+§E.3, §E.4, §B.6), `tools/budget_pages.py` (budgets) et `05_livrables/kit_M01_M12.json` (mesures du
+kit, refaites à chaque exécution de `tools/kit_exploitation.py`).
 
 ---
 
@@ -16,193 +17,113 @@ Chiffres pris aux sources du dépôt : `00_architecture/01_architecture_pedagogi
 
 | Agrégat | Prévu | Réalisé | Restant |
 |---|---|---|---|
-| Modules obligatoires | **22** (M01 → M22) | **11** (M01 → M11) | **11** |
-| Chapitres | **143** | **75** (52 %) | **68** (48 %) |
-| Heures du parcours | **660 h** | **330 h** | **330 h** |
-| Pages (module par module) | **2 226 p.** | **1 125 p. composées** (budget 1 127) | **1 101 p.** |
-| Appareil du livre (ouverture + fin) | **229 p.** | **0 p.** | **229 p.** |
-| **Total manuel** | **2 455 p.** | **≈ 1 125 p. (46 %)** | **≈ 1 330 p. (54 %)** |
-| Exercices (180) | 180 | 106 | 74 |
-| Projets (30) | 30 | 11 | 19 |
-| Quiz de module (22) | 22 | 11 | 11 |
-| Études de cas (21) | 21 | 11 | 10 |
-| Épreuves de palier (4) | 4 | 2 (P1, P2) | 2 (P4, P5) |
-| Soutenances (2 : M19, M21) | 2 | 0 | 2 |
-| Options M23–M25 (hors obligatoire) | 14 ch. · 50 h · 226 p. | 0 | **14 ch.** |
+| Modules obligatoires | **22** (M01 → M22) | **12** clos (M01 → M12) · M13 engagé (2 ch.) | **10** |
+| Chapitres | **143** | **83** (81 publiés + 2 de M13) | **60** |
+| Heures du parcours | **660 h** | **360 h** livrées (+ 30 h engagées en M13) | **270 h** |
+| Pages de module | **2 226 p.** | **1 207 p.** composées et vérifiées | **1 019 p.** |
+| Appareil du livre | **229 p.** | **37 p.** (guide 5 p. + index 32 p.), assemblés dans le livre | **192 p.** |
+| **Total manuel** | **2 455 p.** | **1 395 p.** dans un seul livre assemblé | — |
+| Exercices autonomes (mesurés) | — | **366** dans les 81 chapitres, **0** sans reprise au corrigé | — |
+| Exercices (unité de l'architecture, 180) | 180 | unité différente : l'architecture compte des exercices types, le manuel écrit des énoncés | — |
+| Projets de module | 30 | 12 | 18 |
+| Quiz de module | 22 | 12 | 10 |
+| Études de cas | 21 | 12 | 9 |
+| Épreuves de palier | 4 | 2 (P1, P2) | 2 (P4, P5) |
+| Soutenances (M19, M21) | 2 | 0 | 2 |
+| Options M23—M25 (hors obligatoire) | 14 ch. · 50 h · 226 p. | 0 | 14 ch. |
 
-> **Lecture.** Le manuel est rédigé à **≈ 46 %** de son volume et à **50 %** de ses modules ; les
-> phases 0 à 3 sont **terminées** (M01 → M10) et la **phase 4 est ouverte** par M11, le premier de ses
-> cinq modules. **11 modules sur 22** restent à écrire, sans compter l'appareil du livre qui n'a pas
-> commencé. Fait notable de ce module : pour la première fois, la composition retombe **exactement**
-> sur le budget cumulé (**1 125 p.** pour **1 127 p.**, écart **−0,2 %**), l'avance de M01 et le retrait
-> de M11 se compensant.
+> **Lecture.** Le manuel est rédigé à **58 %** de ses chapitres (83 sur 143) et **55 %** de ses
+> modules (12 sur 22) ; les phases 0 à 3 sont **terminées** (M01 → M10) et la phase 4 est **en
+> cours** (M11 et M12 livrés, M13 à 2/7). Deux mesures valent d'être notées : le livre assemblé
+> retombe **page par page** sur la somme de ses parties (**1 395 p.** = sommaire, guide, 12 modules,
+> 2 cahiers, index), et la mesure des exercices donne **366** exercices autonomes là où l'ancien
+> comptage en annonçait **243** — l'unité de l'architecture (180) compte des exercices *types*, pas
+> les énoncés réellement écrits.
 
-## 2. Ce qui est livré (M01 → M11) — la phase 4 est ouverte
+## 2. Ce qui est livré et vérifié (M01 → M12)
 
-| Module | Ch. | Pages composées | Budget | Écarts |
-|---|---|---|---|---|
-| M01 Lire les données, comprendre le métier | 7 | 117 | 105 | +11 % |
-| M02 Statistiques appliquées, depuis zéro | 8 | 122 | 117 | +4 % |
-| M03 Excel pour l'analyse de données | 8 | 126 | 117 | +8 % |
-| M04 Qualité, préparation, documentation | 6 | 92 | 92 | 0 % |
-| M05 Chaîne de transformation (M/Q → SQL → pandas) | 5 | 86 | 80 | +7 % |
-| M06 Bases de données relationnelles | 5 | 69 | 80 | -14 % |
-| M07 SQL : interroger, agréger, rejoindre | 8 | 109 | 117 | -7 % |
-| M08 Python pour l'analyse de données | 8 | 119 | 117 | +2 % |
-| M09 Analyse exploratoire (EDA) | 6 | 82 | 92 | -11 % |
-| M10 Data visualization | 7 | 106 | 105 | +1 % |
-| **M11 SQL avancé pour la BI** | 7 | **97** | 105 | **-8 %** |
-| **Total** | **75** | **1 125** | **1 127** | **-0,2 %** |
+| Module | Thème | Ch. | Pages | Planches | Statut |
+|---|---|---|---|---|---|
+| M01 | Lire les données, comprendre le métier | 7 | 117 | 7 | clos, poussé |
+| M02 | Statistiques appliquées, depuis zéro | 8 | 122 | 4 | clos, poussé |
+| M03 | Excel pour l'analyse de données | 8 | 126 | 9 | clos, poussé |
+| M04 | Qualité, préparation, documentation | 6 | 92 | 6 | clos, poussé |
+| M05 | Chaîne de transformation (M/Q, SQL, pandas) | 5 | 86 | 5 | clos, poussé |
+| M06 | Bases de données relationnelles | 5 | 69 | 5 | clos, poussé |
+| M07 | SQL : interroger, agréger, rejoindre | 8 | 109 | 8 | clos, poussé |
+| M08 | Python pour l'analyse de données | 8 | 119 | 8 | clos, poussé |
+| M09 | Analyse exploratoire (EDA) | 6 | 82 | 6 | clos, poussé |
+| M10 | Data visualization | 7 | 106 | 7 | clos, poussé |
+| M11 | SQL avancé pour la BI | 7 | 97 | 2 | clos, poussé |
+| M12 | Fondamentaux de la Business Intelligence | 6 | 82 | 2 | clos, poussé |
 
-Chaque module livré compte : plan (`plan_Mxx.md`), socle de données régénéré, chapitres autovalidés
-`--strict` (1 push par chapitre), planches SVG auditées ≤ 776 px, PDF composé dans son budget,
-fiche de contrôle Q1-Q10, projet de module et évaluation avec corrigés. **11 fiches de contrôle
-sur 11 au vert.** M10 ajoute ce que les modules précédents n'avaient pas : un **contrôle automatique
-du projet** (`tools/controle_refonte_M10.py`, 4 couches) qui refuse une refonte dont les totaux
-avant/après diffèrent, et une **grille visuelle en 18 points** réutilisée en M14, M17 et M21.
+**Le kit d'exploitation (n° 65)** rend ces douze modules utilisables par un apprenant seul :
+`guide_apprenant_M01_M12.md` (1 886 mots), `index_glossaire_M01_M12.md` (488 notions, 367
+définitions, 69 planches, 48 instruments, 10 jeux de données), `kit_M01_M12.json` (les mesures),
+`requirements.txt` (l'environnement), `tools/kit_exploitation.py` (le générateur) et le **livre
+assemblé de 1 395 pages avec 124 signets**, où le guide ouvre la partie I.
 
-**M11 change la nature du socle.** Le module n'embarque **aucune base de données** : un fichier DuckDB
-de **154** lignes pèse déjà **536 576** octets (plancher mesuré), pour un quota persistant de 128 Mo.
-Le socle est donc un **script SQL de 3 595 octets** (`03_exercices/dossier_M11/socle_m11.sql`,
-empreinte `447c7abdafd3ac14`) rejoué par `connexion.py`, qui construit **5** tables de référence et
-**2** vues sur les CSV déjà versionnés, avec une option de **matérialisation en mémoire** pour les
-mesures de volume de C06. Conséquence : le module ajoute **0,004 Mo** au dépôt là où un socle
-classique en aurait coûté une dizaine. M11 apporte aussi l'instrument le plus réutilisable du manuel à
-ce jour — `tools/controle_sql_M11.py`, **18** requêtes rejouées et confrontées aux valeurs publiées,
-sortie ligne par ligne et **code de retour** (utilisable en chaîne d'intégration) — et la première
-**chaîne de mesure honnête** : les temps sont figés dans `PERF_M11.json` (médianes de **5** exécutions,
-DuckDB 1.5.5, **24/09/2026**), jamais relus à l'horloge, avec le protocole imprimé à côté du chiffre.
+**Ce qui reste à pousser pour M13** : les chapitres **C03** (grain, additivité, faits, 16 § + 1
+planche), **C04** (étoile, dimensions conformes, SCD 0/1/2/3, 16 § + 1 planche), **C05** (flocon,
+pont, déchet, faits multiples, 15 §), **C06** (le temps et le calendrier, 15 §), **C07** (qualité,
+documentation, revue en 15 points, 16 § + 1 planche), puis les 3 planches, le PDF cible **[89, 121]**
+p., la fiche Q1-Q10, le projet (**20** points, seuil **13**), l'évaluation (**75** points, seuil
+**48**) et la clôture.
 
-## 3. Ce qui reste — 11 modules, 68 chapitres, 330 h, 1 099 p.
+## 3. Ce qui reste — 10 modules, 60 chapitres, 270 h
 
-### Phase 3 — Communication analytique — **LIVRÉE** (M10 : 7 ch. · 30 h · 106 p.)
+### Phase 4 — Business Intelligence (5 modules · 35 ch.)
 
-M10 est clos le 24 septembre 2026 : 7 chapitres poussés un par un (n° 24 → n° 31), l'appareil
-(recette des 7 planches, PDF de 106 pages, fiche Q1-Q10) poussé n° 33, la clôture (grille en
-18 points, errata §E.7 de l'architecture) n° 34. Cette phase ne laisse aucun reste.
+**En cours.** M11 et M12 sont livrés ; M13 (**7 ch. · 30 h · 105 p. [89, 121] · 3 planches**) est à
+**2 chapitres sur 7**. Restent M14 (*Power BI, de l'import à la publication*, 8 ch.) et M15 (*DAX
+pour la BI*, 7 ch.) — **documentés pas à pas, non exécutables dans cet atelier, et déclarés comme
+tels**. La phase se termine par l'**épreuve de palier P4**.
 
-<details><summary>Ce que la phase annonçait (pour mémoire)</summary>
+### Phase 5 — Performance et autonomie (4 modules · 24 ch. · 120 h)
 
-| Module | Chap. | Budget | Contenu attendu |
-|---|---|---|---|
-| **M10 Data visualization** | C01–C07 | 105 p. | ordre perceptuel ; table question → graphique (11 + 5) ; couleurs, daltonisme, formats FCFA ; titres, axes, annotations ; les erreurs qui tuent la crédibilité ; storytelling visuel ; mise en œuvre Excel / matplotlib / Power BI. **Projet « la refonte »** (5 graphiques ratés corrigés, version direction + version technique), grille visuelle 18 points. |
+M16 (*Tableau et autres outils BI*, 5 ch.), M17 (*Automatisation du reporting*, 6 ch.), M18
+(*Analyses sectorielles*, 7 ch.), M19 (*Prévision, segmentation, scoring*, 6 ch.) — avec la
+**soutenance de M19** (8 minutes, enregistrée).
 
-</details>
+### Phase 6 — Professionnalisation (3 modules · 16 ch. · 90 h)
 
-> **M10 était le module à enchaîner** : la transition est déjà écrite dans M09.C06 §5.1 et §15
-> (*« Vos résultats sont justes. S'ils sont illisibles, ils ne serviront à rien. »*), et son
-> emprunt le plus direct est la table question → graphique posée au C06.
+M20 (*Data storytelling et communication*, 6 ch.), M21 (*Projets professionnels complets*, 6 ch.,
+avec sa carte de 10 KPI héritée de M12), M22 (*Portfolio, emploi, feuille de route*, 4 ch.).
 
-### Phase 4 — Business Intelligence (5 modules · 35 ch. · 150 h · 524 p.) — **OUVERTE** (M11 et M12 livrés et poussés)
+### Appareil du livre — 229 p., dont 37 p. livrées
 
-**M12 est livré et poussé** : **6** chapitres, **35 712** mots, **82** pages composées pour un budget de
-**92** p. (**−10,9 %**, fourchette [78, 106]), **255** clés de valeurs publiées et recalculées, **2**
-planches (**623** et **625** px), un projet (« Le tableau de bord que personne n'ouvrait », **4** livrables
-**6 + 8 + 4 + 2 = 20** points, seuil **13**) et une évaluation de **70** points (quiz **15** Q, seuil
-**11** ; **2** exercices de rédaction de KPI ; étude de cas **30** pts, seuil **18**). Le socle M12 ajoute
-**6** sources déterministes (**1,33 Mo**, graine **46**, **0,70** s de génération) et `tools/kpi_M12.py`
-mesure les **10** KPI, les **4** régimes de question, le vocabulaire du grain et les **6** critères d'un
-KPI. La fiche `05_livrables/fiche_controle_M12.md` passe **10/10**.
+Le **guide de l'apprenant** et l'**index avec glossaire** sont écrits et assemblés (n° 65). Restent
+l'ouverture générale, les annexes, la feuille de route, la bibliographie et la conclusion : à
+écrire **en fin de parcours**, quand les 620 termes du glossaire existent vraiment (l'extraction est
+mécanique — `tools/kit_exploitation.py` la fait déjà pour les 488 notions des douze modules publiés).
 
-M11 est **écrit, validé et intégralement poussé** : 7 chapitres, **42 410** mots, **97** pages
-composées pour 105 p. de budget, **301** clés de valeurs publiées, **2** planches (**609** et
-**686** px), un projet (« Les **12** rapports SQL de la cellule commerciale », **4** livrables
-**8 + 5 + 4 + 3 = 20**, seuil 13) et une évaluation de **70** points (quiz **20** Q, **5** exercices
-dont **2** de niveau 4, étude de cas « **10 %** des clients font-ils **60 %** du CA ? » — réponse
-mesurée : **non**, **38,1 %**).
-État de publication : **10 pushs** (n° 36 → n° 45), du plan à la clôture, un par chapitre ; l'errata
-du §C.3 de l'architecture (M11/M12 de palier *P3* à *P4*) est **appliqué et publié**.
+### Options M23—M25 — hors périmètre obligatoire
 
-| Module | Chap. | Budget | Contenu attendu |
-|---|---|---|---|
-| **M11 SQL avancé pour la BI** | 7 | 105 p. | **LIVRÉ ET POUSSÉ** : fenêtres et partitions, rangs et cumuls, séries temporelles, cohortes et RFM, CTE / `PIVOT` / `UNNEST` / `QUALIFY` / `ROLLUP`, vues, index et plans, style et tests de non-régression — DuckDB et SQLite **exécutés**, PostgreSQL et SQL Server **cités** |
-| **M12 Fondamentaux de la Business Intelligence** | 6 | 92 p. | **LIVRÉ ET POUSSÉ** : définition de la BI et coût d'une décision sans donnée · les **4** régimes de question · le vocabulaire exact (métrique, dimension, fait, grain, additivité) · les **6** critères et la **carte de définition** de **7** champs · l'architecture en **7** étages et leurs pannes · les **10** causes d'échec et la conduite de projet — socle de **6** CSV, instrument `kpi_M12.py`, **2** planches ; la carte des **10** KPI resservira en M13, M14, M15 et M21 |
-| **M13 Modélisation des données** | 7 | 105 p. | **EN COURS** (plan n° 58, socle n° 59, **C01** n° 61, **C02** n° 63) : MCD, MLD, MPD · **1FN → 3FN** et les **4** anomalies · grain, additivité et table de faits · étoile, dimensions conformes, **SCD 0/1/2/3** · flocon, pont, déchet, faits multiples · le temps et le calendrier · qualité, documentation et **revue en 15 points** — socle exécutable de **12** tables (**5** dimensions + **7** faits) et **2** dimensions historisées (**24 892** versions client, **616** versions produit), instrument `modele_M13.py` (**4** contrôles de recette : unicité, grain, orphelins, totaux) |
-| M14 Power BI, de l'import à la publication | 8 | 117 p. | **2 projets** ; validation de dashboard |
-| M15 DAX pour la BI | 7 | 105 p. | bibliothèque de 40 mesures |
+*R pour l'analyse* (5 ch.), *Data engineering appliqué* (5 ch.), *Données ouvertes et cartographie*
+(4 ch.) : 14 chapitres, 50 h, 226 p. À n'ouvrir que lorsque le parcours obligatoire est clos.
 
-### Phase 5 — Performance et autonomie (4 modules · 24 ch. · 120 h · 369 p.)
+## 4. Cadence observée, et ce qu'elle implique
 
-| Module | Chap. | Budget | Contenu attendu |
-|---|---|---|---|
-| M16 Tableau et autres outils BI | 5 | 80 p. | même dashboard dans 3 outils + arbitrage ; étude comparative notée |
-| M17 Automatisation du reporting | 6 | 92 p. | rapport hebdo sans intervention, tâches planifiées |
-| M18 Analyses sectorielles | 7 | 105 p. | dossier sectoriel au choix (3 pistes) |
-| M19 Analyse avancée : prévision, segmentation, scoring | 6 | 92 p. | rapport d'incertitude + **1ʳᵉ soutenance** |
+- **≈ 2 pushs par chapitre** : un pour le chapitre validé `--strict`, un pour le journal et l'état.
+  S'y ajoutent le plan, le socle, les figures avec le PDF et la clôture (**≈ 10 à 12 pushs par
+  module**).
+- **Mesuré sur le dépôt** : 393 fichiers, 90 dans `02_modules/`, 69 planches, 48 instruments,
+  20 PDF, 0 `.pyc` — dont le livre assemblé de 14,1 Mo.
+- **Coût dominant : le socle**, pas la rédaction. Un module qui réutilise le fil rouge (M10, M12,
+  M13, M20) se livre plus vite qu'un module qui exige un outil non exécutable ici (M14 Power BI,
+  M16 Tableau, M17 automatisation) : ceux-là se traitent comme Power Query en M05 — documentés pas
+  à pas, **non exécutés**, et déclarés comme tels.
+- **Trois instruments ont changé de statut avec M13** : `tools/modele_M13.py` (4 contrôles de
+  recette + 5 mesures de modèle), `tools/kit_exploitation.py` (l'appareil du livre, mesuré et
+  généré) et `01_socle_donnees/scripts/autovalide.py` (R1-R8, inchangé mais étendu à M13).
 
-### Phase 6 — Professionnalisation (3 modules · 16 ch. · 90 h · 311 p.)
+## 5. Ordre recommandé pour la suite
 
-| Module | Chap. | Budget | Contenu attendu |
-|---|---|---|---|
-| M20 Data storytelling & communication décideur | 6 | 92 p. | deck, soutenance, posture |
-| M21 Projets professionnels complets | 6 | **152 p.** | 8 projets dont la **mission finale** (≈ 130 p. de rendus annotés) |
-| M22 Portfolio, emploi, feuille de route | 4 | 67 p. | portfolio v1, CV, lettre, revue notée |
-
-### Appareil du livre — 229 p., intégralement à écrire
-
-| Bloc | Volume | Contenu |
-|---|---|---|
-| Ouverture | **39 p.** | couverture 2, page de titre 1, préface 3, objectifs de formation 4, parcours pédagogique 9, sommaire 20 (**généré automatiquement** par `render.py`) |
-| Glossaire | **80 p.** | 620 termes au format imposé + 3 index (français, anglais, fonctions) |
-| Feuille de route professionnelle | 14 p. | débutant → junior → confirmé → BI Analyst → BI Developer |
-| Portfolio | 12 p. | 14 fiches de projet, modèles, critères de relecture |
-| Ressources complémentaires | 8 p. | documentation par outil, données ouvertes, livres, communautés |
-| Bibliographie / webographie | 8 p. | ≈ 90 références avec date de consultation |
-| Conclusion générale | 8 p. | ce que vous savez faire, les 5 erreurs qui restent, les 6 mois suivants |
-| Annexes | **60 p.** | raccourcis Excel, antisèches SQL et DAX, 9 checklists, dictionnaire de données, scripts d'auto-validation, licence, **errata** |
-
-### Instruments d'évaluation restants — 2 épreuves, 2 soutenances, 12 quiz, 11 études de cas
-
-| Instrument | Prévu | Fait | Reste |
-|---|---|---|---|
-| Quiz de module (15–20 Q) | 22 | 11 (M01–M11) | **11** (M12 → M22) |
-| Étude de cas notée | 21 | 11 | **10** |
-| Projet de module | 22 (+ pistes M18) | 11 | **11** |
-| Épreuve de validation de palier | 4 (fin P1, P2, P4, P5) | 2 (`P1_epreuve_validation.md`, `P2_epreuve_validation.md`) | **2** (P4, P5) |
-| Soutenance | 2 (M19, M21) | 0 | **2** |
-| Projets du parcours (§E.3) | 30 | 10 | **20** (dont les 8 de M21 et le portfolio M22) |
-
-> **Le retard d'instruments, résorbé en partie.** L'épreuve de palier **P1** (fin de phase 1, après
-> M03) était due depuis la clôture de M03 — elle est livrée (`04_evaluations/P1_epreuve_validation.md`,
-> 90 min, /20, seuil 14) en même temps que la clôture de M10. Reste **P4** (fin de phase 4, après
-> M15) : elle n'est pas encore due, la phase 4 venant de s'ouvrir avec M11 (1 module sur 5).
-> Reste aussi, en attente de décision, la question de `04_evaluations/P2_epreuve_validation.md`
-> (épreuve de palier P2, fin de phase 2 après M09) : à confirmer ou à retirer.
-
-## 4. Options de spécialisation (hors périmètre obligatoire)
-
-| Module | Chap. | Heures | Volume |
-|---|---|---|---|
-| M23 R pour l'analyse | 5 | 15 h | ≈ 80 p. |
-| M24 Data engineering appliqué (ETL/ELT, DuckDB, orchestration) | 5 | 20 h | ≈ 80 p. |
-| M25 Données ouvertes, géomatique et cartographie décisionnelle | 4 | 15 h | ≈ 66 p. |
-| **Total options** | **14** | **50 h** | **226 p.** |
-
-Si elles sont activées : **157 chapitres · 710 h · 2 681 p.**
-
-## 5. Cadence observée, et ce qu'elle implique
-
-- **≈ 10 pushs par module** : plan (1) → socle (1) → un push par chapitre validé `--strict`
-  (5 à 8) → figures + PDF (1) → clôture projet/évaluation/fiche/README (1).
-- M08 : 8 chapitres, 10 pushs. **M09 : 6 chapitres, 10 pushs** (`b82cc73` → `5e0ce4e`).
-- M10 : 7 chapitres, **14 pushs** (n° 21 → n° 34). **M11 : 4 pushs effectués** (n° 36 plan, n° 37
-  socle et instruments, n° 38 C01, n° 39 C03) — les **5 pushs restants** (C02, C04, C05, C06, C07 +
-  figures + projet + évaluation + fiche) sont **prêts** et bloqués par le jeton.
-- À cette cadence, les **13 modules restants représentent ≈ 130 pushs**, plus l'appareil du livre
-  (≈ 8 à 10 pushs : glossaire, annexes, feuille de route, portfolio, biblio, conclusion, ouverture).
-- Le coût dominant n'est pas la rédaction mais le **socle** de chaque nouveau thème : un module qui
-  s'appuie sur le fil rouge existant (M10, M12, M20) se livre plus vite qu'un module qui exige un
-  nouveau jeu de données et un nouvel outil exécutable (M14 Power BI, M16 Tableau, M17
-  automatisation — outils **non exécutables dans cet atelier**, à traiter comme Power Query l'a été
-  en M05 : documentés pas à pas, non exécutés, et **déclarés** comme tels).
-
-## 6. Ordre recommandé pour la suite
-
-1. **M11 → M15** — la phase 4 (SQL avancé, fondements BI, modélisation, Power BI, DAX) : **M11 est
-   livré**, la suite immédiate est **M12** (Fondamentaux de la BI, 6 ch. · 92 p.).
-2. **Épreuve de palier P4** — à la fin de M15, comme prévu par l'architecture.
+1. **Finir M13** — C03 → C07, puis figures, PDF, fiche, projet, évaluation.
+2. **M14 → M15** — Power BI puis DAX (documentés, non exécutés), puis **épreuve de palier P4**.
 3. **M16 → M19** (+ soutenance M19), puis **M20 → M22** (mission finale et portfolio).
-4. **Appareil du livre** — glossaire, annexes, feuille de route, portfolio, biblio, conclusion,
-   ouverture : de préférence **en fin de parcours**, quand les 620 termes du glossaire existent
-   vraiment (leur extraction est mécanique à ce stade).
-5. **Options M23–M25** — seulement si le parcours obligatoire est clos.
+4. **Appareil du livre** — l'ouverture, les annexes et la fin, une fois les 22 modules écrits.
+5. **Options M23—M25** — seulement si le parcours obligatoire est clos.
+
+*Mise à jour du 25 septembre 2026 — remplace l'état arrêté après la clôture de M12. Les compteurs
+de dépôt de ce fichier sont ceux du push n° 65 (`e6d7ad8`).*

@@ -1,10 +1,11 @@
-# Journal des pushs — M11, M12 et M13
+# Journal des pushs — M11, M12, M13 et le kit d'exploitation M01-M12
 
-**Dernier push : `f28598d` (n° 63 — M13.C02).** Le jeton du 25 septembre 2026 a été re-testé avant
-**chaque** envoi (`GET /api.github.com/user` → **200**). Le script `pousser.sh` peut afficher « 401 »
-sur sa seconde sonde avant un push qui réussit : seuls `push OK` et `ls-remote` font foi (leçon
-PATCH_1). M12 est **clos** et poussé de bout en bout (n° 46 → n° 57) ; M13 est **engagé** (plan n° 58,
-socle et instrument n° 59).
+**Dernier push : `e6d7ad8` (n° 65 — kit d'exploitation M01 à M12).** Le jeton du 25 septembre
+2026 a été re-testé avant **chaque** envoi (`GET /api.github.com/user` → **200**). Le script
+`pousser.sh` peut afficher « 401 » sur sa seconde sonde avant un push qui réussit : seuls
+`push OK` et `ls-remote` font foi (leçon PATCH_1). M11 et M12 sont **clos** et poussés de bout en
+bout (n° 36 → n° 57) ; M13 est **engagé** (plan n° 58, socle n° 59, C01 n° 61, C02 n° 63) ; le
+**kit d'exploitation** des douze modules publiés est en ligne (n° 65).
 
 ## Ce qui a été poussé
 
@@ -29,21 +30,49 @@ socle et instrument n° 59).
 | 56 | `eecb80e` | **M12.C06** — les 10 causes d'échec (4 901 mots) + planche des 10 couples ; C05 aligné sur **255** clés | `autovalide --strict`, figures 2/2 |
 | 57 | `0c6c26c` | **Clôture M12** — projet, évaluation, fiche Q1-Q10, `M12.pdf` (**82** p., **585 751** o), **2** planches, README et état réalignés | `controle_pdf.py` : 0 défaut bloquant ; PATCH_6 : **29** livrables nommés vérifiés ; `autovalide` M11 **et** M12 OK |
 | 58 | `b035e5f` | **Plan M13** — Modélisation des données (7 ch., 30 h, **105** p., **3** planches, **8** décisions) | plan poussé avant toute rédaction |
-| 62 | `86954dc` | Journal des pushs et état au 25/09 (M13.C01 poussé) | contrôles de dépôt mesurés sur un clone neuf |
-| 63 | `f28598d` | **M13.C02** — Normaliser : 1FN, 2FN, 3FN et les quatre anomalies (5 577 mots) ; **2e défaut du socle corrigé** (`dim_produit` rendait **9** familles au lieu de **7** : deux étiquettes à espace finale → `TRIM`) ; instrument : la normalisation est **mesurée** (**16** étiquettes → **7** familles, lecture **4** ms contre **2** ms) ; relevé `m13_*` : **167** clés | `autovalide --strict` 0 avertissement ; les requêtes citées ont été exécutées |
+| 59 | `2f23ff5` | **Socle M13** — `dossier_M13` (**2** CSV générés ; les **2** dimensions historisées sont construites **en SQL**), `socle_m13.sql` (**12** tables), `modele_M13.py` (**4** contrôles de recette + **5** mesures), relevé `m13_*` (**100** clés), plan corrigé (**5** dimensions + **7** faits) | jointure « au moment du fait » : **240 000** sur **240 000**, **0** doublon ; recette du modèle = recette de la source (**15 595 154 955** FCFA) ; `autovalide` M10, M11, M12 : 0 avertissement |
 | 60 | `625221b` | Journal des pushs et état au 25/09 (M12 clos, M13 engagé) | contrôles de dépôt mesurés sur un clone neuf |
 | 61 | `fce6e58` | **M13.C01** — Modéliser : entités, attributs, relations, cardinalités (6 624 mots) ; socle corrigé (`table_plate.csv` ne se lisait pas : virgule non protégée) ; instrument : lisibilité des fichiers + point de départ mesuré ; relevé `m13_*` (**145** clés) | `autovalide --strict` 0 avertissement ; les 6 requêtes citées ont été exécutées |
-| 59 | `2f23ff5` | **Socle M13** — `dossier_M13` (**2** CSV générés ; les **2** dimensions historisées sont construites **en SQL**), `socle_m13.sql` (**12** tables), `modele_M13.py` (**4** contrôles de recette + **5** mesures), relevé `m13_*` (**100** clés), plan corrigé (**5** dimensions + **7** faits) | jointure « au moment du fait » : **240 000** sur **240 000**, **0** doublon ; recette du modèle = recette de la source (**15 595 154 955** FCFA) ; `autovalide` M10, M11, M12 : 0 avertissement |
+| 62 | `86954dc` | Journal des pushs et état au 25/09 (M13.C01 poussé) | contrôles de dépôt mesurés sur un clone neuf |
+| 63 | `f28598d` | **M13.C02** — Normaliser : 1FN, 2FN, 3FN et les quatre anomalies (5 577 mots) ; **2e défaut du socle corrigé** (`dim_produit` rendait **9** familles au lieu de **7** : deux étiquettes à espace finale → `TRIM`) ; instrument : la normalisation est **mesurée** (**16** étiquettes → **7** familles, lecture **4** ms contre **2** ms) ; relevé `m13_*` : **167** clés | `autovalide --strict` 0 avertissement ; les requêtes citées ont été exécutées |
+| 64 | `d60d198` | Journal des pushs et état au 25/09 (M13.C02 en ligne, **2/7**) | compteurs mesurés sur un clone neuf |
+| 65 | `e6d7ad8` | **Kit d'exploitation M01 à M12** — guide de l'apprenant (**1 886** mots, ≈ 4,5 p.), index et glossaire (**488** notions, **367** définitions, **855** entrées), **livre assemblé** `La_Voie_des_Donnees_M01-M12.pdf` (**1 395** p., **124** signets, 14,1 Mo : guide en partie I, les 12 modules, les 2 cahiers, l'index), mesures `kit_M01_M12.json`, `requirements.txt`, générateur `tools/kit_exploitation.py`, README (section kit + arborescence) | 81 chapitres attendus = 81 trouvés ; **366** exercices autonomes, **0** sans reprise au corrigé ; **1 395** = 4 (front) + **5** (guide) + **1 207** (modules) + **65** + **83** (cahiers) + **32** (index), page par page vérifiée ; `autovalide M13 --strict` OK |
 
 Chaque envoi a suivi la procédure en **ajout seul** (PATCH_11) : test du jeton → `git init` →
 `fetch --depth 1` → `update-ref` → `read-tree` → `git add` **des seuls chemins nommés** → push →
-bundle de secours dans `/tmp` → `rm -rf .git`. **Jamais** `git add -A` : les 18 PDF de module vivent
-hors du dépôt de travail, et un ajout global les aurait marqués « supprimés ».
+bundle de secours dans `/tmp` → `rm -rf .git`. **Jamais** `git add -A` : les PDF de module vivent
+hors de l'atelier, et un ajout global les aurait marqués « supprimés » dès que la place manque.
 
-**Contrôles de dépôt après le dernier push (n° 63, mesurés sur un clone neuf)** : **387** fichiers ·
-**87** fichiers dans `02_modules/` (dont **81** chapitres `.md`) · **68** planches dans `figures/` ·
-**0** `.pyc` · **19** PDF · `03_exercices/dossier_M13/` complet (**8** fichiers) · la branche `main`
-pointe sur `f28598d`.
+**Contrôles de dépôt après le n° 65 (mesurés sur le dépôt lui-même, chemins sans échappement)** :
+**393** fichiers · **90** dans `02_modules/` (dont **85** `.md` : **83** chapitres, l'ouverture
+`M01_C00` et le bilan de M01, plus **5** PDF de chapitres M05) · **69** planches dans `figures/` ·
+**48** instruments dans `tools/` · **0** `.pyc` · **20** PDF · `03_exercices/dossier_M13/` complet
+(**8** fichiers) · la branche `main` pointe sur `e6d7ad8`. Écart atelier / dépôt : **377** fichiers
+locaux, **0** absent du dépôt (les 16 de plus au dépôt sont les PDF que l'atelier ne garde pas).
+
+## Kit d'exploitation M01 à M12 (n° 65)
+
+Les douze modules publiés (12 modules, 81 chapitres, 1 207 pages de cours, 366 exercices) étaient
+diffusables mais pas utilisables seuls. Le kit les rend utilisables, et il est **généré** :
+
+- `05_livrables/guide_apprenant_M01_M12.md` — le mode d'emploi de l'apprenant (**1 886** mots) ;
+- `05_livrables/index_glossaire_M01_M12.md` — index des notions (**488**), glossaire (**367**),
+  planches (**69**), instruments (**48**), jeux de données (**10**) ;
+- `05_livrables/kit_M01_M12.json` — les mesures, **seule source** des chiffres du guide ;
+- `05_livrables/La_Voie_des_Donnees_M01-M12.pdf` — **1 395** pages, **124** signets ;
+- `requirements.txt` et `tools/kit_exploitation.py` (mesure, index, livre ; `--mesures-seules` en
+  2 s, `--telecharger-modules` pour reconstruire depuis le dépôt seul).
+
+Trois corrections que la mesure a imposées, et qui changent des chiffres déjà publiés :
+
+1. **366** exercices autonomes, pas **243** : quatre mises en forme cohabitent dans le manuel
+   (`**Exercice n.n.**`, `**Exercice n …**`, `### Exercice n —`, `**En —**`, liste numérotée).
+   L'ancien total venait d'un artefact de comptage. Contrôle : **0** exercice sans reprise.
+2. **509 252** mots de cours dans les 81 chapitres (**510 627** avec l'ouverture `M01_C00`, que
+   l'ancien total comptait comme un chapitre).
+3. Les **barèmes d'évaluation ne sont pas uniformes** (M01 : quiz 14/20 et étude de cas 12/20 ;
+   M07 : quiz 13/20, exercices 28/35 ; M12 : 70 points, seuil 45). Le guide donne le barème réel
+   des douze modules, au lieu d'un format supposé.
 
 ## Ce qui reste à pousser pour M13
 
@@ -65,7 +94,7 @@ pointe sur `f28598d`.
 | Évaluation | `04_evaluations/M13_evaluation.md` — **75** points, seuil **48** | à écrire |
 | Clôture | `README.md`, `05_livrables/etat_avancement.md` | à mettre à jour |
 
-## Procédure à rejouer (elle a fonctionné **20** fois de suite, n° 40 → n° 59)
+## Procédure à rejouer (elle a fonctionné **26** fois de suite, n° 40 → n° 65)
 
 ```bash
 cd /home/user/formation-data-bi
