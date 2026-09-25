@@ -1,6 +1,6 @@
 # Journal des pushs — M11, M12, M13 et le kit d'exploitation M01-M12
 
-**Dernier push : `1158f0d` (n° 69 — M13.C03, grain et additivité).** Le jeton du 25 septembre
+**Dernier push : n° 71 — compteurs du dépôt corrigés par la mesure (M13.C03 est en ligne, n° 69).** Le jeton du 25 septembre
 2026 a été re-testé avant **chaque** envoi (`GET /api.github.com/user` → **200**). Le script
 `pousser.sh` peut afficher « 401 » sur sa seconde sonde avant un push qui réussit : seuls
 `push OK` et `ls-remote` font foi (leçon PATCH_1). M11 et M12 sont **clos** et poussés de bout en
@@ -40,6 +40,8 @@ bout (n° 36 → n° 57) ; M13 est **engagé** (plan n° 58, socle n° 59, C01 n
 | 66 | `90fd18a` | Journal des pushs (n° 65) et état au 25/09 : kit en ligne, M13 à **2/7** ; `--mesures-seules` ne perd plus les pages du livre | local = distant, vérifié par `ls-remote` |
 | 67 | `88ea9d5` | **Correctif du livre assemblé** : le guide (partie I) n'était pas compté dans les plages du sommaire — **décalage de 4 pages** sur les douze modules ; **guide livré en PDF autonome** (`guide_apprenant_M01_M12.pdf`, 6 p.) ; pagination alignée (journal, état, README) | M01 **9–125** · guide **5–8** · M12 **1134–1215** · index **1364–1395**, vérifiés sur le PDF composé |
 | 68 | `2901a38` | Journal des pushs (n° 66 et 67) et état au 25/09 | — |
+| 70 | `1cc33ff` | Journal des pushs (n° 68 et 69) et état au 25/09 : M13 à **3/7** | — |
+| 71 | `(ce commit)` | **Correction des compteurs du dépôt** dans le journal : la ligne du n° 69 annonçait **401** fichiers et **20** PDF, écrits de mémoire ; la mesure par `ls-tree` donne **397** fichiers et **21** PDF | compteurs relevés sur le dépôt : **397** fichiers · **91** dans `02_modules/` (dont **86** `.md`, soit **84** chapitres) · **70** planches · **49** instruments · **21** PDF · **41** pièces dans `05_livrables/` · **0** `.pyc` |
 | 69 | `1158f0d` | **M13.C03** — Grain, additivité et tables de faits (**7 089** mots, 16 §) : les **3** faux totaux mesurés (clé trop large **44,0** ; clé trop fine **0,36** ; grains mélangés **+ 43,0 %**), le piège de la mauvaise clé de contrôle (**60** valeurs pour **218** lignes), le **filtre silencieux par jointure d'agrégats** (**28 893 543** FCFA du dépôt central, trouvé en écrivant l'exercice guidé) ; planche `M13_C03_grain_et_explosion.svg` et instrument `tools/figures_M13.py` ; **37** clés `m13_c03_*` au relevé | `autovalide --strict` 0 avertissement ; les 9 requêtes citées ont été exécutées une par une ; planche **623** px, texte extractible du PDF |
 
 Chaque envoi a suivi la procédure en **ajout seul** (PATCH_11) : test du jeton → `git init` →
@@ -47,12 +49,13 @@ Chaque envoi a suivi la procédure en **ajout seul** (PATCH_11) : test du jeton 
 bundle de secours dans `/tmp` → `rm -rf .git`. **Jamais** `git add -A` : les PDF de module vivent
 hors de l'atelier, et un ajout global les aurait marqués « supprimés » dès que la place manque.
 
-**Contrôles de dépôt après le n° 69 (mesurés sur le dépôt lui-même, chemins sans échappement)** :
-**401** fichiers · **90** dans `02_modules/` (dont **85** `.md` : **84** chapitres, l'ouverture
+**Contrôles de dépôt après le n° 70 (mesurés sur le dépôt lui-même, chemins sans échappement)** :
+**397** fichiers · **91** dans `02_modules/` (dont **86** `.md` : **84** chapitres, l'ouverture
 `M01_C00` et le bilan de M01, plus **5** PDF de chapitres M05) · **70** planches dans `figures/` ·
-**49** instruments dans `tools/` · **0** `.pyc` · **20** PDF · `03_exercices/dossier_M13/` complet
-(**8** fichiers) · la branche `main` pointe sur `1158f0d`. Écart atelier / dépôt : **377** fichiers
-locaux, **0** absent du dépôt (les 16 de plus au dépôt sont les PDF que l'atelier ne garde pas).
+**49** instruments dans `tools/` · **0** `.pyc` · **21** PDF · **41** pièces dans `05_livrables/` ·
+`03_exercices/dossier_M13/` complet (**8** fichiers) · la branche `main` pointe sur `1cc33ff`.
+Écart atelier / dépôt : **381** fichiers locaux, **0** absent du dépôt (les 16 de plus au dépôt sont
+les PDF que l'atelier ne garde pas, plus les fichiers du kit).
 
 ## Kit d'exploitation M01 à M12 (n° 65)
 
@@ -99,7 +102,7 @@ Trois corrections que la mesure a imposées, et qui changent des chiffres déjà
 | Évaluation | `04_evaluations/M13_evaluation.md` — **75** points, seuil **48** | à écrire |
 | Clôture | `README.md`, `05_livrables/etat_avancement.md` | à mettre à jour |
 
-## Procédure à rejouer (elle a fonctionné **30** fois de suite, n° 40 → n° 69)
+## Procédure à rejouer (elle a fonctionné **32** fois de suite, n° 40 → n° 71)
 
 ```bash
 cd /home/user/formation-data-bi
