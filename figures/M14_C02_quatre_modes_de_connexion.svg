@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="438.48pt" height="269.424pt" viewBox="0 0 438.48 269.424" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.9, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 269.424 
+L 438.48 269.424 
+L 438.48 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 19.07424 231.62112 
+L 114.06816 231.62112 
+L 114.06816 37.80288 
+L 19.07424 37.80288 
+z
+" clip-path="url(#pea0d41fe8a)" style="fill: #e8f4ea; stroke: #2f7d4f; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 125.09424 231.62112 
+L 220.08816 231.62112 
+L 220.08816 37.80288 
+L 125.09424 37.80288 
+z
+" clip-path="url(#pea0d41fe8a)" style="fill: #fdf3e3; stroke: #b07a1e; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 231.11424 231.62112 
+L 326.10816 231.62112 
+L 326.10816 37.80288 
+L 231.11424 37.80288 
+z
+" clip-path="url(#pea0d41fe8a)" style="fill: #e9eef7; stroke: #2f5d9e; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 337.13424 231.62112 
+L 432.12816 231.62112 
+L 432.12816 37.80288 
+L 337.13424 37.80288 
+z
+" clip-path="url(#pea0d41fe8a)" style="fill: #f2ecf7; stroke: #6b4b9e; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 9.4px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #1b1b1b" x="219.24" y="18.167891" transform="rotate(-0 219.24 18.167891)">Quatre facons de brancher la donnee sur un rapport</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 7.2px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #555555" x="219.24" y="28.992411" transform="rotate(-0 219.24 28.992411)">la question n'est jamais « quel mode est le meilleur », mais « quelle fraicheur ce rapport exige »</text>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 700; font-size: 9.2px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #2f7d4f" x="66.5712" y="52.444162" transform="rotate(-0 66.5712 52.444162)">Import</text>
+   </g>
+   <g id="text_4">
+    <text style="font-style: italic; font-size: 7px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #666666" x="66.5712" y="61.993562" transform="rotate(-0 66.5712 61.993562)">la copie</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 6.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #777777" x="25.85952" y="81.071449" transform="rotate(-0 25.85952 81.071449)">Ou vit la donnee</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; fill: #222222" transform="translate(25.85952 90.046202)">une copie rangee</text>
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; fill: #222222" transform="translate(25.85952 99.480343)">dans le modele</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 6.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #777777" x="25.85952" y="120.855193" transform="rotate(-0 25.85952 120.855193)">Fraicheur</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; fill: #222222" transform="translate(25.85952 129.829946)">aussi fraiche que la</text>
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; fill: #222222" transform="translate(25.85952 139.264087)">derniere actualisation</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 6.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #777777" x="25.85952" y="160.638937" transform="rotate(-0 25.85952 160.638937)">Hors ligne</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; fill: #222222" transform="translate(25.85952 169.61369)">oui : le rapport</text>
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; fill: #222222" transform="translate(25.85952 179.047831)">s'ouvre sans reseau</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 6.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #777777" x="25.85952" y="200.422681" transform="rotate(-0 25.85952 200.422681)">Cout d'une actualisation</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; fill: #222222" transform="translate(25.85952 209.397434)">240 000 lignes relues</text>
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; fill: #222222" transform="translate(25.85952 218.831575)">a chaque fois</text>
+   </g>
+   <g id="text_13">
+    <text style="font-weight: 700; font-size: 9.2px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #b07a1e" x="172.5912" y="52.444162" transform="rotate(-0 172.5912 52.444162)">DirectQuery</text>
+   </g>
+   <g id="text_14">
+    <text style="font-style: italic; font-size: 7px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #666666" x="172.5912" y="61.993562" transform="rotate(-0 172.5912 61.993562)">le robinet</text>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 6.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #777777" x="131.87952" y="81.071449" transform="rotate(-0 131.87952 81.071449)">Ou vit la donnee</text>
+   </g>
+   <g id="text_16">
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; fill: #222222" transform="translate(131.87952 90.046202)">la donnee reste</text>
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; fill: #222222" transform="translate(131.87952 99.480343)">dans la source</text>
+   </g>
+   <g id="text_17">
+    <text style="font-size: 6.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #777777" x="131.87952" y="120.855193" transform="rotate(-0 131.87952 120.855193)">Fraicheur</text>
+   </g>
+   <g id="text_18">
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; fill: #222222" transform="translate(131.87952 129.829946)">a la seconde,</text>
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; fill: #222222" transform="translate(131.87952 139.264087)">a chaque visuel</text>
+   </g>
+   <g id="text_19">
+    <text style="font-size: 6.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #777777" x="131.87952" y="160.638937" transform="rotate(-0 131.87952 160.638937)">Hors ligne</text>
+   </g>
+   <g id="text_20">
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; fill: #222222" transform="translate(131.87952 169.61369)">non : sans source,</text>
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; fill: #222222" transform="translate(131.87952 179.047831)">plus rien</text>
+   </g>
+   <g id="text_21">
+    <text style="font-size: 6.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #777777" x="131.87952" y="200.422681" transform="rotate(-0 131.87952 200.422681)">Cout d'une actualisation</text>
+   </g>
+   <g id="text_22">
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; fill: #222222" transform="translate(131.87952 209.397434)">une requete par</text>
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; fill: #222222" transform="translate(131.87952 218.831575)">visuel et par clic</text>
+   </g>
+   <g id="text_23">
+    <text style="font-weight: 700; font-size: 9.2px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #2f5d9e" x="278.6112" y="52.444162" transform="rotate(-0 278.6112 52.444162)">Connexion directe</text>
+   </g>
+   <g id="text_24">
+    <text style="font-style: italic; font-size: 7px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #666666" x="278.6112" y="61.993562" transform="rotate(-0 278.6112 61.993562)">le modele du voisin</text>
+   </g>
+   <g id="text_25">
+    <text style="font-size: 6.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #777777" x="237.89952" y="81.071449" transform="rotate(-0 237.89952 81.071449)">Ou vit la donnee</text>
+   </g>
+   <g id="text_26">
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; fill: #222222" transform="translate(237.89952 90.046202)">un modele deja</text>
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; fill: #222222" transform="translate(237.89952 99.480343)">construit ailleurs</text>
+   </g>
+   <g id="text_27">
+    <text style="font-size: 6.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #777777" x="237.89952" y="120.855193" transform="rotate(-0 237.89952 120.855193)">Fraicheur</text>
+   </g>
+   <g id="text_28">
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; fill: #222222" transform="translate(237.89952 129.829946)">celle du modele</text>
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; fill: #222222" transform="translate(237.89952 139.264087)">que l'on consomme</text>
+   </g>
+   <g id="text_29">
+    <text style="font-size: 6.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #777777" x="237.89952" y="160.638937" transform="rotate(-0 237.89952 160.638937)">Hors ligne</text>
+   </g>
+   <g id="text_30">
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #222222" x="237.89952" y="169.61369" transform="rotate(-0 237.89952 169.61369)">non</text>
+   </g>
+   <g id="text_31">
+    <text style="font-size: 6.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #777777" x="237.89952" y="200.422681" transform="rotate(-0 237.89952 200.422681)">Cout d'une actualisation</text>
+   </g>
+   <g id="text_32">
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; fill: #222222" transform="translate(237.89952 209.397434)">aucune : le modele</text>
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; fill: #222222" transform="translate(237.89952 218.831575)">n'est pas copie</text>
+   </g>
+   <g id="text_33">
+    <text style="font-weight: 700; font-size: 9.2px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #6b4b9e" x="384.6312" y="52.444162" transform="rotate(-0 384.6312 52.444162)">Direct Lake</text>
+   </g>
+   <g id="text_34">
+    <text style="font-style: italic; font-size: 7px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #666666" x="384.6312" y="61.993562" transform="rotate(-0 384.6312 61.993562)">la citerne</text>
+   </g>
+   <g id="text_35">
+    <text style="font-size: 6.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #777777" x="343.91952" y="81.071449" transform="rotate(-0 343.91952 81.071449)">Ou vit la donnee</text>
+   </g>
+   <g id="text_36">
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; fill: #222222" transform="translate(343.91952 90.046202)">les fichiers de la</text>
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; fill: #222222" transform="translate(343.91952 99.480343)">plateforme, lus sur place</text>
+   </g>
+   <g id="text_37">
+    <text style="font-size: 6.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #777777" x="343.91952" y="120.855193" transform="rotate(-0 343.91952 120.855193)">Fraicheur</text>
+   </g>
+   <g id="text_38">
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; fill: #222222" transform="translate(343.91952 129.829946)">a la seconde,</text>
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; fill: #222222" transform="translate(343.91952 139.264087)">sans requete SQL</text>
+   </g>
+   <g id="text_39">
+    <text style="font-size: 6.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #777777" x="343.91952" y="160.638937" transform="rotate(-0 343.91952 160.638937)">Hors ligne</text>
+   </g>
+   <g id="text_40">
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; fill: #222222" transform="translate(343.91952 169.61369)">non : la plateforme</text>
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; fill: #222222" transform="translate(343.91952 179.047831)">repond</text>
+   </g>
+   <g id="text_41">
+    <text style="font-size: 6.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #777777" x="343.91952" y="200.422681" transform="rotate(-0 343.91952 200.422681)">Cout d'une actualisation</text>
+   </g>
+   <g id="text_42">
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; fill: #222222" transform="translate(343.91952 209.397434)">aucune : la lecture</text>
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; fill: #222222" transform="translate(343.91952 218.831575)">se fait sur le fichier</text>
+   </g>
+   <g id="text_43">
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="19.07424" y="247.140986" transform="rotate(-0 19.07424 247.140986)">Le fil rouge se decide sur trois mesures : 240 000 lignes, dont 5063 pour le seul mois de 2026-08 (2,11 % du total),</text>
+   </g>
+   <g id="text_44">
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="19.07424" y="255.811802" transform="rotate(-0 19.07424 255.811802)">et un fichier qui passe de 26,06 Mo a 6,13 Mo une fois range au format colonne (facteur 4,3).</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pea0d41fe8a">
+   <rect x="7.2" y="7.2" width="424.08" height="255.024"/>
+  </clipPath>
+ </defs>
+</svg>

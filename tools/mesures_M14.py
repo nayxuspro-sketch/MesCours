@@ -210,6 +210,95 @@ def exporter(con, ou):
     return ecrits
 
 
+
+# --------------------------------------------------------------------------- 3 bis
+def modes(con):
+    """Ce qui decide entre import et connexion directe : le poids, la compression, le delta.
+
+    Trois mesures, toutes executables ici, et toutes utiles devant l'ecran :
+      * le poids du fichier selon les colonnes qu'on garde (un rapport n'utilise pas tout) ;
+      * le poids du meme contenu une fois range au format colonne (ce que fait l'import) ;
+      * la part des lignes qui changent quand on recharge — le delta d'une actualisation.
+    """
+    q = lambda s: con.execute(s).fetchall()
+    un = lambda s: con.execute(s).fetchone()[0]
+    out = {}
+
+    # --- les colonnes que le rapport utilise, et celles qu'il ignore
+    toutes = ["id_vente", "id_ticket", "date_vente", "id_magasin", "id_vendeur", "id_client",
+              "id_produit", "quantite", "prix_unitaire_ht", "taux_remise", "montant_ht",
+              "montant_ttc", "montant_tva", "mode_paiement", "canal", "est_retour", "poids_kg"]
+    utilisees = ["id_ticket", "date_vente", "id_magasin", "id_vendeur", "id_client", "id_produit",
+                 "quantite", "prix_unitaire_ht", "montant_ht", "montant_ttc", "est_retour"]
+    ignorees = [c for c in toutes if c not in utilisees]
+
+    def peser(cols, nom):
+        chemin = os.path.join("/tmp", nom)
+        liste = ", ".join(cols)
+        con.execute("COPY (SELECT %s FROM fait_ventes) TO '%s' (HEADER, DELIMITER ',')"
+                    % (liste, chemin))
+        o = os.path.getsize(chemin)
+        os.remove(chemin)
+        return o
+
+    plein = peser(toutes, "m14_plein.csv")
+    utile = peser(utilisees, "m14_utile.csv")
+    out["m14_c02_colonnes_total"] = len(toutes)
+    out["m14_c02_colonnes_utiles"] = len(utilisees)
+    out["m14_c02_colonnes_ignorees"] = len(ignorees)
+    out["m14_c02_colonnes_ignorees_noms"] = ", ".join(ignorees)
+    out["m14_c02_ventes_mo_plein"] = round(plein / 1048576.0, 2)
+    out["m14_c02_ventes_mo_utile"] = round(utile / 1048576.0, 2)
+    out["m14_c02_ventes_gain_mo"] = round((plein - utile) / 1048576.0, 2)
+    out["m14_c02_ventes_gain_pct"] = round(100.0 * (plein - utile) / plein, 1)
+
+    # --- ce que fait l'import : ranger au format colonne (le meme contenu, compresse)
+    chemin_parquet = "/tmp/m14_fait_ventes.parquet"
+    con.execute("COPY fait_ventes TO '%s' (FORMAT PARQUET)" % chemin_parquet)
+    parquet = os.path.getsize(chemin_parquet)
+    os.remove(chemin_parquet)
+    out["m14_c02_parquet_mo"] = round(parquet / 1048576.0, 2)
+    out["m14_c02_parquet_ratio"] = round(plein / parquet, 1)
+
+    # --- le delta d'une actualisation : le dernier mois complet face a l'historique
+    lignes = un("SELECT COUNT(*) FROM fait_ventes")
+    dernier = un("""SELECT COUNT(*) FROM fait_ventes
+                    WHERE date_vente >= DATE '2026-08-01' AND date_vente < DATE '2026-09-01'""")
+    out["m14_c02_dernier_mois_lignes"] = int(dernier)
+    out["m14_c02_dernier_mois_pct"] = round(100.0 * dernier / lignes, 2)
+
+    # --- la part du fait principal dans le poids total de l'import
+    total = sum(t["octets"] for t in poids(con)["m14_import_tables"])
+    out["m14_c02_part_fait_pct"] = round(100.0 * plein / total, 1)
+
+    out["m14_c02_texte_colonnes"] = (
+        "le fait de ventes porte %d colonnes ; le rapport en utilise %d et en ignore %d (%s). "
+        "Garder les %d colonnes utiles fait passer le fichier de %.2f a %.2f Mo, soit %.1f %% "
+        "de moins : supprimer une colonne inutile n'est pas un geste de propreté, c'est une "
+        "mesure"
+        % (len(toutes), len(utilisees), len(ignorees), ", ".join(ignorees),
+           len(utilisees), plein / 1048576.0, utile / 1048576.0,
+           100.0 * (plein - utile) / plein))
+    out["m14_c02_texte_compression"] = (
+        "range au format colonne plutot qu'en fichier texte separe par des virgules, le meme "
+        "fait de ventes passe de %.2f Mo a %.2f Mo : un facteur %.1f. C'est ce que fait "
+        "l'import dans l'outil, et c'est la raison pour laquelle un modele de plusieurs "
+        "centaines de milliers de lignes tient dans une formule dont la limite est d'%d Go"
+        % (plein / 1048576.0, parquet / 1048576.0, plein / parquet, 1))
+    out["m14_c02_texte_delta"] = (
+        "une actualisation qui recharge tout relit %s lignes ; le mois de 2026-08 en compte "
+        "%s, soit %.2f %% du total. Sur un rapport qui bouge une fois par nuit, l'ecart entre "
+        "recharger tout et recharger le delta est le meme rapport qu'entre une nuit et une "
+        "minute : c'est la question du mode de connexion, posee en lignes et non en principe"
+        % (f(lignes), f(dernier), 100.0 * dernier / lignes))
+    out["m14_c02_texte_part"] = (
+        "le fait de ventes pese %.1f %% du fichier d'import total (%s lignes sur %s, %s "
+        "cellules sur %s) : dans un modele, c'est presque toujours UNE table qui coute, et "
+        "c'est celle-la qu'on optimise"
+        % (100.0 * plein / total, f(240000), f(293120), f(240000 * 17), f(4489143)))
+    return out
+
+
 # --------------------------------------------------------------------------- 4
 def valeurs(con):
     """Les dix valeurs du tableau de bord, sur l'ETOILE, et leur controle par M12."""
@@ -509,6 +598,7 @@ def mesurer():
     out = {}
     out.update(ecosysteme())
     out.update(poids(con))
+    out.update(modes(con))
     vals = valeurs(con)
     out.update(vals)
     out.update(controle_croise(con, vals))
@@ -546,6 +636,10 @@ def main(argv=None):
     for t in sorted(m["m14_import_tables"], key=lambda x: -x["octets"])[:4]:
         print("     %-22s %7s l. %2d col. %7.2f Mo" % (t["table"], f(t["lignes"]),
                                                        t["colonnes"], t["mo"]))
+    print("  2b. colonnes  : %s" % m["m14_c02_texte_colonnes"])
+    print("     %s" % m["m14_c02_texte_compression"])
+    print("     %s" % m["m14_c02_texte_delta"])
+    print("     %s" % m["m14_c02_texte_part"])
     print("  3. valeurs    : CA net %s FCFA · marge %s %% · panier %s FCFA · rupture %s %%"
           % (f(m["m14_v01_ca_net_fcfa"]), fd(m["m14_v02_taux_marge_pct"]),
              f(m["m14_v03_panier_fcfa"]), fd(m["m14_v04_taux_rupture_pct"])))

@@ -1780,6 +1780,25 @@ def m14():
     d["m14_import_lignes_date"] = f(par_nom["dim_date"]["lignes"])
     d["m14_import_texte"] = m["m14_import_texte"]
 
+    # --- Les modes de connexion : ce qui decide, mesure (poids, compression, delta)
+    d["m14_c02_colonnes_total"] = m["m14_c02_colonnes_total"]
+    d["m14_c02_colonnes_utiles"] = m["m14_c02_colonnes_utiles"]
+    d["m14_c02_colonnes_ignorees"] = m["m14_c02_colonnes_ignorees"]
+    d["m14_c02_colonnes_ignorees_noms"] = m["m14_c02_colonnes_ignorees_noms"]
+    d["m14_c02_ventes_mo_plein"] = m["m14_c02_ventes_mo_plein"]
+    d["m14_c02_ventes_mo_utile"] = m["m14_c02_ventes_mo_utile"]
+    d["m14_c02_ventes_gain_mo"] = m["m14_c02_ventes_gain_mo"]
+    d["m14_c02_ventes_gain_pct"] = m["m14_c02_ventes_gain_pct"]
+    d["m14_c02_parquet_mo"] = m["m14_c02_parquet_mo"]
+    d["m14_c02_parquet_ratio"] = m["m14_c02_parquet_ratio"]
+    d["m14_c02_dernier_mois_lignes"] = m["m14_c02_dernier_mois_lignes"]
+    d["m14_c02_dernier_mois_pct"] = m["m14_c02_dernier_mois_pct"]
+    d["m14_c02_part_fait_pct"] = m["m14_c02_part_fait_pct"]
+    d["m14_c02_texte_colonnes"] = m["m14_c02_texte_colonnes"]
+    d["m14_c02_texte_compression"] = m["m14_c02_texte_compression"]
+    d["m14_c02_texte_delta"] = m["m14_c02_texte_delta"]
+    d["m14_c02_texte_part"] = m["m14_c02_texte_part"]
+
     # --- Les dix valeurs du tableau de bord, et leur controle croise par M12
     d["m14_v01_ca_net_fcfa"] = f(m["m14_v01_ca_net_fcfa"]) + " FCFA"
     d["m14_v02_marge_fcfa"] = f(m["m14_v02_marge_fcfa"]) + " FCFA"

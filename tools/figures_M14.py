@@ -156,9 +156,79 @@ def ecosysteme_et_licences() -> str:
     return enregistrer(fig, "M14_C01_ecosysteme_et_licences.svg")
 
 
-PLANCHES = {"M14_C01_ecosysteme_et_licences.svg": ecosysteme_et_licences}
 
-A_PRODURE = ("M14_C02_quatre_modes_de_connexion.svg", "M14_C04_modele_etoile_powerbi.svg",
+# --------------------------------------------------------------------------- (b) C02
+def quatre_modes_de_connexion() -> str:
+    """Les quatre modes de connexion : ou vit la donnee, et ce que cela coute."""
+    c = chiffres()
+    fig, ax = plt.subplots(figsize=(7.6, 4.6))
+    ax.set_xlim(0, 100)
+    ax.set_ylim(0, 100)
+    ax.axis("off")
+
+    ax.text(50, 98.5, "Quatre facons de brancher la donnee sur un rapport",
+            ha="center", va="top", fontsize=9.4, fontweight="bold", color="#1b1b1b")
+    ax.text(50, 93.6,
+            "la question n'est jamais « quel mode est le meilleur », mais « quelle fraicheur ce rapport exige »",
+            ha="center", va="top", fontsize=7.2, color="#555")
+
+    modes = (
+        ("Import", "la copie", "#e8f4ea", "#2f7d4f",
+         ("une copie rangee\ndans le modele",
+          "aussi fraiche que la\nderniere actualisation",
+          "oui : le rapport\ns'ouvre sans reseau",
+          "%s lignes relues\na chaque fois" % c["m14_import_ventes_lignes"])),
+        ("DirectQuery", "le robinet", "#fdf3e3", "#b07a1e",
+         ("la donnee reste\ndans la source",
+          "a la seconde,\na chaque visuel",
+          "non : sans source,\nplus rien",
+          "une requete par\nvisuel et par clic")),
+        ("Connexion directe", "le modele du voisin", "#e9eef7", "#2f5d9e",
+         ("un modele deja\nconstruit ailleurs",
+          "celle du modele\nque l'on consomme",
+          "non",
+          "aucune : le modele\nn'est pas copie")),
+        ("Direct Lake", "la citerne", "#f2ecf7", "#6b4b9e",
+         ("les fichiers de la\nplateforme, lus sur place",
+          "a la seconde,\nsans requete SQL",
+          "non : la plateforme\nrepond",
+          "aucune : la lecture\nse fait sur le fichier")),
+    )
+    largeur, ecart = 22.4, 2.6
+    x = 2.8
+    lignes = ("Ou vit la donnee", "Fraicheur", "Hors ligne", "Cout d'une actualisation")
+    for nom, sous_titre, fond, bord, details in modes:
+        ax.add_patch(Rectangle((x, 12.0), largeur, 76.0, facecolor=fond, edgecolor=bord, lw=1.3))
+        ax.text(x + largeur / 2, 85.0, nom, ha="center", va="top", fontsize=9.2,
+                fontweight="bold", color=bord)
+        ax.text(x + largeur / 2, 80.6, sous_titre, ha="center", va="top", fontsize=7.0,
+                color="#666", style="italic")
+        y = 73.0
+        for titre, detail in zip(lignes, details):
+            ax.text(x + 1.6, y, titre, ha="left", va="top", fontsize=6.6, color="#777")
+            ax.text(x + 1.6, y - 3.4, detail, ha="left", va="top", fontsize=7.0, color="#222",
+                    linespacing=1.5)
+            y -= 15.6
+        x += largeur + ecart
+
+    ax.text(2.8, 8.0,
+            "Le fil rouge se decide sur trois mesures : %s lignes, dont %s pour le seul mois de 2026-08 (%s %% du total),"
+            % (c["m14_import_ventes_lignes"], c["m14_c02_dernier_mois_lignes"],
+               str(c["m14_c02_dernier_mois_pct"]).replace(".", ",")),
+            ha="left", va="top", fontsize=7.0, color="#333")
+    ax.text(2.8, 4.6,
+            "et un fichier qui passe de %s Mo a %s Mo une fois range au format colonne (facteur %s)."
+            % (str(c["m14_c02_ventes_mo_plein"]).replace(".", ","),
+               str(c["m14_c02_parquet_mo"]).replace(".", ","),
+               str(c["m14_c02_parquet_ratio"]).replace(".", ",")),
+            ha="left", va="top", fontsize=7.0, color="#333")
+    return enregistrer(fig, "M14_C02_quatre_modes_de_connexion.svg")
+
+
+PLANCHES = {"M14_C01_ecosysteme_et_licences.svg": ecosysteme_et_licences,
+            "M14_C02_quatre_modes_de_connexion.svg": quatre_modes_de_connexion}
+
+A_PRODURE = ("M14_C04_modele_etoile_powerbi.svg",
              "M14_C08_grille_conception_enrichie.svg")
 
 
