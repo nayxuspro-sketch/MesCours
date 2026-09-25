@@ -1,6 +1,6 @@
 # Journal des pushs — M11, M12 et M13
 
-**Dernier push : `fce6e58` (n° 61 — M13.C01).** Le jeton du 25 septembre 2026 a été re-testé avant
+**Dernier push : `f28598d` (n° 63 — M13.C02).** Le jeton du 25 septembre 2026 a été re-testé avant
 **chaque** envoi (`GET /api.github.com/user` → **200**). Le script `pousser.sh` peut afficher « 401 »
 sur sa seconde sonde avant un push qui réussit : seuls `push OK` et `ls-remote` font foi (leçon
 PATCH_1). M12 est **clos** et poussé de bout en bout (n° 46 → n° 57) ; M13 est **engagé** (plan n° 58,
@@ -29,6 +29,8 @@ socle et instrument n° 59).
 | 56 | `eecb80e` | **M12.C06** — les 10 causes d'échec (4 901 mots) + planche des 10 couples ; C05 aligné sur **255** clés | `autovalide --strict`, figures 2/2 |
 | 57 | `0c6c26c` | **Clôture M12** — projet, évaluation, fiche Q1-Q10, `M12.pdf` (**82** p., **585 751** o), **2** planches, README et état réalignés | `controle_pdf.py` : 0 défaut bloquant ; PATCH_6 : **29** livrables nommés vérifiés ; `autovalide` M11 **et** M12 OK |
 | 58 | `b035e5f` | **Plan M13** — Modélisation des données (7 ch., 30 h, **105** p., **3** planches, **8** décisions) | plan poussé avant toute rédaction |
+| 62 | `86954dc` | Journal des pushs et état au 25/09 (M13.C01 poussé) | contrôles de dépôt mesurés sur un clone neuf |
+| 63 | `f28598d` | **M13.C02** — Normaliser : 1FN, 2FN, 3FN et les quatre anomalies (5 577 mots) ; **2e défaut du socle corrigé** (`dim_produit` rendait **9** familles au lieu de **7** : deux étiquettes à espace finale → `TRIM`) ; instrument : la normalisation est **mesurée** (**16** étiquettes → **7** familles, lecture **4** ms contre **2** ms) ; relevé `m13_*` : **167** clés | `autovalide --strict` 0 avertissement ; les requêtes citées ont été exécutées |
 | 60 | `625221b` | Journal des pushs et état au 25/09 (M12 clos, M13 engagé) | contrôles de dépôt mesurés sur un clone neuf |
 | 61 | `fce6e58` | **M13.C01** — Modéliser : entités, attributs, relations, cardinalités (6 624 mots) ; socle corrigé (`table_plate.csv` ne se lisait pas : virgule non protégée) ; instrument : lisibilité des fichiers + point de départ mesuré ; relevé `m13_*` (**145** clés) | `autovalide --strict` 0 avertissement ; les 6 requêtes citées ont été exécutées |
 | 59 | `2f23ff5` | **Socle M13** — `dossier_M13` (**2** CSV générés ; les **2** dimensions historisées sont construites **en SQL**), `socle_m13.sql` (**12** tables), `modele_M13.py` (**4** contrôles de recette + **5** mesures), relevé `m13_*` (**100** clés), plan corrigé (**5** dimensions + **7** faits) | jointure « au moment du fait » : **240 000** sur **240 000**, **0** doublon ; recette du modèle = recette de la source (**15 595 154 955** FCFA) ; `autovalide` M10, M11, M12 : 0 avertissement |
@@ -38,10 +40,10 @@ Chaque envoi a suivi la procédure en **ajout seul** (PATCH_11) : test du jeton 
 bundle de secours dans `/tmp` → `rm -rf .git`. **Jamais** `git add -A` : les 18 PDF de module vivent
 hors du dépôt de travail, et un ajout global les aurait marqués « supprimés ».
 
-**Contrôles de dépôt après le dernier push (n° 61, mesurés sur un clone neuf)** : **386** fichiers ·
-**86** fichiers dans `02_modules/` (dont **80** chapitres `.md`) · **68** planches dans `figures/` ·
-**0** `.pyc` · **19** PDF · `03_exercices/dossier_M13/` complet (**8** fichiers) · **12** fichiers
-`M13` au total · la branche `main` pointe sur `fce6e58`.
+**Contrôles de dépôt après le dernier push (n° 63, mesurés sur un clone neuf)** : **387** fichiers ·
+**87** fichiers dans `02_modules/` (dont **81** chapitres `.md`) · **68** planches dans `figures/` ·
+**0** `.pyc` · **19** PDF · `03_exercices/dossier_M13/` complet (**8** fichiers) · la branche `main`
+pointe sur `f28598d`.
 
 ## Ce qui reste à pousser pour M13
 
@@ -50,7 +52,7 @@ hors du dépôt de travail, et un ajout global les aurait marqués « supprimés
 | Plan | `05_livrables/plan_M13.md` — 7 ch., 30 h, 105 p., 3 planches, 8 décisions | ✅ n° 58 |
 | Socle | `03_exercices/dossier_M13/` — 12 tables, 2 dimensions historisées en SQL, instrument `modele_M13.py` | ✅ n° 59 |
 | C01 | Modéliser : MCD, MLD, MPD (6 624 mots) | ✅ n° 61 |
-| C02 | Normaliser : 1FN → 3FN, les 4 anomalies (16 §) | à écrire |
+| C02 | Normaliser : 1FN → 3FN, les 4 anomalies (5 577 mots) | ✅ n° 63 |
 | C03 | Grain, additivité, table de faits (16 §) + planche | à écrire |
 | C04 | Étoile, dimensions conformes, SCD 0/1/2/3 (16 §) + planche | à écrire |
 | C05 | Flocon, pont, déchet, faits multiples (15 §) | à écrire |

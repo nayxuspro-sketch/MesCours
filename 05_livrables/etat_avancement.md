@@ -3,7 +3,7 @@
 **Arrêté au 25 septembre 2026, après la clôture de M12 et l'ouverture de M13.**
 **M11 (n° 36 à n° 45) et M12 (n° 46 à n° 57) sont intégralement poussés** : pour chacun, le plan, le
 socle et ses instruments, les chapitres un par push, puis la clôture (projet, évaluation, fiche
-Q1-Q10, PDF et planches). **M13 est engagé** : plan n° 58, socle et instrument n° 59, **C01** n° 61 — le modèle de
+Q1-Q10, PDF et planches). **M13 est engagé** : plan n° 58, socle et instrument n° 59, **C01** n° 61 et **C02** n° 63 — le modèle de
 Sahel Distribution compte **12** tables (**5** dimensions, **7** faits), **2** dimensions historisées
 (bâties **en SQL**, par requête) et **4** contrôles de recette exécutés. Détail :
 `05_livrables/journal_pushs.md`.
@@ -117,7 +117,7 @@ du §C.3 de l'architecture (M11/M12 de palier *P3* à *P4*) est **appliqué et p
 |---|---|---|---|
 | **M11 SQL avancé pour la BI** | 7 | 105 p. | **LIVRÉ ET POUSSÉ** : fenêtres et partitions, rangs et cumuls, séries temporelles, cohortes et RFM, CTE / `PIVOT` / `UNNEST` / `QUALIFY` / `ROLLUP`, vues, index et plans, style et tests de non-régression — DuckDB et SQLite **exécutés**, PostgreSQL et SQL Server **cités** |
 | **M12 Fondamentaux de la Business Intelligence** | 6 | 92 p. | **LIVRÉ ET POUSSÉ** : définition de la BI et coût d'une décision sans donnée · les **4** régimes de question · le vocabulaire exact (métrique, dimension, fait, grain, additivité) · les **6** critères et la **carte de définition** de **7** champs · l'architecture en **7** étages et leurs pannes · les **10** causes d'échec et la conduite de projet — socle de **6** CSV, instrument `kpi_M12.py`, **2** planches ; la carte des **10** KPI resservira en M13, M14, M15 et M21 |
-| **M13 Modélisation des données** | 7 | 105 p. | **EN COURS** (plan n° 58, socle n° 59, **C01** n° 61) : MCD, MLD, MPD · **1FN → 3FN** et les **4** anomalies · grain, additivité et table de faits · étoile, dimensions conformes, **SCD 0/1/2/3** · flocon, pont, déchet, faits multiples · le temps et le calendrier · qualité, documentation et **revue en 15 points** — socle exécutable de **12** tables (**5** dimensions + **7** faits) et **2** dimensions historisées (**24 892** versions client, **616** versions produit), instrument `modele_M13.py` (**4** contrôles de recette : unicité, grain, orphelins, totaux) |
+| **M13 Modélisation des données** | 7 | 105 p. | **EN COURS** (plan n° 58, socle n° 59, **C01** n° 61, **C02** n° 63) : MCD, MLD, MPD · **1FN → 3FN** et les **4** anomalies · grain, additivité et table de faits · étoile, dimensions conformes, **SCD 0/1/2/3** · flocon, pont, déchet, faits multiples · le temps et le calendrier · qualité, documentation et **revue en 15 points** — socle exécutable de **12** tables (**5** dimensions + **7** faits) et **2** dimensions historisées (**24 892** versions client, **616** versions produit), instrument `modele_M13.py` (**4** contrôles de recette : unicité, grain, orphelins, totaux) |
 | M14 Power BI, de l'import à la publication | 8 | 117 p. | **2 projets** ; validation de dashboard |
 | M15 DAX pour la BI | 7 | 105 p. | bibliothèque de 40 mesures |
 
