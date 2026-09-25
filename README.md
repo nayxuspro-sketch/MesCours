@@ -15,12 +15,58 @@ livrés (`controle_exos_M08.py` **15/15**, étude de cas « le script du stagiai
 typées + un total faux), `fiche_controle_M08.md` Q1-Q10 10/10 au vert). Colonne vertébrale : la **croisée SQL/pandas** (25 valeurs, comptages exacts, totaux ± 2 FCFA, divergence = `ValueError`) — DuckDB exécuté (côté SQL), SQLite exécuté (centimes entiers, concordance exacte avec pandas), PostgreSQL hors module (zéro mention, règle §1.5 à sa forme la plus stricte) ; 12 écritures obsolètes pandas 3.x reproduites verbatim en venv 3.0.6 (4 `AttributeError`, copie-on-écriture silencieuse, `resample('M')` → `ValueError`), 4 écarts 2.2.3/3.0.6 reproduits et chiffrés. Le script du projet est **commité** (`03_exercices/dossier_M08/analyse_commerciale_modele.py`) et exécuté bout en bout (6 sections, 4 PNG, classeur 4 feuilles, sorties publiées). Cadence 1 push par chapitre : `e08cb12` (C01), `705635a` (C02), `c5575f8` (C03), `e4a6958` (C04), `3d0e348` (C05), `c929aaf` (C06), `45aa211` (C07), `294d5e9` (C08), puis le commit final de livraison (PDF module, fiche de
 contrôle, README, embarquement de la figure C01, retrait pyc du remote, `.gitignore`) · **M09 intégralement rédigé le 20/09/2026** : plan `05_livrables/plan_M09.md` (6 chapitres, 30 h, N3, budget 92,5 p. ±15 % = [79, 106]). Étapes 1-2 d'ouverture (dossier `tools/dossier_M09.py` graine 45 **déterministe** : quincaillerie réexportée byte-identique à M08, centre de santé 18 818 consultations, scolaire 402 élèves / 6 000 notes / 1 687 absences, fichier projet 10 014 × 10 — 15 défauts plantés comptables, `diff -rq` = 0, empreinte `026d39a6f167b74c…` ; `chiffres_manuel.py M09` **130 clés** `m09_*`/`m09p_*`/`m09v_*`, diff = 0) puis 3-7 (C01-C06 + projet M09.P + évaluation, 6 planches SVG auditées extension ≤ 776 px total 46,4 Ko, `M09.pdf` à **82 p.** dans [79, 106], `controle_pdf.py M09` 0 défaut bloquant — **6/6 figures vérifiées dans le PDF**, 36/36 glyphes —, `controle_exos_M09.py` **15/15**, `03_exercices/M09_projet.md` et `04_evaluations/M09_evaluation.md` livrés, `fiche_controle_M09.md` Q1-Q10 10/10 au vert). Quatre jeux, une seule exigence : **une étape se déclare, elle ne se saute pas**. La corrélation scolaire (−0.232) est démontée en trois fausses causes chiffrées (contrôle par bandes −0.206 → −0.145 / −0.085 / +0.163 ; régression vers la moyenne 7.01 → 7.21 et 14.93 → 14.61 ; sens non départagé), et le scale est démasqué (0.552 en FCFA contre 0.001 en taux). DuckDB **exécuté** (réexport + parallèle SQL/pandas), SQLite **exécuté** (contrôle de la fiche : centimes entiers, concordance exacte), PostgreSQL **zéro mention**. Cadence 1 push par chapitre : `b82cc73` (C01), `8d8d1f8` (C02), `74991c5` (C03), `46912cb` (C04), `2d068c3` (C05), `695f70e` (C06), `293d5c3` (figures + PDF + **correctif de composition** de tout le corpus), puis le commit de clôture (projet, évaluation, fiche, README) |
   `controle_sql.py M04` et `controle_python.py M04` rendent 0 bloc : le module reste outillé tableur et système de fichiers, comme décidé à l’ouverture.
-| 3 | Vérification par module (autovalidation R1–R8 + porte de contrôle Q1–Q10 de l'architecture §G.1) | ✅ **M01 → M10 au vert** en mode `--strict` (0 avertissement) · **fiches de contrôle Q1–Q10 publiées** : `05_livrables/fiche_controle_M01_M02.md`, `05_livrables/fiche_controle_M03.md`, `05_livrables/fiche_controle_M05.md` (9/10 vert, 5 écarts), `05_livrables/fiche_controle_M06.md` (10/10 vert, 0 écart bloquant), `05_livrables/fiche_controle_M07.md` (10/10 vert, 2 nuances déclarées), `05_livrables/fiche_controle_M08.md` (10/10 vert, 2 nuances déclarées), `05_livrables/fiche_controle_M09.md` (10/10 vert, 2 nuances déclarées), `05_livrables/fiche_controle_M10.md` (10/10 vert, 3 nuances déclarées) |
+| 3 | Vérification par module (autovalidation R1–R8 + porte de contrôle Q1–Q10 de l'architecture §G.1) | ✅ **M01 → M11 au vert** en mode `--strict` (0 avertissement) · **fiches de contrôle Q1–Q10 publiées** : `05_livrables/fiche_controle_M01_M02.md`, `05_livrables/fiche_controle_M03.md`, `05_livrables/fiche_controle_M05.md` (9/10 vert, 5 écarts), `05_livrables/fiche_controle_M06.md` (10/10 vert, 0 écart bloquant), `05_livrables/fiche_controle_M07.md` (10/10 vert, 2 nuances déclarées), `05_livrables/fiche_controle_M08.md` (10/10 vert, 2 nuances déclarées), `05_livrables/fiche_controle_M09.md` (10/10 vert, 2 nuances déclarées), `05_livrables/fiche_controle_M10.md` (10/10 vert, 3 nuances déclarées), `05_livrables/fiche_controle_M11.md` (10/10 vert, 4 nuances déclarées) |
 | 4 | Assemblage, glossaire, index | ⏳ assemblage par module disponible (`render.py --join`) |
-| 5 | Composition du manuel PDF (A4, couverture, mise en page éditeur) | ✅ moteur au point — `05_livrables/M01.pdf` (**117 p.**), `M02.pdf` (**122 p.**), `M03.pdf` (**126 p.**), `M04.pdf` (**92 p.**), `M05.pdf` (86 p.), `M06.pdf` (**69 p.**, budget 80 ±15 % = 68-92, OK), `M07.pdf` (**109 p.**, budget 117 ±15 % = 99-135, OK), `M08.pdf` (**119 p.**, budget 117 ±15 % = 99-135, OK), `M09.pdf` (**82 p.**, budget 92,5 ±15 % = [79, 106], OK) et `M10.pdf` (**106 p.**, budget 105 ±15 % = [89, 121], OK) ; les HTML de contrôle, régénérables en 20 s, ont été supprimés le 24/09/2026 pour tenir le quota de l'atelier (165,0 → 127,0 Mo) — les paginations M01-M04 et M08 ont été mesurées **après** le correctif de composition du 20/09/2026 (`img { max-width: 100 % }` : les planches 780 px n'étaient plus rognées à droite) |
+| 5 | Composition du manuel PDF (A4, couverture, mise en page éditeur) | ✅ moteur au point — `05_livrables/M01.pdf` (**117 p.**), `M02.pdf` (**122 p.**), `M03.pdf` (**126 p.**), `M04.pdf` (**92 p.**), `M05.pdf` (86 p.), `M06.pdf` (**69 p.**, budget 80 ±15 % = 68-92, OK), `M07.pdf` (**109 p.**, budget 117 ±15 % = 99-135, OK), `M08.pdf` (**119 p.**, budget 117 ±15 % = 99-135, OK), `M09.pdf` (**82 p.**, budget 92,5 ±15 % = [79, 106], OK) `M10.pdf` (**106 p.**, budget 105 ±15 % = [89, 121], OK) et `M11.pdf` (**97 p.**, budget 105 ±15 % = [89, 121], OK — projet et évaluation joints, **9** fichiers) ; les HTML de contrôle, régénérables en 20 s, ont été supprimés le 24/09/2026 pour tenir le quota de l'atelier (165,0 → 127,0 Mo) — les paginations M01-M04 et M08 ont été mesurées **après** le correctif de composition du 20/09/2026 (`img { max-width: 100 % }` : les planches 780 px n'étaient plus rognées à droite) |
 | 6 | Revue finale + errata | ⏳ |
 
-## Dernier module livré — M10 *Data visualization* (clôturé le 24/09/2026)
+## Dernier module livré — M11 *SQL avancé pour la BI* (clôturé le 24/09/2026)
+
+**7 chapitres · 30 h · N3 → N4 · 97 pages composées (budget 105, dérive −8 %) · 42 410 mots · 301 clés
+de valeurs publiées.** Le module ouvre la **phase 4** (Business Intelligence) et fait passer l'écriture
+SQL de la question simple au **rapport défendable** : fenêtres et partitions, rangs et cumuls, séries
+temporelles (calendrier, année sur année, moyennes mobiles), cohortes, rétention et RFM, requêtes
+avancées (CTE, `PIVOT`, `UNNEST`, `QUALIFY`, `ROLLUP`), vues, index et plans d'exécution, style et tests
+de non-régression. Chiffres du module : rang maximal **23 444** (`RANK`) contre **21** (`DENSE_RANK`) ;
+rétention pondérée **15,8 %** à M+1 contre **16,4 %** en moyenne simple ; comparaison 2026/2025
+**−28,9 %** sur périmètres inégaux, **+15,4 %** à périmètre égal ; **2** mois sans objectif du magasin 4
+pour **93 749 490** FCFA de ventes sans référence ; top 10 % des clients = **38,1 %** du CA
+(**24,2 %** hors client non identifié) ; `SELECT *` **581** ms contre trois colonnes **96** ms.
+
+* **Le socle n'est pas une base mais un script.** Un fichier DuckDB de **154** lignes pèse **536 576**
+  octets — un plancher mesuré, incompatible avec le quota de 128 Mo. `03_exercices/dossier_M11/`
+  contient donc `socle_m11.sql` (**3 595** octets, empreinte `447c7abdafd3ac14`, deux exécutions
+  identiques) et `connexion.py` (`ouvrir(materialiser=True)` pour les mesures de volume de C06) :
+  **5** tables de référence, **2** vues, **0** orphelin, **1** client de vente absent du référentiel
+  (le client **0**, fait central du module). Coût en dépôt : **0,004 Mo**.
+* **L'instrument le plus réutilisable du manuel** : `tools/controle_sql_M11.py` rejoue **18** requêtes
+  et les confronte aux valeurs publiées — `18 controles sur 18 : OK`, **code de retour** utilisable en
+  chaîne. Il a trouvé **deux erreurs, les siennes** (client **0** compté retours compris ; ordre de tri
+  réécrit dans le test, **23 497** au lieu de **23 444**), toutes deux **publiées** dans C07.
+* **La mesure ne se relit pas à l'horloge** : `tools/perf_M11.py --figer` gèle les médianes de **5**
+  exécutions dans `PERF_M11.json` (**24/09/2026**, DuckDB 1.5.5) et `chiffres_manuel.py` **relit** ce
+  fichier ; le protocole est imprimé à côté de chaque temps.
+* **Deux moteurs croisés** : DuckDB et SQLite sont **exécutés** (SQLite transforme `SCAN ventes_t` en
+  `SEARCH … USING INDEX`, mais DuckDB garde `SEQ_SCAN` : l'index n'apporte rien) ; PostgreSQL et SQL
+  Server sont **cités** (tableau de compatibilité C05 : `QUALIFY` et `PIVOT` absents ailleurs) — règle
+  §1.5. Le partitionnement est **cité, non exécuté**, et déclaré comme tel.
+* **Corrections assumées** : le top 3 par famille passe de **18** à **21** lignes et le catalogue de
+  **6** à **7** familles (**16** libellés → **9** écritures → **7** familles) après mesure du
+  référentiel produits ; les chapitres concernés ont été repatchés et la clé partagée corrigée.
+* **Livrables** : `05_livrables/plan_M11.md`, `02_modules/M11_C01…C07`, `03_exercices/M11_projet.md`
+  (« Les **12** rapports SQL de la cellule commerciale », 4 livrables **8 + 5 + 4 + 3 = 20**,
+  seuil 13),
+  `04_evaluations/M11_evaluation.md` (**70** points : quiz 20 Q, 5 exercices, auto-test 18 requêtes,
+  étude de cas /20 seuil 12), `tools/controle_sql_M11.py`, `tools/perf_M11.py`, `tools/figures_M11.py`,
+  `figures/M11_C01_carte_des_fenetres.svg` (**609** px) et `figures/M11_C04_matrice_retention.svg`
+  (**686** px), `03_exercices/dossier_M11/`, `05_livrables/fiche_controle_M11.md`,
+  `05_livrables/M11.pdf` (**97** p.).
+* **Publication en cours** : plan poussé n° **36**, socle et instruments n° **37**, C01 n° **38**, C03
+  n° **39** ; C02 et C04 à C07, le projet, l'évaluation et cette fiche sont **validés et en attente de
+  push** — le 24/09/2026, le jeton GitHub a été refusé par l'API (`401 Bad credentials`), le dépôt
+  restant lisible en anonyme (public). Reprise prévue en **ajout seul** (jamais `git add -A`).
+
+## Module précédent — M10 *Data visualization* (clôturé le 24/09/2026)
 
 **7 chapitres · 30 h · N3 · 106 pages composées (budget 105, dérive +1 %).** Le module apprend à
 **relire** un graphique avant de le produire : ordre perceptuel (position > longueur > angle >

@@ -237,7 +237,7 @@ allant aux blocs de tête et de queue de chaque chapitre). Contrôle final par
 | PostgreSQL « exécuté » par glissement | Les encadrés des chapitres concernés portent la mention **cité, non exécuté** ; aucun plan d'exécution PostgreSQL n'est publié. |
 | Les requêtes sont justes mais illisibles | C07 est entièrement consacré au style et aux tests ; le projet note l'**en-tête** et le **commentaire** autant que le résultat. |
 | Le socle de M11 diverge de celui de M07/M09 | Le rapport R12 **compare les deux socles** et explique l'écart (périmètre, lignes, retours) au lieu de le cacher — c'est la leçon PATCH_3 du manuel. |
-| Le poids de l'atelier (127,9 Mo sur 128) ne permet aucune copie du socle | L'étape 2 construit la base M11 en **vues** (< 1 Mo) ; tout ce qui exige du volume passe par `commercial.duckdb` de M07, déjà présent. |
+| Le poids de l'atelier ne permet aucune copie du socle | Le socle M11 est un **script SQL** (3,6 ko) posé sur des vues `read_csv_auto` ; tout ce qui exige du volume est **matérialisé en mémoire** pour la mesure (`ouvrir(materialiser=True)`), jamais écrit sur le disque. |
 
 ## 7. Étapes de production (calque M05—M10)
 
@@ -250,8 +250,9 @@ allant aux blocs de tête et de queue de chaque chapitre). Contrôle final par
    peut **pas** recopier les 240 000 lignes de vente : `socle_m11.duckdb` sera construit en **vues**
    au-dessus du socle de M07/M09 (`read_csv_auto` sur les CSV déjà versionnés), plus les tables de
    petite taille (produits, magasins, vendeurs, référentiel clients). Objectif : **< 1 Mo**. La
-   démonstration qui exige du volume (index, `EXPLAIN`, requête lente de C06) s'appuiera sur la base
-   `commercial.duckdb` de M07 (11,76 Mo, déjà présente) — jamais sur une seconde copie du socle.
+   démonstration qui exige du volume (index, `EXPLAIN`, requête lente de C06) s'appuiera sur une
+   **matérialisation en mémoire** du même socle (`ouvrir(materialiser=True)`) : un fichier DuckDB pèse
+   au minimum ~512 ko (mesuré), donc rien ne sera écrit — les temps sont gelés dans `PERF_M11.json`.
 3. **Étape 3 — Rédaction** : 7 chapitres, **1 push par chapitre validé `--strict`** (7 pushes), chacun
    avec ses requêtes exécutées et leur sortie réelle.
 4. **Étape 4 — Figures** : `tools/figures_M11.py` — 2 planches seulement (le module est un module de

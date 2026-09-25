@@ -2907,6 +2907,312 @@ def m10():
     return d
 
 
+def m12():
+    """Les cles du module M12 - Fondamentaux de la Business Intelligence.
+
+    Le socle de M12 **etend** celui de M11 : les ventes du fil rouge, plus les cinq
+    tables operationnelles qu'un indicateur exige (cout d'achat, stock, ruptures,
+    commandes, encaissements, logistique), produites par `tools/dossier_M12.py`
+    (graine 46, deterministe) et lues par `socle_m12.sql`.
+
+    Les dix indicateurs du module sont **mesures** par `tools/kpi_M12.py`, qui est
+    importe ici : le releve du manuel et l'instrument du module ne peuvent pas
+    diverger, puisqu'ils executent le meme code.
+
+    Ce que le module enseigne, ses cles le portent : deux definitions du meme
+    indicateur donnent deux chiffres (CA net 15 595 154 955 contre CA brut
+    15 419 985 157), une somme de stocks au lieu d'une moyenne divise la rotation par
+    douze (0,78 contre 9,42), et un depot sans vente fabrique un cout sans chiffre
+    d'affaires.
+    """
+    import importlib.util
+    d = {}
+    depot = os.path.dirname(ROOT)          # la racine du depot (ROOT = 01_socle_donnees)
+    dossier = os.path.join(depot, "03_exercices", "dossier_M12")
+
+    # --- Structure du module (05_livrables/plan_M12.md)
+    d["m12_chapitres_total"] = 6
+    d["m12_heures"] = 30
+    d["m12_niveau_cible"] = "N3 (aucune competence technique nouvelle)"
+    d["m12_budget_pages"] = 92
+    d["m12_prerequis"] = "M09 (questions metier) ; M10 (support) ; M11 (la matiere)"
+    d["m12_kpi_carte"] = 10
+    d["m12_quiz_questions"] = 15
+    d["m12_exercices"] = 2
+    d["m12_projet_livrables"] = 4
+    d["m12_etages_architecture"] = 7
+    d["m12_causes_echec"] = 10
+    d["m12_criteres_kpi"] = 6
+    d["m12_regimes_question"] = 4
+    d["m12_outils_executes"] = "DuckDB 1.5.5 et pandas (executes) ; Excel (execute, classeur relu)"
+    d["m12_outils_cites"] = "Power BI et tableurs d'entreprise (cites, jamais executes : regle §1.5)"
+
+    # --- Le socle ajoute par M12
+    d["m12_socle_script"] = "03_exercices/dossier_M12/socle_m12.sql"
+    d["m12_socle_taille_octets"] = os.path.getsize(os.path.join(dossier, "socle_m12.sql"))
+    d["m12_tables_ajoutees"] = 5
+    d["m12_vues_ajoutees"] = 1
+    d["m12_produits"] = 154
+    d["m12_magasins_servis"] = 5
+    d["m12_depot_sans_vente"] = 1
+    d["m12_mois"] = 44
+    d["m12_graine"] = 46
+
+    # --- Le socle partage avec M11 (memes ventes, memes references : un module M12 se
+    #     calcule sur le fil rouge, il ne le reecrit pas)
+    d["m12_lignes"] = 240000
+    d["m12_lignes_hors_retours"] = 237191
+    d["m12_retours"] = 2809
+    d["m12_tickets"] = 145212
+    d["m12_tickets_toutes_lignes"] = 146161
+    d["m12_clients_vente"] = 23497
+    d["m12_magasins_referentiel"] = 6
+    d["m12_client0_part_pct"] = 18.3
+    d["m12_client0_ca_fcfa"] = "2 852 612 447 FCFA"
+    d["m12_socle_texte"] = (
+        "le socle de M12 est celui de M11 (%s lignes, %s hors retours, %s tickets, %s clients, "
+        "%s mois) augmente de cinq tables operationnelles : %s produits cote cout, %s lignes de "
+        "stock, %s ruptures, %s commandes, %s encaissements et %s lignes de logistique"
+        % ("240 000", "237 191", "145 212", "23 497", "44", "154", "6 776", "2 428", "9 000",
+           "9 000", "264"))
+
+    # --- Les dix indicateurs, mesures par l'instrument du module
+    spec = importlib.util.spec_from_file_location(
+        "kpi_M12", os.path.join(depot, "tools", "kpi_M12.py"))
+    kpi = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(kpi)
+    k = kpi.mesurer()
+    f = kpi.fmt
+
+    d["m12_k01_ca_net_fcfa"] = f(k["k01_ca_net_fcfa"]) + " FCFA"
+    d["m12_k01_ca_brut_fcfa"] = f(k["k01_ca_avec_retours_fcfa"]) + " FCFA"
+    d["m12_k01_ecart_fcfa"] = f(abs(k["k01_ecart_definitions_fcfa"])) + " FCFA"
+    d["m12_k01_ecart_pct"] = k["k01_ecart_definitions_pct"]
+    d["m12_k01_definition"] = (
+        "deux definitions defendables du meme indicateur : le CA net de retours (%s FCFA) et le CA "
+        "de toutes les lignes (%s FCFA) — %s FCFA d'ecart, %s %%, et aucune des deux n'est fausse"
+        % (f(k["k01_ca_net_fcfa"]), f(k["k01_ca_avec_retours_fcfa"]),
+           f(abs(k["k01_ecart_definitions_fcfa"])), f(k["k01_ecart_definitions_pct"])))
+
+    d["m12_k02_marge_fcfa"] = f(k["k02_marge_brute_fcfa"]) + " FCFA"
+    d["m12_k02_taux_marge_pct"] = k["k02_taux_marge_pct"]
+    d["m12_k02_taux_marge_hors_manquants_pct"] = k["k02_taux_marge_hors_deux_produits_pct"]
+    d["m12_k02_prix_2023"] = f(k["k02_prix_unitaire_par_an"][0]["prix_vente_moyen"]) + " FCFA"
+    d["m12_k02_prix_2026"] = f(k["k02_prix_unitaire_par_an"][-1]["prix_vente_moyen"]) + " FCFA"
+    d["m12_k02_derive_prix_pct"] = k["k02_derive_prix_pct"]
+    d["m12_k02_definition"] = k["k02_marge_definition"]
+    d["m12_k02_prix_manquants"] = 2
+
+    d["m12_k03_couples_servis"] = k["k03_couples_servis"]
+    d["m12_k03_couples_en_rupture"] = k["k03_couples_en_rupture"]
+    d["m12_k03_taux_pct"] = k["k03_taux_rupture_pct"]
+    d["m12_k03_jours"] = k["k03_jours_rupture"]
+    d["m12_k03_ca_perdu_fcfa"] = f(k["k03_ca_perdu_estime_fcfa"]) + " FCFA (estimation)"
+    d["m12_k03_definition"] = k["k03_rupture_definition"]
+
+    d["m12_k04_rotation"] = k["k04_rotation_annuelle"]
+    d["m12_k04_couverture_mois"] = k["k04_couverture_mois"]
+    d["m12_k04_rotation_si_somme"] = k["k04_erreur_somme_stocks"]
+    d["m12_k04_ventes_unites"] = k["k04_ventes_12_mois_unites"]
+    d["m12_k04_stock_moyen_unites"] = k["k04_stock_moyen_mensuel_unites"]
+    d["m12_k04_definition"] = (
+        "rotation de stock : %s tours par an, soit %s mois de couverture — la meme requete ecrite "
+        "sur la SOMME des douze stocks mensuels au lieu de leur moyenne donne %s tour : un "
+        "indicateur se trompe de denominateur sans jamais lever d'erreur"
+        % (f(k["k04_rotation_annuelle"]), f(k["k04_couverture_mois"]),
+           f(k["k04_erreur_somme_stocks"])))
+
+    d["m12_k05_panier_ticket"] = f(k["k05_panier_moyen_ticket_fcfa"]) + " FCFA"
+    d["m12_k05_panier_median"] = f(k["k05_panier_median_fcfa"]) + " FCFA"
+    d["m12_k05_ligne_moyenne"] = f(k["k05_ligne_moyenne_fcfa"]) + " FCFA"
+    d["m12_k05_ecart_pct"] = k["k05_ecart_ticket_ligne_pct"]
+    d["m12_k05_definition"] = (
+        "panier moyen par ticket : %s FCFA ; par ligne : %s FCFA, soit %s %% de moins — le "
+        "denominateur (tickets ou lignes) change l'indicateur, et le rapport qui ne dit pas lequel "
+        "il publie rend ses chiffres incomparables"
+        % (f(k["k05_panier_moyen_ticket_fcfa"]), f(k["k05_ligne_moyenne_fcfa"]),
+           f(k["k05_ecart_ticket_ligne_pct"])))
+
+    d["m12_k06_taux_lignes_pct"] = k["k06_taux_retour_lignes_pct"]
+    d["m12_k06_taux_tickets_pct"] = k["k06_taux_retour_tickets_pct"]
+    d["m12_k06_lignes_retour"] = k["k06_lignes_retour"]
+    d["m12_k06_tickets_avec_retour"] = k["k06_tickets_avec_retour"]
+    d["m12_k06_tickets_mixtes"] = k["k06_tickets_mixtes"]
+    d["m12_k06_tickets_retour_seul"] = k["k06_tickets_retour_seul"]
+    d["m12_k06_definition"] = k["k06_retour_definition"]
+
+    d["m12_k07_a_lheure"] = k["k07_a_lheure"]
+    d["m12_k07_livrees"] = k["k07_livrees"]
+    d["m12_k07_annulees"] = k["k07_annulees"]
+    d["m12_k07_taux_livrees_pct"] = k["k07_taux_service_pct"]
+    d["m12_k07_taux_commandes_pct"] = k["k07_taux_service_annulees_incluses_pct"]
+    d["m12_k07_retard_median_jours"] = k["k07_retard_median_jours"]
+    d["m12_k07_definition"] = k["k07_service_definition"]
+
+    d["m12_k08_taux_pct"] = k["k08_taux_recouvrement_pct"]
+    d["m12_k08_factures"] = k["k08_factures"]
+    d["m12_k08_ouvertes"] = k["k08_ouvertes"]
+    d["m12_k08_encours_fcfa"] = f(k["k08_encours_ouvert_fcfa"]) + " FCFA"
+    d["m12_k08_dso_jours"] = k["k08_dso_jours"]
+    d["m12_k08_definition"] = (
+        "taux de recouvrement a echeance : %s %% des %s factures — %s factures restent ouvertes "
+        "pour %s d'encours, et le DSO mesure (%s jours) porte sur les seules factures encaissees : "
+        "les deux chiffres decrivent la meme realite a deux dates diferentes"
+        % (f(k["k08_taux_recouvrement_pct"]), f(k["k08_factures"]), f(k["k08_ouvertes"]),
+           f(k["k08_encours_ouvert_fcfa"]), f(k["k08_dso_jours"])))
+
+    d["m12_k09_colis"] = k["k09_colis"]
+    d["m12_k09_cout_total_fcfa"] = f(k["k09_cout_total_fcfa"]) + " FCFA"
+    d["m12_k09_cout_unitaire_fcfa"] = f(k["k09_cout_unitaire_fcfa"]) + " FCFA"
+    d["m12_k09_cout_au_kg_fcfa"] = f(k["k09_cout_au_kg_fcfa"]) + " FCFA"
+    d["m12_k09_part_carburant_pct"] = k["k09_part_carburant_pct"]
+    d["m12_k09_colis_magasins"] = k["k09_colis_magasins"]
+    d["m12_k09_cout_unitaire_magasins_fcfa"] = (
+        f(k["k09_cout_unitaire_magasins_fcfa"]) + " FCFA")
+    d["m12_k09_definition"] = (
+        "cout logistique unitaire : %s FCFA par colis (%s FCFA au kilo) sur %s colis — %s %% du "
+        "cout est du carburant, et le colis du depot central n'a pas de vente en face de lui"
+        % (f(k["k09_cout_unitaire_fcfa"]), f(k["k09_cout_au_kg_fcfa"]), f(k["k09_colis"]),
+           f(k["k09_part_carburant_pct"])))
+
+    d["m12_k10_points_de_vente"] = len(k["k10_parts_ville"])
+    d["m12_k10_premier_magasin"] = k["k10_parts_ville"][0]["magasin"]
+    d["m12_k10_premier_part_reseau_pct"] = k["k10_parts_ville"][0]["part_reseau_pct"]
+    d["m12_k10_colis_depot"] = k["k10_colis_depot"]
+    d["m12_k10_definition"] = k["k10_definition"]
+
+    # --- Les quatre regimes de question (C02), mesures par le meme instrument
+    r = kpi.mesurer_regimes()
+    d["m12_r1_mois"] = r["r1_mois"]
+    d["m12_r1_premier_ca"] = f(r["r1_premier_ca"]) + " FCFA"
+    d["m12_r1_dernier_ca"] = f(r["r1_dernier_ca"]) + " FCFA"
+    d["m12_r1_magasin_mois"] = r["r1_magasin_mois"]
+    d["m12_r1_cellules"] = r["r1_cellules"]
+    d["m12_r1_produits_servis"] = r["r1_produits_servis"]
+    d["m12_r1_ca_lundi"] = f(r["r1_ca_lundi"]) + " FCFA"
+    d["m12_r1_ca_dimanche"] = f(r["r1_ca_dimanche"]) + " FCFA"
+    d["m12_r1_ratio_lundi_dimanche"] = r["r1_ratio_lundi_dimanche"]
+    d["m12_r1_part_fin_de_mois_pct"] = r["r1_part_fin_de_mois_pct"]
+    d["m12_r1_definition"] = (
+        "le regime descriptif se mesure en tranches lisibles : %s mois de ventes, %s combinaisons "
+        "magasin-mois, %s cellules magasin-mois-famille et %s produits servis — le meme socle "
+        "repond a des milliers de questions, et un rapport figé n'en pose qu'une"
+        % (f(r["r1_mois"]), f(r["r1_magasin_mois"]), f(r["r1_cellules"]),
+           f(r["r1_produits_servis"])))
+    d["m12_r2_marge_pct"] = r["r2_marge_pct"]
+    d["m12_r2_rupture_jours"] = r["r2_rupture_jours"]
+    d["m12_r2_rupture_ca_estime"] = f(r["r2_rupture_ca_estime"]) + " FCFA (estimation)"
+    d["m12_r2_definition"] = (
+        "le regime diagnostique relie un ecart a une cause mesurable : une marge de %s %% pour une "
+        "cible de %s a %s %% (cause : les prix de vente), %s jours de rupture dont le cout est "
+        "ESTIME a %s FCFA — un diagnostic sans mesure n'est qu'une opinion"
+        % (f(r["r2_marge_pct"]), f(r["r2_marge_cible_min_pct"]), f(r["r2_marge_cible_max_pct"]),
+           f(r["r2_rupture_jours"]), f(r["r2_rupture_ca_estime"])))
+    d["m12_r3_mois_evalues"] = r["r3_mois_evalues"]
+    d["m12_r3_mape_naive_pct"] = r["r3_mape_naive_pct"]
+    d["m12_r3_mape_saisonniere_pct"] = r["r3_mape_saisonniere_pct"]
+    d["m12_r3_mape_moyenne_pct"] = r["r3_mape_moyenne_pct"]
+    d["m12_r3_definition"] = r["r3_definition"]
+    d["m12_r4_file_relance"] = r["r4_file_relance"]
+    d["m12_r4_file_relance_fcfa"] = f(r["r4_file_relance_fcfa"]) + " FCFA"
+    d["m12_r4_part_plus_90_pct"] = r["r4_part_plus_90_pct"]
+    d["m12_r4_encours_ouvert_fcfa"] = f(r["r4_encours_ouvert_fcfa"]) + " FCFA"
+    d["m12_r4_payees_en_retard"] = r["r4_payees_en_retard"]
+    d["m12_r4_retard_median_jours"] = r["r4_retard_median_jours"]
+    d["m12_r4_balance_agee"] = "; ".join(
+        "%s : %s factures, %s FCFA" % (x["tranche"], f(x["factures"]), f(x["montant_fcfa"]))
+        for x in r["r4_balance_agee"])
+    d["m12_r4_definition"] = r["r4_definition"]
+
+    # --- Le vocabulaire exact (C03) : grain, dimensions, additivite, pieges de cle
+    g = kpi.mesurer_grain()
+    d["m12_g_tables"] = g["g_tables"]
+    d["m12_g_tables_cles_uniques"] = g["g_tables_cles_uniques"]
+    d["m12_g_grains"] = "; ".join(
+        "%s : %s lignes, %s cles distinctes" % (t, f(v["lignes"]), f(v["cles"]))
+        for t, v in sorted(g["g_grains"].items()))
+    d["m12_g_dimensions"] = "; ".join("%s %s" % (k, f(v)) for k, v in sorted(g["g_dimensions"].items()))
+    d["m12_g_magasins"] = g["g_dimensions"]["magasin"]
+    d["m12_g_villes"] = g["g_dimensions"]["ville"]
+    d["m12_g_quartiers"] = g["g_dimensions"]["quartier"]
+    d["m12_g_vendeurs"] = g["g_dimensions"]["vendeur"]
+    d["m12_g_modes_paiement"] = g["g_dimensions"]["mode_paiement"]
+    d["m12_g_canaux"] = g["g_dimensions"]["canal"]
+    d["m12_g_sous_categories"] = g["g_dimensions"]["sous_categorie"]
+    d["m12_g_mois"] = g["g_dimensions"]["mois"]
+    d["m12_g_jours"] = g["g_dimensions"]["jour"]
+    d["m12_g_couples_canal_mode"] = g["g_couples_canal_mode"]
+    d["m12_g_ca_total"] = f(g["g_ca_total"]) + " FCFA"
+    d["m12_g_ca_somme_magasins"] = f(g["g_ca_somme_magasins"]) + " FCFA"
+    d["m12_g_ca_additif"] = ("le chiffre d'affaires est ADDITIF : %s FCFA au total, %s FCFA si on "
+                            "somme les cinq magasins — le meme nombre, ce qui autorise les "
+                            "sous-totaux" % (f(g["g_ca_total"]), f(g["g_ca_somme_magasins"])))
+    d["m12_g_clients_somme_par_produit"] = g["g_clients_somme_par_produit"]
+    d["m12_g_clients_somme_par_magasin"] = g["g_clients_somme_par_magasin"]
+    d["m12_g_clients_total"] = g["g_clients_total"]
+    d["m12_g_clients_ratio_produit"] = g["g_clients_ratio_produit"]
+    d["m12_g_clients_ratio_magasin"] = g["g_clients_ratio_magasin"]
+    d["m12_g_clients_definition"] = g["g_clients_non_additif"]
+    d["m12_g_panier_moyenne_des_moyennes"] = f(g["g_panier_moyenne_des_moyennes"]) + " FCFA"
+    d["m12_g_panier_vraie_moyenne"] = f(g["g_panier_vraie_moyenne"]) + " FCFA"
+    d["m12_g_panier_ecart_fcfa"] = f(g["g_panier_ecart_fcfa"]) + " FCFA"
+    d["m12_g_panier_ecart_pct"] = g["g_panier_ecart_pct"]
+    d["m12_g_paniers_par_magasin"] = "; ".join(
+        "%s %s FCFA" % (x["magasin"], f(x["panier_moyen_fcfa"]))
+        for x in g["g_paniers_par_magasin"])
+    d["m12_g_stock_cloture"] = g["g_stock_cloture"]
+    d["m12_g_stock_somme_tous_mois"] = g["g_stock_somme_tous_mois"]
+    d["m12_g_stock_ratio"] = g["g_stock_ratio"]
+    d["m12_g_stock_definition"] = (
+        "un stock est SEMI-ADDITIF : %s unites au dernier mois (%s), mais %s si on additionne les "
+        "44 mois (x %s) — la quantite existe a un instant, elle ne s'accumule pas"
+        % (f(g["g_stock_cloture"]), "2026-08", f(g["g_stock_somme_tous_mois"]),
+           f(g["g_stock_ratio"])))
+    d["m12_g_jointure_produit_lignes"] = g["g_jointure_produit_lignes"]
+    d["m12_g_jointure_sans_mois_lignes"] = g["g_jointure_sans_mois_lignes"]
+    d["m12_g_jointure_sans_mois_facteur"] = g["g_jointure_sans_mois_facteur"]
+    d["m12_g_jointure_sans_mois_ca"] = f(int(g["g_jointure_sans_mois_ca"])) + " FCFA"
+    d["m12_g_jointure_sans_mois_ca_facteur"] = g["g_jointure_sans_mois_ca_facteur"]
+    d["m12_g_cle_piege"] = g["g_cle_piege"]
+    d["m12_g_jour_record"] = g["g_jour_record"]
+    d["m12_g_jour_record_ca"] = f(g["g_jour_record_ca"]) + " FCFA"
+    d["m12_g_jour_moyen_ca"] = f(g["g_jour_moyen_ca"]) + " FCFA"
+    d["m12_g_jour_record_ratio"] = g["g_jour_record_ratio"]
+    d["m12_g_mois_record"] = g["g_mois_record"]
+    d["m12_g_annees"] = "; ".join("%s %s FCFA" % (x["annee"], f(x["ca"])) for x in g["g_annees"])
+    d["m12_g_horizons"] = (
+        "trois horizons, trois decisions : la journee (%s FCFA en moyenne, %s le %s, soit x %s) "
+        "pour l'operationnel ; le mois (%s au record) pour le tactique ; l'annee (%s a %s) pour le "
+        "strategique"
+        % (f(g["g_jour_moyen_ca"]), f(g["g_jour_record_ca"]), g["g_jour_record"],
+           f(g["g_jour_record_ratio"]), g["g_mois_record"],
+           f(g["g_annees"][0]["ca"]), f(g["g_annees"][-1]["ca"])))
+
+    # --- Le dossier du projet rate (03_exercices/dossier_M12/etude_avant.md)
+    d["m12_projet_indicateurs_livres"] = 41
+    d["m12_projet_onglets"] = 7
+    d["m12_projet_budget_fcfa"] = f(7940000) + " FCFA"
+    d["m12_projet_maintenance_fcfa"] = f(1200000) + " FCFA"
+    d["m12_projet_semaines"] = 11
+    d["m12_projet_destinataires"] = 14
+    d["m12_projet_ouvertures_j1"] = 4
+    d["m12_projet_sources_discordantes"] = 3
+    d["m12_projet_questions_jamais_posees"] = 6
+    d["m12_projet_kpi_mandat"] = 10
+
+    # --- Le controle croise cote pandas : le CA net doit se retrouver des deux cotes
+    v = pd.read_csv(os.path.join(os.path.dirname(ROOT), "01_socle_donnees", "data",
+                                 "reference", "ventes_propres.csv"),
+                    usecols=["montant_ttc", "est_retour", "quantite"])
+    ca_pandas = round(v.loc[v["est_retour"] == 0, "montant_ttc"].sum())
+    if abs(ca_pandas - round(k["k01_ca_net_fcfa"])) > 1:
+        raise ValueError("M12 : CA cote pandas (%s) different du CA cote DuckDB (%s)"
+                         % (f(ca_pandas), f(round(k["k01_ca_net_fcfa"]))))
+    d["m12_croisee_pandas"] = ("OK : CA net identique cote DuckDB et cote pandas (%s FCFA)"
+                              % f(ca_pandas))
+    return d
+
+
 def m11():
     """Les cles du module M11 - SQL avance pour la BI.
 
@@ -2984,16 +3290,23 @@ def m11():
     d["m11_ca_net"] = FMT(ca_net) + " FCFA"
     d["m11_tickets_toutes_lignes"] = int(tickets)
     d["m11_tickets"] = int(un("SELECT COUNT(DISTINCT id_ticket) FROM ventes WHERE NOT est_retour")[0])
+    # Quatre nombres, pas trois — et deux d'entre eux etaient confondus dans le premier
+    # releve : `retours_seuls` designait en realite les tickets PORTANT un retour.
     d["m11_tickets_retours_seuls"] = int(un(
-        "SELECT COUNT(DISTINCT id_ticket) FROM ventes WHERE est_retour")[0])
+        "SELECT COUNT(*) FROM (SELECT id_ticket FROM ventes GROUP BY 1 "
+        "HAVING MIN(CAST(est_retour AS INT)) = 1)")[0])
+    d["m11_tickets_avec_retour"] = int(un(
+        "SELECT COUNT(*) FROM (SELECT id_ticket FROM ventes GROUP BY 1 "
+        "HAVING MAX(CAST(est_retour AS INT)) = 1)")[0])
     d["m11_tickets_mixtes"] = int(un("""
         SELECT COUNT(*) FROM (SELECT id_ticket, COUNT(*) n, SUM(CAST(est_retour AS INT)) r
         FROM ventes GROUP BY 1) WHERE r > 0 AND r < n""")[0])
     d["m11_tickets_definition"] = (
-        "trois nombres pour la meme question : %s tickets au total, %s avec au moins une ligne "
-        "vendue, %s qui ne contiennent que des retours — un rapport qui ne dit pas lequel il "
-        "compte est inverifiable" % (FMT(tickets), FMT(tickets - d["m11_tickets_retours_seuls"]),
-                                     FMT(d["m11_tickets_retours_seuls"])))
+        "quatre nombres pour la meme question : %s tickets au total, %s avec au moins une ligne "
+        "vendue, %s qui portent au moins un retour (dont %s mixtes et %s uniquement des retours) —"
+        " un rapport qui ne dit pas lequel il compte est inverifiable"
+        % (FMT(tickets), FMT(d["m11_tickets"]), FMT(d["m11_tickets_avec_retour"]),
+           FMT(d["m11_tickets_mixtes"]), FMT(d["m11_tickets_retours_seuls"])))
     d["m11_premiere_vente"] = str(tmin)
     d["m11_derniere_vente"] = str(tmax)
     d["m11_mois_couverts"] = int(un("SELECT COUNT(DISTINCT date_trunc('month', date_vente)) FROM ventes")[0])
@@ -3008,7 +3321,17 @@ def m11():
     d["m11_categories_libelles"] = int(un("SELECT COUNT(DISTINCT categorie) FROM produit")[0])
     d["m11_categories_ecritures"] = int(un(
         "SELECT COUNT(DISTINCT UPPER(TRIM(categorie))) FROM produit")[0])
-    d["m11_categories_familles"] = 6
+    NORME = ("CASE WHEN UPPER(TRIM(categorie)) IN ('MATERIAUX','MATÉRIAUX') THEN 'MATÉRIAUX' "
+             "WHEN UPPER(TRIM(categorie)) IN ('PEINTURE','PEINTURES') THEN 'PEINTURE' "
+             "WHEN UPPER(TRIM(categorie)) = 'ELECTRICITÉ' THEN 'ÉLECTRICITÉ' "
+             "ELSE UPPER(TRIM(categorie)) END")
+    d["m11_categories_familles"] = int(un(
+        "SELECT COUNT(DISTINCT %s) FROM produit" % NORME)[0])
+    d["m11_categories_familles_texte"] = (
+        "%s libelles bruts, %s ecritures apres casse et espaces, %s familles apres accents et "
+        "pluriel : chaque relecture du libelle reduit le catalogue, et chaque reduction change les "
+        "classements" % (FMT(d["m11_categories_libelles"]), FMT(d["m11_categories_ecritures"]),
+                         FMT(d["m11_categories_familles"])))
     d["m11_categories_pieges"] = (
         "16 libelles pour 9 ecritures : Materiaux / materiaux / MATERIAUX / Matériaux (accent), "
         "« Quincaillerie » avec un espace final, PEINTURE / Peinture / peinture / Peintures")
@@ -3417,9 +3740,17 @@ def m11():
             ROW_NUMBER() OVER (PARTITION BY p.categorie ORDER BY SUM(v.montant_ttc) DESC) rg
             FROM ventes v JOIN produit p USING (id_produit) WHERE NOT v.est_retour GROUP BY 1, 2)
         WHERE rg <= 3""")[0])
+    d["m11_c02_top3_familles"] = int(un("""
+        WITH n AS (SELECT id_produit, %s AS famille FROM produit),
+             v AS (SELECT n.famille, n.id_produit, SUM(x.montant_ttc) ca FROM ventes x
+                   JOIN n USING (id_produit) WHERE NOT x.est_retour GROUP BY 1, 2),
+             rg AS (SELECT ROW_NUMBER() OVER (PARTITION BY famille ORDER BY ca DESC, id_produit) r FROM v)
+        SELECT COUNT(*) FROM rg WHERE r <= 3""" % NORME)[0])
     d["m11_c02_top3_texte"] = (
-        "un top 3 par categorie sur les libelles tels quels rend %s lignes (16 categories) ; sur les "
-        "6 familles reelles, il en rendrait 18" % d["m11_c02_top3_regroupement"])
+        "un top 3 par categorie sur les libelles tels quels rend %s lignes (%s libelles) ; apres "
+        "regroupement des graphies, il en rend %s (3 x %s familles)"
+        % (FMT(d["m11_c02_top3_regroupement"]), FMT(d["m11_categories_libelles"]),
+           FMT(d["m11_c02_top3_familles"]), FMT(d["m11_categories_familles"])))
 
     # --- C03 : series temporelles
     jours = con.execute("""
@@ -3468,6 +3799,325 @@ def m11():
         % FMT(int(un("SELECT COUNT(*) FROM ventes WHERE NOT est_retour "
                      "AND date_vente >= DATE '2026-08-01'")[0])))
 
+    # --- C04 : cohortes, retention, recurrences
+    d["m11_c04_cohortes_recul"] = (
+        "%s des %s cohortes ont 12 mois de recul, %s en ont 24 : une matrice de retention "
+        "s'arrete en triangle, jamais en rectangle"
+        % (FMT(32), FMT(d["m11_cohortes"]), FMT(20)))
+    d["m11_c04_retention_ponderee_vs_simple"] = (
+        "sur les 23 cohortes d'au moins 100 clients, la moyenne simple des taux vaut 16,4 % et la "
+        "moyenne ponderee par la taille des cohortes 15,8 % : une cohorte de 22 clients pesait "
+        "autant qu'une cohorte de 3 593"
+    )
+    piege = un("""
+        WITH a AS (SELECT DISTINCT id_client, date_trunc('month', date_vente) m FROM ventes
+                   WHERE NOT est_retour),
+             j AS (SELECT id_client FROM a WHERE m = DATE '2025-06-01'),
+             f AS (SELECT id_client FROM a WHERE m = DATE '2025-07-01'),
+             p AS (SELECT id_client, date_trunc('month', MIN(date_vente)) co FROM ventes
+                   WHERE NOT est_retour GROUP BY 1),
+             c AS (SELECT id_client FROM p WHERE co = DATE '2025-06-01')
+        SELECT (SELECT COUNT(*) FROM j),
+               (SELECT COUNT(*) FROM j WHERE id_client IN (SELECT id_client FROM f)),
+               (SELECT COUNT(*) FROM c),
+               (SELECT COUNT(*) FROM c WHERE id_client IN (SELECT id_client FROM f))""")
+    d["m11_c04_piege_calendaire"] = (
+        "sur juin puis juillet 2025, la lecture calendaire affiche %s %% (%s des %s clients actifs en "
+        "juin reviennent en juillet) alors que la lecture par cohorte affiche 22,7 %% sur 22 clients : "
+        "deux chiffres, deux questions, et le plus gros n'est pas le plus juste"
+        % (("%.1f" % (100.0 * float(piege[1]) / float(piege[0]))).replace(".", ","),
+           FMT(piege[1]), FMT(piege[0])))
+    d["m11_c04_piege_calendaire_pct"] = round(100.0 * float(piege[1]) / float(piege[0]), 1)
+    d["m11_c04_piege_cohorte"] = (
+        "%s clients seulement pour la cohorte de juin 2025, dont %s reviennent en juillet : "
+        "%s %%" % (FMT(piege[2]), FMT(piege[3]), ("%.1f" % (100.0 * float(piege[3]) / float(piege[2])))))
+    fan = un("""
+        WITH p AS (SELECT id_client, date_trunc('month', MIN(date_vente)) co FROM ventes
+                   WHERE NOT est_retour GROUP BY 1),
+             a AS (SELECT DISTINCT id_client, date_trunc('month', date_vente) m FROM ventes
+                   WHERE NOT est_retour)
+        SELECT COUNT(*), COUNT(DISTINCT p.id_client) FROM p JOIN a USING (id_client)
+        WHERE p.co = DATE '2023-01-01'""")
+    d["m11_c04_fanout"] = (
+        "jointure de la cohorte de janvier 2023 (%s clients) avec les 44 mois d'activite : %s lignes — "
+        "COUNT(*) sans COUNT(DISTINCT ...) multiplie la base par le nombre de mois d'historique"
+        % (FMT(fan[1]), FMT(fan[0])))
+    blocs = con.execute("""
+        WITH c AS (SELECT id_client, MAX(date_vente) derniere, SUM(montant_ttc) m FROM ventes
+                   WHERE NOT est_retour GROUP BY 1),
+             s AS (SELECT NTILE(3) OVER (ORDER BY derniere DESC, id_client) r, derniere, m FROM c)
+        SELECT r, COUNT(*), ROUND(100.0 * SUM(m) / SUM(SUM(m)) OVER (), 1), MIN(derniere), MAX(derniere)
+        FROM s GROUP BY 1 ORDER BY 1""").fetchall()
+    d["m11_c04_rfm_blocs"] = " / ".join(FMT(int(b[1])) for b in blocs)
+    d["m11_c04_rfm_recents_ca_pct"] = float(blocs[0][2])
+    d["m11_c04_rfm_plages"] = (
+        "dernier achat entre le %s et le %s pour le tiers des recents, entre le %s et le %s pour le "
+        "tiers des anciens : la frontiere est une date, pas un jugement"
+        % (str(blocs[0][3])[8:10] + "/" + str(blocs[0][3])[5:7] + "/" + str(blocs[0][3])[0:4],
+           str(blocs[0][4])[8:10] + "/" + str(blocs[0][4])[5:7] + "/" + str(blocs[0][4])[0:4],
+           str(blocs[2][3])[8:10] + "/" + str(blocs[2][3])[5:7] + "/" + str(blocs[2][3])[0:4],
+           str(blocs[2][4])[8:10] + "/" + str(blocs[2][4])[5:7] + "/" + str(blocs[2][4])[0:4]))
+    rec = un("""
+        SELECT ROUND(AVG(DATEDIFF('day', d, DATE '2026-08-31'))), MEDIAN(DATEDIFF('day', d, DATE '2026-08-31'))
+        FROM (SELECT id_client, MAX(date_vente) d FROM ventes WHERE NOT est_retour GROUP BY 1)""")
+    d["m11_c04_recence"] = (
+        "au 31/08/2026, la recence moyenne vaut %s jours et la mediane %s jours : l'ecart entre les deux "
+        "est encore le fait des gros clients" % (FMT(int(rec[0])), FMT(int(rec[1]))))
+    recu = un("""
+        WITH t AS (SELECT id_client, MIN(date_vente) d FROM ventes WHERE NOT est_retour
+                   GROUP BY id_client, CAST(date_vente AS DATE)),
+             l AS (SELECT DATEDIFF('day', LAG(d) OVER (PARTITION BY id_client ORDER BY d), d) e FROM t)
+        SELECT MEDIAN(e), ROUND(AVG(e), 1), COUNT(*) FROM l WHERE e IS NOT NULL""")
+    d["m11_c04_recurrence"] = (
+        "entre deux tickets consecutifs du meme client, la mediane est de %s jours et la moyenne de %s "
+        "jours, sur %s paires : la moyenne est tiree par une minorite de tres gros clients"
+        % (FMT(int(recu[0])), str(recu[1]).replace(".", ","), FMT(int(recu[2]))))
+    d["m11_c04_inactifs"] = (
+        "%s clients n'ont pas achete depuis plus d'un an au 31/08/2026, soit 4,3 %% du CA net "
+        "(%s FCFA) : un programme de reactivation a une adresse, pas un espoir"
+        % (FMT(1848), FMT(663520490)))
+    d["m11_c04_oneshot"] = int(un("""
+        SELECT COUNT(*) FROM (SELECT id_client, COUNT(DISTINCT date_trunc('month', date_vente)) nm
+        FROM ventes WHERE NOT est_retour GROUP BY 1) WHERE nm = 1""")[0])
+    d["m11_c04_decile_top10"] = (
+        "le dixieme superieur (2 350 clients, 10 % du fichier) pese 38,1 % du CA net — 24,2 % "
+        "sans le client 0 : le seuil de 60 % souvent cite n'est pas atteint sur ce socle")
+    d["m11_c04_panier_cohortes"] = (
+        "panier moyen par annee de cohorte : 65 187 FCFA (cohortes 2023) puis 68 037, 67 448 et "
+        "55 243 FCFA — les cohortes recentes n'ont pas encore eu le temps de composer leur panier"
+    )
+    d["m11_c04_derniere_observation"] = "31/08/2026"
+    d["m11_c04_courbe_cohorte"] = (
+        "la cohorte de janvier 2023 (%s clients) se maintient entre 11,5 %% et 22,6 %% de M+1 a M+43 : "
+        "un palier, pas une fuite" % FMT(d["m11_cohorte_premiere_taille"]))
+
+    # --- C05 : requetes avancees (CTE, PIVOT, UNNEST, QUALIFY, ROLLUP)
+    modes = con.execute("""
+        SELECT mode_paiement, ROUND(SUM(montant_ttc)) ca FROM ventes WHERE NOT est_retour
+        GROUP BY 1 ORDER BY ca DESC""").fetchall()
+    d["m11_c05_modes_libelles"] = ", ".join(m[0] for m in modes)
+    d["m11_c05_mode_premier"] = "%s (%s FCFA)" % (modes[0][0], FMT(modes[0][1]))
+    d["m11_c05_pivot_ordre_texte"] = (
+        "le PIVOT range ses colonnes par ordre alphabetique (%s) et non dans l'ordre des donnees (%s) : "
+        "un SELECT * publie donc un tableau dont l'ordre des colonnes n'est pas celui des libelles"
+        % ("Cheque, Creance 30 j, Especes, Mobile Money, Virement", ", ".join(m[0] for m in modes)))
+    canaux = con.execute("""
+        SELECT canal, ROUND(100.0 * SUM(montant_ttc) /
+               (SELECT SUM(montant_ttc) FROM ventes WHERE NOT est_retour), 1)
+        FROM ventes WHERE NOT est_retour GROUP BY 1 ORDER BY 2 DESC""").fetchall()
+    d["m11_c05_canaux"] = ", ".join("%s %s %%" % (c[0], str(c[1]).replace(".", ",")) for c in canaux)
+    d["m11_c05_produits_par_ticket"] = int(un("""
+        SELECT COUNT(*) FROM (SELECT id_ticket FROM ventes WHERE NOT est_retour GROUP BY 1)""")[0])
+    ppt = un("""SELECT ROUND(AVG(np), 2), MEDIAN(np), MAX(np) FROM
+                (SELECT id_ticket, COUNT(DISTINCT id_produit) np FROM ventes
+                 WHERE NOT est_retour GROUP BY 1)""")
+    d["m11_c05_produits_par_ticket_texte"] = (
+        "%s produits par ticket en moyenne, %s en mediane et %s au maximum : l'UNNEST qui eclate un "
+        "ticket en lignes multiplie donc la base, et le grain doit etre redit a chaque requete"
+        % (str(ppt[0]).replace(".", ","), FMT(int(ppt[1])), FMT(int(ppt[2]))))
+    d["m11_c05_rollup_lignes"] = 41
+    d["m11_c05_rollup_texte"] = (
+        "ROLLUP (quartier, famille) rend %s lignes en une requete : 35 couples, 5 sous-totaux de "
+        "quartier et 1 total general (%s FCFA) — les memes chiffres demanderaient sinon trois "
+        "requetes a recoller" % (FMT(41), FMT(15595154955)))
+    d["m11_c05_grouping_sets_lignes"] = int(un("""
+        WITH n AS (SELECT id_produit, %s f FROM produit),
+             b AS (SELECT ma.quartier q, n.f f FROM ventes v JOIN magasin ma USING (id_magasin)
+                   JOIN n USING (id_produit) WHERE NOT v.est_retour GROUP BY 1, 2)
+        SELECT COUNT(*) FROM (SELECT 1 FROM b GROUP BY GROUPING SETS ((q), (f), (q, f)))""" % NORME)[0])
+    d["m11_c05_grouping_sets_texte"] = (
+        "GROUPING SETS ((quartier), (famille), (quartier, famille)) rend %s lignes : 5 quartiers, "
+        "7 familles et 35 couples, chacun a son propre grain, dans une seule requete"
+        % FMT(d["m11_c05_grouping_sets_lignes"]))
+    top = con.execute("""
+        WITH n AS (SELECT id_produit, %s f FROM produit),
+             v AS (SELECT n.f, p.designation, ROUND(SUM(x.montant_ttc)) ca FROM ventes x
+                   JOIN n USING (id_produit) JOIN produit p USING (id_produit)
+                   WHERE NOT x.est_retour GROUP BY 1, 2)
+        SELECT f, designation, ca FROM v
+        QUALIFY ROW_NUMBER() OVER (PARTITION BY f ORDER BY ca DESC, designation) = 1
+        ORDER BY ca DESC""" % NORME).fetchall()
+    d["m11_c05_qualify_texte"] = (
+        "QUALIFY classe et filtre dans la meme requete : les %s meilleures designations du catalogue, "
+        "une par famille, sortent sans sous-requete — la premiere vaut %s FCFA (%s)"
+        % (FMT(len(top)), FMT(top[0][2]), top[0][1]))
+    d["m11_c05_qualify_piege"] = (
+        "le meme QUALIFY sur les libelles bruts rend %s lignes pour %s familles reelles : « Materiaux » "
+        "apparait trois fois en tete de son propre classement"
+        % (FMT(d["m11_categories_libelles"]), FMT(d["m11_categories_familles"])))
+    fam = con.execute("""
+        WITH n AS (SELECT id_produit, %s f FROM produit)
+        SELECT n.f, ROUND(SUM(v.montant_ttc)) FROM ventes v JOIN n USING (id_produit)
+        WHERE NOT v.est_retour GROUP BY 1 ORDER BY 2 DESC""" % NORME).fetchall()
+    d["m11_c05_familles_texte"] = (
+        "%s familles apres repliement du libelle : %s en tete avec %s FCFA, puis %s — les deux "
+        "premieres tiennent a 0,5 point l'une de l'autre"
+        % (FMT(len(fam)), fam[0][0], FMT(fam[0][1]), FMT(fam[1][1])))
+    d["m11_c05_pivot_vs_agregat"] = (
+        "le PIVOT et l'agregat conditionnel donnent le meme total pour 2023 (%s) : le PIVOT est "
+        "un confort d'ecriture et de lecture, pas un moteur de calcul" % d["m11_ca_2023"])
+    d["m11_c05_recursif_mois"] = int(un("""
+        WITH RECURSIVE m AS (SELECT DATE '2023-01-01' d UNION ALL SELECT d + INTERVAL 1 MONTH
+                             FROM m WHERE d < DATE '2026-08-01')
+        SELECT COUNT(*) FROM m""")[0])
+    d["m11_c05_recursif_texte"] = (
+        "WITH RECURSIVE reconstruit les %s mois du socle un par un — la meme serie que "
+        "generate_series, en plus verbeux : la recursion sert aux hierarchies, pas aux calendriers"
+        % FMT(d["m11_c05_recursif_mois"]))
+    d["m11_c05_unnest_texte"] = (
+        "UNNEST transforme une liste en lignes : le premier ticket du socle ne porte qu'une "
+        "designation, mais un ticket peut en compter jusqu'a %s" % FMT(int(ppt[2])))
+    d["m11_c05_compat"] = (
+        "PIVOT, QUALIFY, UNNEST, GROUPING SETS et WITH RECURSIVE sont executes sur DuckDB 1.5.5 ; "
+        "PostgreSQL est cite (QUALIFY absent, remplace par une sous-requete), SQL Server est cite "
+        "(PIVOT ... IN, pas de QUALIFY)")
+
+    # --- C06 : lectures, plans, index, partitions
+    import csv as _csv
+    import sqlite3 as _sq
+    import tempfile as _tmp
+    plancher = os.path.join(_tmp.gettempdir(), "plancher_m11.duckdb")
+    if os.path.exists(plancher):
+        os.remove(plancher)
+    f = duckdb.connect(plancher)
+    f.execute("CREATE TABLE t AS SELECT * FROM read_csv_auto("
+              "'01_socle_donnees/data/brut/produits.csv')")
+    f.close()
+    d["m11_c06_plancher_octets"] = os.path.getsize(plancher)
+    os.remove(plancher)
+    d["m11_c06_plancher_texte"] = (
+        "un fichier DuckDB qui ne contient qu'une table de %s lignes pese %s octets : materialiser "
+        "coute un plancher fixe, et c'est lui qui interdit de versionner la base du module au lieu "
+        "du script qui la construit" % (FMT(154), FMT(d["m11_c06_plancher_octets"])))
+    sq = _sq.connect(":memory:")
+    sq.execute("CREATE TABLE ventes_t(id_client INTEGER, montant_ttc INTEGER)")
+    with open("01_socle_donnees/data/reference/ventes_propres.csv",
+              encoding="utf-8-sig") as fh:
+        lecteur = _csv.DictReader(fh)
+        sq.executemany("INSERT INTO ventes_t VALUES (?, ?)",
+                       ((int(x["id_client"] or 0), int(float(x["montant_ttc"] or 0)))
+                        for x in lecteur))
+    d["m11_c06_sqlite_lignes"] = int(sq.execute("SELECT COUNT(*) FROM ventes_t").fetchone()[0])
+    q = "SELECT COUNT(*), SUM(montant_ttc) FROM ventes_t WHERE id_client = 15676"
+    d["m11_c06_sqlite_plan_sans"] = sq.execute("EXPLAIN QUERY PLAN " + q).fetchone()[3]
+    sq.execute("CREATE INDEX idx_ventes_client ON ventes_t(id_client)")
+    d["m11_c06_sqlite_plan_avec"] = sq.execute("EXPLAIN QUERY PLAN " + q).fetchone()[3]
+    compte, somme = sq.execute(q).fetchone()
+    sq.close()
+    d["m11_c06_sqlite_reponse"] = "%s lignes et %s FCFA pour le client 15676" % (
+        FMT(int(compte)), FMT(int(somme)))
+    d["m11_c06_sqlite_texte"] = (
+        "controle croise SQLite (execute, %s lignes en memoire) : le plan d'une recherche par client "
+        "passe de « %s » a « %s » des qu'un index existe, alors que DuckDB reste en SEQ_SCAN — "
+        "l'index est une reponse a un plan, pas un reflexe"
+        % (FMT(d["m11_c06_sqlite_lignes"]), d["m11_c06_sqlite_plan_sans"],
+           d["m11_c06_sqlite_plan_avec"]))
+    d["m11_c06_lecture_plan_texte"] = (
+        "le plan du croisement magasin / chiffre d'affaires compte %s etages (%s) : la lecture "
+        "se fait de bas en haut, et chaque etage est un cout a interroger"
+        % (FMT(d["m11_perf_etages_plan"]), d["m11_perf_etages_liste"].replace(" | ", " -> ")))
+    d["m11_c06_entete_rapport"] = (
+        "protocole de mesure : %s, instrument %s, valeurs figees dans PERF_M11.json et datees du %s — "
+        "un temps machine ne se relit jamais a l'horloge dans un rapport"
+        % (d["m11_perf_protocole"], "tools/perf_M11.py", d["m11_perf_date"]))
+    d["m11_c06_partitions"] = (
+        "le partitionnement (Hive sur les fichiers, tables partitionnees en PostgreSQL et SQL Server) "
+        "est CITE et non execute ici : le socle de l'atelier n'a ni assez de volume ni de disque "
+        "pour le mesurer, et un chapitre ne publie pas un plan qu'il n'a pas lu")
+
+    # --- C07 : style, tests de non-regression, controle entre deux sources
+    d["m11_c07_controle_client0"] = (
+        "le premier controle du client 0 comptait %s lignes (retours compris) la ou le module publie "
+        "%s lignes en ventes nettes : la donnee etait bonne, la requete de controle etait fausse"
+        % (FMT(int(un("SELECT COUNT(*) FROM ventes WHERE id_client = 0")[0])),
+           FMT(d["m11_client0_lignes"])))
+    d["m11_c07_requete_a_lidentique"] = (
+        "un classement des clients par nombre de tickets rend %s en ordre descendant et %s en ordre "
+        "croissant : un test qui reecrit la requete ne teste plus le chiffre publie"
+        % (FMT(d["m11_c02_max_rank"]), FMT(d["m11_clients_vente"])))
+    d["m11_c07_revue"] = (
+        "la revue d'un rapport tient en cinq questions : en-tete, unites des colonnes, SELECT *, cle de "
+        "departage des classements, et les %s controles au vert" % FMT(d["m11_requetes_autotestees"]))
+
+    # --- Projet M11.P : les 12 rapports SQL de la cellule commerciale (structure du plan M11 §1.4)
+    d["m11p_rapports"] = 12
+    d["m11p_livrables"] = 4
+    d["m11p_p1_points"] = 8
+    d["m11p_p2_points"] = 5
+    d["m11p_p3_points"] = 4
+    d["m11p_p4_points"] = 3
+    d["m11p_points_total"] = 20
+    d["m11p_seuil"] = 13
+    d["m11p_rapports_repris"] = 3
+    d["m11p_precautions"] = 3
+    d["m11p_pages_note"] = 2
+    d["m11p_catalogue"] = (
+        "R01 CA mensuel et cumul, R02 classement des magasins, R03 top 3 par famille, R04 "
+        "concentration client, R05 evolution a perimetre egal, R06 moyennes mobiles, R07 suivi des "
+        "objectifs, R08 saison du jour de semaine, R09 retention par cohorte, R10 segments RFM, "
+        "R11 tableau croise avec sous-totaux, R12 controle croise des deux socles")
+    d["m11p_livrables_texte"] = (
+        "P1 les 12 requetes (8 points), P2 le jeu de tests (5 points), P3 la note de lecture de 2 "
+        "pages (4 points), P4 la fiche de reprise de 3 rapports (3 points) : les 4 livrables totalisent "
+        "20 points, seuil 13")
+    d["m11p_totaux_controle_texte"] = (
+        "les 12 rapports publient le meme total net (%s), les memes %s lignes de vente et les memes "
+        "%s tickets : tout ecart signale un filtre deplace"
+        % (d["m11_ca_net"], FMT(d["m11_lignes_hors_retours"]), FMT(d["m11_tickets"])))
+    d["m11p_controle_automatique"] = (
+        "le projet se corrige avec le meme instrument que le module : les %s controles de "
+        "tools/controle_sql_M11.py, rejoues sur le socle du candidat"
+        % FMT(d["m11_requetes_autotestees"]))
+
+    # --- Evaluation M11 : quiz, exercices (dont 2 E4), etude de cas
+    d["m11e_points_total"] = 70
+    d["m11e_quiz_points"] = 20
+    d["m11e_quiz_seuil"] = 14
+    d["m11e_exercices_points"] = 20
+    d["m11e_e4_exercices"] = 2
+    d["m11e_autotest_points"] = 10
+    d["m11e_etude_cas_points"] = 20
+    d["m11e_etude_cas_seuil"] = 12
+    d["m11e_cas_question"] = "10 % des clients font-ils 60 % du CA ?"
+    d["m11e_cas_reponse"] = (
+        "non : le dixieme superieur pese 38,1 % du CA net, et 24,2 % une fois le client 0 ecarte — "
+        "le seuil de 60 % n'est atteint ni dans un perimetre ni dans l'autre")
+    d["m11e_cas_piege"] = (
+        "la reponse depend de la definition du decile : NTILE(100) <= 1 retient %s clients et donne "
+        "38,1 %%, un ROW_NUMBER sur 10 %% du fichier en retient %s et donne 38,0 %%"
+        % (FMT(2350), FMT(2349)))
+    d["m11e_cas_client0"] = (
+        "le client 0 pese 18,3 % du CA et n'existe pas dans le referentiel : tout classement le "
+        "place premier, et toute reponse qui l'ignore doit le dire")
+    d["m11e_cas_classement"] = (
+        "le classement des clients change de tete des qu'on ecarte le client 0 : %s de CA sur %s "
+        "lignes et %s tickets pour %s"
+        % (d["m11_client0_ca"], FMT(d["m11_client0_lignes"]), FMT(d["m11_client0_tickets"]),
+           d["m11_concentration_clients_hors_anonyme"]))
+    d["m11e_cas_question_suivante"] = (
+        "la question suivante a poser porte sur la part des clients non identifies dans chaque "
+        "cohorte : tant que le client 0 represente 18,3 % du CA, toute lecture de la retention se "
+        "fait sur un cinquieme du chiffre d'affaires qu'on ne sait pas attribuer")
+    d["m11e_cas_complement"] = (
+        "le top 20 % pese 51,0 % du CA, le top 5 % 30,0 % et le top 1 % 21,6 % : la "
+        "concentration existe, mais elle est plus faible que la formule recopiee partout")
+    d["m11e_e4_retours_requete"] = (
+        "SELECT COUNT(*), ROUND(SUM(montant_ttc)) FROM ventes — sans filtre : %s lignes (soit 1,2 %% "
+        "de plus) et %s au lieu de %s lignes et %s, soit %s : les retours, negatifs, sont comptes "
+        "dans un total annonce net"
+        % (FMT(240000), "15 419 985 157 FCFA", FMT(d["m11_lignes_hors_retours"]), d["m11_ca_net"],
+           "-175 169 798 FCFA, soit -1,1 %%"))
+    d["m11e_e4_retours_taux"] = (
+        "le total faux affiche 230,7 % de l'objectif cumule (6 685 260 000 FCFA) au lieu de 233,3 % : "
+        "l'erreur reste invisible dans le vert de l'indicateur")
+    d["m11e_e4_ntile_requete"] = (
+        "NTILE(3) OVER (ORDER BY nb) sans departage : le segment principal a compte 2 718 a 2 738 "
+        "clients selon l'execution, alors que ORDER BY nb, id_client fixe les trois tiers a "
+        "7 833, 7 832 et 7 832 clients")
+    d["m11e_quiz_familles"] = (
+        "quatre familles de 5 questions : quelle requete pour quelle question, predisez le resultat, "
+        "diagnostic, vocabulaire")
+
     # --- Deux socles, deux perimetres (C07 / rapport R12)
     d["m11_socle_m09_lignes"] = 50008
     d["m11_socle_m09_ca"] = "7 908 259 732 FCFA"
@@ -3488,7 +4138,7 @@ def m11():
     return d
 
 
-FONCS = OrderedDict([("structure", structure), ("M01", m01), ("M02", m02), ("M03", m03), ("M04", m04), ("M05", m05), ("M06", m06), ("M07", m07), ("M08", m08), ("M09", m09), ("M10", m10), ("M11", m11)])
+FONCS = OrderedDict([("structure", structure), ("M01", m01), ("M02", m02), ("M03", m03), ("M04", m04), ("M05", m05), ("M06", m06), ("M07", m07), ("M08", m08), ("M09", m09), ("M10", m10), ("M11", m11), ("M12", m12)])
 
 
 

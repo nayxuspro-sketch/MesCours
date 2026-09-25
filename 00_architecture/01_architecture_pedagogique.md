@@ -330,8 +330,8 @@ O20 bonnes pratiques     ·    ▒▒   ▒▒   ██   ██   ▒▒   █�
 | M08 | Python pour l'analyse de données | 8 | 30 | N2 → N3 | Python 3.13, Jupyter, pandas | Analyse complète d'un jeu inconnu | Quiz 15 Q + notebook | P2 |
 | M09 | Analyse exploratoire (EDA) | 6 | 30 | N3 | pandas + matplotlib/seaborn + Excel | EDA guidée puis autonome | Quiz 15 Q + étude | P2 |
 | M10 | Data visualization | 7 | 30 | N3 | matplotlib, Excel, Power BI | Refonte de 5 mauvais graphiques | Quiz 15 Q + grille visuelle | P3 |
-| M11 | SQL avancé pour la BI | 7 | 30 | N3 | DuckDB, PostgreSQL, SQL Server | Analyses de cohortes et classements | Quiz 20 Q + cas | P3 |
-| M12 | Fondamentaux de la Business Intelligence | 6 | 30 | N3 | tous, vue d'ensemble | Chaîne brut → décision documentée | Quiz 15 Q + carte KPI | P3 |
+| M11 | SQL avancé pour la BI | 7 | 30 | N3 | DuckDB, PostgreSQL, SQL Server | Analyses de cohortes et classements | Quiz 20 Q + cas | P4 (errata 24/09/2026) |
+| M12 | Fondamentaux de la Business Intelligence | 6 | 30 | N3 | tous, vue d'ensemble | Chaîne brut → décision documentée | Quiz 15 Q + carte KPI | P4 (errata 24/09/2026) |
 | M13 | Modélisation des données | 7 | 30 | N3 → N4 | dbdiagram, Power Pivot, SQL | Modèle en étoile + MCD complet | Quiz 15 Q + modèle | P4 |
 | M14 | Power BI, de l'import à la publication | 8 | 30 | N4 | Power BI Desktop | Dashboard commercial pro (2 versions) | Quiz 15 Q + validation dashboard | P4 |
 | M15 | DAX pour la BI | 7 | 30 | N4 | Power BI, DAX, Tabular Editor (lecture) | Bibliothèque de 40 mesures | Quiz 20 Q + mesures | P4 |
@@ -345,6 +345,14 @@ O20 bonnes pratiques     ·    ▒▒   ▒▒   ██   ██   ▒▒   █�
 | M23 | *R pour l'analyse* (option) | 5 | 15 | N4 | R, RStudio/Posit, dplyr, ggplot2 | Équivalent M09 en R | Quiz 12 Q | — |
 | M24 | *Data engineering appliqué* (option) | 5 | 20 | N4 → N5 | DuckDB, dbt-core, Airflow Lite/Prefect, Git | Pipeline ETL/ELT versionné | Projet + revue de code | — |
 | M25 | *Données ouvertes & cartographie* (option) | 4 | 15 | N4 | Python (geopandas), QGIS, Power BI carte | Atlas décisionnel d'une région | Atlas + note | — |
+
+**Palier et phase — errata du 24 septembre 2026 (clôture de M11).** Ce tableau sert deux axes qu'il
+ne faut pas confondre : la **phase** d'un module (bloc de progression, donnée par le §C.1, qui **fait
+foi**) et le **palier** qu'il prépare (niveau de validation clos par une épreuve, §B.6 : 4 épreuves,
+fin de P1, P2, P4 et P5). Les lignes **M11** et **M12** portaient le palier *P3*, hérité du premier
+jet, alors que le §C.1 place **M11 à M15** en **phase 4** : le palier est corrigé en *P4*. La
+**phase 3** (M10) reste *P3* ; en cas d'écart entre ce tableau et le §C.1, le **§C.1 fait foi**, et
+c'est lui qui décide du rangement des modules dans les phases.
 
 **Totaux vérifiés (le détail chapitre par chapitre de la partie D est le décompte de référence) :**
 
