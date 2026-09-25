@@ -1,5 +1,8 @@
 # Module M13.C04 — Le schéma en étoile et les changements lents
 
+**Outils : DuckDB 1.5.5 (exécuté) ; pandas (contrôle croisé, exécuté). PostgreSQL et Power BI
+(cités, non exécutés — règle §1.5).**
+
 ![La frise des quatre types de changement lent : un tarif qui monte de 24 % en quatre ans, ce que type 0, type 1, type 2 et type 3 gardent de cette histoire, et ce que coûte la lecture du passé (production : `tools/figures_M13.py`)](../figures/M13_C04_frise_scd.svg)
 
 ---

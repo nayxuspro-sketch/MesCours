@@ -1,14 +1,16 @@
 # État d'avancement du manuel — *La Voie des Données* (Édition 2026)
 
-**Arrêté au 25 septembre 2026, après le push n° 78 (kit d'exploitation livré, M13 complet : 7 chapitres sur 7).**
+**Arrêté au 25 septembre 2026, après le push n° 80 (M13 livré de bout en bout).**
 **M11 (n° 36 → n° 45), M12 (n° 46 → n° 57) et le kit M01-M12 (n° 65) sont poussés.** M13 est
-**écrit en entier** : plan n° 58, socle et instrument n° 59, **C01** n° 61, **C02** n° 63, **C03**
-n° 69, **C04** n° 72, **C05** n° 74, **C06** n° 77, **C07** n° 78 — **7 chapitres sur 7**. Le modèle de
+**livré de bout en bout** : plan n° 58, socle et instrument n° 59, **C01** n° 61, **C02** n° 63,
+**C03** n° 69, **C04** n° 72, **C05** n° 74, **C06** n° 77, **C07** n° 78, puis au n° 80 le
+**projet**, l'**évaluation** (**75** points, seuil **48**), le **PDF du module** (**107** p., cible
+[89, 121]) et la **fiche de contrôle Q1-Q10** (**10/10** au vert, **5** nuances déclarées). Le modèle de
 Sahel Distribution compte **14** tables (**7** dimensions, **7** faits), **2** dimensions historisées
 (bâties **en SQL**), une dimension de temps de **1 339** jours branchée sur les faits et **4**
 contrôles de recette exécutés (**14** tables sur **14**, **7** faits sur **7**, **12** clés
-étrangères, **0** orphelin, recette au franc près). Il reste à M13 le PDF du module (cible [89, 121]
-p.), la fiche Q1-Q10, le projet, l'évaluation et la clôture. Détail : `05_livrables/journal_pushs.md`.
+étrangères, **0** orphelin, recette au franc près). Le module suivant est **M14 — Power BI**.
+Détail : `05_livrables/journal_pushs.md`.
 
 Chiffres pris aux sources du dépôt : `00_architecture/01_architecture_pedagogique.md` (§C.1, §F.2,
 §E.3, §E.4, §B.6), `tools/budget_pages.py` (budgets) et `05_livrables/kit_M01_M12.json` (mesures du
@@ -20,30 +22,30 @@ kit, refaites à chaque exécution de `tools/kit_exploitation.py`).
 
 | Agrégat | Prévu | Réalisé | Restant |
 |---|---|---|---|
-| Modules obligatoires | **22** (M01 → M22) | **12** clos · M13 **écrit en entier** (7 ch., reste PDF, projet, éval) | **10** |
+| Modules obligatoires | **22** (M01 → M22) | **13** clos (M13 livré au n° 80) | **9** |
 | Chapitres | **143** | **88** (81 publiés + 7 de M13) | **55** |
-| Heures du parcours | **660 h** | **360 h** livrées (+ 30 h engagées en M13) | **270 h** |
-| Pages de module | **2 226 p.** | **1 207 p.** composées et vérifiées | **1 019 p.** |
+| Heures du parcours | **660 h** | **390 h** livrées | **270 h** |
+| Pages de module | **2 226 p.** | **1 314 p.** composées et vérifiées | **912 p.** |
 | Appareil du livre | **229 p.** | **36 p.** (guide 4 p. + index 32 p.), assemblés dans le livre | **193 p.** |
-| **Total manuel** | **2 455 p.** | **1 395 p.** dans un seul livre assemblé | — |
-| Exercices autonomes (mesurés) | — | **366** dans les 81 chapitres, **0** sans reprise au corrigé | — |
+| **Total manuel** | **2 455 p.** | **1 395 p.** dans un seul livre assemblé (M01 → M12) | — |
+| Exercices autonomes (mesurés) | — | **399** dans les 88 chapitres, **0** sans reprise au corrigé | — |
 | Exercices (unité de l'architecture, 180) | 180 | unité différente : l'architecture compte des exercices types, le manuel écrit des énoncés | — |
-| Projets de module | 30 | 12 | 18 |
-| Quiz de module | 22 | 12 | 10 |
-| Études de cas | 21 | 12 | 9 |
+| Projets de module | 30 | 13 | 17 |
+| Quiz de module | 22 | 13 | 9 |
+| Études de cas | 21 | 13 | 8 |
 | Épreuves de palier | 4 | 2 (P1, P2) | 2 (P4, P5) |
 | Soutenances (M19, M21) | 2 | 0 | 2 |
 | Options M23—M25 (hors obligatoire) | 14 ch. · 50 h · 226 p. | 0 | 14 ch. |
 
-> **Lecture.** Le manuel est rédigé à **62 %** de ses chapitres (88 sur 143) et **55 %** de ses
-> modules (12 sur 22) ; les phases 0 à 3 sont **terminées** (M01 → M10) et la phase 4 est **en
-> cours** (M11 et M12 livrés, M13 écrit en entier). Deux mesures valent d'être notées : le livre assemblé
+> **Lecture.** Le manuel est rédigé à **62 %** de ses chapitres (88 sur 143) et **59 %** de ses
+> modules (13 sur 22) ; les phases 0 à 3 sont **terminées** (M01 → M10) et la phase 4 est **en
+> cours** (M11, M12 et M13 livrés). Deux mesures valent d'être notées : le livre assemblé
 > retombe **page par page** sur la somme de ses parties (**1 395 p.** = sommaire, guide, 12 modules,
 > 2 cahiers, index), et la mesure des exercices donne **366** exercices autonomes là où l'ancien
 > comptage en annonçait **243** — l'unité de l'architecture (180) compte des exercices *types*, pas
 > les énoncés réellement écrits.
 
-## 2. Ce qui est livré et vérifié (M01 → M12)
+## 2. Ce qui est livré et vérifié (M01 → M13)
 
 | Module | Thème | Ch. | Pages | Planches | Statut |
 |---|---|---|---|---|---|
@@ -66,11 +68,18 @@ définitions, 69 planches, 48 instruments, 10 jeux de données), `kit_M01_M12.js
 `requirements.txt` (l'environnement), `tools/kit_exploitation.py` (le générateur) et le **livre
 assemblé de 1 395 pages avec 124 signets**, où le guide ouvre la partie I.
 
-**Ce qui reste à M13** (les **7** chapitres sont en ligne, l'instrument et le relevé avec eux) :
-le **PDF du module**, à composer pour la cible de **[89, 121]** pages avec ses signets ; la **fiche de
-contrôle Q1-Q10** ; le **projet** « Le modèle de Sahel Distribution » (**20** points, seuil **13**,
-**4** livrables, **4**ᵉ pièce du portfolio) ; l'**évaluation** (**75** points, seuil **48**) ; puis la
-**clôture** du module et la mise à jour de l'appareil du livre.
+**Ce que M13 a livré** (poussé au n° 80) : le **projet** « Le modèle de Sahel Distribution »
+(**20** points, seuil **13**, **4** livrables, **4**ᵉ pièce du portfolio) ; l'**évaluation**
+(**75** points, seuil **48** — quiz **20**, deux normalisations **20**, étude de cas **30**, auto-test
+**5**) ; le **PDF du module** (**107** p. pour une cible de **[89, 121]**, **+ 1,9 %**, **9** fichiers
+joints, **20** signets, **3/3** planches retrouvées dans le PDF, **27/27** glyphes) ; la **fiche de
+contrôle Q1-Q10** (**10/10** au vert, **5** nuances déclarées) ; et **2** correctifs de veille : le
+signe moins perdu **9** fois dans le chapitre C06, et la déclaration d'exécution §1.5 ajoutée en tête
+des **5** chapitres qui ne l'avaient pas.
+
+**Ce qui reste à faire pour M13** : l'entrée dans le **kit d'exploitation** (le guide est aujourd'hui
+bâti sur les **12** évaluations de M01 à M12 ; il passera à **13** lors de la clôture de M15) et
+l'**appareil du livre** (le livre assemblé s'arrête à M12).
 
 **Ce que les chapitres ont établi, en une phrase par chapitre.** C01 : ce que le modèle remplace, et
 ce qu'il coûte de le remplacer (**2 826 394** caractères de noms recopiés contre **239 599**). C02 :
@@ -82,7 +91,7 @@ le pont et le déchet se choisissent en mesurant, pas en principe. C06 : le temp
 dimension qu'on remplit d'avance, et une borne mal choisie vaut **44,3** points d'écart. C07 : ce qui
 rend un modèle livrable tient en **4** contrôles et **15** points de revue.
 
-## 3. Ce qui reste — 10 modules, 60 chapitres, 270 h
+## 3. Ce qui reste — 9 modules, 55 chapitres, 270 h
 
 ### Phase 4 — Business Intelligence (5 modules · 35 ch.)
 

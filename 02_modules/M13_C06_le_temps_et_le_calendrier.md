@@ -1,5 +1,8 @@
 # Module M13.C06 — Le temps et le calendrier
 
+**Outils : DuckDB 1.5.5 (exécuté) ; pandas (contrôle croisé, exécuté). PostgreSQL et Power BI
+(cités, non exécutés — règle §1.5).**
+
 ---
 
 ## 1. Objectifs du chapitre
@@ -19,7 +22,7 @@
    (**29,7 %**) et celui de décembre dans ce trimestre (**33,6 %**) ne se calculent pas sur une
    colonne de date : ils se lisent dans la dimension ;
 4. **comparer deux périodes honnêtement** : sur le même socle, le même chiffre d'affaires se lit
-   **, 28,9 %**, ou **+ 15,4 %**, selon que l'année en cours est comparée entière ou sur les
+   **− 28,9 %**, ou **+ 15,4 %**, selon que l'année en cours est comparée entière ou sur les
    **8** premiers mois — **44,3** points d'écart pour une seule erreur de borne ;
 5. **choisir la nature du temps dans une table de faits** : une date de vente, **3** dates dans un
    fait de commande ou d'encaissement, un mois dans **4** autres faits — et savoir ce que le modèle
@@ -43,7 +46,7 @@ reste inutile tant que personne ne l'a joint, et rien dans la base ne le signale
 
 La suite du raisonnement tient en trois pièges, tous mesurés dans ce chapitre. Le premier est une
 **borne de temps** : comparer une année de **243** jours à une année complète produit un
-effondrement de **, 28,9 %** qui n'existe pas. Le deuxième est une **date hors calendrier** : un
+effondrement de **− 28,9 %** qui n'existe pas. Le deuxième est une **date hors calendrier** : un
 rapport qui joint en interne perd **46** commandes sans afficher la moindre erreur. Le troisième est
 une **ambiguïté de vocabulaire** : le socle porte deux calendriers concurrents, la semaine
 normalisée qui plafonne à **52** et la semaine commerciale qui monte à **53**. Trois pièges, aucune
@@ -290,7 +293,7 @@ la lecture la plus utile du chapitre, parce qu'elle ne demande aucun outil nouve
 
 | Comparaison | Chiffre d'affaires | Écart |
 |---|---|---|
-| 2026 entier contre 2025 entier | **3 360 553 372** FCFA contre **4 724 700 286** FCFA | **, 28,9 %** |
+| 2026 entier contre 2025 entier | **3 360 553 372** FCFA contre **4 724 700 286** FCFA | **− 28,9 %** |
 | Janvier à août 2026 contre janvier à août 2025 | **3 360 553 372** FCFA contre **2 913 055 394** FCFA | **+ 15,4 %** |
 
 Les deux lignes portent sur la même table, la même jointure et le même filtre de retours. La
@@ -451,7 +454,7 @@ GROUP BY 1 ORDER BY 1;
 Les années 2023 à 2026 rendent respectivement **2 127 742 355**, **2 527 257 254**,
 **2 913 055 394** et **3 360 553 372** FCFA. La comparaison des deux dernières donne **+ 15,4 %**,
 et c'est la seule lecture annuelle recevable au 2026-08-31. Comparer les années entières aurait
-donné **, 28,9 %**.
+donné **− 28,9 %**.
 
 ---
 
@@ -529,7 +532,7 @@ rapport doit nommer son calendrier, son exercice et sa borne de fin.
 dix ans à partir du 2023-01-01, années bissextiles comprises ? Quel volume de faits cela
 représenterait-il, au rapport mesuré de **179,2** lignes de faits pour une ligne de calendrier ?
 
-**Exercice 6.2.** Un rapport annonce une baisse de **, 28,9 %** du chiffre d'affaires 2026. Écrivez
+**Exercice 6.2.** Un rapport annonce une baisse de **− 28,9 %** du chiffre d'affaires 2026. Écrivez
 la requête qui produit ce chiffre, puis celle qui produit la lecture comparable. Donnez les deux
 valeurs et l'écart en points.
 
@@ -558,7 +561,7 @@ calendrier grandit de **365** ou **366** lignes par an, quand les faits grandiss
 milliers.
 
 **Exercice 6.2.** La première requête groupe par année sur le fait entier et compare deux années
-dont l'une est partielle : **3 360 553 372** FCFA contre **4 724 700 286** FCFA, soit **, 28,9 %**.
+dont l'une est partielle : **3 360 553 372** FCFA contre **4 724 700 286** FCFA, soit **− 28,9 %**.
 La seconde ajoute `AND d.mois <= 8` et borne les deux années aux huit premiers mois :
 **3 360 553 372** FCFA contre **2 913 055 394** FCFA, soit **+ 15,4 %**. L'écart entre les deux
 lectures vaut **44,3** points, et il tient à une clause de trois mots.
@@ -620,7 +623,7 @@ rapport affiche un chiffre d'affaires livré égal à la somme des lignes du fai
 | Attributs | dimanche **5,32 %**, fériés **1,5 %**, quatrième trimestre **29,7 %** | ce qu'aucun fait ne sait dire |
 | Deux calendriers | semaine normalisée **52**, semaine commerciale **53** | une ambiguïté à écrire, pas à corriger |
 | Exercice fiscal | **725** jours décalés, **2** valeurs de période | un libellé n'est pas une spécification |
-| Période partielle | **, 28,9 %** contre **+ 15,4 %** | **44,3** points pour une borne mal choisie |
+| Période partielle | **− 28,9 %** contre **+ 15,4 %** | **44,3** points pour une borne mal choisie |
 | Cumul glissant | **5 172 198 264** FCFA, **+ 16,2 %** | la seule lecture annuelle juste en année ouverte |
 | Grain du temps | **3** dates, **4** mois, **0** heure sur **17** colonnes | ce que le modèle ne dira jamais |
 
@@ -639,7 +642,7 @@ Trois phrases portent ce chapitre.
    lignes et la jointure rend **240 000** lignes sur **240 000** : le travail est fait une fois, lu
    autant de fois qu'on veut.
 2. **Une borne de fin, une jointure interne et un libellé ambigu suffisent à rendre un rapport
-   faux.** Le même chiffre d'affaires s'écrit **, 28,9 %** ou **+ 15,4 %** selon la borne, **46**
+   faux.** Le même chiffre d'affaires s'écrit **− 28,9 %** ou **+ 15,4 %** selon la borne, **46**
    commandes disparaissent dans une jointure interne, et `periode_fiscale` promet douze périodes
    pour en rendre **2**.
 3. **Le contrôle se fait dans les deux sens.** Les jours du calendrier sans fait disent les
@@ -683,7 +686,7 @@ dans la dimension, jointure faite. 7. La semaine normalisée, maximum **52**, et
 commerciale, maximum **53** sur **8** jours. 8. Il range ce jour dans la semaine **52**, celle de
 décembre de l'année précédente, et décale de fait la première semaine du rapport. 9. Non : l'année
 2026 est ouverte et compte **243** jours sur **365**. Il faut borner les deux années aux huit
-premiers mois, ce qui donne **+ 15,4 %** au lieu de **, 28,9 %**. 10. Il vaut **5 172 198 264**
+premiers mois, ce qui donne **+ 15,4 %** au lieu de **− 28,9 %**. 10. Il vaut **5 172 198 264**
 FCFA, contre **4 452 117 890** FCFA pour la fenêtre précédente, soit **+ 16,2 %** : les deux fenêtres
 comptent douze mois pleins, donc la comparaison est juste quelle que soit la position de l'année
 civile.

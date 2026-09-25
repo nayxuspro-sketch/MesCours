@@ -1,5 +1,8 @@
 # Module M13.C05 — Le schéma en flocon et ses variantes
 
+**Outils : DuckDB 1.5.5 (exécuté) ; pandas (contrôle croisé, exécuté). PostgreSQL et Power BI
+(cités, non exécutés — règle §1.5).**
+
 ---
 
 ## 1. Objectifs du chapitre

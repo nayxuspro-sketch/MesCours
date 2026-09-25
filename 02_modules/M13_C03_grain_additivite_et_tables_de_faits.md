@@ -1,5 +1,8 @@
 # Module M13.C03 — Grain, additivité et tables de faits
 
+**Outils : DuckDB 1.5.5 (exécuté) ; pandas (contrôle croisé, exécuté). PostgreSQL et Power BI
+(cités, non exécutés — règle §1.5).**
+
 ![Le grain et l'explosion : trois grains du fil rouge, la jointure faite sur la bonne clé, et les deux façons de fabriquer un faux total sans qu'aucune requête ne se plaigne (production : `tools/figures_M13.py`)](../figures/M13_C03_grain_et_explosion.svg)
 
 ---

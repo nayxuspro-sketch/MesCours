@@ -1,5 +1,8 @@
 # Module M13.C07 — La qualité du modèle, sa documentation et sa revue
 
+**Outils : DuckDB 1.5.5 (exécuté) ; pandas (contrôle croisé, exécuté). PostgreSQL et Power BI
+(cités, non exécutés — règle §1.5).**
+
 ![La grille de revue en 15 points : les dix points qui passent sur le modèle du fil rouge, les cinq qui échouent sur le modèle fautif, et les cinq mesures qui le prouvent (production : `tools/figures_M13.py`)](../figures/M13_C07_grille_revue.svg)
 
 ---
