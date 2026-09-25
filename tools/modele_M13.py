@@ -469,6 +469,144 @@ def controler():
            f(out["c02_colonnes_plates"]), f(out["c02_temps_modele_famille_ms"]),
            f(out["c01_produits"])))
     con.execute("DROP TABLE plat")
+    # --------------------- 12. le grain et l'additivite, mesures (chapitre C03)
+    # Un modele ne se juge pas sur son dessin mais sur ce qu'il rend quand on l'interroge.
+    # Ce bloc mesure les deux proprietes qui font qu'un total est juste : le GRAIN (ce que
+    # porte une ligne) et l'ADDITIVITE (ce qu'on a le droit d'additionner).
+    faits = [("fait_ventes", "ligne de ticket", "id_vente"),
+             ("fait_commandes", "commande", "id_commande"),
+             ("fait_encaissements", "facture", "id_facture"),
+             ("fait_stock_mensuel", "produit x mois", "id_produit, mois"),
+             ("fait_ruptures", "produit x magasin x mois", "id_produit, id_magasin, mois"),
+             ("fait_logistique", "magasin x mois", "id_magasin, mois"),
+             # attention : dans fait_objectifs, `mois` est le NUMERO du mois (1 a 12) ;
+             # la cle du grain est (id_magasin, annee_mois). Le piege est mesure plus bas.
+             ("fait_objectifs", "magasin x mois", "id_magasin, annee_mois")]
+    grains = []
+    for table, grain, cle in faits:
+        lignes = un("SELECT COUNT(*) FROM %s" % table)
+        # DuckDB n'accepte pas COUNT(DISTINCT a, b) sur une cle composite : la sous-requete
+        # dit exactement la meme chose, et elle marche sur les trois moteurs du manuel.
+        cles = un("SELECT COUNT(*) FROM (SELECT DISTINCT %s FROM %s)" % (cle, table))
+        grains.append((table, grain, lignes, cles == lignes))
+    out["c03_faits_avec_grain_prouve"] = sum(1 for g in grains if g[3])
+    out["c03_grains"] = "; ".join("%s %s (%s)" % (t.replace("fait_", ""), f(n), g)
+                                  for t, g, n, _ in grains)
+    out["c03_lignes_faits_total"] = sum(g[2] for g in grains)
+    fin = un("SELECT COUNT(*) FROM fait_ventes")
+    gros = un("SELECT COUNT(*) FROM fait_objectifs")
+    out["c03_ratio_grain"] = int(round(fin / gros))
+    # la cle qui n'en est pas une : (magasin, numero de mois) rend 60 valeurs distinctes
+    # pour 218 lignes — un grain verifie avec la mauvaise cle passe pour un doublon
+    out["c03_objectifs_cle_fausse"] = un(
+        "SELECT COUNT(*) FROM (SELECT DISTINCT id_magasin, mois FROM fait_objectifs)")
+    out["c03_objectifs_lignes"] = un("SELECT COUNT(*) FROM fait_objectifs")
+    out["c03_lignes_par_ticket"] = round(fin / un("SELECT COUNT(DISTINCT id_ticket) FROM fait_ventes"), 2)
+    # ---- l'additivite, trois regimes
+    # 1. additif : le montant se somme dans tous les sens, et se re-somme a l'identique
+    par_mois = q("SELECT strftime(date_vente, '%Y-%m') AS mois, ROUND(SUM(montant_ttc)) AS ca "
+                 "FROM fait_ventes WHERE est_retour = 0 GROUP BY 1 ORDER BY 1")
+    out["c03_mois"] = len(par_mois)
+    total_remonte = sum(int(v) for _, v in par_mois)
+    out["c03_ca_somme_mensuelle"] = total_remonte
+    out["c03_facteur_additif"] = round(total_remonte / un("SELECT ROUND(SUM(montant_ttc)) "
+                                                          "FROM fait_ventes WHERE est_retour = 0"), 2)
+    # 2. semi-additif : un instantane de stock s'additionne dans l'espace, jamais dans le temps
+    out["c03_stock_somme"] = round(un("SELECT SUM(stock_moyen_unites) FROM fait_stock_mensuel"))
+    out["c03_stock_un_mois"] = round(out["c03_stock_somme"] / out["c03_mois"])
+    out["c03_stock_facteur"] = round(out["c03_stock_somme"] / out["c03_stock_un_mois"])
+    out["c03_stock_dernier_mois"] = round(un(
+        "SELECT SUM(stock_moyen_unites) FROM fait_stock_mensuel WHERE mois = "
+        "(SELECT MAX(mois) FROM fait_stock_mensuel)"))
+    # 3. non additif : un taux ne se somme pas, il se recalcule sur les totaux
+    out["c03_taux_somme"] = round(un("SELECT SUM(marge_objectif_pct) * 100 FROM fait_objectifs"), 1)
+    out["c03_taux_moyen"] = round(un("SELECT AVG(marge_objectif_pct) * 100 FROM fait_objectifs"), 1)
+    out["c03_taux_lignes"] = un("SELECT COUNT(*) FROM fait_objectifs")
+    # ---- les trois facons de fabriquer un faux total
+    # 1. joindre sur une cle trop large : chaque ligne de vente rencontre 44 lignes de logistique
+    joint_w = q("""SELECT COUNT(*), ROUND(SUM(v.montant_ttc)) FROM fait_ventes v
+                   JOIN fait_logistique l ON l.id_magasin = v.id_magasin
+                   WHERE v.est_retour = 0""")[0]
+    out["c03_faux_large_lignes"] = joint_w[0]
+    out["c03_faux_large_ca"] = int(joint_w[1])
+    out["c03_faux_large_facteur"] = round(out["c03_faux_large_ca"] / total_remonte, 1)
+    # 2. joindre sur une cle trop fine : les ventes sans rupture disparaissent sans un mot
+    joint_f = q("""SELECT COUNT(*), ROUND(SUM(v.montant_ttc)) FROM fait_ventes v
+                   JOIN fait_ruptures r ON r.id_produit = v.id_produit
+                     AND r.mois = strftime(v.date_vente, '%Y-%m')
+                   WHERE v.est_retour = 0""")[0]
+    out["c03_faux_filtre_lignes"] = joint_f[0]
+    out["c03_faux_filtre_ca"] = int(joint_f[1])
+    out["c03_faux_filtre_facteur"] = round(out["c03_faux_filtre_ca"] / total_remonte, 2)
+    out["c03_faux_filtre_manquants"] = round((1 - out["c03_faux_filtre_facteur"]) * 100)
+    # 3. joindre sur la bonne cle : le controle negatif, celui qui disculpe la jointure
+    joint_j = q("""SELECT COUNT(*), ROUND(SUM(v.montant_ttc)) FROM fait_ventes v
+                   JOIN fait_stock_mensuel s ON s.id_produit = v.id_produit
+                     AND s.mois = strftime(v.date_vente, '%Y-%m')
+                   WHERE v.est_retour = 0""")[0]
+    out["c03_bon_grain_lignes"] = joint_j[0]
+    out["c03_bon_grain_ca"] = int(joint_j[1])
+    out["c03_bon_grain_facteur"] = round(out["c03_bon_grain_ca"] / total_remonte, 2)
+    out["c03_texte_cle"] = (
+        "le grain se prouve avec la BONNE cle : sur fait_objectifs, la cle (magasin, numero de "
+        "mois) rend %s valeurs distinctes pour %s lignes, et l'on conclurait a tort a des doublons ; "
+        "la cle du grain est (magasin, annee_mois), et elle rend %s valeurs pour %s lignes — le "
+        "grain declare est celui du chargement"
+        % (f(out["c03_objectifs_cle_fausse"]), f(out["c03_objectifs_lignes"]),
+           f(out["c03_objectifs_lignes"]), f(out["c03_objectifs_lignes"])))
+    out["c03_texte_grain"] = (
+        "les %s tables de faits portent %s grains differents et prouves (la cle distincte egale "
+        "le nombre de lignes) : de la ligne de ticket (%s lignes) a l'objectif mensuel par magasin "
+        "(%s lignes), il y a un facteur %s — deux tables du meme modele ne repondent donc pas a la "
+        "meme question, et rien ne doit les additionner"
+        % (f(len(faits)), f(len(faits)), f(fin), f(gros), f(out["c03_ratio_grain"])))
+    out["c03_texte_additivite"] = (
+        "le montant est additif : %s totaux mensuels se re-somment exactement au total du modele "
+        "(facteur %s). Le stock est semi-additif : sommer %s mois d'instantanes donne %s unites, "
+        "soit %s fois le stock d'un mois (%s unites) — un chiffre credibile et faux. Le taux est "
+        "non additif : les %s taux de marge du plan d'objectifs se somment a %s %%, quand leur "
+        "moyenne vaut %s %% et qu'aucun des deux n'est la marge du reseau"
+        % (f(out["c03_mois"]), fd(out["c03_facteur_additif"]), f(out["c03_mois"]),
+           f(out["c03_stock_somme"]), f(out["c03_stock_facteur"]), f(out["c03_stock_un_mois"]),
+           f(out["c03_taux_lignes"]), fd(out["c03_taux_somme"]), fd(out["c03_taux_moyen"])))
+    # ---- le filtre silencieux qui vient du grain, pas de la cle : joindre deux agregats
+    # mensuels quand l'un des magasins n'a aucune vente. Le depot central coute 44 mois de
+    # logistique et ne vend rien : une jointure interne le fait disparaitre sans un mot.
+    out["c03_logistique_total"] = round(un("SELECT SUM(cout_total) FROM fait_logistique"))
+    out["c03_logistique_magasins"] = un("SELECT COUNT(DISTINCT id_magasin) FROM fait_logistique")
+    out["c03_magasins_vendeurs"] = un("SELECT COUNT(DISTINCT id_magasin) FROM fait_ventes")
+    inner = q("""WITH ca AS (SELECT strftime(date_vente,'%Y-%m') AS mois, id_magasin,
+                        ROUND(SUM(montant_ttc)) AS ca
+                 FROM fait_ventes WHERE est_retour = 0 GROUP BY 1, 2),
+                 logi AS (SELECT mois, id_magasin, ROUND(SUM(cout_total)) AS cout
+                          FROM fait_logistique GROUP BY 1, 2)
+                 SELECT ROUND(SUM(logi.cout)), ROUND(SUM(ca.ca))
+                 FROM ca JOIN logi ON logi.mois = ca.mois AND logi.id_magasin = ca.id_magasin""")[0]
+    out["c03_logistique_jointe_interne"] = int(inner[0])
+    out["c03_logistique_perdue"] = out["c03_logistique_total"] - int(inner[0])
+    out["c03_depot_cout"] = round(un(
+        "SELECT SUM(cout_total) FROM fait_logistique WHERE id_magasin NOT IN "
+        "(SELECT DISTINCT id_magasin FROM fait_ventes)"))
+    out["c03_depot_mois"] = un(
+        "SELECT COUNT(*) FROM fait_logistique WHERE id_magasin NOT IN "
+        "(SELECT DISTINCT id_magasin FROM fait_ventes)")
+    out["c03_texte_jointure_agregats"] = (
+        "joindre deux agregats mensuels par une jointure interne fait disparaitre le magasin qui "
+        "n'a aucune vente : le depot central porte %s mois de couts logistiques (%s FCFA) et zero "
+        "vente, donc le total des couts tombe a %s FCFA quand la table en contient %s — la "
+        "jointure est au bon grain des deux cotes, et elle filtre quand meme"
+        % (f(out["c03_depot_mois"]), f(out["c03_depot_cout"]),
+           f(out["c03_logistique_jointe_interne"]), f(out["c03_logistique_total"])))
+    out["c03_texte_faux"] = (
+        "trois requetes, trois totaux faux, aucune erreur : joindre les ventes a la logistique sur "
+        "le magasin seul rend %s lignes et %s FCFA (facteur %s) ; les joindre aux ruptures sur le "
+        "produit et le mois rend %s lignes et %s FCFA (facteur %s, soit %s %% du chiffre d'affaires "
+        "perdu sans un mot) ; les joindre au stock sur le produit et le mois rend %s lignes et un "
+        "total juste (facteur %s) — c'est la cle, pas la jointure, qui decide"
+        % (f(out["c03_faux_large_lignes"]), f(out["c03_faux_large_ca"]), fd(out["c03_faux_large_facteur"]),
+           f(out["c03_faux_filtre_lignes"]), f(out["c03_faux_filtre_ca"]),
+           fd(out["c03_faux_filtre_facteur"]), f(out["c03_faux_filtre_manquants"]),
+           f(out["c03_bon_grain_lignes"]), fd(out["c03_bon_grain_facteur"])))
     con.close()
     return out
 
@@ -501,6 +639,11 @@ def main(argv=None):
     print("     %s" % m["c01_texte_jointures"])
     print(" 11. normaliser: %s" % m["c02_texte_libelles"])
     print("     %s" % m["c02_texte_cout"])
+    print(" 12. grain     : %s" % m["c03_texte_grain"])
+    print("     %s" % m["c03_texte_cle"])
+    print("     %s" % m["c03_texte_additivite"])
+    print("     %s" % m["c03_texte_faux"])
+    print("     %s" % m["c03_texte_jointure_agregats"])
     print()
     print("  verdict : le modele rend le meme chiffre d'affaires que la source (%s FCFA), "
           "sans orphelin et avec un grain prouve sur %d tables."

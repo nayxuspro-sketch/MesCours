@@ -3510,6 +3510,45 @@ def m13():
     d["m13_c02_temps_modele_famille_ms"] = m["c02_temps_modele_famille_ms"]
     d["m13_c02_texte_cout"] = m["c02_texte_cout"]
 
+    # --- C03 : le grain et l'additivite, mesures (huit mesures + trois requetes fautives)
+    d["m13_c03_faits_avec_grain_prouve"] = m["c03_faits_avec_grain_prouve"]
+    d["m13_c03_grains"] = m["c03_grains"]
+    d["m13_c03_lignes_faits_total"] = f(m["c03_lignes_faits_total"])
+    d["m13_c03_ratio_grain"] = f(m["c03_ratio_grain"])
+    d["m13_c03_lignes_par_ticket"] = m["c03_lignes_par_ticket"]
+    d["m13_c03_objectifs_lignes"] = m["c03_objectifs_lignes"]
+    d["m13_c03_objectifs_cle_fausse"] = m["c03_objectifs_cle_fausse"]
+    d["m13_c03_mois"] = m["c03_mois"]
+    d["m13_c03_ca_somme_mensuelle"] = f(m["c03_ca_somme_mensuelle"]) + " FCFA"
+    d["m13_c03_facteur_additif"] = m["c03_facteur_additif"]
+    d["m13_c03_stock_somme"] = f(m["c03_stock_somme"]) + " unites"
+    d["m13_c03_stock_un_mois"] = f(m["c03_stock_un_mois"]) + " unites"
+    d["m13_c03_stock_facteur"] = f(m["c03_stock_facteur"])
+    d["m13_c03_stock_dernier_mois"] = f(m["c03_stock_dernier_mois"]) + " unites"
+    d["m13_c03_taux_lignes"] = m["c03_taux_lignes"]
+    d["m13_c03_taux_somme"] = m["c03_taux_somme"]
+    d["m13_c03_taux_moyen"] = m["c03_taux_moyen"]
+    d["m13_c03_faux_large_lignes"] = f(m["c03_faux_large_lignes"])
+    d["m13_c03_faux_large_ca"] = f(m["c03_faux_large_ca"]) + " FCFA"
+    d["m13_c03_faux_large_facteur"] = m["c03_faux_large_facteur"]
+    d["m13_c03_faux_filtre_lignes"] = f(m["c03_faux_filtre_lignes"])
+    d["m13_c03_faux_filtre_ca"] = f(m["c03_faux_filtre_ca"]) + " FCFA"
+    d["m13_c03_faux_filtre_facteur"] = m["c03_faux_filtre_facteur"]
+    d["m13_c03_faux_filtre_manquants"] = m["c03_faux_filtre_manquants"]
+    d["m13_c03_bon_grain_lignes"] = f(m["c03_bon_grain_lignes"])
+    d["m13_c03_bon_grain_ca"] = f(m["c03_bon_grain_ca"]) + " FCFA"
+    d["m13_c03_bon_grain_facteur"] = m["c03_bon_grain_facteur"]
+    d["m13_c03_texte_grain"] = m["c03_texte_grain"]
+    d["m13_c03_texte_cle"] = m["c03_texte_cle"]
+    d["m13_c03_texte_additivite"] = m["c03_texte_additivite"]
+    d["m13_c03_texte_faux"] = m["c03_texte_faux"]
+    d["m13_c03_logistique_total"] = f(m["c03_logistique_total"]) + " FCFA"
+    d["m13_c03_logistique_jointe_interne"] = f(m["c03_logistique_jointe_interne"]) + " FCFA"
+    d["m13_c03_logistique_perdue"] = f(m["c03_logistique_perdue"]) + " FCFA"
+    d["m13_c03_depot_cout"] = f(m["c03_depot_cout"]) + " FCFA"
+    d["m13_c03_depot_mois"] = m["c03_depot_mois"]
+    d["m13_c03_texte_jointure_agregats"] = m["c03_texte_jointure_agregats"]
+
     # --- Le projet et l'evaluation (calibres sur M11 et M12)
     d["m13_projet_livrables"] = 4
     d["m13_projet_points"] = 20

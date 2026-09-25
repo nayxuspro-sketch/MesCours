@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="448.788077pt" height="263.88pt" viewBox="0 0 448.788077 263.88" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.9, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 263.88 
+L 448.788077 263.88 
+L 448.788077 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 16.968477 102.0024 
+L 122.988477 102.0024 
+L 122.988477 27.1584 
+L 16.968477 27.1584 
+z
+" clip-path="url(#p159adf9947)" style="fill: #f7f7f7; stroke: #8a8a8a; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 150.553677 92.0232 
+L 277.777677 92.0232 
+L 277.777677 27.1584 
+L 150.553677 27.1584 
+z
+" clip-path="url(#p159adf9947)" style="fill: #eaf4ff; stroke: #3b6ea5; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 126.084488 64.36783 
+Q 136.558407 62.085737 145.50296 60.136867 
+" clip-path="url(#p159adf9947)" style="fill: none; stroke: #3b6ea5; stroke-width: 1.4; stroke-linecap: round"/>
+    <path d="M 140.735468 58.92401 
+L 145.50296 60.136867 
+L 141.672179 63.223146 
+z
+" clip-path="url(#p159adf9947)" style="fill: #3b6ea5; stroke: #3b6ea5; stroke-width: 1.4; stroke-linecap: round"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 290.500077 92.0232 
+L 426.205677 92.0232 
+L 426.205677 27.1584 
+L 290.500077 27.1584 
+z
+" clip-path="url(#p159adf9947)" style="fill: #eef7ee; stroke: #3f7d3f; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 280.472075 59.5908 
+Q 283.715056 59.5908 285.39279 59.5908 
+" clip-path="url(#p159adf9947)" style="fill: none; stroke: #3f7d3f; stroke-width: 1.4; stroke-linecap: round"/>
+    <path d="M 280.99279 57.3908 
+L 285.39279 59.5908 
+L 280.99279 61.7908 
+z
+" clip-path="url(#p159adf9947)" style="fill: #3f7d3f; stroke: #3f7d3f; stroke-width: 1.4; stroke-linecap: round"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 150.553677 236.7216 
+L 426.205677 236.7216 
+L 426.205677 111.9816 
+L 150.553677 111.9816 
+z
+" clip-path="url(#p159adf9947)" style="fill: #fdeaea; stroke: #a33b3b; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 214.165677 94.518244 
+Q 214.165677 102.00058 214.165677 107.470456 
+" clip-path="url(#p159adf9947)" style="fill: none; stroke: #a33b3b; stroke-width: 1.8; stroke-linecap: round"/>
+    <path d="M 216.365677 103.070456 
+L 214.165677 107.470456 
+L 211.965677 103.070456 
+z
+" clip-path="url(#p159adf9947)" style="fill: #a33b3b; stroke: #a33b3b; stroke-width: 1.8; stroke-linecap: round"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 16.968477 236.7216 
+L 142.072077 236.7216 
+L 142.072077 111.9816 
+L 16.968477 111.9816 
+z
+" clip-path="url(#p159adf9947)" style="fill: #fff6e0; stroke: #a3781f; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 142.651252 174.3516 
+Q 145.255816 174.3516 146.295132 174.3516 
+" clip-path="url(#p159adf9947)" style="fill: none; stroke: #a3781f; stroke-width: 1.4; stroke-linecap: round"/>
+    <path d="M 141.895132 172.1516 
+L 146.295132 174.3516 
+L 141.895132 176.5516 
+z
+" clip-path="url(#p159adf9947)" style="fill: #a3781f; stroke: #a3781f; stroke-width: 1.4; stroke-linecap: round"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 9.6px; font-family: 'DejaVu Sans'; text-anchor: middle" x="222.647277" y="20.7315" transform="rotate(-0 222.647277 20.7315)">Le grain : ce que porte UNE ligne, et ce qu'on a le droit d'additionner</text>
+   </g>
+   <g id="text_2">
+    <text style="font-weight: 700; font-size: 8.5px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #1b1b1b" x="69.978477" y="41.600432" transform="rotate(-0 69.978477 41.600432)">6 lignes de vente (extrait)</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 7.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="27.570477" y="53.922783" transform="rotate(-0 27.570477 53.922783)">id_vente 1 | prod 12 | mag 1 | 40 u</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 7.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="27.570477" y="64.899903" transform="rotate(-0 27.570477 64.899903)">id_vente 2 | prod 12 | mag 1 | 25 u</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 7.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="27.570477" y="75.877023" transform="rotate(-0 27.570477 75.877023)">id_vente 3 | prod 7  | mag 1 | 6 u</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 7.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="27.570477" y="86.854143" transform="rotate(-0 27.570477 86.854143)">id_vente 4 | prod 12 | mag 2 | 18 u</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 7.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="27.570477" y="97.831263" transform="rotate(-0 27.570477 97.831263)">id_vente 5 | prod 7  | mag 2 | 9 u</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 7.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="27.570477" y="108.808383" transform="rotate(-0 27.570477 108.808383)">id_vente 6 | prod 31 | mag 2 | 3 u</text>
+   </g>
+   <g id="text_9">
+    <text style="font-weight: 700; font-size: 8.5px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #1b1b1b" x="214.165677" y="41.600432" transform="rotate(-0 214.165677 41.600432)">Le grain le plus fin : la ligne de ticket</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 7.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="161.155677" y="53.889533" transform="rotate(-0 161.155677 53.889533)">240 000 lignes</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 7.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="161.155677" y="64.866653" transform="rotate(-0 161.155677 64.866653)">cle : id_vente (unique)</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 7.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="161.155677" y="75.843773" transform="rotate(-0 161.155677 75.843773)">1,64 ligne par ticket</text>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 7.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="161.155677" y="86.820893" transform="rotate(-0 161.155677 86.820893)">267 686 lignes de faits au total</text>
+   </g>
+   <g id="text_14">
+    <text style="font-weight: 700; font-size: 8.5px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #1b1b1b" x="358.352877" y="41.600432" transform="rotate(-0 358.352877 41.600432)">Joindre sur la BONNE cle</text>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 7.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="301.102077" y="53.889533" transform="rotate(-0 301.102077 53.889533)">6 lignes deviennent 6 lignes</text>
+   </g>
+   <g id="text_16">
+    <text style="font-size: 7.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="301.102077" y="64.866653" transform="rotate(-0 301.102077 64.866653)">facteur 1,0 : le total ne bouge pas</text>
+   </g>
+   <g id="text_17">
+    <text style="font-size: 7.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="301.102077" y="75.843773" transform="rotate(-0 301.102077 75.843773)">15 595 154 955 FCFA, le chiffre juste</text>
+   </g>
+   <g id="text_18">
+    <text style="font-size: 7.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="301.102077" y="86.820893" transform="rotate(-0 301.102077 86.820893)">controle negatif : la jointure</text>
+   </g>
+   <g id="text_19">
+    <text style="font-size: 7.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="301.102077" y="97.798012" transform="rotate(-0 301.102077 97.798012)">n'est pas coupable, la cle l'est</text>
+   </g>
+   <g id="text_20">
+    <text style="font-weight: 700; font-size: 8.5px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #1b1b1b" x="288.379677" y="126.423632" transform="rotate(-0 288.379677 126.423632)">Joindre sur une cle trop LARGE (le magasin seul) : x 44</text>
+   </g>
+   <g id="text_21">
+    <text style="font-size: 7.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="161.155677" y="138.712732" transform="rotate(-0 161.155677 138.712732)">chaque ligne de vente rencontre 44 lignes de logistique</text>
+   </g>
+   <g id="text_22">
+    <text style="font-size: 7.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="161.155677" y="149.689852" transform="rotate(-0 161.155677 149.689852)">(un magasin a 44 mois d'historique) :</text>
+   </g>
+   <g id="text_23">
+    <text style="font-size: 7.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="161.155677" y="171.644092" transform="rotate(-0 161.155677 171.644092)">10 436 404 lignes : facteur 44,0</text>
+   </g>
+   <g id="text_24">
+    <text style="font-size: 7.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="161.155677" y="182.621212" transform="rotate(-0 161.155677 182.621212)">686 186 818 020 FCFA au lieu de 15 595 154 955 FCFA</text>
+   </g>
+   <g id="text_25">
+    <text style="font-size: 7.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="161.155677" y="204.575452" transform="rotate(-0 161.155677 204.575452)">aucune erreur, aucun avertissement : le total est credibile et faux</text>
+   </g>
+   <g id="text_26">
+    <text style="font-size: 7.2px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #a33b3b" x="220.526877" y="103.98915" transform="rotate(-0 220.526877 103.98915)">meme requete</text>
+   </g>
+   <g id="text_27">
+    <text style="font-weight: 700; font-size: 8.5px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #1b1b1b" x="79.520277" y="126.423632" transform="rotate(-0 79.520277 126.423632)">Joindre sur une cle trop FINE</text>
+   </g>
+   <g id="text_28">
+    <text style="font-size: 7.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="27.570477" y="138.712732" transform="rotate(-0 27.570477 138.712732)">les ventes d'un produit-mois</text>
+   </g>
+   <g id="text_29">
+    <text style="font-size: 7.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="27.570477" y="149.689852" transform="rotate(-0 27.570477 149.689852)">SANS rupture disparaissent</text>
+   </g>
+   <g id="text_30">
+    <text style="font-size: 7.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="27.570477" y="171.644092" transform="rotate(-0 27.570477 171.644092)">85 126 lignes (au lieu de 237 191)</text>
+   </g>
+   <g id="text_31">
+    <text style="font-size: 7.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="27.570477" y="182.621212" transform="rotate(-0 27.570477 182.621212)">5 558 813 747 FCFA : facteur 0,36</text>
+   </g>
+   <g id="text_32">
+    <text style="font-size: 7.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="27.570477" y="193.598332" transform="rotate(-0 27.570477 193.598332)">64 % du chiffre d'affaires</text>
+   </g>
+   <g id="text_33">
+    <text style="font-size: 7.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="27.570477" y="204.575452" transform="rotate(-0 27.570477 204.575452)">perdu sans un mot</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p159adf9947">
+   <rect x="10.607277" y="7.2" width="424.08" height="249.48"/>
+  </clipPath>
+ </defs>
+</svg>
