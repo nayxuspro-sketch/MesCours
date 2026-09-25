@@ -1,8 +1,8 @@
 # État d'avancement du manuel — *La Voie des Données* (Édition 2026)
 
-**Arrêté au 25 septembre 2026, après le push n° 67 (kit d'exploitation livré, sommaire du livre corrigé).**
+**Arrêté au 25 septembre 2026, après le push n° 69 (kit d'exploitation livré, M13 à 3 chapitres sur 7).**
 **M11 (n° 36 → n° 45), M12 (n° 46 → n° 57) et le kit M01-M12 (n° 65) sont poussés.** M13 est
-**engagé** : plan n° 58, socle et instrument n° 59, **C01** n° 61, **C02** n° 63 — **2 chapitres sur
+**engagé** : plan n° 58, socle et instrument n° 59, **C01** n° 61, **C02** n° 63, **C03** n° 69 — **3 chapitres sur
 7**. Le modèle de Sahel Distribution compte **12** tables (**5** dimensions, **7** faits), **2**
 dimensions historisées (bâties **en SQL**) et **4** contrôles de recette exécutés. Détail :
 `05_livrables/journal_pushs.md`.
@@ -18,7 +18,7 @@ kit, refaites à chaque exécution de `tools/kit_exploitation.py`).
 | Agrégat | Prévu | Réalisé | Restant |
 |---|---|---|---|
 | Modules obligatoires | **22** (M01 → M22) | **12** clos (M01 → M12) · M13 engagé (2 ch.) | **10** |
-| Chapitres | **143** | **83** (81 publiés + 2 de M13) | **60** |
+| Chapitres | **143** | **84** (81 publiés + 3 de M13) | **59** |
 | Heures du parcours | **660 h** | **360 h** livrées (+ 30 h engagées en M13) | **270 h** |
 | Pages de module | **2 226 p.** | **1 207 p.** composées et vérifiées | **1 019 p.** |
 | Appareil du livre | **229 p.** | **36 p.** (guide 4 p. + index 32 p.), assemblés dans le livre | **193 p.** |
@@ -32,9 +32,9 @@ kit, refaites à chaque exécution de `tools/kit_exploitation.py`).
 | Soutenances (M19, M21) | 2 | 0 | 2 |
 | Options M23—M25 (hors obligatoire) | 14 ch. · 50 h · 226 p. | 0 | 14 ch. |
 
-> **Lecture.** Le manuel est rédigé à **58 %** de ses chapitres (83 sur 143) et **55 %** de ses
+> **Lecture.** Le manuel est rédigé à **59 %** de ses chapitres (84 sur 143) et **55 %** de ses
 > modules (12 sur 22) ; les phases 0 à 3 sont **terminées** (M01 → M10) et la phase 4 est **en
-> cours** (M11 et M12 livrés, M13 à 2/7). Deux mesures valent d'être notées : le livre assemblé
+> cours** (M11 et M12 livrés, M13 à 3/7). Deux mesures valent d'être notées : le livre assemblé
 > retombe **page par page** sur la somme de ses parties (**1 395 p.** = sommaire, guide, 12 modules,
 > 2 cahiers, index), et la mesure des exercices donne **366** exercices autonomes là où l'ancien
 > comptage en annonçait **243** — l'unité de l'architecture (180) compte des exercices *types*, pas
@@ -63,12 +63,17 @@ définitions, 69 planches, 48 instruments, 10 jeux de données), `kit_M01_M12.js
 `requirements.txt` (l'environnement), `tools/kit_exploitation.py` (le générateur) et le **livre
 assemblé de 1 395 pages avec 124 signets**, où le guide ouvre la partie I.
 
-**Ce qui reste à pousser pour M13** : les chapitres **C03** (grain, additivité, faits, 16 § + 1
-planche), **C04** (étoile, dimensions conformes, SCD 0/1/2/3, 16 § + 1 planche), **C05** (flocon,
-pont, déchet, faits multiples, 15 §), **C06** (le temps et le calendrier, 15 §), **C07** (qualité,
-documentation, revue en 15 points, 16 § + 1 planche), puis les 3 planches, le PDF cible **[89, 121]**
-p., la fiche Q1-Q10, le projet (**20** points, seuil **13**), l'évaluation (**75** points, seuil
-**48**) et la clôture.
+**Ce qui reste à pousser pour M13** (3 chapitres sur 7 sont en ligne) : les chapitres **C04**
+(étoile, dimensions conformes, SCD 0/1/2/3, 16 § + 1 planche), **C05** (flocon, pont, déchet, faits
+multiples, 15 §), **C06** (le temps et le calendrier, 15 §) et **C07** (qualité, documentation, revue
+en 15 points, 16 § + 1 planche), puis le PDF cible **[89, 121]** p., la fiche Q1-Q10, le projet
+(**20** points, seuil **13**), l'évaluation (**75** points, seuil **48**) et la clôture.
+
+**C03 a rendu un défaut de plus, trouvé en écrivant l'exercice guidé** : joindre deux agrégats
+mensuels au bon grain, mais par une **jointure interne**, fait disparaître le dépôt central — **44**
+mois de coûts logistiques, **28 893 543** FCFA, pour zéro vente. La mesure est entrée au socle
+(`m13_c03_logistique_perdue`) et le chapitre l'enseigne : le filtre silencieux ne vient pas toujours
+d'une clé trop fine.
 
 ## 3. Ce qui reste — 10 modules, 60 chapitres, 270 h
 

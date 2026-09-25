@@ -1,6 +1,6 @@
 # Journal des pushs — M11, M12, M13 et le kit d'exploitation M01-M12
 
-**Dernier push : `88ea9d5` (n° 67 — correctif du sommaire du livre et guide en PDF autonome).** Le jeton du 25 septembre
+**Dernier push : `1158f0d` (n° 69 — M13.C03, grain et additivité).** Le jeton du 25 septembre
 2026 a été re-testé avant **chaque** envoi (`GET /api.github.com/user` → **200**). Le script
 `pousser.sh` peut afficher « 401 » sur sa seconde sonde avant un push qui réussit : seuls
 `push OK` et `ls-remote` font foi (leçon PATCH_1). M11 et M12 sont **clos** et poussés de bout en
@@ -36,20 +36,22 @@ bout (n° 36 → n° 57) ; M13 est **engagé** (plan n° 58, socle n° 59, C01 n
 | 62 | `86954dc` | Journal des pushs et état au 25/09 (M13.C01 poussé) | contrôles de dépôt mesurés sur un clone neuf |
 | 63 | `f28598d` | **M13.C02** — Normaliser : 1FN, 2FN, 3FN et les quatre anomalies (5 577 mots) ; **2e défaut du socle corrigé** (`dim_produit` rendait **9** familles au lieu de **7** : deux étiquettes à espace finale → `TRIM`) ; instrument : la normalisation est **mesurée** (**16** étiquettes → **7** familles, lecture **4** ms contre **2** ms) ; relevé `m13_*` : **167** clés | `autovalide --strict` 0 avertissement ; les requêtes citées ont été exécutées |
 | 64 | `d60d198` | Journal des pushs et état au 25/09 (M13.C02 en ligne, **2/7**) | compteurs mesurés sur un clone neuf |
+| 65 | `e6d7ad8` | **Kit d'exploitation M01 à M12** — guide de l'apprenant (**1 886** mots : **6** p. autonome, **4** p. dans le livre), index et glossaire (**488** notions, **367** définitions, **855** entrées), **livre assemblé** `La_Voie_des_Donnees_M01-M12.pdf` (**1 395** p., **124** signets, 14,1 Mo : guide en partie I, les 12 modules, les 2 cahiers, l'index), mesures `kit_M01_M12.json`, `requirements.txt`, générateur `tools/kit_exploitation.py`, README (section kit + arborescence) | 81 chapitres attendus = 81 trouvés ; **366** exercices autonomes, **0** sans reprise au corrigé ; **1 395** = 4 (front) + **4** (guide) + **1 207** (modules) + **65** + **83** (cahiers) + **32** (index), plages vérifiées page par page ; `autovalide M13 --strict` OK |
 | 66 | `90fd18a` | Journal des pushs (n° 65) et état au 25/09 : kit en ligne, M13 à **2/7** ; `--mesures-seules` ne perd plus les pages du livre | local = distant, vérifié par `ls-remote` |
 | 67 | `88ea9d5` | **Correctif du livre assemblé** : le guide (partie I) n'était pas compté dans les plages du sommaire — **décalage de 4 pages** sur les douze modules ; **guide livré en PDF autonome** (`guide_apprenant_M01_M12.pdf`, 6 p.) ; pagination alignée (journal, état, README) | M01 **9–125** · guide **5–8** · M12 **1134–1215** · index **1364–1395**, vérifiés sur le PDF composé |
-| 65 | `e6d7ad8` | **Kit d'exploitation M01 à M12** — guide de l'apprenant (**1 886** mots : **6** p. autonome, **4** p. dans le livre), index et glossaire (**488** notions, **367** définitions, **855** entrées), **livre assemblé** `La_Voie_des_Donnees_M01-M12.pdf` (**1 395** p., **124** signets, 14,1 Mo : guide en partie I, les 12 modules, les 2 cahiers, l'index), mesures `kit_M01_M12.json`, `requirements.txt`, générateur `tools/kit_exploitation.py`, README (section kit + arborescence) | 81 chapitres attendus = 81 trouvés ; **366** exercices autonomes, **0** sans reprise au corrigé ; **1 395** = 4 (front) + **4** (guide) + **1 207** (modules) + **65** + **83** (cahiers) + **32** (index), plages vérifiées page par page ; `autovalide M13 --strict` OK |
+| 68 | `2901a38` | Journal des pushs (n° 66 et 67) et état au 25/09 | — |
+| 69 | `1158f0d` | **M13.C03** — Grain, additivité et tables de faits (**7 089** mots, 16 §) : les **3** faux totaux mesurés (clé trop large **44,0** ; clé trop fine **0,36** ; grains mélangés **+ 43,0 %**), le piège de la mauvaise clé de contrôle (**60** valeurs pour **218** lignes), le **filtre silencieux par jointure d'agrégats** (**28 893 543** FCFA du dépôt central, trouvé en écrivant l'exercice guidé) ; planche `M13_C03_grain_et_explosion.svg` et instrument `tools/figures_M13.py` ; **37** clés `m13_c03_*` au relevé | `autovalide --strict` 0 avertissement ; les 9 requêtes citées ont été exécutées une par une ; planche **623** px, texte extractible du PDF |
 
 Chaque envoi a suivi la procédure en **ajout seul** (PATCH_11) : test du jeton → `git init` →
 `fetch --depth 1` → `update-ref` → `read-tree` → `git add` **des seuls chemins nommés** → push →
 bundle de secours dans `/tmp` → `rm -rf .git`. **Jamais** `git add -A` : les PDF de module vivent
 hors de l'atelier, et un ajout global les aurait marqués « supprimés » dès que la place manque.
 
-**Contrôles de dépôt après le n° 67 (mesurés sur le dépôt lui-même, chemins sans échappement)** :
-**394** fichiers · **90** dans `02_modules/` (dont **85** `.md` : **83** chapitres, l'ouverture
-`M01_C00` et le bilan de M01, plus **5** PDF de chapitres M05) · **69** planches dans `figures/` ·
-**48** instruments dans `tools/` · **0** `.pyc` · **20** PDF · `03_exercices/dossier_M13/` complet
-(**8** fichiers) · la branche `main` pointe sur `88ea9d5`. Écart atelier / dépôt : **377** fichiers
+**Contrôles de dépôt après le n° 69 (mesurés sur le dépôt lui-même, chemins sans échappement)** :
+**401** fichiers · **90** dans `02_modules/` (dont **85** `.md` : **84** chapitres, l'ouverture
+`M01_C00` et le bilan de M01, plus **5** PDF de chapitres M05) · **70** planches dans `figures/` ·
+**49** instruments dans `tools/` · **0** `.pyc` · **20** PDF · `03_exercices/dossier_M13/` complet
+(**8** fichiers) · la branche `main` pointe sur `1158f0d`. Écart atelier / dépôt : **377** fichiers
 locaux, **0** absent du dépôt (les 16 de plus au dépôt sont les PDF que l'atelier ne garde pas).
 
 ## Kit d'exploitation M01 à M12 (n° 65)
@@ -84,8 +86,9 @@ Trois corrections que la mesure a imposées, et qui changent des chiffres déjà
 | Socle | `03_exercices/dossier_M13/` — 12 tables, 2 dimensions historisées en SQL, instrument `modele_M13.py` | ✅ n° 59 |
 | C01 | Modéliser : MCD, MLD, MPD (6 624 mots) | ✅ n° 61 |
 | C02 | Normaliser : 1FN → 3FN, les 4 anomalies (5 577 mots) | ✅ n° 63 |
-| C03 | Grain, additivité, table de faits (16 §) + planche | à écrire |
+| C03 | Grain, additivité, table de faits (16 §) + planche | ✅ n° 69 |
 | C04 | Étoile, dimensions conformes, SCD 0/1/2/3 (16 §) + planche | à écrire |
+| — | **Le chapitre C03 a révélé un défaut de plus du socle** : le filtre silencieux par jointure d'agrégats (dépôt central, **28 893 543** FCFA) — corrigé dans le chapitre et l'instrument | ✅ n° 69 |
 | C05 | Flocon, pont, déchet, faits multiples (15 §) | à écrire |
 | C06 | Le temps et le calendrier (15 §) | à écrire |
 | C07 | Qualité, documentation, revue en 15 points (16 §) + planche | à écrire |
@@ -96,7 +99,7 @@ Trois corrections que la mesure a imposées, et qui changent des chiffres déjà
 | Évaluation | `04_evaluations/M13_evaluation.md` — **75** points, seuil **48** | à écrire |
 | Clôture | `README.md`, `05_livrables/etat_avancement.md` | à mettre à jour |
 
-## Procédure à rejouer (elle a fonctionné **28** fois de suite, n° 40 → n° 67)
+## Procédure à rejouer (elle a fonctionné **30** fois de suite, n° 40 → n° 69)
 
 ```bash
 cd /home/user/formation-data-bi
