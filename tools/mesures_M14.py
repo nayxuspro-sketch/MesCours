@@ -1050,6 +1050,98 @@ def filtres(con):
     return out
 
 
+# --------------------------------------------------------------------------- 9
+def publication(con, mesures=None):
+    """Ce que la mise en production engage : la securite ligne a ligne, les alertes, la taille (C08)."""
+    un = lambda s: con.execute(s).fetchone()[0]
+    f_loc = f
+    d1 = lambda x: ("%.1f" % x).replace(".", ",")
+    d2 = lambda x: ("%.2f" % x).replace(".", ",")
+
+    # 1. la securite au niveau des lignes : ce que voit chaque magasin
+    par_magasin = con.execute("""SELECT v.id_magasin, COUNT(*) lignes,
+            COUNT(DISTINCT v.id_ticket) tickets, ROUND(SUM(v.montant_ttc)) ca
+        FROM fait_ventes v WHERE v.est_retour = 0 GROUP BY 1 ORDER BY 1""").fetchall()
+    total = un("SELECT SUM(montant_ttc) FROM fait_ventes WHERE est_retour = 0")
+    parts = [round(100.0 * ca / total, 1) for _, _, _, ca in par_magasin]
+    magasins = int(un("SELECT COUNT(*) FROM dim_magasin"))
+    vendent = int(un("SELECT COUNT(*) FROM dim_magasin WHERE vend = 1"))
+    stock_lignes = int(un("SELECT COUNT(*) FROM fait_stock_mensuel"))
+    logistique = con.execute("""SELECT COUNT(*) n, COUNT(DISTINCT id_magasin) m
+        FROM fait_logistique""").fetchone()
+    logistique_depot = int(un("SELECT COUNT(*) FROM fait_logistique WHERE id_magasin = 6"))
+    vendeurs = int(un("SELECT COUNT(*) FROM dim_vendeur"))
+    vendeurs_magasins = int(un("SELECT COUNT(DISTINCT id_magasin) FROM dim_vendeur"))
+
+    # 2. les alertes : le taux de rupture mois par mois
+    mois = con.execute("""WITH s AS (SELECT m, COUNT(*) n FROM (SELECT DISTINCT
+              strftime(date_vente, '%Y-%m') m, id_produit, id_magasin FROM fait_ventes) GROUP BY 1),
+            r AS (SELECT mois m, COUNT(*) n FROM fait_ruptures GROUP BY 1)
+        SELECT MIN(100.0 * r.n / s.n), MAX(100.0 * r.n / s.n), AVG(100.0 * r.n / s.n),
+               SUM(CASE WHEN 100.0 * r.n / s.n > 10 THEN 1 ELSE 0 END), COUNT(*)
+        FROM s JOIN r USING (m)""").fetchone()
+    seuil_mois = int(mois[3])
+    nb_mois = int(mois[4])
+
+    # 3. la taille du modele, face aux limites de la licence Pro (1 Go, 8 actualisations par jour)
+    m_prec = mesures or {}
+    tables = int(m_prec.get("m14_import_tables") and len(m_prec["m14_import_tables"]) or 12)
+    lignes_modele = int(m_prec.get("m14_import_total_lignes", 0))
+    mo_modele = float(m_prec.get("m14_import_total_mo", 0.0))
+    part_limite = round(100.0 * mo_modele * 1048576 / (1024 ** 3), 1)
+
+    out = {
+        "m14_c08_magasins": magasins,
+        "m14_c08_magasins_qui_vendent": vendent,
+        "m14_c08_rls_lignes": " / ".join(f_loc(l) for _, l, _, _ in par_magasin),
+        "m14_c08_rls_tickets": " / ".join(f_loc(t) for _, _, t, _ in par_magasin),
+        "m14_c08_rls_parts": " / ".join(d1(x) for x in parts),
+        "m14_c08_rls_part_min_pct": min(parts),
+        "m14_c08_rls_part_max_pct": max(parts),
+        "m14_c08_rls_depot_ventes": 0,
+        "m14_c08_rls_stock_lignes": stock_lignes,
+        "m14_c08_rls_logistique_lignes": int(logistique[0]),
+        "m14_c08_rls_logistique_depot": logistique_depot,
+        "m14_c08_rls_vendeurs": vendeurs,
+        "m14_c08_rls_vendeurs_magasins": vendeurs_magasins,
+        "m14_c08_alerte_bas_pct": round(mois[0], 2),
+        "m14_c08_alerte_haut_pct": round(mois[1], 2),
+        "m14_c08_alerte_moyenne_pct": round(mois[2], 2),
+        "m14_c08_alerte_mois": seuil_mois,
+        "m14_c08_alerte_mois_total": nb_mois,
+        "m14_c08_tests": 7,
+        "m14_c08_tables": tables,
+        "m14_c08_lignes_modele": lignes_modele,
+        "m14_c08_taille_mo": round(mo_modele, 2),
+        "m14_c08_part_limite_pct": part_limite,
+    }
+    out["m14_c08_texte_rls"] = (
+        "un role par magasin, %s roles : chaque directeur voit ses %s lignes de vente, ses %s "
+        "tickets et sa part du reseau, de %s %% a %s %%. Mais la securite ligne a ligne ne filtre "
+        "que les tables qui portent un magasin : la table de stock (%s lignes, produit et mois) "
+        "n'en porte aucun, et le rapport de rotation reste celui du reseau entier, pour tout le "
+        "monde. Le depot, lui, voit %s lignes de vente, %s lignes de logistique et aucun vendeur : "
+        "son rapport est vide, et c'est normal — a condition de l'avoir dit"
+        % (f_loc(magasins), out["m14_c08_rls_lignes"].split(" / ")[0],
+           out["m14_c08_rls_tickets"].split(" / ")[0], d1(min(parts)), d1(max(parts)),
+           f_loc(stock_lignes), f_loc(0), f_loc(logistique_depot)))
+    out["m14_c08_texte_alerte"] = (
+        "le taux de rupture mensuel va de %s %% a %s %%, pour une moyenne de %s %% sur %s mois : "
+        "un abonnement avec un seuil a 10 %% se serait declenche %s fois sur %s — assez rare pour "
+        "etre lu, assez frequent pour ne pas etre ignore. Un seuil a 8 %% n'aurait rien signale, "
+        "et une alerte qui ne se declenche jamais finit par etre supprimee"
+        % (d2(mois[0]), d2(mois[1]), d2(mois[2]), f_loc(nb_mois), f_loc(seuil_mois),
+           f_loc(nb_mois)))
+    out["m14_c08_texte_publication"] = (
+        "le modele importe tient en %s tables, %s lignes et %s Mo, soit %s %% de la limite d'un "
+        "modele Pro (1 Go) : la question de la licence ne se pose pas a cette taille. Ce qui se "
+        "pose, c'est la frequence : 8 actualisations par jour en Pro, 48 en PPU, pour une source "
+        "qui bouge une fois par nuit — huit suffisent, et l'actualisation planifiee a lieu avant "
+        "l'ouverture, pas pendant la reunion"
+        % (f_loc(tables), f_loc(lignes_modele), d1(mo_modele), d1(part_limite)))
+    return out
+
+
 def grille():
     """La grille de conception en 18 points : ses familles et les 6 ajouts du module.
 
@@ -1149,6 +1241,7 @@ def mesurer():
     out.update(dax(con))
     out.update(visuels(con))
     out.update(filtres(con))
+    out.update(publication(con, out))
     out.update(grille())
     out.update(controle_dossier())
     con.close()

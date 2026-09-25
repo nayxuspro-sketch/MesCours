@@ -305,11 +305,89 @@ def modele_etoile_powerbi() -> str:
     return enregistrer(fig, "M14_C04_modele_etoile_powerbi.svg")
 
 
+def grille_conception_enrichie() -> str:
+    """La grille de conception en 18 points, ses 4 familles et les 6 ajouts du module."""
+    import sys as _sys
+    import textwrap
+    import unicodedata
+
+    _sys.path.insert(0, os.path.join(RACINE, "tools"))
+    import mesures_M14 as _M
+    mesures = _M.mesurer()
+
+    def net(texte: str, largeur: int) -> list:
+        """Texte du manuel ramene a un jeu latin-1 : aucun accent, aucun tiret long."""
+        plat = re.sub(r"\s*\(ajout M14[^)]*\)", "", texte)
+        plat = unicodedata.normalize("NFKD", plat)
+        plat = "".join(k for k in plat if not unicodedata.combining(k))
+        for avant, apres in (("\u2013", ","), ("\u2014", ", "), ("\u00ab ", ""),
+                             ("\u00bb", ""), ("\u2212", "-")):
+            plat = plat.replace(avant, apres)
+        plat = plat.encode("latin-1", "replace").decode("latin-1")
+        return textwrap.wrap(plat, largeur) or [plat]
+
+    familles = mesures["m14_grille_familles"]
+    questions = mesures["m14_grille_questions_texte"]
+    ajouts = {int(a["ou"].split()[-1]) for a in mesures["m14_grille_ajouts"]}
+
+    fig, ax = plt.subplots(figsize=(7.6, 6.4))
+    ax.set_xlim(0, 100)
+    ax.set_ylim(0, 100)
+    ax.axis("off")
+
+    ax.text(50, 99.0, "La grille de conception en %s points, relue avant publication"
+            % mesures["m14_grille_points"],
+            ha="center", va="top", fontsize=9.4, fontweight="bold", color="#1b1b1b")
+    ax.text(50, 94.6,
+            "%s questions fermees en %s familles : une question se repond oui ou non, avec une preuve "
+            "sous les yeux" % (mesures["m14_grille_questions"], len(familles)),
+            ha="center", va="top", fontsize=6.9, color="#555")
+
+    largeur, ecart = 22.6, 2.4
+    x = 2.4
+    couleurs = (("#eef3fb", "#2f5d9e"), ("#e8f4ea", "#2f7d4f"),
+                ("#fdf3e3", "#b07a1e"), ("#f2ecf7", "#6b4b9e"))
+    debut, reste = 1, list(questions)
+    for famille, (fond, bord) in zip(familles, couleurs):
+        n = famille["questions"]
+        ax.add_patch(Rectangle((x, 12.0), largeur, 76.5, facecolor=fond, edgecolor=bord, lw=1.2))
+        ax.text(x + 1.0, 86.6, famille["famille"], ha="left", va="top", fontsize=7.3,
+                fontweight="bold", color=bord)
+        ax.text(x + 1.0, 82.6, "%s points · questions %d a %d"
+                % (famille["points"], debut, debut + n - 1),
+                ha="left", va="top", fontsize=6.2, color="#333")
+        y = 78.4
+        for numero in range(debut, debut + n):
+            lignes = net(questions[numero - 1], 24)
+            ax.text(x + 1.0, y, "%d." % numero, ha="left", va="top", fontsize=5.7,
+                    fontweight="bold", color="#8a2f2f" if numero in ajouts else "#333")
+            if numero in ajouts:
+                ax.text(x + 1.0, y - 2.2, "[+]", ha="left", va="top", fontsize=5.7,
+                        fontweight="bold", color="#8a2f2f")
+            for ligne in lignes:
+                ax.text(x + 4.6, y, ligne, ha="left", va="top", fontsize=5.7,
+                        color="#8a2f2f" if numero in ajouts else "#333")
+                y -= 3.0
+            y -= 1.7
+        debut += n
+        x += largeur + ecart
+
+    ax.text(50, 8.0,
+            "Les %s questions marquees [+] sont les ajouts du module : coherence des totaux, "
+            "granularite, gestion des vides, accessibilite, legende, performance."
+            % len(ajouts), ha="center", va="top", fontsize=6.4, color="#8a2f2f")
+    ax.text(50, 4.2,
+            "La grille se passe deux fois : par l'auteur avant publication, puis par un pair "
+            "qui n'a pas construit le rapport.", ha="center", va="top", fontsize=6.4, color="#555")
+    return enregistrer(fig, "M14_C08_grille_conception_enrichie.svg")
+
+
 PLANCHES = {"M14_C01_ecosysteme_et_licences.svg": ecosysteme_et_licences,
             "M14_C02_quatre_modes_de_connexion.svg": quatre_modes_de_connexion,
-            "M14_C04_modele_etoile_powerbi.svg": modele_etoile_powerbi}
+            "M14_C04_modele_etoile_powerbi.svg": modele_etoile_powerbi,
+            "M14_C08_grille_conception_enrichie.svg": grille_conception_enrichie}
 
-A_PRODURE = ("M14_C08_grille_conception_enrichie.svg",)
+A_PRODURE = ()
 
 
 def controler(chemins):

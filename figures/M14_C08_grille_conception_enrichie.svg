@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="490.534pt" height="369.216pt" viewBox="0 0 490.534 369.216" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.9, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 369.216 
+L 490.534 369.216 
+L 490.534 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 43.40492 319.43808 
+L 139.247 319.43808 
+L 139.247 48.00384 
+L 43.40492 48.00384 
+z
+" clip-path="url(#pb359d04790)" style="fill: #eef3fb; stroke: #2f5d9e; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 149.42492 319.43808 
+L 245.267 319.43808 
+L 245.267 48.00384 
+L 149.42492 48.00384 
+z
+" clip-path="url(#pb359d04790)" style="fill: #e8f4ea; stroke: #2f7d4f; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 255.44492 319.43808 
+L 351.287 319.43808 
+L 351.287 48.00384 
+L 255.44492 48.00384 
+z
+" clip-path="url(#pb359d04790)" style="fill: #fdf3e3; stroke: #b07a1e; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 361.46492 319.43808 
+L 457.307 319.43808 
+L 457.307 48.00384 
+L 361.46492 48.00384 
+z
+" clip-path="url(#pb359d04790)" style="fill: #f2ecf7; stroke: #6b4b9e; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 9.4px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #1b1b1b" x="245.267" y="17.890691" transform="rotate(-0 245.267 17.890691)">La grille de conception en 18 points, relue avant publication</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 6.9px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #555555" x="245.267" y="31.602986" transform="rotate(-0 245.267 31.602986)">18 questions fermees en 4 familles : une question se repond oui ou non, avec une preuve sous les yeux</text>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 700; font-size: 7.3px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #2f5d9e" x="47.64572" y="60.292203" transform="rotate(-0 47.64572 60.292203)">1. La décision servie</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 6.2px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="47.64572" y="73.649015" transform="rotate(-0 47.64572 73.649015)">4 points · questions 1 a 4</text>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 700; font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="47.64572" y="88.171365" transform="rotate(-0 47.64572 88.171365)">1.</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="62.9126" y="88.171365" transform="rotate(-0 62.9126 88.171365)">la page repond a une</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="62.9126" y="98.815845" transform="rotate(-0 62.9126 98.815845)">decision nommee, ecrite</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="62.9126" y="109.460325" transform="rotate(-0 62.9126 109.460325)">en une phrase</text>
+   </g>
+   <g id="text_9">
+    <text style="font-weight: 700; font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="47.64572" y="126.136677" transform="rotate(-0 47.64572 126.136677)">2.</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="62.9126" y="126.136677" transform="rotate(-0 62.9126 126.136677)">le titre affirme le</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="62.9126" y="136.781157" transform="rotate(-0 62.9126 136.781157)">constat, il ne nomme pas</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="62.9126" y="147.425637" transform="rotate(-0 62.9126 147.425637)">la mesure</text>
+   </g>
+   <g id="text_13">
+    <text style="font-weight: 700; font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="47.64572" y="164.101989" transform="rotate(-0 47.64572 164.101989)">3.</text>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="62.9126" y="164.101989" transform="rotate(-0 62.9126 164.101989)">le chiffre principal de</text>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="62.9126" y="174.746469" transform="rotate(-0 62.9126 174.746469)">chaque page se lit en</text>
+   </g>
+   <g id="text_16">
+    <text style="font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="62.9126" y="185.390949" transform="rotate(-0 62.9126 185.390949)">cinq secondes</text>
+   </g>
+   <g id="text_17">
+    <text style="font-weight: 700; font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="47.64572" y="202.067301" transform="rotate(-0 47.64572 202.067301)">4.</text>
+   </g>
+   <g id="text_18">
+    <text style="font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="62.9126" y="202.067301" transform="rotate(-0 62.9126 202.067301)">aucun visuel n'est la</text>
+   </g>
+   <g id="text_19">
+    <text style="font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="62.9126" y="212.711781" transform="rotate(-0 62.9126 212.711781)">parce qu'il etait</text>
+   </g>
+   <g id="text_20">
+    <text style="font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="62.9126" y="223.356261" transform="rotate(-0 62.9126 223.356261)">disponible</text>
+   </g>
+   <g id="text_21">
+    <text style="font-weight: 700; font-size: 7.3px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #2f7d4f" x="153.66572" y="60.292203" transform="rotate(-0 153.66572 60.292203)">2. La justesse</text>
+   </g>
+   <g id="text_22">
+    <text style="font-size: 6.2px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="153.66572" y="73.649015" transform="rotate(-0 153.66572 73.649015)">5 points · questions 5 a 9</text>
+   </g>
+   <g id="text_23">
+    <text style="font-weight: 700; font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #8a2f2f" x="153.66572" y="88.171365" transform="rotate(-0 153.66572 88.171365)">5.</text>
+   </g>
+   <g id="text_24">
+    <text style="font-weight: 700; font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #8a2f2f" x="153.66572" y="95.977317" transform="rotate(-0 153.66572 95.977317)">[+]</text>
+   </g>
+   <g id="text_25">
+    <text style="font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #8a2f2f" x="168.9326" y="88.171365" transform="rotate(-0 168.9326 88.171365)">les totaux sont</text>
+   </g>
+   <g id="text_26">
+    <text style="font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #8a2f2f" x="168.9326" y="98.815845" transform="rotate(-0 168.9326 98.815845)">identiques aux trois</text>
+   </g>
+   <g id="text_27">
+    <text style="font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #8a2f2f" x="168.9326" y="109.460325" transform="rotate(-0 168.9326 109.460325)">niveaux : page, visuel,</text>
+   </g>
+   <g id="text_28">
+    <text style="font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #8a2f2f" x="168.9326" y="120.104805" transform="rotate(-0 168.9326 120.104805)">detail</text>
+   </g>
+   <g id="text_29">
+    <text style="font-weight: 700; font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #8a2f2f" x="153.66572" y="136.781157" transform="rotate(-0 153.66572 136.781157)">6.</text>
+   </g>
+   <g id="text_30">
+    <text style="font-weight: 700; font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #8a2f2f" x="153.66572" y="144.587109" transform="rotate(-0 153.66572 144.587109)">[+]</text>
+   </g>
+   <g id="text_31">
+    <text style="font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #8a2f2f" x="168.9326" y="136.781157" transform="rotate(-0 168.9326 136.781157)">le grain affiche est</text>
+   </g>
+   <g id="text_32">
+    <text style="font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #8a2f2f" x="168.9326" y="147.425637" transform="rotate(-0 168.9326 147.425637)">ecrit sous le visuel</text>
+   </g>
+   <g id="text_33">
+    <text style="font-weight: 700; font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #8a2f2f" x="153.66572" y="164.101989" transform="rotate(-0 153.66572 164.101989)">7.</text>
+   </g>
+   <g id="text_34">
+    <text style="font-weight: 700; font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #8a2f2f" x="153.66572" y="171.907941" transform="rotate(-0 153.66572 171.907941)">[+]</text>
+   </g>
+   <g id="text_35">
+    <text style="font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #8a2f2f" x="168.9326" y="164.101989" transform="rotate(-0 168.9326 164.101989)">les vides sont</text>
+   </g>
+   <g id="text_36">
+    <text style="font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #8a2f2f" x="168.9326" y="174.746469" transform="rotate(-0 168.9326 174.746469)">expliques, pas masques</text>
+   </g>
+   <g id="text_37">
+    <text style="font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #8a2f2f" x="168.9326" y="185.390949" transform="rotate(-0 168.9326 185.390949)">par un filtre</text>
+   </g>
+   <g id="text_38">
+    <text style="font-weight: 700; font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="153.66572" y="202.067301" transform="rotate(-0 153.66572 202.067301)">8.</text>
+   </g>
+   <g id="text_39">
+    <text style="font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="168.9326" y="202.067301" transform="rotate(-0 168.9326 202.067301)">les dates sont</text>
+   </g>
+   <g id="text_40">
+    <text style="font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="168.9326" y="212.711781" transform="rotate(-0 168.9326 212.711781)">coherentes : une seule</text>
+   </g>
+   <g id="text_41">
+    <text style="font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="168.9326" y="223.356261" transform="rotate(-0 168.9326 223.356261)">table de dates, une</text>
+   </g>
+   <g id="text_42">
+    <text style="font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="168.9326" y="234.000741" transform="rotate(-0 168.9326 234.000741)">seule relation active</text>
+   </g>
+   <g id="text_43">
+    <text style="font-weight: 700; font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="153.66572" y="250.677093" transform="rotate(-0 153.66572 250.677093)">9.</text>
+   </g>
+   <g id="text_44">
+    <text style="font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="168.9326" y="250.677093" transform="rotate(-0 168.9326 250.677093)">les deux definitions</text>
+   </g>
+   <g id="text_45">
+    <text style="font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="168.9326" y="261.321573" transform="rotate(-0 168.9326 261.321573)">d'un meme indicateur</text>
+   </g>
+   <g id="text_46">
+    <text style="font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="168.9326" y="271.966053" transform="rotate(-0 168.9326 271.966053)">sont declarees, et la</text>
+   </g>
+   <g id="text_47">
+    <text style="font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="168.9326" y="282.610533" transform="rotate(-0 168.9326 282.610533)">devise et l'unite sont</text>
+   </g>
+   <g id="text_48">
+    <text style="font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="168.9326" y="293.255013" transform="rotate(-0 168.9326 293.255013)">portees par le visuel</text>
+   </g>
+   <g id="text_49">
+    <text style="font-weight: 700; font-size: 7.3px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #b07a1e" x="259.68572" y="60.292203" transform="rotate(-0 259.68572 60.292203)">3. La lisibilité</text>
+   </g>
+   <g id="text_50">
+    <text style="font-size: 6.2px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="259.68572" y="73.649015" transform="rotate(-0 259.68572 73.649015)">5 points · questions 10 a 14</text>
+   </g>
+   <g id="text_51">
+    <text style="font-weight: 700; font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="259.68572" y="88.171365" transform="rotate(-0 259.68572 88.171365)">10.</text>
+   </g>
+   <g id="text_52">
+    <text style="font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="274.9526" y="88.171365" transform="rotate(-0 274.9526 88.171365)">une seule echelle par</text>
+   </g>
+   <g id="text_53">
+    <text style="font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="274.9526" y="98.815845" transform="rotate(-0 274.9526 98.815845)">graphique, jamais deux</text>
+   </g>
+   <g id="text_54">
+    <text style="font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="274.9526" y="109.460325" transform="rotate(-0 274.9526 109.460325)">axes</text>
+   </g>
+   <g id="text_55">
+    <text style="font-weight: 700; font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="259.68572" y="126.136677" transform="rotate(-0 259.68572 126.136677)">11.</text>
+   </g>
+   <g id="text_56">
+    <text style="font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="274.9526" y="126.136677" transform="rotate(-0 274.9526 126.136677)">les categories sont</text>
+   </g>
+   <g id="text_57">
+    <text style="font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="274.9526" y="136.781157" transform="rotate(-0 274.9526 136.781157)">ordonnees par la valeur,</text>
+   </g>
+   <g id="text_58">
+    <text style="font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="274.9526" y="147.425637" transform="rotate(-0 274.9526 147.425637)">pas par l'alphabet</text>
+   </g>
+   <g id="text_59">
+    <text style="font-weight: 700; font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #8a2f2f" x="259.68572" y="164.101989" transform="rotate(-0 259.68572 164.101989)">12.</text>
+   </g>
+   <g id="text_60">
+    <text style="font-weight: 700; font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #8a2f2f" x="259.68572" y="171.907941" transform="rotate(-0 259.68572 171.907941)">[+]</text>
+   </g>
+   <g id="text_61">
+    <text style="font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #8a2f2f" x="274.9526" y="164.101989" transform="rotate(-0 274.9526 164.101989)">la couleur reste lisible</text>
+   </g>
+   <g id="text_62">
+    <text style="font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #8a2f2f" x="274.9526" y="174.746469" transform="rotate(-0 274.9526 174.746469)">en niveaux de gris et le</text>
+   </g>
+   <g id="text_63">
+    <text style="font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #8a2f2f" x="274.9526" y="185.390949" transform="rotate(-0 274.9526 185.390949)">contraste tient</text>
+   </g>
+   <g id="text_64">
+    <text style="font-weight: 700; font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #8a2f2f" x="259.68572" y="202.067301" transform="rotate(-0 259.68572 202.067301)">13.</text>
+   </g>
+   <g id="text_65">
+    <text style="font-weight: 700; font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #8a2f2f" x="259.68572" y="209.873253" transform="rotate(-0 259.68572 209.873253)">[+]</text>
+   </g>
+   <g id="text_66">
+    <text style="font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #8a2f2f" x="274.9526" y="202.067301" transform="rotate(-0 274.9526 202.067301)">chaque visuel porte sa</text>
+   </g>
+   <g id="text_67">
+    <text style="font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #8a2f2f" x="274.9526" y="212.711781" transform="rotate(-0 274.9526 212.711781)">legende, son unite et sa</text>
+   </g>
+   <g id="text_68">
+    <text style="font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #8a2f2f" x="274.9526" y="223.356261" transform="rotate(-0 274.9526 223.356261)">source</text>
+   </g>
+   <g id="text_69">
+    <text style="font-weight: 700; font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="259.68572" y="240.032613" transform="rotate(-0 259.68572 240.032613)">14.</text>
+   </g>
+   <g id="text_70">
+    <text style="font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="274.9526" y="240.032613" transform="rotate(-0 274.9526 240.032613)">les libelles se</text>
+   </g>
+   <g id="text_71">
+    <text style="font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="274.9526" y="250.677093" transform="rotate(-0 274.9526 250.677093)">comprennent sans ouvrir</text>
+   </g>
+   <g id="text_72">
+    <text style="font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="274.9526" y="261.321573" transform="rotate(-0 274.9526 261.321573)">le dossier, et les six</text>
+   </g>
+   <g id="text_73">
+    <text style="font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="274.9526" y="271.966053" transform="rotate(-0 274.9526 271.966053)">erreurs de visuel du</text>
+   </g>
+   <g id="text_74">
+    <text style="font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="274.9526" y="282.610533" transform="rotate(-0 274.9526 282.610533)">chapitre C06 sont</text>
+   </g>
+   <g id="text_75">
+    <text style="font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="274.9526" y="293.255013" transform="rotate(-0 274.9526 293.255013)">absentes</text>
+   </g>
+   <g id="text_76">
+    <text style="font-weight: 700; font-size: 7.3px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #6b4b9e" x="365.70572" y="60.292203" transform="rotate(-0 365.70572 60.292203)">4. L'utilisation</text>
+   </g>
+   <g id="text_77">
+    <text style="font-size: 6.2px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="365.70572" y="73.649015" transform="rotate(-0 365.70572 73.649015)">4 points · questions 15 a 18</text>
+   </g>
+   <g id="text_78">
+    <text style="font-weight: 700; font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #8a2f2f" x="365.70572" y="88.171365" transform="rotate(-0 365.70572 88.171365)">15.</text>
+   </g>
+   <g id="text_79">
+    <text style="font-weight: 700; font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #8a2f2f" x="365.70572" y="95.977317" transform="rotate(-0 365.70572 95.977317)">[+]</text>
+   </g>
+   <g id="text_80">
+    <text style="font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #8a2f2f" x="380.9726" y="88.171365" transform="rotate(-0 380.9726 88.171365)">le rapport s'ouvre en</text>
+   </g>
+   <g id="text_81">
+    <text style="font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #8a2f2f" x="380.9726" y="98.815845" transform="rotate(-0 380.9726 98.815845)">moins de trois secondes,</text>
+   </g>
+   <g id="text_82">
+    <text style="font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #8a2f2f" x="380.9726" y="109.460325" transform="rotate(-0 380.9726 109.460325)">mesure</text>
+   </g>
+   <g id="text_83">
+    <text style="font-weight: 700; font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="365.70572" y="126.136677" transform="rotate(-0 365.70572 126.136677)">16.</text>
+   </g>
+   <g id="text_84">
+    <text style="font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="380.9726" y="126.136677" transform="rotate(-0 380.9726 126.136677)">les segments couvrent</text>
+   </g>
+   <g id="text_85">
+    <text style="font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="380.9726" y="136.781157" transform="rotate(-0 380.9726 136.781157)">les questions reelles,</text>
+   </g>
+   <g id="text_86">
+    <text style="font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="380.9726" y="147.425637" transform="rotate(-0 380.9726 147.425637)">pas toutes les colonnes</text>
+   </g>
+   <g id="text_87">
+    <text style="font-weight: 700; font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="365.70572" y="164.101989" transform="rotate(-0 365.70572 164.101989)">17.</text>
+   </g>
+   <g id="text_88">
+    <text style="font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="380.9726" y="164.101989" transform="rotate(-0 380.9726 164.101989)">l'exploration par clic</text>
+   </g>
+   <g id="text_89">
+    <text style="font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="380.9726" y="174.746469" transform="rotate(-0 380.9726 174.746469)">descend d'un niveau sans</text>
+   </g>
+   <g id="text_90">
+    <text style="font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="380.9726" y="185.390949" transform="rotate(-0 380.9726 185.390949)">perdre le filtre</text>
+   </g>
+   <g id="text_91">
+    <text style="font-weight: 700; font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="365.70572" y="202.067301" transform="rotate(-0 365.70572 202.067301)">18.</text>
+   </g>
+   <g id="text_92">
+    <text style="font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="380.9726" y="202.067301" transform="rotate(-0 380.9726 202.067301)">la page d'aide existe,</text>
+   </g>
+   <g id="text_93">
+    <text style="font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="380.9726" y="212.711781" transform="rotate(-0 380.9726 212.711781)">le theme est applique,</text>
+   </g>
+   <g id="text_94">
+    <text style="font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="380.9726" y="223.356261" transform="rotate(-0 380.9726 223.356261)">les noms sont propres et</text>
+   </g>
+   <g id="text_95">
+    <text style="font-size: 5.7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #333333" x="380.9726" y="234.000741" transform="rotate(-0 380.9726 234.000741)">le fichier est documente</text>
+   </g>
+   <g id="text_96">
+    <text style="font-size: 6.4px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #8a2f2f" x="245.267" y="338.49372" transform="rotate(-0 245.267 338.49372)">Les 6 questions marquees [+] sont les ajouts du module : coherence des totaux, granularite, gestion des vides, accessibilite, legende, performance.</text>
+   </g>
+   <g id="text_97">
+    <text style="font-size: 6.4px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #555555" x="245.267" y="351.976728" transform="rotate(-0 245.267 351.976728)">La grille se passe deux fois : par l'auteur avant publication, puis par un pair qui n'a pas construit le rapport.</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pb359d04790">
+   <rect x="33.227" y="7.2" width="424.08" height="354.816"/>
+  </clipPath>
+ </defs>
+</svg>

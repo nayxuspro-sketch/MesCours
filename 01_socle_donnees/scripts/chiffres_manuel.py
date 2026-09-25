@@ -1884,6 +1884,20 @@ def m14():
                 "m14_c07_panier_max_fcfa", "m14_c07_top_fcfa"):
         d[cle] = f(m[cle]) + " FCFA"
 
+    # --- C08 : securite ligne a ligne, alertes, taille du modele et tests de mise en production
+    for cle in ("m14_c08_magasins", "m14_c08_magasins_qui_vendent", "m14_c08_rls_lignes",
+                "m14_c08_rls_tickets", "m14_c08_rls_parts", "m14_c08_rls_part_min_pct",
+                "m14_c08_rls_part_max_pct", "m14_c08_rls_depot_ventes",
+                "m14_c08_rls_stock_lignes", "m14_c08_rls_logistique_lignes",
+                "m14_c08_rls_logistique_depot", "m14_c08_rls_vendeurs",
+                "m14_c08_rls_vendeurs_magasins", "m14_c08_alerte_bas_pct",
+                "m14_c08_alerte_haut_pct", "m14_c08_alerte_moyenne_pct",
+                "m14_c08_alerte_mois", "m14_c08_alerte_mois_total", "m14_c08_tests",
+                "m14_c08_tables", "m14_c08_lignes_modele", "m14_c08_taille_mo",
+                "m14_c08_part_limite_pct", "m14_c08_texte_rls", "m14_c08_texte_alerte",
+                "m14_c08_texte_publication"):
+        d[cle] = m[cle]
+
     # --- Les dix valeurs du tableau de bord, et leur controle croise par M12
     d["m14_v01_ca_net_fcfa"] = f(m["m14_v01_ca_net_fcfa"]) + " FCFA"
     d["m14_v02_marge_fcfa"] = f(m["m14_v02_marge_fcfa"]) + " FCFA"
