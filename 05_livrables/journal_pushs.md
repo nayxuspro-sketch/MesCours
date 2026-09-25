@@ -23,6 +23,9 @@ passe**, sans perte.
 | 51 | `460d3c7` | État au 25/09 + journal des pushs | — |
 | 52 | `c8f2255` | **M12.C04** — concevoir un KPI : 6 critères, carte de définition, contre-KPI (6 007 mots) + instruments mis à jour | `autovalide --strict`, relevé `m12_*` diff = 0 |
 | 53 | `d7bfb82` | `chiffres_cites.md` régénéré (bloc M12 : **239** clés) | — |
+| 54 | `77ba622` | Journal des pushs et état au 25/09 | — |
+| 55 | `8a194d7` | **M12.C05** — architecture en 7 étages (5 098 mots) + planche | `autovalide --strict`, figure déterministe |
+| 56 | `eecb80e` | **M12.C06** — les 10 causes d'échec (4 901 mots) + planche des 10 couples ; C05 aligné sur **255** clés | `autovalide --strict`, figures 2/2 |
 
 Chaque envoi a suivi la procédure en **ajout seul** (PATCH_11) : test du jeton → `git init` →
 `fetch --depth 1` → `update-ref` → `read-tree` → `git add` **des seuls chemins nommés** → push →

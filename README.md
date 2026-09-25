@@ -20,15 +20,18 @@ contrôle, README, embarquement de la figure C01, retrait pyc du remote, `.gitig
 | 5 | Composition du manuel PDF (A4, couverture, mise en page éditeur) | ✅ moteur au point — `05_livrables/M01.pdf` (**117 p.**), `M02.pdf` (**122 p.**), `M03.pdf` (**126 p.**), `M04.pdf` (**92 p.**), `M05.pdf` (86 p.), `M06.pdf` (**69 p.**, budget 80 ±15 % = 68-92, OK), `M07.pdf` (**109 p.**, budget 117 ±15 % = 99-135, OK), `M08.pdf` (**119 p.**, budget 117 ±15 % = 99-135, OK), `M09.pdf` (**82 p.**, budget 92,5 ±15 % = [79, 106], OK) `M10.pdf` (**106 p.**, budget 105 ±15 % = [89, 121], OK) et `M11.pdf` (**97 p.**, budget 105 ±15 % = [89, 121], OK — projet et évaluation joints, **9** fichiers) ; les HTML de contrôle, régénérables en 20 s, ont été supprimés le 24/09/2026 pour tenir le quota de l'atelier (165,0 → 127,0 Mo) — les paginations M01-M04 et M08 ont été mesurées **après** le correctif de composition du 20/09/2026 (`img { max-width: 100 % }` : les planches 780 px n'étaient plus rognées à droite) |
 | 6 | Revue finale + errata | ⏳ |
 
-## Module en cours — M12 *Fondamentaux de la Business Intelligence* (engagé le 25/09/2026)
+## Dernier module livré — M12 *Fondamentaux de la Business Intelligence* (25/09/2026)
 
 **6 chapitres · 30 h · N3 · budget 92 p. [78, 106].** Le module apprend à choisir **quoi** mesurer,
-pour **qui**, et à quelle condition un chiffre devient une décision. Trois chapitres sont poussés :
+pour **qui**, et à quelle condition un chiffre devient une décision. Les **6** chapitres sont poussés :
 **C01** (définition de la BI, ce qu'elle n'est pas, le coût d'une décision sans donnée),
 **C02** (reporting vs BI, les **4** régimes de question : quoi, pourquoi, quoi demain, que faire) et
 **C03** (métriques, dimensions, faits, grain — le vocabulaire exact et ses pièges chiffrés) et
 **C04** (concevoir un KPI : six critères, carte de définition de sept champs, contre-KPI et effets
-pervers — avec les six définitions mesurées du taux de retour, de **1,12 %** à **1,91 %**).
+pervers — avec les six définitions mesurées du taux de retour, de **1,12 %** à **1,91 %**), **C05**
+(l'architecture en sept étages et la panne typique de chacun) et **C06** (les dix causes d'échec d'un
+projet BI et la conduite de la reprise). **35 712** mots, **82** pages, **255** clés recalculées, fiche
+de contrôle **10/10**, PDF `05_livrables/M12.pdf`.
 Le **socle** ajoute au fil rouge six tables déterministes (**1,36 Mo**, graine **46**) : coût d'achat,
 stock, ruptures, commandes, encaissements, logistique — les sources qu'un indicateur exige. L'**instrument**
 `tools/kpi_M12.py` mesure les **10** KPI du mandat de reprise (CA, marge, rupture, rotation, panier,
@@ -45,7 +48,7 @@ chiffre** : c'est la thèse du module, appliquée à lui-même.
   **11** semaines) ; le livrable attendu est la **carte de définition de 10 KPI**, réutilisée en M13,
   M14, M15 et M21.
 * Publication : plan n° **46**, socle n° **47**, C01 n° **48**, C02 n° **49**, C03 n° **50**, C04
-  n° **52** — et l'état / le journal n° **51** (`05_livrables/journal_pushs.md`).
+  n° **52**, C05 n° **55**, C06 n° **56**, puis la clôture — `05_livrables/journal_pushs.md`.
 
 ## Module précédent — M11 *SQL avancé pour la BI* (clôturé le 24/09/2026, poussé le 25/09/2026)
 

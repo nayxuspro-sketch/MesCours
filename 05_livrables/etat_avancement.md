@@ -91,15 +91,16 @@ M10 est clos le 24 septembre 2026 : 7 chapitres poussés un par un (n° 24 → n
 > (*« Vos résultats sont justes. S'ils sont illisibles, ils ne serviront à rien. »*), et son
 > emprunt le plus direct est la table question → graphique posée au C06.
 
-### Phase 4 — Business Intelligence (5 modules · 35 ch. · 150 h · 524 p.) — **OUVERTE** (M11 livré et poussé, M12 engagé)
+### Phase 4 — Business Intelligence (5 modules · 35 ch. · 150 h · 524 p.) — **OUVERTE** (M11 et M12 livrés et poussés)
 
-**M12 est engagé** : plan poussé (n° 46, 6 ch., budget 92 p. [78, 106]) et socle livré (n° 47) — six CSV
-déterministes (**1,36 Mo**, graine 46) qui ajoutent au fil rouge les sources qu'un indicateur exige, et
-un instrument, `tools/kpi_M12.py`, qui mesure les **10 KPI** du projet, les **4** régimes de question, le
-vocabulaire du grain et les **6** critères d'un KPI. Quatre chapitres poussés (**C01** à **C04**,
-**21 389** mots au total : 5 186 + 5 063 + 5 133 + 6 007), relevé `m12_*` de **239** clés, `diff` = 0
-entre deux exécutions. C05 (architecture en **7** étages) et C06 (les **10** causes d'échec) restent à
-écrire.
+**M12 est livré et poussé** : **6** chapitres, **35 712** mots, **82** pages composées pour un budget de
+**92** p. (**−10,9 %**, fourchette [78, 106]), **255** clés de valeurs publiées et recalculées, **2**
+planches (**623** et **625** px), un projet (« Le tableau de bord que personne n'ouvrait », **4** livrables
+**6 + 8 + 4 + 2 = 20** points, seuil **13**) et une évaluation de **70** points (quiz **15** Q, seuil
+**11** ; **2** exercices de rédaction de KPI ; étude de cas **30** pts, seuil **18**). Le socle M12 ajoute
+**6** sources déterministes (**1,33 Mo**, graine **46**, **0,70** s de génération) et `tools/kpi_M12.py`
+mesure les **10** KPI, les **4** régimes de question, le vocabulaire du grain et les **6** critères d'un
+KPI. La fiche `05_livrables/fiche_controle_M12.md` passe **10/10**.
 
 M11 est **écrit, validé et intégralement poussé** : 7 chapitres, **42 410** mots, **97** pages
 composées pour 105 p. de budget, **301** clés de valeurs publiées, **2** planches (**609** et
@@ -113,7 +114,7 @@ du §C.3 de l'architecture (M11/M12 de palier *P3* à *P4*) est **appliqué et p
 | Module | Chap. | Budget | Contenu attendu |
 |---|---|---|---|
 | **M11 SQL avancé pour la BI** | 7 | 105 p. | **LIVRÉ ET POUSSÉ** : fenêtres et partitions, rangs et cumuls, séries temporelles, cohortes et RFM, CTE / `PIVOT` / `UNNEST` / `QUALIFY` / `ROLLUP`, vues, index et plans, style et tests de non-régression — DuckDB et SQLite **exécutés**, PostgreSQL et SQL Server **cités** |
-| **M12 Fondamentaux de la Business Intelligence** | 6 | 92 p. | **EN COURS** : C01 (définition de la BI), C02 (les 4 régimes de question) et C03 (vocabulaire exact : métrique, dimension, fait, grain) **poussés** ; C04 (6 critères et carte de définition), C05 (architecture en 7 étages) et C06 (10 causes d'échec) à écrire — socle dédié de 6 CSV (coût, stock, ruptures, commandes, encaissements, logistique) et instrument `kpi_M12.py` |
+| **M12 Fondamentaux de la Business Intelligence** | 6 | 92 p. | **LIVRÉ ET POUSSÉ** : définition de la BI et coût d'une décision sans donnée · les **4** régimes de question · le vocabulaire exact (métrique, dimension, fait, grain, additivité) · les **6** critères et la **carte de définition** de **7** champs · l'architecture en **7** étages et leurs pannes · les **10** causes d'échec et la conduite de projet — socle de **6** CSV, instrument `kpi_M12.py`, **2** planches ; la carte des **10** KPI resservira en M13, M14, M15 et M21 |
 | M13 Modélisation des données | 7 | 105 p. | étoile, flocon, MCD complet (dbdiagram, Power Pivot, SQL) |
 | M14 Power BI, de l'import à la publication | 8 | 117 p. | **2 projets** ; validation de dashboard |
 | M15 DAX pour la BI | 7 | 105 p. | bibliothèque de 40 mesures |

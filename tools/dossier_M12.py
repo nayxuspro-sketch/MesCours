@@ -188,8 +188,13 @@ def main():
                 qte_mois, ca_ht = vm[cle][0], vm[cle][1]
                 unites = qte_mois * jours / 30.0 / max(1, vm[cle][5])
                 ca = ca_ht * jours / 30.0 / max(1, vm[cle][5])
-                rup_lignes.append("%d,%d,%s,%d,%.0f,%.0f" % (pid, mid, m, jours, unites, ca))
-                pertes.append(ca)
+                # PATCH_15 : l'ATTENDU doit decrire le FICHIER, pas les flottants intermediaires.
+                # On arrondit d'abord comme le format d'ecriture, puis on cumule la valeur ecrite :
+                # sans cela, la somme publiee differait de 16 FCFA de la somme du CSV.
+                unites_f = float("%.0f" % unites)
+                ca_f = float("%.0f" % ca)
+                rup_lignes.append("%d,%d,%s,%d,%.0f,%.0f" % (pid, mid, m, jours, unites_f, ca_f))
+                pertes.append(ca_f)
     ecrire("ruptures.csv", rup_lignes)
 
     # ----------------------------------------------------- 4. commandes et livraisons
