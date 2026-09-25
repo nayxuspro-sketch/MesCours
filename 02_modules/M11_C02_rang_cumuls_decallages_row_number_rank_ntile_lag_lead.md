@@ -190,11 +190,12 @@ s'appliquerait avant la fenêtre : `RANK` vaudrait alors **1** pour **toutes** l
 rapport publierait un « top 3 » qui contient tout ce qu'on a laissé passer. C'est exactement le piège du
 `WHERE` avant la fenêtre (C01, §5.7), appliqué au cas le plus fréquent de la BI.
 
-Exécuté sur le socle, ce top 3 rend **46** lignes — alors qu'un top 3 sur les **6** familles réelles du
-catalogue en rendrait **18**. L'écart n'est pas un problème de requête : il vient des **16** libellés de
-catégorie du référentiel produits, un défaut de qualité que C07 traite à fond. Retenez pour l'instant que
-le top N par groupe est l'endroit où une donnée mal normée devient **visible** : 16 lignes de réponse pour
-6 familles, sans le moindre message d'alerte.
+Exécuté sur le socle, ce top 3 rend **46** lignes — alors qu'un top 3 sur les **7** familles réelles du
+catalogue en rend **21**. L'écart n'est pas un problème de requête : il vient des **16** libellés de
+catégorie du référentiel produits (**9** écritures après casse et espaces, **7** familles après accents et
+pluriel), un défaut de qualité que C05 puis C07 traitent à fond. Retenez pour l'instant que
+le top N par groupe est l'endroit où une donnée mal normée devient **visible** : 46 lignes de réponse pour
+7 familles, sans le moindre message d'alerte.
 
 ### 5.5 `SUM() OVER` : le cumul, et sa clôture
 
@@ -433,7 +434,8 @@ clients l'atteignent ». Les deux rapports sont **incompatibles** et la directio
 ## 11. Exercices autonomes
 
 **E1 — Le top N par famille, proprement (35 min).** Produisez les **3** produits les plus vendus de chaque
-**famille** réelle du catalogue (et non de chaque libellé présent dans le fichier), avec pour chaque produit
+**famille** réelle du catalogue — au sens de **C05**, qui définit la famille comme le libellé replié (casse,
+espaces, accents, pluriel) — et non de chaque libellé présent dans le fichier. Pour chaque produit
 son rang, son chiffre d'affaires et la part qu'il représente **dans sa famille**. Contrainte : le filtre sur
 le rang doit être **à l'extérieur** de la requête qui le calcule, et vous joindrez la preuve du nombre de
 lignes attendu (3 × nombre de familles).
@@ -474,8 +476,9 @@ antériorité sont **déclarés** `NULL` (pas zéro).
    niveaux, `ROW_NUMBER` seulement quand un rang unique est explicitement demandé — et dans ce cas, écrire
    la règle de départage. »
 
-**E1 (le top 3 par famille).** Il faut d'abord **normaliser** le libellé (`UPPER(TRIM(categorie))` réunit
-les graphies), puis classer par famille :
+**E1 (le top 3 par famille).** Il faut d'abord **normaliser** le libellé : `UPPER(TRIM(categorie))` réunit
+casse et espaces (**9** écritures), et le repliement des accents et du pluriel ramène à **7** familles
+(voir C05). Puis classer par famille :
 
 ```sql
 WITH p AS (SELECT id_produit, UPPER(TRIM(categorie)) AS famille FROM produit),
@@ -489,8 +492,8 @@ SELECT * FROM (
 ) WHERE rg <= 3 ORDER BY famille, rg;
 ```
 
-Contrôle attendu : **18** lignes (3 × **6** familles). Sans la normalisation, la même requête rend **46**
-lignes — l'écart est la trace exacte du défaut de qualité du référentiel.
+Contrôle attendu : **21** lignes (3 × **7** familles). Sans la normalisation, la même requête sur les
+libellés bruts rend **46** lignes — l'écart est la trace exacte du défaut de qualité du référentiel.
 
 **E2 (le cumul d'un magasin).** La structure attendue est celle du §7.4 avec `PARTITION BY id_magasin`,
 plus un `LAG(ca, 12) OVER (PARTITION BY id_magasin ORDER BY am)` pour la variation annuelle. Les deux
@@ -575,6 +578,6 @@ l'exécution : la preuve que la frontière n'est pas reproductible. 6. Parce que
 mois de l'année : s'il diffère, une ligne a été comptée deux fois ou manque. 7. `NULL` ; on **déclare** le
 trou dans la note de méthode. 8. « Ouaga 2000 réalise le plus gros chiffre d'affaires du réseau et un panier
 moyen de **107 374** FCFA, inférieur à celui de Kaya Marché (**111 447** FCFA) » ; interdit : « Ouaga 2000
-vend mieux que les autres ». 9. **46** lignes (16 libellés) contre **18** (6 familles). 10. Parce que la
+vend mieux que les autres ». 9. **46** lignes (16 libellés) contre **21** (7 familles). 10. Parce que la
 variation mensuelle va de −12,3 % à +27,1 % en cinq mois sur un socle stable : elle mesure le calendrier et
 le hasard plus que la tendance.
