@@ -1,8 +1,8 @@
 # État d'avancement du manuel — *La Voie des Données* (Édition 2026)
 
-**Arrêté au 25 septembre 2026, après le push n° 72 (kit d'exploitation livré, M13 à 4 chapitres sur 7).**
+**Arrêté au 25 septembre 2026, après le push n° 74 (kit d'exploitation livré, M13 à 5 chapitres sur 7).**
 **M11 (n° 36 → n° 45), M12 (n° 46 → n° 57) et le kit M01-M12 (n° 65) sont poussés.** M13 est
-**engagé** : plan n° 58, socle et instrument n° 59, **C01** n° 61, **C02** n° 63, **C03** n° 69, **C04** n° 72 — **4 chapitres
+**engagé** : plan n° 58, socle et instrument n° 59, **C01** n° 61, **C02** n° 63, **C03** n° 69, **C04** n° 72, **C05** n° 74 — **5 chapitres
 sur 7**. Le modèle de Sahel Distribution compte **12** tables (**5** dimensions, **7** faits), **2**
 dimensions historisées (bâties **en SQL**) et **4** contrôles de recette exécutés. Détail :
 `05_livrables/journal_pushs.md`.
@@ -18,7 +18,7 @@ kit, refaites à chaque exécution de `tools/kit_exploitation.py`).
 | Agrégat | Prévu | Réalisé | Restant |
 |---|---|---|---|
 | Modules obligatoires | **22** (M01 → M22) | **12** clos (M01 → M12) · M13 engagé (2 ch.) | **10** |
-| Chapitres | **143** | **85** (81 publiés + 4 de M13) | **58** |
+| Chapitres | **143** | **86** (81 publiés + 5 de M13) | **57** |
 | Heures du parcours | **660 h** | **360 h** livrées (+ 30 h engagées en M13) | **270 h** |
 | Pages de module | **2 226 p.** | **1 207 p.** composées et vérifiées | **1 019 p.** |
 | Appareil du livre | **229 p.** | **36 p.** (guide 4 p. + index 32 p.), assemblés dans le livre | **193 p.** |
@@ -32,9 +32,9 @@ kit, refaites à chaque exécution de `tools/kit_exploitation.py`).
 | Soutenances (M19, M21) | 2 | 0 | 2 |
 | Options M23—M25 (hors obligatoire) | 14 ch. · 50 h · 226 p. | 0 | 14 ch. |
 
-> **Lecture.** Le manuel est rédigé à **59 %** de ses chapitres (85 sur 143) et **55 %** de ses
+> **Lecture.** Le manuel est rédigé à **60 %** de ses chapitres (86 sur 143) et **55 %** de ses
 > modules (12 sur 22) ; les phases 0 à 3 sont **terminées** (M01 → M10) et la phase 4 est **en
-> cours** (M11 et M12 livrés, M13 à 4/7). Deux mesures valent d'être notées : le livre assemblé
+> cours** (M11 et M12 livrés, M13 à 5/7). Deux mesures valent d'être notées : le livre assemblé
 > retombe **page par page** sur la somme de ses parties (**1 395 p.** = sommaire, guide, 12 modules,
 > 2 cahiers, index), et la mesure des exercices donne **366** exercices autonomes là où l'ancien
 > comptage en annonçait **243** — l'unité de l'architecture (180) compte des exercices *types*, pas
@@ -63,15 +63,17 @@ définitions, 69 planches, 48 instruments, 10 jeux de données), `kit_M01_M12.js
 `requirements.txt` (l'environnement), `tools/kit_exploitation.py` (le générateur) et le **livre
 assemblé de 1 395 pages avec 124 signets**, où le guide ouvre la partie I.
 
-**Ce qui reste à pousser pour M13** (4 chapitres sur 7 sont en ligne) : les chapitres **C05** (flocon,
-pont, déchet, faits multiples, 15 §), **C06** (le temps et le calendrier, 15 §) et **C07** (qualité,
-documentation, revue en 15 points, 16 § + 1 planche), puis la **3e planche**, le PDF cible
-**[89, 121]** p., la fiche Q1-Q10, le projet (**20** points, seuil **13**), l'évaluation (**75**
-points, seuil **48**) et la clôture.
+**Ce qui reste à pousser pour M13** (5 chapitres sur 7 sont en ligne) : les chapitres **C06** (le temps
+et le calendrier, 15 § — qui doit **fermer le trou déclaré en C04** : `dim_date` n'est branchée sur
+aucun fait) et **C07** (qualité, documentation, revue en 15 points, 16 § + la 3e planche), puis cette
+**3e planche**, le PDF cible **[89, 121]** p., la fiche Q1-Q10, le projet (**20** points, seuil **13**),
+l'évaluation (**75** points, seuil **48**) et la clôture.
 
-**C04 a déclaré un trou du modèle, mesuré et assumé** : `dim_date` est juste (**1 339** jours,
-trimestres, semaines, jours fériés) et **aucun fait ne pointe dessus par clé** — les ventes portent
-leur date inline. Le chapitre l'écrit noir sur blanc et renvoie la fermeture du trou à **C06**.
+**C05 a tranché les quatre variantes par la mesure**, et aucune ne s'est imposée par principe :
+l'étoile et le flocon rendent **le même résultat** pour **1** et **3** jointures ; la table de pont est
+indispensable au N-M des tickets et **interdite de montants** (facteur **2,01**) ; la dimension déchet
+du socle tient en **30** combinaisons, toutes occupées ; les retours restent dans la table de ventes
+avec un **drapeau**, au prix d'une règle de filtrage à n'oublier dans aucun rapport.
 
 ## 3. Ce qui reste — 10 modules, 60 chapitres, 270 h
 
