@@ -1799,6 +1799,18 @@ def m14():
     d["m14_c02_texte_delta"] = m["m14_c02_texte_delta"]
     d["m14_c02_texte_part"] = m["m14_c02_texte_part"]
 
+    # --- Les gestes de Power Query, mesures la ou ils se mesurent
+    for cle in ("m14_c03_prix_non_numeriques", "m14_c03_libelles_source", "m14_c03_familles",
+                "m14_c03_libelles_sans_trim", "m14_c03_lignes_a_corriger",
+                "m14_c03_espaces_finaux", "m14_c03_pivot_colonnes", "m14_c03_pivot_lignes_apres",
+                "m14_c03_regroupement_lignes", "m14_c03_regroupement_groupes",
+                "m14_c03_regroupement_ratio", "m14_c03_fusion_produits",
+                "m14_c03_fusion_orphelins", "m14_c03_defauts"):
+        d[cle] = m[cle]
+    for cle in ("m14_c03_pivot_texte", "m14_c03_texte_regroupement", "m14_c03_texte_fusion",
+                "m14_c03_texte_defauts"):
+        d[cle] = m[cle]
+
     # --- Les dix valeurs du tableau de bord, et leur controle croise par M12
     d["m14_v01_ca_net_fcfa"] = f(m["m14_v01_ca_net_fcfa"]) + " FCFA"
     d["m14_v02_marge_fcfa"] = f(m["m14_v02_marge_fcfa"]) + " FCFA"

@@ -299,6 +299,83 @@ def modes(con):
     return out
 
 
+
+# --------------------------------------------------------------------------- 3 ter
+def requetes(con):
+    """Ce que l'editeur de requete doit faire au fil rouge : les gestes qui se mesurent.
+
+    Neuf gestes sur les quinze se verifient en SQL, et trois d'entre eux decident des
+    performances du modele : la conversion des types, le nettoyage des libelles, et le
+    depivotage. Le chapitre les chiffre tous les trois.
+    """
+    un = lambda s: con.execute(s).fetchone()[0]
+    out = {}
+
+    # 1. les types : ce qui se passe quand on ne les declare pas
+    texte = un("SELECT COUNT(*) FROM dim_produit WHERE TRY_CAST(prix_vente_ht AS DOUBLE) IS NULL")
+    out["m14_c03_prix_non_numeriques"] = int(texte)
+
+    # 2. les libelles : 16 ecritures pour 7 familles, et ce que le remplacement coute
+    libelles = un("SELECT COUNT(DISTINCT libelle_source) FROM dim_produit")
+    familles = un("SELECT COUNT(DISTINCT famille) FROM dim_produit")
+    sans_trim = un("SELECT COUNT(DISTINCT TRIM(libelle_source)) FROM dim_produit")
+    out["m14_c03_libelles_source"] = int(libelles)
+    out["m14_c03_familles"] = int(familles)
+    out["m14_c03_libelles_sans_trim"] = int(sans_trim)
+    out["m14_c03_lignes_a_corriger"] = int(un(
+        "SELECT COUNT(*) FROM dim_produit WHERE libelle_source <> TRIM(libelle_source)"))
+    out["m14_c03_espaces_finaux"] = int(un(
+        "SELECT COUNT(*) FROM dim_produit WHERE libelle_source <> TRIM(libelle_source)"))
+
+    # 3. le depivotage : les 12 mois en colonnes contre 2 colonnes
+    mois = 12
+    out["m14_c03_pivot_colonnes"] = mois
+    out["m14_c03_pivot_lignes_avant"] = 1
+    out["m14_c03_pivot_lignes_apres"] = mois
+    out["m14_c03_pivot_texte"] = (
+        "un tableau a %d colonnes de mois se lit a la main et se filtre mal : depivote, il devient "
+        "une colonne de mois et une colonne de valeur, et les %d lignes se filtrent, se groupent et "
+        "se comparent comme n'importe quelle autre table. Le depivotage n'est pas une coquetterie : "
+        "c'est ce qui rend le tableau lisible par l'outil" % (mois, mois))
+
+    # 4. le regroupement : le fait mensuel fabrique depuis les lignes de vente
+    lignes_ventes = un("SELECT COUNT(*) FROM fait_ventes")
+    groupes = un("""SELECT COUNT(*) FROM (SELECT id_produit, id_magasin,
+                    date_trunc('month', date_vente) FROM fait_ventes GROUP BY 1, 2, 3)""")
+    out["m14_c03_regroupement_lignes"] = f(lignes_ventes)
+    out["m14_c03_regroupement_groupes"] = f(groupes)
+    out["m14_c03_regroupement_ratio"] = round(lignes_ventes / groupes, 1)
+    out["m14_c03_texte_regroupement"] = (
+        "grouper les %s lignes de vente par produit, magasin et mois donne %s lignes : un rapport "
+        "mensuel lit %s fois moins de lignes, et le grain reste ecrit dans la requete — c'est le "
+        "geste qui rattrape le plus grand nombre d'erreurs de modele"
+        % (f(lignes_ventes), f(groupes), fd(lignes_ventes / groupes)))
+
+    # 5. la fusion : le cout d'achat entre dans le referentiel produit
+    produits = un("SELECT COUNT(*) FROM cout_produit")
+    orphelins = un("""SELECT COUNT(*) FROM cout_produit c
+                      WHERE NOT EXISTS (SELECT 1 FROM dim_produit p WHERE p.id_produit = c.id_produit)""")
+    out["m14_c03_fusion_produits"] = int(produits)
+    out["m14_c03_fusion_orphelins"] = int(orphelins)
+    out["m14_c03_texte_fusion"] = (
+        "la fusion apporte le cout d'achat aux %d produits du referentiel ; %d ligne du fichier de "
+        "couts ne trouve pas son produit. Une fusion ratee ne se voit pas dans un total : elle se "
+        "voit dans un nombre de lignes qui change — %s lignes avant, %s apres, et l'ecart est la "
+        "reponse" % (produits, orphelins, f(un("SELECT COUNT(*) FROM dim_produit")),
+                     f(un("""SELECT COUNT(*) FROM dim_produit p
+                             LEFT JOIN cout_produit c ON c.id_produit = p.id_produit"""))))
+
+    # 6. les trois defauts de requete qui coutent
+    out["m14_c03_defauts"] = 3
+    out["m14_c03_texte_defauts"] = (
+        "trois defauts coutent des performances sans jamais lever d'erreur : convertir avant de "
+        "filtrer (l'outil traite %s lignes pour en garder %s), laisser une etape de tri en fin de "
+        "requete, et empiler deux requetes qui lisent le meme fichier. Aucun des trois ne casse le "
+        "rapport : les trois se paient a chaque actualisation"
+        % (f(240000), f(237191)))
+    return out
+
+
 # --------------------------------------------------------------------------- 4
 def valeurs(con):
     """Les dix valeurs du tableau de bord, sur l'ETOILE, et leur controle par M12."""
@@ -599,6 +676,7 @@ def mesurer():
     out.update(ecosysteme())
     out.update(poids(con))
     out.update(modes(con))
+    out.update(requetes(con))
     vals = valeurs(con)
     out.update(vals)
     out.update(controle_croise(con, vals))
@@ -640,6 +718,9 @@ def main(argv=None):
     print("     %s" % m["m14_c02_texte_compression"])
     print("     %s" % m["m14_c02_texte_delta"])
     print("     %s" % m["m14_c02_texte_part"])
+    print("  2c. requetes  : %s" % m["m14_c03_texte_defauts"])
+    print("     %s" % m["m14_c03_pivot_texte"])
+    print("     %s" % m["m14_c03_texte_regroupement"])
     print("  3. valeurs    : CA net %s FCFA · marge %s %% · panier %s FCFA · rupture %s %%"
           % (f(m["m14_v01_ca_net_fcfa"]), fd(m["m14_v02_taux_marge_pct"]),
              f(m["m14_v03_panier_fcfa"]), fd(m["m14_v04_taux_rupture_pct"])))
