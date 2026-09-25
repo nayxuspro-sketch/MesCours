@@ -3276,6 +3276,27 @@ def m12():
     d["m12_projet_ouvertures_j1"] = 4
     d["m12_projet_sources_discordantes"] = 3
     d["m12_projet_questions_jamais_posees"] = 6
+    d["m12_projet_jours"] = 30
+    d["m12_projet_jours_sources"] = 8
+    d["m12_projet_jours_conception"] = 22
+    d["m12_projet_livraison_annoncee"] = 6
+    d["m12_p_cout_par_indicateur_fcfa"] = f(round(7940000 / 41)) + " FCFA"
+    d["m12_p_cout_par_jour_fcfa"] = f(round(7940000 / 30)) + " FCFA"
+    d["m12_p_cout_par_ouverture_fcfa"] = f(round(7940000 / 4)) + " FCFA"
+    d["m12_p_cout_par_kpi_mandat_fcfa"] = f(round(7940000 / 10)) + " FCFA"
+    d["m12_p_part_conception_pct"] = round(100.0 * 4850000 / 7940000, 1)
+    d["m12_p_part_sources_pct"] = round(100.0 * 1640000 / 7940000, 1)
+    d["m12_p_part_formation_pct"] = round(100.0 * 250000 / 7940000, 1)
+    d["m12_p_part_maintenance_pct"] = round(100.0 * 1200000 / 7940000, 1)
+    d["m12_p_cout_maintenance_semaine_fcfa"] = f(round(1200000 / 52)) + " FCFA"
+    d["m12_p_jours_conception_pct"] = round(100.0 * 22 / 30, 1)
+    d["m12_p_jours_sources_pct"] = round(100.0 * 8 / 30, 1)
+    d["m12_p_administration"] = (
+        "le dossier rate coutait 7 940 000 FCFA pour 41 indicateurs, soit 193 659 FCFA par indicateur ; "
+        "ramene aux 10 KPI du mandat de reprise, le meme budget vaudrait 794 000 FCFA par KPI. Reparti "
+        "par usage, il a paye 1 985 000 FCFA par lecteur du premier jour (4 ouvertures sur 14 "
+        "destinataires) et 11 semaines de vie pour une maintenance annuelle de 1 200 000 FCFA, soit "
+        "23 077 FCFA par semaine.")
     d["m12_projet_kpi_mandat"] = 10
 
     # --- Le controle croise cote pandas : le CA net doit se retrouver des deux cotes

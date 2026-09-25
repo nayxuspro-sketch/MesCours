@@ -259,13 +259,13 @@ Le socle de ce module est lui-même une chaîne de calcul, et elle est entièrem
 | Extraction | un générateur déterministe, graine **46** | régénération complète en **0,70** s, écart **0** |
 | Stockage | `socle_m12.sql` (**4 375** octets) : **8** tables, vues de ventes et de marge | aucun fichier de base |
 | Modèle | **8** clés uniques, la vue `vente_marge` pour la marge par famille | grain prouvé table par table |
-| Couche sémantique | les **10** cartes du mandat, **7** champs chacune | **239** clés de valeurs publiées dans le relevé du module |
+| Couche sémantique | les **10** cartes du mandat, **7** champs chacune | **255** clés de valeurs publiées dans le relevé du module |
 | Visualisation | **2** planches | largeurs **623** et **625** pixels |
 | Diffusion | le classeur et les PDF du module | **1** relevé recalculé en **13** s à chaque exécution |
 
 Deux enseignements de ce tableau. D'abord, **la chaîne entière tient dans 1,33 Mo et se rejoue en moins
 d'une seconde** : la simplicité n'est pas un luxe d'atelier, c'est ce qui permet de **vérifier** chaque
-chiffre publié. Ensuite, le point de contrôle n'est pas l'écran : c'est le **relevé** — **239** valeurs
+chiffre publié. Ensuite, le point de contrôle n'est pas l'écran : c'est le **relevé** — **255** valeurs
 recalculées à chaque exécution, dont aucune n'est saisie à la main.
 
 > **Dans les faits.** Les sept étages de ce module sont **exécutés**, pas décrits : `tools/dossier_M12.py`
@@ -498,5 +498,5 @@ reconstructible : sans script, personne ne sait ce qui a été fait aux lignes, 
 (écart **0**) en **0,70** s. 8. Position, puis longueur, devant angle et surface ; l'écart d'erreur de
 lecture va de **40** à **250 %**. 9. La livraison envoie une adresse ; la diffusion obtient une lecture :
 **4** ouvertures sur **14** destinataires le premier jour. 10. Parce qu'un socle petit et rapide se
-**vérifie** : les **239** valeurs du module sont recalculées en **13** s, donc contrôlées à chaque
+**vérifie** : les **255** valeurs du module sont recalculées en **13** s, donc contrôlées à chaque
 exécution, au lieu d'être crues sur parole.

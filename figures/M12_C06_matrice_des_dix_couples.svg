@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="450.276975pt" height="324.864pt" viewBox="0 0 450.276975 324.864" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.9, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 324.864 
+L 450.276975 324.864 
+L 450.276975 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 13.69512 58.42656 
+L 435.87792 58.42656 
+L 435.87792 39.177792 
+L 13.69512 39.177792 
+z
+" clip-path="url(#p573fe23693)" style="fill: #fbfbfb; stroke: #d7dde3; stroke-width: 0.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 13.69512 82.953216 
+L 435.87792 82.953216 
+L 435.87792 63.704448 
+L 13.69512 63.704448 
+z
+" clip-path="url(#p573fe23693)" style="fill: #f1f5f9; stroke: #d7dde3; stroke-width: 0.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 13.69512 107.479872 
+L 435.87792 107.479872 
+L 435.87792 88.231104 
+L 13.69512 88.231104 
+z
+" clip-path="url(#p573fe23693)" style="fill: #fbfbfb; stroke: #d7dde3; stroke-width: 0.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 13.69512 132.006528 
+L 435.87792 132.006528 
+L 435.87792 112.75776 
+L 13.69512 112.75776 
+z
+" clip-path="url(#p573fe23693)" style="fill: #f1f5f9; stroke: #d7dde3; stroke-width: 0.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 13.69512 156.533184 
+L 435.87792 156.533184 
+L 435.87792 137.284416 
+L 13.69512 137.284416 
+z
+" clip-path="url(#p573fe23693)" style="fill: #fbfbfb; stroke: #d7dde3; stroke-width: 0.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 13.69512 181.05984 
+L 435.87792 181.05984 
+L 435.87792 161.811072 
+L 13.69512 161.811072 
+z
+" clip-path="url(#p573fe23693)" style="fill: #f1f5f9; stroke: #d7dde3; stroke-width: 0.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 13.69512 205.586496 
+L 435.87792 205.586496 
+L 435.87792 186.337728 
+L 13.69512 186.337728 
+z
+" clip-path="url(#p573fe23693)" style="fill: #fbfbfb; stroke: #d7dde3; stroke-width: 0.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 13.69512 230.113152 
+L 435.87792 230.113152 
+L 435.87792 210.864384 
+L 13.69512 210.864384 
+z
+" clip-path="url(#p573fe23693)" style="fill: #f1f5f9; stroke: #d7dde3; stroke-width: 0.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 13.69512 254.639808 
+L 435.87792 254.639808 
+L 435.87792 235.39104 
+L 13.69512 235.39104 
+z
+" clip-path="url(#p573fe23693)" style="fill: #fbfbfb; stroke: #d7dde3; stroke-width: 0.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 13.69512 279.166464 
+L 435.87792 279.166464 
+L 435.87792 259.917696 
+L 13.69512 259.917696 
+z
+" clip-path="url(#p573fe23693)" style="fill: #f1f5f9; stroke: #d7dde3; stroke-width: 0.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="line2d_1">
+    <path d="M 15.86016 27.38016 
+L 435.87792 27.38016 
+" clip-path="url(#p573fe23693)" style="fill: none; stroke: #5c6b7a; stroke-width: 0.9; stroke-linecap: square"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 7.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #12202e" x="15.86016" y="21.17088" transform="rotate(-0 15.86016 21.17088)">Indicateur</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 7.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #12202e" x="108.95688" y="21.17088" transform="rotate(-0 108.95688 21.17088)">Ce qu'il pousse a faire</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 7.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #12202e" x="212.8788" y="21.17088" transform="rotate(-0 212.8788 21.17088)">Son contre-KPI</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 7.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #12202e" x="310.3056" y="21.17088" transform="rotate(-0 310.3056 21.17088)">Le couple, mesure</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #12202e" x="15.86016" y="50.733738" transform="rotate(-0 15.86016 50.733738)">CA net</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #586470" x="108.95688" y="50.733738" transform="rotate(-0 108.95688 50.733738)">vendre plus, vite</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #8a2b1e" x="212.8788" y="50.733738" transform="rotate(-0 212.8788 50.733738)">taux de retour</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 6.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #33414f" x="310.3056" y="50.623363" transform="rotate(-0 310.3056 50.623363)">15 595 154 955 FCFA / 1,17 % de retour</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #12202e" x="15.86016" y="75.260394" transform="rotate(-0 15.86016 75.260394)">Marge brute</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #586470" x="108.95688" y="75.260394" transform="rotate(-0 108.95688 75.260394)">monter les prix</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #8a2b1e" x="212.8788" y="75.260394" transform="rotate(-0 212.8788 75.260394)">volume vendu</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 6.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #33414f" x="310.3056" y="75.150019" transform="rotate(-0 310.3056 75.150019)">recette x 1,17 / unites x 1,17</text>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #12202e" x="15.86016" y="99.78705" transform="rotate(-0 15.86016 99.78705)">Taux de rupture</text>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #586470" x="108.95688" y="99.78705" transform="rotate(-0 108.95688 99.78705)">stocker plus</text>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #8a2b1e" x="212.8788" y="99.78705" transform="rotate(-0 212.8788 99.78705)">rotation</text>
+   </g>
+   <g id="text_16">
+    <text style="font-size: 6.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #33414f" x="310.3056" y="99.676675" transform="rotate(-0 310.3056 99.676675)">7,29 % / 9,42 tours</text>
+   </g>
+   <g id="text_17">
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #12202e" x="15.86016" y="124.313706" transform="rotate(-0 15.86016 124.313706)">Rotation</text>
+   </g>
+   <g id="text_18">
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #586470" x="108.95688" y="124.313706" transform="rotate(-0 108.95688 124.313706)">reduire le stock</text>
+   </g>
+   <g id="text_19">
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #8a2b1e" x="212.8788" y="124.313706" transform="rotate(-0 212.8788 124.313706)">taux de rupture</text>
+   </g>
+   <g id="text_20">
+    <text style="font-size: 6.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #33414f" x="310.3056" y="124.203331" transform="rotate(-0 310.3056 124.203331)">9,42 tours / 7,29 %</text>
+   </g>
+   <g id="text_21">
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #12202e" x="15.86016" y="148.840362" transform="rotate(-0 15.86016 148.840362)">Panier moyen</text>
+   </g>
+   <g id="text_22">
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #586470" x="108.95688" y="148.840362" transform="rotate(-0 108.95688 148.840362)">vendre des lots</text>
+   </g>
+   <g id="text_23">
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #8a2b1e" x="212.8788" y="148.840362" transform="rotate(-0 212.8788 148.840362)">marge brute</text>
+   </g>
+   <g id="text_24">
+    <text style="font-size: 6.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #33414f" x="310.3056" y="148.729987" transform="rotate(-0 310.3056 148.729987)">107 396 FCFA / 29,12 %</text>
+   </g>
+   <g id="text_25">
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #12202e" x="15.86016" y="173.367018" transform="rotate(-0 15.86016 173.367018)">Taux de retour</text>
+   </g>
+   <g id="text_26">
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #586470" x="108.95688" y="173.367018" transform="rotate(-0 108.95688 173.367018)">controler les retours</text>
+   </g>
+   <g id="text_27">
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #8a2b1e" x="212.8788" y="173.367018" transform="rotate(-0 212.8788 173.367018)">taux de service</text>
+   </g>
+   <g id="text_28">
+    <text style="font-size: 6.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #33414f" x="310.3056" y="173.256643" transform="rotate(-0 310.3056 173.256643)">1,17 % / 81,0 %</text>
+   </g>
+   <g id="text_29">
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #12202e" x="15.86016" y="197.893674" transform="rotate(-0 15.86016 197.893674)">Taux de service</text>
+   </g>
+   <g id="text_30">
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #586470" x="108.95688" y="197.893674" transform="rotate(-0 108.95688 197.893674)">promettre large</text>
+   </g>
+   <g id="text_31">
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #8a2b1e" x="212.8788" y="197.893674" transform="rotate(-0 212.8788 197.893674)">cout logistique unitaire</text>
+   </g>
+   <g id="text_32">
+    <text style="font-size: 6.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #33414f" x="310.3056" y="197.783299" transform="rotate(-0 310.3056 197.783299)">78,2 % / 3 284 FCFA</text>
+   </g>
+   <g id="text_33">
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #12202e" x="15.86016" y="222.42033" transform="rotate(-0 15.86016 222.42033)">Taux de recouvrement</text>
+   </g>
+   <g id="text_34">
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #586470" x="108.95688" y="222.42033" transform="rotate(-0 108.95688 222.42033)">relancer vite</text>
+   </g>
+   <g id="text_35">
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #8a2b1e" x="212.8788" y="222.42033" transform="rotate(-0 212.8788 222.42033)">CA net</text>
+   </g>
+   <g id="text_36">
+    <text style="font-size: 6.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #33414f" x="310.3056" y="222.309955" transform="rotate(-0 310.3056 222.309955)">74,0 % / 15 595 154 955 FCFA</text>
+   </g>
+   <g id="text_37">
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #12202e" x="15.86016" y="246.946986" transform="rotate(-0 15.86016 246.946986)">Cout logistique unit.</text>
+   </g>
+   <g id="text_38">
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #586470" x="108.95688" y="246.946986" transform="rotate(-0 108.95688 246.946986)">grouper les tournees</text>
+   </g>
+   <g id="text_39">
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #8a2b1e" x="212.8788" y="246.946986" transform="rotate(-0 212.8788 246.946986)">taux de service</text>
+   </g>
+   <g id="text_40">
+    <text style="font-size: 6.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #33414f" x="310.3056" y="246.836611" transform="rotate(-0 310.3056 246.836611)">3 284 FCFA / 78,2 %</text>
+   </g>
+   <g id="text_41">
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #12202e" x="15.86016" y="271.473642" transform="rotate(-0 15.86016 271.473642)">Part de marche interne</text>
+   </g>
+   <g id="text_42">
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #586470" x="108.95688" y="271.473642" transform="rotate(-0 108.95688 271.473642)">defendre son magasin</text>
+   </g>
+   <g id="text_43">
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #8a2b1e" x="212.8788" y="271.473642" transform="rotate(-0 212.8788 271.473642)">CA du reseau</text>
+   </g>
+   <g id="text_44">
+    <text style="font-size: 6.6px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #33414f" x="310.3056" y="271.363267" transform="rotate(-0 310.3056 271.363267)">60,8 % / 39,2 % a Ouagadougou</text>
+   </g>
+   <g id="text_45">
+    <text style="font-size: 7.2px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #12202e" x="15.86016" y="300.58848" transform="rotate(-0 15.86016 300.58848)">Un indicateur sans contre-KPI s'ameliore toujours : il suffit de</text>
+   </g>
+   <g id="text_46">
+    <text style="font-size: 7.2px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #12202e" x="15.86016" y="311.45472" transform="rotate(-0 15.86016 311.45472)">deplacer le probleme chez le voisin. Les dix couples se publient ensemble.</text>
+   </g>
+   <g id="text_47">
+    <text style="font-size: 7px; font-family: 'DejaVu Sans'; text-anchor: end; fill: #5c6b7a" x="429.3828" y="300.58848" transform="rotate(-0 429.3828 300.58848)">M12 · 10 couples</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p573fe23693">
+   <rect x="7.2" y="7.2" width="433.008" height="310.464"/>
+  </clipPath>
+ </defs>
+</svg>
