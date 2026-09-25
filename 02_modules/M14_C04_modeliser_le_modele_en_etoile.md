@@ -23,7 +23,10 @@ section `modele`.**
 4. **refuser un filtrage bidirectionnel** quand il ne se justifie pas : **2** candidats examinés, **2**
    refus argumentés, et la raison écrite ;
 5. **contrôler le modèle par sa sortie** : les **10** valeurs du rapport, et les **8** d'entre elles que
-   l'instrument compare directement à la mesure opérationnelle de M12 — **0** écart.
+   l'instrument compare directement à la mesure opérationnelle de M12 — **0** écart ;
+6. **fermer les trois finitions du modèle** : l'**intégrité référentielle** (les lignes dont la clé n'existe
+   pas en face), les **colonnes masquées** et le **tri par colonne** — trois gestes qui ne changent aucun
+   chiffre et qui décident de ce que le rapport laisse voir.
 
 ---
 
@@ -350,6 +353,40 @@ L'actualisation, elle, n'est pas une décision de visuel : mode (Import), fréqu
 responsable, alerte en cas d'échec. Un rapport qui se rafraîchit mal **sans que personne ne le sache**
 est plus dangereux qu'un rapport manuel.
 
+### 5.9 Les trois finitions : intégrité, colonnes masquées, tri
+
+**L'intégrité référentielle.** Une relation plusieurs à un garantit que la colonne de dimension est
+**unique** ; elle ne garantit **pas** que chaque clé du fait existe en face. Le contrôle se pose une
+fois, relation par relation, et il rend un nombre.
+
+```sql
+-- les lignes de faits dont la date n'existe pas dans le calendrier
+SELECT COUNT(*) FROM fait_encaissements f LEFT JOIN dim_date d ON d.date = f.date_facture
+WHERE d.date IS NULL;
+--  7   ->  et autant du côté des commandes : 14 lignes au total, 5 794 850 FCFA d'encaissements
+```
+
+Le calendrier s'arrête au 2026-08-31 et les faits continuent jusqu'au 2026-09-02 : **14** lignes —
+**7** commandes et **7** encaissements — n'ont pas de date dans la dimension. Elles n'affichent pas une
+erreur : sur un axe de temps, elles **n'affichent rien** — ni dans le total du mois, ni dans la courbe.
+Deux réponses sont défendables : **étendre le calendrier** pour couvrir la période des faits, ou
+**assumer** ces lignes et l'écrire — jamais les laisser disparaître sans le dire.
+
+> **Dans les faits.** Ces **14** lignes portent **5 794 850** FCFA que le rapport ne montrera jamais, et
+> personne ne s'en plaindra : un chiffre absent ne réclame rien. C'est exactement le type d'écart qu'un
+> contrôle de recette attrape — et que la relecture à l'œil, elle, laisse passer.
+
+**Les colonnes masquées.** Le modèle contient **5** clés de dimensions et **9** colonnes de clés dans les
+faits (dont les **2** dates inactives). Aucune ne se montre dans la vue rapport : un auteur qui glisse
+`id_client` dans un visuel n'affiche pas une erreur, il affiche un **numéro**. Ce qui se voit, ce sont
+les attributs — le nom du magasin, la famille du produit, le segment du client.
+
+**Le tri par colonne.** Les **7** libellés de jour du calendrier sont des textes anglais, et
+l'alphabet les classe `Friday, Monday, Saturday...` — le vendredi avant le lundi. Le tri par colonne les
+range par le **numéro** du jour, et l'axe redevient lisible. Un tri faux ne casse rien et ne se
+signale pas : il se remarque à la troisième réunion, quand quelqu'un demande pourquoi la semaine
+commence le vendredi.
+
 ---
 
 ## 6. Exemple concret — la recette du modèle
@@ -602,6 +639,8 @@ dimension, écrit avec ses valeurs (**4** points) · la recette en **10** valeur
 | Piège du module, la date | `annee_mois` : **28** à **31** lignes par mois (**44** valeurs, **1 339** jours) | une colonne non unique ne joint pas |
 | Piège du module, les faits | deux faits joints : facteurs **30,44** et **44,0** mesurés | deux faits ne se joignent jamais entre eux |
 | Recette | **8** comparaisons avec M12, **0** écart | un modèle se juge à sa sortie |
+| Intégrité | **14** lignes hors calendrier, **5 794 850** FCFA | une clé absente ne fait pas d'erreur : elle disparaît |
+| Finitions | **5** clés masquées, **9** colonnes de clés, **7** libellés triés | ce qui ne change aucun chiffre décide de ce qui se voit |
 
 **Instrument.** `python3 tools/mesures_M14.py` vérifie les **12** relations, l'unicité des **12**
 colonnes, les **2** inactives, les **2** refus, et rejoue la recette du modèle par
@@ -644,7 +683,9 @@ affichera.
 7. À quoi sert de marquer une table comme table de dates ?
 8. Où vit le coût d'achat du produit, et pourquoi n'est-il pas dans le fait ?
 9. Pourquoi la sécurité au niveau des lignes se pose-t-elle sur le modèle et non dans les mesures ?
-10. Comment sait-on qu'un modèle est juste ?
+10. Que garantit une relation plusieurs à un, et que ne garantit-elle pas ?
+11. Combien de lignes de faits du socle n'ont pas de date dans le calendrier, et pourquoi est-ce grave ?
+12. Comment sait-on qu'un modèle est juste ?
 
 **Corrigé.** 1. **12** relations actives, issues de **4** des **7** tables de faits (**3** faits restent
 sans relation). 2. La colonne du côté « un » doit être **unique** — vérifié **12** fois sur **12**.
@@ -662,5 +703,9 @@ vente s'affiche à zéro au lieu de disparaître, et les comparaisons de périod
 la **dimension** produit, apporté par une fusion de requêtes : **154** produits, **237 191** lignes de
 vente : un coût est un attribut du produit, pas de la vente. 9. Parce qu'un filtre posé dans une mesure
 se contourne en changeant de page, alors qu'un filtre posé sur le modèle s'applique à tout ce qui sort.
-10. En rejouant la recette : les **10** valeurs du rapport, **8** comparaisons avec la mesure
-opérationnelle de M12, **0** écart.
+10. Elle garantit l'**unicité** de la colonne de dimension — la condition qui empêche la ligne de se
+multiplier ; elle ne garantit pas que chaque clé du fait existe en face. 11. **14** : **7** commandes et
+**7** encaissements datés du 2026-09-01 et du 2026-09-02, alors que le calendrier s'arrête au
+2026-08-31 — soit **5 794 850** FCFA qui n'apparaissent sur aucun axe de temps. 12. En rejouant la
+recette : les **10** valeurs du rapport, **8** comparaisons avec la mesure opérationnelle de M12, **0**
+écart.

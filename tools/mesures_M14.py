@@ -585,6 +585,47 @@ def modele(con):
             "logistique sur le magasin seul donne 10 436 404 lignes et 686 186 818 020 FCFA "
             "— facteur 44,0, mesure par M13"),
     }
+    # L'integrite referentielle : une relation ne GARANTIT pas que la cle existe en face
+    orphelins = {}
+    for fait, cf, dim, cd in RELATIONS:
+        n = un("""SELECT COUNT(*) FROM %s f LEFT JOIN %s d ON d.%s = f.%s
+                  WHERE d.%s IS NULL""" % (fait, dim, cd, cf, cd))
+        orphelins[fait + "." + cf] = int(n)
+    total_orphelins = sum(orphelins.values())
+    montant_orphelins = un("""SELECT SUM(f.montant_ttc) FROM fait_encaissements f
+                              LEFT JOIN dim_date d ON d.date = f.date_facture
+                              WHERE d.date IS NULL""")
+    cles_dimension = sorted({cd for _, _, _, cd in RELATIONS})
+    colonnes_fait = sorted({cf for _, cf, _, _ in RELATIONS}
+                           | {col for _, col, _, _, _ in INACTIVES})
+    jours = un("SELECT COUNT(DISTINCT libelle_jour) FROM dim_date")
+    out["m14_c04_orphelins"] = total_orphelins
+    out["m14_c04_orphelins_par_relation"] = orphelins
+    out["m14_c04_orphelins_commandes"] = orphelins.get("fait_commandes.date_commande", 0)
+    out["m14_c04_orphelins_encaissements"] = orphelins.get("fait_encaissements.date_facture", 0)
+    out["m14_c04_orphelins_montant_fcfa"] = round(montant_orphelins or 0)
+    out["m14_c04_cles_dimension"] = len(cles_dimension)
+    out["m14_c04_colonnes_fait_masquees"] = len(colonnes_fait)
+    out["m14_c04_libelles_jour"] = int(jours)
+    out["m14_c04_texte_orphelins"] = (
+        "une relation plusieurs a un garantit que la colonne de dimension est unique ; "
+        "elle ne garantit PAS que chaque cle du fait existe en face. Le calendrier "
+        "s'arrete au 2026-08-31 et les faits continuent : %s lignes de faits n'ont pas "
+        "de date dans la dimension (%s commandes, %s encaissements, %s FCFA). Ces "
+        "lignes n'affichent pas une erreur : elles n'affichent rien du tout"
+        % (f(total_orphelins), f(orphelins.get("fait_commandes.date_commande", 0)),
+           f(orphelins.get("fait_encaissements.date_facture", 0)), f(round(montant_orphelins or 0))))
+    out["m14_c04_texte_masquage"] = (
+        "les %s cles de dimensions et les %s colonnes de clefs des faits se masquent "
+        "dans la vue rapport : un auteur qui glisse `id_client` dans un visuel n'affiche "
+        "pas une erreur, il affiche un numero. Ce qui se voit, ce sont les attributs"
+        % (f(len(cles_dimension)), f(len(colonnes_fait))))
+    out["m14_c04_texte_tri"] = (
+        "les %s jours de la semaine sont des libelles anglais qui se trient dans l'ordre "
+        "alphabetique (Friday, Monday...) : le tri par colonne les range par le numero du "
+        "jour. Un tri faux ne casse rien, il met le vendredi avant le lundi — et personne "
+        "ne le signale" % f(int(jours)))
+
     # Les deux pieges, en francs. Rien ici n'est un produit de tete : la jointure par
     # `annee_mois` ET la jointure entre deux faits sont rejouees sur le socle.
     ca_net = un("SELECT SUM(montant_ttc) FROM fait_ventes WHERE est_retour = 0")
@@ -626,6 +667,106 @@ def modele(con):
 
 
 # --------------------------------------------------------------------------- 6
+MESURES_DAX = (
+    # (nom, fonction DAX, ce qu'elle rend, format)
+    ("[CA net]", "CALCULATE + SUM", "le chiffre d'affaires hors retours", "montant"),
+    ("[CA HT]", "CALCULATE + SUM", "le chiffre d'affaires hors taxes", "montant"),
+    ("[Coût HT]", "CALCULATE + SUMX + RELATED", "le coût d'achat des marchandises vendues", "montant"),
+    ("[Marge brute]", "soustraction de mesures", "le chiffre d'affaires HT moins le coût HT", "montant"),
+    ("[Taux de marge %]", "DIVIDE", "la marge rapportée au chiffre d'affaires", "pourcentage"),
+    ("[Panier moyen]", "DIVIDE + DISTINCTCOUNT", "le chiffre d'affaires net par ticket", "montant"),
+    ("[Taux de rupture %]", "DIVIDE + COUNTROWS", "les couples servis en rupture", "pourcentage"),
+    ("[Taux de retour lignes %]", "DIVIDE + CALCULATE + COUNTROWS", "la part des lignes de retour", "pourcentage"),
+    ("[Taux de service %]", "DIVIDE + CALCULATE", "les commandes livrées à la date promise", "pourcentage"),
+    ("[Encours client]", "CALCULATE + SUM + ISBLANK", "les factures non encaissées", "montant"),
+    ("[Coût logistique par colis]", "DIVIDE + SUM", "le coût moyen d'un colis", "montant"),
+)
+
+
+def dax(con):
+    """Mesure ou colonne calculee : ce que coute chaque choix, sur le cas de la marge (C05)."""
+    un = lambda s: con.execute(s).fetchone()[0]
+    fonctions = sorted({tok for _, f, _, _ in MESURES_DAX for tok in f.split(" + ")
+                         if tok.isupper()})
+    survie = sorted({"SUM", "COUNTROWS", "DISTINCTCOUNT", "DIVIDE", "CALCULATE"})
+    out = {
+        "m14_c05_mesures": len(MESURES_DAX),
+        "m14_c05_fonctions": len(fonctions),
+        "m14_c05_fonctions_liste": " · ".join(fonctions),
+        "m14_c05_fonctions_survie": len(survie),
+        "m14_c05_fonctions_survie_liste": " · ".join(survie),
+        "m14_c05_formats": "montant : %d · pourcentage : %d"
+        % (sum(1 for _, _, _, fmt in MESURES_DAX if fmt == "montant"),
+           sum(1 for _, _, _, fmt in MESURES_DAX if fmt == "pourcentage")),
+    }
+    # 1. le denominateur : DISTINCTCOUNT change le panier
+    ca_net = un("SELECT SUM(montant_ttc) FROM fait_ventes WHERE est_retour = 0")
+    tickets = int(un("SELECT COUNT(DISTINCT id_ticket) FROM fait_ventes WHERE est_retour = 0"))
+    lignes = int(un("SELECT COUNT(*) FROM fait_ventes WHERE est_retour = 0"))
+    panier_ticket = ca_net / tickets
+    panier_ligne = ca_net / lignes
+    ecart_panier = round(100.0 * (1 - panier_ligne / panier_ticket), 1)
+    out["m14_c05_tickets"] = tickets
+    out["m14_c05_lignes"] = lignes
+    out["m14_c05_panier_ticket_fcfa"] = round(panier_ticket)
+    out["m14_c05_panier_ligne_fcfa"] = round(panier_ligne)
+    out["m14_c05_ecart_panier_pct"] = ecart_panier
+    out["m14_c05_texte_distinctcount"] = (
+        "un seul mot change le chiffre : le panier moyen se divise par les TICKETS "
+        "distincts (%s) et non par les lignes (%s). Meme chiffre d'affaires, deux "
+        "denominateurs, deux reponses : %s FCFA par ticket contre %s FCFA par ligne, "
+        "soit %s %% d'ecart — c'est l'exemple qui explique DISTINCTCOUNT"
+        % (f(tickets), f(lignes), f(round(panier_ticket)), f(round(panier_ligne)), ecart_panier))
+    # 2. le seul CALCULATE du module : est_retour = 0
+    ca_tout = un("SELECT SUM(montant_ttc) FROM fait_ventes")
+    retours = abs(un("SELECT SUM(montant_ttc) FROM fait_ventes WHERE est_retour = 1"))
+    ecart_ret = round(100.0 * retours / ca_net, 2)
+    out["m14_c05_ca_net_fcfa"] = round(ca_net)
+    out["m14_c05_ca_toutes_lignes_fcfa"] = round(ca_tout)
+    out["m14_c05_retours_fcfa"] = round(retours)
+    out["m14_c05_ecart_retours_pct"] = ecart_ret
+    out["m14_c05_texte_calculate"] = (
+        "un seul usage de CALCULATE dans tout le module : `est_retour = 0`. Il ne "
+        "retire pas des lignes, il retire un SIGNE : les retours sont des lignes "
+        "negatives, et le meme fait rend %s FCFA avec elles et %s FCFA sans elles — "
+        "l'ecart, %s FCFA, vaut %s %% du net et c'est exactement la valeur des retours. "
+        "Une mesure ecrite sans le filtre n'est pas fausse : elle repond a une autre "
+        "question" % (f(round(ca_tout)), f(round(ca_net)), f(round(retours)), ecart_ret))
+    # 3. le denominateur nul : la ou DIVIDE gagne
+    combos = int(un("""SELECT COUNT(*) FROM (SELECT DISTINCT id_magasin FROM dim_magasin) m
+                       CROSS JOIN (SELECT DISTINCT annee_mois FROM dim_date) d"""))
+    vides = int(un("""SELECT COUNT(*) FROM (SELECT DISTINCT id_magasin FROM dim_magasin) m
+                      CROSS JOIN (SELECT DISTINCT annee_mois FROM dim_date) d
+                      WHERE NOT EXISTS (SELECT 1 FROM fait_ventes v
+                                        WHERE v.id_magasin = m.id_magasin
+                                        AND strftime(v.date_vente, '%Y-%m') = d.annee_mois)"""))
+    part = round(100.0 * vides / combos, 1)
+    out["m14_c05_combinaisons"] = combos
+    out["m14_c05_combinaisons_vides"] = vides
+    out["m14_c05_part_vides_pct"] = part
+    out["m14_c05_texte_divide"] = (
+        "le depot central ne vend rien : %s des %s combinaisons magasin x mois sont "
+        "vides (%s %%). Un taux calcule par `/` sur un denominateur nul s'arrete la ou "
+        "DIVIDE rend un vide, que le visuel affiche comme une absence et non comme une "
+        "erreur : c'est pourquoi les onze mesures se divisent toutes avec DIVIDE"
+        % (f(vides), f(combos), part))
+    # 4. mesure contre colonne calculee : ce qui se stocke, ce qui se calcule
+    lignes_tot = int(un("SELECT COUNT(*) FROM fait_ventes"))
+    produits = int(un("SELECT COUNT(*) FROM cout_produit"))
+    facteur = round(lignes_tot / produits, 1)
+    out["m14_c05_colonne_fait_valeurs"] = lignes_tot
+    out["m14_c05_colonne_dimension_valeurs"] = produits
+    out["m14_c05_facteur_stockage"] = facteur
+    out["m14_c05_texte_colonne"] = (
+        "la marge a besoin d'un cout : en MESURE elle ne stocke rien et se calcule a la "
+        "lecture, en COLONNE CALCULEE du fait elle stockerait %s valeurs, posee dans la "
+        "dimension produit elle n'en stocke que %s. Le meme chiffre, un facteur %s sur "
+        "ce qui entre dans le modele — et une colonne calculee se fige a l'actualisation, "
+        "la ou une mesure suit les filtres"
+        % (f(lignes_tot), f(produits), f(facteur)))
+    return out
+
+
 def grille():
     """La grille de conception en 18 points : ses familles et les 6 ajouts du module.
 
@@ -721,6 +862,7 @@ def mesurer():
     out.update(vals)
     out.update(controle_croise(con, vals))
     out.update(modele(con))
+    out.update(dax(con))
     out.update(grille())
     out.update(controle_dossier())
     con.close()

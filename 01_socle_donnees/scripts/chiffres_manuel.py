@@ -1821,6 +1821,28 @@ def m14():
         d[cle] = m[cle]
     d["m14_c04_ca_mois_fcfa"] = f(m["m14_c04_ca_mois_fcfa"]) + " FCFA"
     d["m14_c04_logistique_ca_fcfa"] = f(m["m14_c04_logistique_ca_fcfa"]) + " FCFA"
+    for cle in ("m14_c04_orphelins", "m14_c04_orphelins_commandes",
+                "m14_c04_orphelins_encaissements", "m14_c04_cles_dimension",
+                "m14_c04_colonnes_fait_masquees", "m14_c04_libelles_jour",
+                "m14_c04_texte_orphelins", "m14_c04_texte_masquage",
+                "m14_c04_texte_tri"):
+        d[cle] = m[cle]
+    d["m14_c04_orphelins_montant_fcfa"] = f(m["m14_c04_orphelins_montant_fcfa"]) + " FCFA"
+
+    # --- C05 : mesure ou colonne, et le premier DAX
+    for cle in ("m14_c05_mesures", "m14_c05_fonctions", "m14_c05_fonctions_liste",
+                "m14_c05_fonctions_survie", "m14_c05_fonctions_survie_liste",
+                "m14_c05_formats", "m14_c05_tickets", "m14_c05_lignes",
+                "m14_c05_panier_ticket_fcfa", "m14_c05_panier_ligne_fcfa",
+                "m14_c05_ecart_panier_pct", "m14_c05_ca_toutes_lignes_fcfa",
+                "m14_c05_retours_fcfa", "m14_c05_ecart_retours_pct",
+                "m14_c05_combinaisons", "m14_c05_combinaisons_vides",
+                "m14_c05_part_vides_pct", "m14_c05_colonne_fait_valeurs",
+                "m14_c05_colonne_dimension_valeurs", "m14_c05_facteur_stockage",
+                "m14_c05_texte_distinctcount", "m14_c05_texte_calculate",
+                "m14_c05_texte_divide", "m14_c05_texte_colonne"):
+        d[cle] = m[cle]
+    d["m14_c05_ca_net_fcfa"] = f(m["m14_c05_ca_net_fcfa"]) + " FCFA"
 
     # --- Les dix valeurs du tableau de bord, et leur controle croise par M12
     d["m14_v01_ca_net_fcfa"] = f(m["m14_v01_ca_net_fcfa"]) + " FCFA"
